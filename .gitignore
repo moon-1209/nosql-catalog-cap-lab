@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Generated datasets (large); keep data/sample/ committed
+data/full/
+data/generated/
+
+# OS
+.DS_Store
