@@ -1,0 +1,55 @@
+# Data seeder configuration for the catalog CAP experiments.
+# Reproduce a dataset: python -m src.catalog_analysis.seeder --config config/seeder.yaml --seed 42
+
+seed: 42
+
+# --- catalog dataset ---
+records: 500000            # number of product rows
+categories:
+  - electronics
+  - fashion
+  - home-garden
+  - sports
+  - toys
+  - books
+  - beauty
+  - automotive
+  - grocery
+  - pets
+  - music
+  - movies
+  - office
+  - jewelry
+  - health
+  - baby
+  - tools
+  - gaming
+  - outdoor
+  - appliances
+category_zipf_alpha: 1.2  # >1 => few categories hold most products/requests
+num_buckets: 16          # Schema B buckets per category
+brands: 200              # distinct brand names generated
+price:
+  min: 5.0
+  max: 4999.0
+stock:
+  max: 2000
+
+# --- simulated request log (hot-partition experiments) ---
+requests: 200000         # access_log events
+read_ratio: 0.9          # ~90% reads per access-pattern analysis
+access_zipf_alpha: 1.2   # request routing skew over categories
+
+# --- simulated consistency log (stale-read experiments) ---
+consistency_events: 60000
+consistency:
+  levels: [ONE, QUORUM]
+  hot_keys: 5000         # products exercised for read/write versioning
+  nodes: [node1, node2, node3, node4, node5]
+  partition_node: node3  # isolated during the network partition window
+  partition_start_frac: 0.4    # window opens at 40% of the timeline
+  partition_duration_frac: 0.1 # lasts 10% of the timeline
+  # probability a READ returns an older committed version
+  stale_probability:
+    ONE:       {normal: 0.02, partitioned: 0.30, on_partition_node: 0.60}
+    QUORUM:    {normal: 0.001, partitioned: 0.05, on_partition_node: 0.10}
