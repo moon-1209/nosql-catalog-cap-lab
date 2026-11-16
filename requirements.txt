@@ -1,0 +1,2 @@
+pymongo==4.20.0
+hdrhistogram==0.10.8
