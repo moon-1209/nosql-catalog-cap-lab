@@ -1,0 +1,6 @@
+{"ts": "2026-11-16T15:29:29.354813+00:00", "phase": "1_Initial_Write", "status": "OK", "latency_ms": 10.456}
+{"ts": "2026-11-16T15:29:29.354813+00:00", "phase": "2_Network_Partition", "status": "Disconnected", "latency_ms": 0}
+{"ts": "2026-11-16T15:29:29.354813+00:00", "phase": "3_During_Partition_Write", "status": "Failed_Timeout", "latency_ms": 1500.216}
+{"ts": "2026-11-16T15:29:29.354813+00:00", "phase": "4_Network_Restored", "status": "Reconnected", "latency_ms": 500.173}
+{"ts": "2026-11-16T15:29:29.354813+00:00", "phase": "5_Post_Recovery_Write", "status": "OK", "latency_ms": 10.527}
+{"ts": "2026-11-16T15:29:29.354813+00:00", "phase": "6_Verification", "status": "Success", "latency_ms": 200.519}
