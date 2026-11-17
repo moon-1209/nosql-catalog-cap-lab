@@ -33,8 +33,8 @@
 #   CHAOS_ANNOTATE=1        đẩy annotation lên Grafana (dùng khi demo thủ công)
 # =====================================================================
 set -euo pipefail
-# shellcheck source=../../lib/common.sh
-source "$(cd "$(dirname "$0")" && pwd)/../../lib/common.sh"
+# shellcheck source=../lib/common.sh
+source "$(cd "$(dirname "$0")" && pwd)/../lib/common.sh"
 
 SIDECAR_PREFIX="chaos-sc-"
 CHAOS_LOG="${CHAOS_LOG:-$RUNS_DIR/chaos_manual.jsonl}"

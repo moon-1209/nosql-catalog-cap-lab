@@ -1,0 +1,16 @@
+{
+  "name": "00_smoke_runner",
+  "description": "Tự kiểm tra chaos automation (2 phút): cô lập node3 40s, rồi làm node3 chậm 100ms 20s; chụp trạng thái trước / trong / sau.",
+  "duration_s": 120,
+  "events": [
+    {"at_s": 0,   "action": "marker",      "label": "Bắt đầu"},
+    {"at_s": 5,   "action": "snapshot",    "label": "truoc_loi"},
+    {"at_s": 20,  "action": "partition",   "target": "scylla-node3", "mode": "peers", "label": "Cô lập AZ3"},
+    {"at_s": 50,  "action": "snapshot",    "label": "trong_loi_sau_failure_detector"},
+    {"at_s": 60,  "action": "heal",        "target": "scylla-node3", "label": "Khôi phục mạng AZ3"},
+    {"at_s": 70,  "action": "netem",       "target": "scylla-node3", "delay_ms": 100, "label": "Replica chậm 100ms"},
+    {"at_s": 90,  "action": "clear_netem", "target": "scylla-node3", "label": "Hết chậm"},
+    {"at_s": 110, "action": "snapshot",    "label": "sau_phuc_hoi"},
+    {"at_s": 120, "action": "marker",      "label": "Kết thúc"}
+  ]
+}

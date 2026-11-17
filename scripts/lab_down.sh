@@ -6,8 +6,8 @@
 #             Dữ liệu Prometheus KHÔNG bị xóa (giữ lại làm bằng chứng cho báo cáo).
 # =====================================================================
 set -euo pipefail
-# shellcheck source=../../lib/common.sh
-source "$(cd "$(dirname "$0")" && pwd)/../../lib/common.sh"
+# shellcheck source=../lib/common.sh
+source "$(cd "$(dirname "$0")" && pwd)/../lib/common.sh"
 HERE="$(cd "$(dirname "$0")" && pwd)"
 COMPOSE_DIR="$HERE/../compose"
 

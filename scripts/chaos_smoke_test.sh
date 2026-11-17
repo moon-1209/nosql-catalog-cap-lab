@@ -11,8 +11,8 @@
 # Toàn bộ output lưu ở evidence/tuan1/chaos_smoke_<thời_gian>.txt
 # =====================================================================
 set -uo pipefail
-# shellcheck source=../../lib/common.sh
-source "$(cd "$(dirname "$0")" && pwd)/../../lib/common.sh"
+# shellcheck source=../lib/common.sh
+source "$(cd "$(dirname "$0")" && pwd)/../lib/common.sh"
 
 GOSSIP=0
 [[ "${1:-}" == "--gossip" ]] && GOSSIP=1

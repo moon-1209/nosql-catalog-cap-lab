@@ -4,8 +4,8 @@
 #                 target Prometheus, lỗi đang tiêm (nếu có).
 # =====================================================================
 set -uo pipefail
-# shellcheck source=../../lib/common.sh
-source "$(cd "$(dirname "$0")" && pwd)/../../lib/common.sh"
+# shellcheck source=../lib/common.sh
+source "$(cd "$(dirname "$0")" && pwd)/../lib/common.sh"
 HERE="$(cd "$(dirname "$0")" && pwd)"
 
 banner "Container của lab"

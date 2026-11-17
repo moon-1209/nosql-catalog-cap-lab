@@ -1,0 +1,8 @@
+# Sinh tự động bởi setup_monitoring.sh lúc 2026-11-17T12:03:10.585Z — đừng sửa tay
+- targets:
+    - scylla-node1
+    - scylla-node2
+    - scylla-node3
+  labels:
+    cluster: nosql-cap-lab
+    dc: dc1

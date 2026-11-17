@@ -8,8 +8,8 @@
 # để mỗi rack (= AZ) giữ đúng 1 bản sao.
 # =====================================================================
 set -euo pipefail
-# shellcheck source=../../lib/common.sh
-source "$(cd "$(dirname "$0")" && pwd)/../../lib/common.sh"
+# shellcheck source=../lib/common.sh
+source "$(cd "$(dirname "$0")" && pwd)/../lib/common.sh"
 
 [[ $# -ge 1 ]] || die "Dùng: $0 <file.cql> [...]"
 node=$(first_scylla); [[ -n "$node" ]] || die "Chưa có node Scylla nào chạy"

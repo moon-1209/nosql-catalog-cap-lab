@@ -6,8 +6,8 @@
 # Ví dụ: ./lab_up.sh mongo     # chỉ bật MongoDB Replica Set
 # =====================================================================
 set -euo pipefail
-# shellcheck source=../../lib/common.sh
-source "$(cd "$(dirname "$0")" && pwd)/../../lib/common.sh"
+# shellcheck source=../lib/common.sh
+source "$(cd "$(dirname "$0")" && pwd)/../lib/common.sh"
 HERE="$(cd "$(dirname "$0")" && pwd)"
 COMPOSE_DIR="$HERE/../compose"
 

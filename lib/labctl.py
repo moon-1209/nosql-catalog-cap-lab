@@ -11,7 +11,7 @@ import subprocess
 from pathlib import Path
 
 LAB_ROOT = Path(__file__).resolve().parents[1]
-CHAOS_SH = LAB_ROOT / "tuan1_dung-lab" / "chaos" / "chaos.sh"
+CHAOS_SH = LAB_ROOT / "chaos" / "chaos.sh"
 SNAPSHOT_SH = LAB_ROOT / "lib" / "lab_snapshot.sh"
 RUNS_DIR = Path(os.environ.get("RUNS_DIR", LAB_ROOT / "runs"))
 EVIDENCE_DIR = Path(os.environ.get("EVIDENCE_DIR", LAB_ROOT / "evidence"))
