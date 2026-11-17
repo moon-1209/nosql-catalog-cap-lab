@@ -33,14 +33,23 @@ from pathlib import Path
 
 import pandas as pd
 
+from src.catalog_analysis.contracts import (
+    fail_mask, normalize_success, ok_mask, run_info)
 from src.catalog_analysis.top_partitions import detect_origin
 
 
 def classify_reads(log: pd.DataFrame) -> pd.DataFrame:
-    """Return READ rows with `latest_committed`, `is_stale`, `valid`, `phase`."""
-    reads = log[log["event"] == "READ"].sort_values("ts")
-    writes = (log[log["event"] == "WRITE"][["key", "ts", "version"]]
-              .sort_values("ts"))
+    """Return successful READ rows with `latest_committed`, `is_stale`,
+    `valid`, `phase`.
+
+    Failed reads are excluded entirely (never counted as stale, never in
+    the denominator).  Failed writes are excluded so they cannot become
+    committed versions.  Datasets without a `success` column are legacy:
+    every event is treated as successful (flagged in `analyse`)."""
+    log, _ = normalize_success(log)
+    reads = log[(log["event"] == "READ") & ok_mask(log)].sort_values("ts")
+    writes = (log[(log["event"] == "WRITE") & ok_mask(log)]
+              [["key", "ts", "version"]].sort_values("ts"))
 
     merged = pd.merge_asof(reads, writes, on="ts", by="key",
                            suffixes=("", "_committed"))
@@ -74,9 +83,22 @@ def _rate(group: pd.DataFrame) -> dict:
 
 
 def analyse(log: pd.DataFrame) -> dict:
+    log, status = normalize_success(log)
     reads = classify_reads(log)
+    failed_reads = int(len(log[(log["event"] == "READ") & fail_mask(log)]))
+    failed_writes = int(len(log[(log["event"] == "WRITE") & fail_mask(log)]))
     out = {
-        "total_reads": int(len(reads)),
+        "total_reads": int(len(log[log["event"] == "READ"])),
+        "analysed_reads": int(len(reads)),
+        "status": status,
+        "failures": {
+            "failed_reads": failed_reads,
+            "failed_writes": failed_writes,
+            "by_consistency_level": {
+                str(k): int(v) for k, v in
+                log[fail_mask(log)]
+                .groupby("consistency_level").size().items()},
+        },
         "overall": _rate(reads),
         "by_consistency_level": {
             str(k): _rate(g) for k, g in reads.groupby("consistency_level")},
@@ -95,6 +117,7 @@ def run(data_dir: Path, out_dir: Path) -> dict:
     origin = detect_origin(data_dir)
     result, reads = analyse(log)
     result["origin"] = origin
+    result["run"] = run_info(data_dir, log)
 
     out_dir.mkdir(parents=True, exist_ok=True)
     reads.to_csv(out_dir / "classified_reads.csv", index=False)
@@ -105,16 +128,29 @@ def run(data_dir: Path, out_dir: Path) -> dict:
 
 def _write_report(result: dict, path: Path) -> None:
     o = result["overall"]
+    status = result.get("status", {})
+    failures = result.get("failures", {})
+    run = result.get("run", {})
     lines = [
         "# Stale Read Report",
         "",
         f"Data origin: **{result['origin']}**",
+        f"run_id: `{run.get('run_id')}` (log/manifest consistency: "
+        f"{run.get('consistency')})",
+        f"status mode: {status.get('status_mode')}"
+        + (" (legacy dataset without `success` column - all ops treated "
+           "as successful)" if status.get("status_mode") == "legacy" else ""),
         "",
         "Definition: a READ is stale iff `version < latest committed "
         "version` for the same key at read time. "
-        "`stale_read_rate = stale_reads / valid_reads * 100%`.",
+        "`stale_read_rate = stale_reads / valid_reads * 100%`. "
+        "Failed reads/writes are excluded from both numerator and "
+        "denominator and reported separately.",
         "",
-        f"- total reads: {result['total_reads']:,}",
+        f"- total reads: {result['total_reads']:,}"
+        + (f" ({result['analysed_reads']:,} successful, "
+           f"{failures.get('failed_reads', 0):,} failed)"
+           if status.get("status_mode") != "legacy" else ""),
         f"- valid reads (decidable): {o['valid_reads']:,}",
         f"- unverifiable reads (no prior write): {o['unverifiable_reads']:,}",
         f"- stale reads: {o['stale_reads']:,}",
@@ -136,6 +172,14 @@ def _write_report(result: dict, path: Path) -> None:
         rate = r["stale_read_rate_pct"]
         lines.append(f"| {ph} | {r['valid_reads']} | {r['stale_reads']} | "
                      f"{rate if rate is not None else 'n/a'} |")
+    if failures.get("failed_reads") or failures.get("failed_writes"):
+        lines += ["", "## Failed operations (excluded from stale rates)",
+                  "",
+                  "| kind | count |", "|---|---|",
+                  f"| failed reads | {failures['failed_reads']} |",
+                  f"| failed writes | {failures['failed_writes']} |", ""]
+        for lvl, n in sorted(failures.get("by_consistency_level", {}).items()):
+            lines.append(f"- {lvl}: {n} failed ops")
     lines += [
         "",
         "Note: rates under `simulated` origin reflect the seeder's "

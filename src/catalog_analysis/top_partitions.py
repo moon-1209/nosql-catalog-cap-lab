@@ -28,6 +28,9 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from src.catalog_analysis.contracts import (
+    fail_mask, normalize_success, run_info)
+
 
 def bucket_of(product_id: str, num_buckets: int) -> int:
     return binascii.crc32(product_id.encode()) % num_buckets
@@ -50,8 +53,16 @@ def partition_loads(access: pd.DataFrame, schema: str,
         if col not in counts.columns:
             counts[col] = 0
     loads = counts.rename(columns={"READ": "reads", "WRITE": "writes"})
+    # `total` = attempted requests (successful + failed) - a failed op
+    # still puts load on the partition.  Failure counts are kept in a
+    # separate column so failure-rate analysis stays possible.
     loads["total"] = loads["reads"] + loads["writes"]
     loads["share"] = loads["total"] / loads["total"].sum()
+    if "success" in df.columns:
+        fails = df[fail_mask(df)].groupby(keys).size()
+        loads["failures"] = fails.reindex(loads.index).fillna(0).astype(int)
+    else:
+        loads["failures"] = 0
     loads["latency_ms_mean"] = df.groupby(keys)["latency_ms"].mean()
     return loads.sort_values("total", ascending=False)
 
@@ -68,6 +79,8 @@ def summarise(loads: pd.DataFrame) -> dict:
         "std_requests": float(t.std()),
         "max_mean_ratio": float(t.max() / t.mean()) if t.mean() else None,
         "top_partition_share": float(t.max() / t.sum()) if t.sum() else None,
+        "failed_ops": int(loads["failures"].sum())
+        if "failures" in loads.columns else 0,
     }
 
 
@@ -81,10 +94,14 @@ def detect_origin(data_dir: Path) -> str:
 def run(data_dir: Path, out_dir: Path, top_n: int = 10,
         num_buckets: int = 16) -> dict:
     access = pd.read_csv(data_dir / "access_log.csv")
+    access, status = normalize_success(access)
     origin = detect_origin(data_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    result = {"origin": origin, "top_n": top_n, "schemas": {}}
+    result = {"origin": origin, "top_n": top_n,
+              "status": status,
+              "run": run_info(data_dir, access),
+              "schemas": {}}
     for schema in ("a", "b"):
         loads = partition_loads(access, schema, num_buckets)
         loads.reset_index().to_csv(
@@ -103,12 +120,19 @@ def run(data_dir: Path, out_dir: Path, top_n: int = 10,
 
 
 def _write_report(result: dict, path: Path) -> None:
+    status = result.get("status", {})
+    run = result.get("run", {})
     lines = [
         "# Top Partitions Report",
         "",
         f"Data origin: **{result['origin']}** "
         + ("(simulated workload - replace with observed ScyllaDB logs for "
            "real measurements)" if result["origin"] == "simulated" else ""),
+        f"run_id: `{run.get('run_id')}` (log/manifest consistency: "
+        f"{run.get('consistency')})",
+        f"status mode: {status.get('status_mode')}"
+        + (" (no `success` column - all ops treated as successful, "
+           "legacy dataset)" if status.get("status_mode") == "legacy" else ""),
         "",
     ]
     for schema, r in result["schemas"].items():
@@ -117,7 +141,9 @@ def _write_report(result: dict, path: Path) -> None:
             f"## Schema {schema.upper()}",
             "",
             f"- partitions: {s['partitions']}",
-            f"- total requests: {s['total_requests']:,}",
+            f"- total requests: {s['total_requests']:,}"
+            + (f" (of which {s['failed_ops']:,} failed)"
+               if s.get("failed_ops") else ""),
             f"- mean / median / std per partition: {s['mean_requests']:.1f}"
             f" / {s['median_requests']:.1f} / {s['std_requests']:.1f}",
             f"- max partition load: {s['max_requests']:,}"

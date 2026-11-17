@@ -39,17 +39,29 @@ stock:
 requests: 200000         # access_log events
 read_ratio: 0.9          # ~90% reads per access-pattern analysis
 access_zipf_alpha: 1.2   # request routing skew over categories
+request_failure_rate: 0.01 # injected transient timeouts (simulated; real
+                         # runs record observed failures instead)
 
 # --- simulated consistency log (stale-read experiments) ---
 consistency_events: 60000
 consistency:
-  levels: [ONE, QUORUM]
+  levels: [ONE, QUORUM, ALL]
   hot_keys: 5000         # products exercised for read/write versioning
   nodes: [node1, node2, node3, node4, node5]
   partition_node: node3  # isolated during the network partition window
   partition_start_frac: 0.4    # window opens at 40% of the timeline
   partition_duration_frac: 0.1 # lasts 10% of the timeline
-  # probability a READ returns an older committed version
+  # probability a READ returns an older committed version.
+  # ALL never returns stale data in this model - on a partition it fails
+  # instead (see failure_probability below).
   stale_probability:
     ONE:       {normal: 0.02, partitioned: 0.30, on_partition_node: 0.60}
     QUORUM:    {normal: 0.001, partitioned: 0.05, on_partition_node: 0.10}
+    ALL:       {normal: 0.0,  partitioned: 0.0,  on_partition_node: 0.0}
+  # probability an operation FAILS (success=false, error set).
+  # Simulated knobs: higher CL => higher unavailability on the minority
+  # side of the partition - the A side of the CAP trade-off.
+  failure_probability:
+    ONE:       {normal: 0.001, partitioned: 0.05, on_partition_node: 0.10}
+    QUORUM:    {normal: 0.002, partitioned: 0.10, on_partition_node: 0.50}
+    ALL:       {normal: 0.005, partitioned: 0.60, on_partition_node: 1.00}

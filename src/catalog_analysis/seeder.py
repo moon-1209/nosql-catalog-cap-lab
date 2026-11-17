@@ -31,6 +31,9 @@ import numpy as np
 import pandas as pd
 import yaml
 
+from src.catalog_analysis.contracts import (
+    VALID_CONSISTENCY_LEVELS, git_sha)
+
 NAMESPACE = uuid.UUID("6ba7b810-9dad-11d1-80b4-00c04fd430c8")
 BASE_TS = np.datetime64("2026-01-01T00:00:00").astype("datetime64[ms]").astype(np.int64)
 SPAN_MS = np.int64(30 * 24 * 3600 * 1000)  # 30 days in milliseconds
@@ -99,7 +102,7 @@ def gen_products(cfg: dict, rng: np.random.Generator) -> pd.DataFrame:
 
 
 def gen_access_log(cfg: dict, products: pd.DataFrame,
-                   rng: np.random.Generator) -> pd.DataFrame:
+                   rng: np.random.Generator, run_id: str) -> pd.DataFrame:
     """Simulated request stream routed by Zipf over categories."""
     n = cfg["requests"]
     cats = np.array(cfg["categories"])
@@ -116,6 +119,10 @@ def gen_access_log(cfg: dict, products: pd.DataFrame,
     ts = BASE_TS + np.sort(rng.integers(0, SPAN_MS, size=n, dtype=np.int64))
     latency = np.round(rng.lognormal(mean=np.log(8.0), sigma=0.5, size=n), 3)
 
+    # Injected transient failures (simulated timeouts) — flat rate, no
+    # network model; real experiments replace this with observed errors.
+    fail = rng.random(n) < cfg.get("request_failure_rate", 0.0)
+
     return pd.DataFrame({
         "ts": ts,
         "request_id": [f"req-{i:07d}" for i in range(n)],
@@ -123,11 +130,14 @@ def gen_access_log(cfg: dict, products: pd.DataFrame,
         "category_id": cats[cat_idx],
         "product_id": product_ids,
         "latency_ms": latency,
+        "success": ~fail,
+        "error": np.where(fail, "timeout", ""),
+        "run_id": run_id,
     })
 
 
 def gen_consistency_log(cfg: dict, products: pd.DataFrame,
-                        rng: np.random.Generator) -> pd.DataFrame:
+                        rng: np.random.Generator, run_id: str) -> pd.DataFrame:
     """Simulated write/read version events on hot keys.
 
     Each WRITE commits a new version; each READ returns some committed
@@ -157,9 +167,26 @@ def gen_consistency_log(cfg: dict, products: pd.DataFrame,
         partitioned = p_start <= t < p_end
         state = "PARTITIONED" if partitioned else "NORMAL"
 
-        if rng.random() < 0.35 or versions.get(key, 0) == 0:
+        op = "WRITE" if (rng.random() < 0.35 or versions.get(key, 0) == 0) else "READ"
+
+        # Injected operation failures (e.g. CL=ALL/QUORUM on the minority
+        # side of a partition becomes unavailable rather than stale).
+        # Simulated knobs only - real runs record observed failures.
+        fprobs = c.get("failure_probability", {}).get(level, {})
+        p_fail = (fprobs.get("on_partition_node", 0.0)
+                  if (partitioned and node == p_node)
+                  else fprobs.get("partitioned", 0.0) if partitioned
+                  else fprobs.get("normal", 0.0))
+        if rng.random() < p_fail:
+            err = "unavailable" if partitioned else "timeout"
+            rows.append((t, op, key, None, level, node, state,
+                         False, err, run_id))
+            continue
+
+        if op == "WRITE":
             versions[key] = versions.get(key, 0) + 1
-            rows.append((t, "WRITE", key, versions[key], level, node, state))
+            rows.append((t, "WRITE", key, versions[key], level, node,
+                         state, True, "", run_id))
             continue
 
         latest = versions[key]
@@ -167,11 +194,13 @@ def gen_consistency_log(cfg: dict, products: pd.DataFrame,
         p = probs["on_partition_node"] if (partitioned and node == p_node) else (
             probs["partitioned"] if partitioned else probs["normal"])
         returned = rng.integers(1, latest) if (latest > 1 and rng.random() < p) else latest
-        rows.append((t, "READ", key, returned, level, node, state))
+        rows.append((t, "READ", key, returned, level, node, state,
+                     True, "", run_id))
 
     return pd.DataFrame(
         rows, columns=["ts", "event", "key", "version",
-                       "consistency_level", "node", "network_state"]
+                       "consistency_level", "node", "network_state",
+                       "success", "error", "run_id"]
     )
 
 
@@ -194,12 +223,44 @@ def validate(products: pd.DataFrame, cfg: dict) -> list[str]:
     return problems
 
 
-def seed(cfg: dict, out_dir: Path) -> dict:
+def _validate_config(cfg: dict) -> None:
+    """Reject invalid consistency levels and missing probabilities."""
+    c = cfg.get("consistency", {})
+    levels = c.get("levels", [])
+    if not levels:
+        raise ValueError("consistency.levels must be non-empty")
+    bad = set(levels) - set(VALID_CONSISTENCY_LEVELS)
+    if bad:
+        raise ValueError(
+            f"invalid consistency levels {sorted(bad)}; allowed: "
+            f"{list(VALID_CONSISTENCY_LEVELS)}")
+    missing = set(levels) - set(c.get("stale_probability", {}))
+    if missing:
+        raise ValueError(
+            f"stale_probability missing for levels {sorted(missing)}")
+    for name in ("stale_probability", "failure_probability"):
+        extra = set(c.get(name, {})) - set(VALID_CONSISTENCY_LEVELS)
+        if extra:
+            raise ValueError(f"{name} has unknown levels {sorted(extra)}")
+    if not 0.0 <= cfg.get("request_failure_rate", 0.0) <= 1.0:
+        raise ValueError("request_failure_rate must be in [0, 1]")
+
+
+def seed(cfg: dict, out_dir: Path, run_id: str | None = None,
+         overwrite: bool = False) -> dict:
+    _validate_config(cfg)
+    if run_id is None:
+        run_id = f"run-{cfg['seed']}-{time.strftime('%Y%m%d%H%M%S', time.gmtime())}"
+    if (out_dir / "manifest.json").exists() and not overwrite:
+        raise FileExistsError(
+            f"{out_dir} already contains a run manifest; pass "
+            f"overwrite=True / --overwrite or use a new --out directory")
+
     rng = np.random.default_rng(cfg["seed"])
     t0 = time.time()
     products = gen_products(cfg, rng)
-    access = gen_access_log(cfg, products, rng)
-    consistency = gen_consistency_log(cfg, products, rng)
+    access = gen_access_log(cfg, products, rng, run_id)
+    consistency = gen_consistency_log(cfg, products, rng, run_id)
 
     problems = validate(products, cfg)
     if problems:
@@ -211,11 +272,19 @@ def seed(cfg: dict, out_dir: Path) -> dict:
     consistency.to_csv(out_dir / "consistency_log.csv", index=False)
 
     shares = products["category_id"].value_counts(normalize=True)
+    created_at = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+    sha = git_sha(Path(__file__).resolve().parents[2])
     manifest = {
+        "contract_version": 2,
+        "run_id": run_id,
         "origin": "simulated",
         "seed": cfg["seed"],
+        "git_sha": sha,
+        "provenance_note": ("git_sha unavailable - not a git worktree or "
+                            "git not installed" if sha is None else None),
         "config": cfg,
-        "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "created_at": created_at,
+        "generated_at": created_at,  # kept for backward compatibility
         "rows": {
             "products": len(products),
             "access_log": len(access),
@@ -237,6 +306,9 @@ def main() -> None:
     ap.add_argument("--records", type=int, help="override products count")
     ap.add_argument("--requests", type=int, help="override access_log events")
     ap.add_argument("--seed", type=int, help="override random seed")
+    ap.add_argument("--run-id", help="explicit run id (default: auto)")
+    ap.add_argument("--overwrite", action="store_true",
+                    help="allow overwriting an existing run directory")
     args = ap.parse_args()
 
     cfg = yaml.safe_load(Path(args.config).read_text())
@@ -244,7 +316,8 @@ def main() -> None:
         if getattr(args, key) is not None:
             cfg[key] = getattr(args, key)
 
-    manifest = seed(cfg, Path(args.out))
+    manifest = seed(cfg, Path(args.out), run_id=args.run_id,
+                    overwrite=args.overwrite)
     print(json.dumps(manifest, indent=2))
 
 

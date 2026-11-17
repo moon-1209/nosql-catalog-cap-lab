@@ -31,6 +31,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+from src.catalog_analysis.contracts import (
+    normalize_success, ok_mask, run_info)
 from src.catalog_analysis.stale_read import classify_reads
 from src.catalog_analysis.top_partitions import detect_origin
 
@@ -83,21 +85,31 @@ def run(data_dir: Path, out_dir: Path, n_resamples: int = 2000,
         seed: int = 42) -> dict:
     origin = detect_origin(data_dir)
     access = pd.read_csv(data_dir / "access_log.csv")
+    access, status = normalize_success(access)
     log = pd.read_csv(data_dir / "consistency_log.csv")
     reads = classify_reads(log)
+
+    # Latency CIs use successful ops only: failed requests (timeouts,
+    # unavailability) measure availability, not service latency.
+    latency = access.loc[ok_mask(access), "latency_ms"].to_numpy()
+    failed_ops = int((~ok_mask(access)).sum())
 
     kw = dict(n_resamples=n_resamples, seed=seed)
     results = {
         "origin": origin,
+        "status": status,
+        "run": run_info(data_dir, access),
+        "failed_ops_excluded_from_latency": failed_ops,
         "method_note": ("iid bootstrap for exchangeable metrics; "
                         "moving-block bootstrap (block=50) for "
-                        "time-ordered latency"),
+                        "time-ordered latency; latency metrics computed "
+                        "over successful operations only"),
         "metrics": {
             "latency_ms_mean_block": bootstrap_ci(
-                access["latency_ms"].to_numpy(), np.mean,
+                latency, np.mean,
                 method="block", block_len=50, **kw),
             "latency_ms_p95_iid": bootstrap_ci(
-                access["latency_ms"].to_numpy(),
+                latency,
                 lambda x: np.percentile(x, 95), **kw),
             # bootstrap the requests, not the 20 partition aggregates:
             # each resample recomputes the top category's traffic share
@@ -115,7 +127,7 @@ def run(data_dir: Path, out_dir: Path, n_resamples: int = 2000,
 
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "summary.json").write_text(json.dumps(results, indent=2))
-    _plot(access["latency_ms"].to_numpy(),
+    _plot(latency,
           results["metrics"]["latency_ms_mean_block"], origin,
           out_dir / "bootstrap_latency_mean.png", seed, n_resamples)
     return results
