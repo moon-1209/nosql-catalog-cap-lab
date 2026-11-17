@@ -1,0 +1,9 @@
+# Giữ LF cho script chạy trong WSL (CRLF làm bash báo lỗi $'\r')
+*.sh   text eol=lf
+*.py   text eol=lf
+*.js   text eol=lf
+*.yml  text eol=lf
+*.json text eol=lf
+*.env  text eol=lf
+*.csv  text eol=lf
+lab.env text eol=lf
