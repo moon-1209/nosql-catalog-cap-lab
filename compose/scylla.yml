@@ -1,0 +1,112 @@
+# =====================================================================
+# Cụm ScyllaDB 3 node — mỗi node = 1 rack = 1 "AZ" giả lập
+#   scylla-node1  10.88.88.11  rack1 (AZ1)  ← seed, publish 9042 ra host
+#   scylla-node2  10.88.88.12  rack2 (AZ2)
+#   scylla-node3  10.88.88.13  rack3 (AZ3)  ← node bị cô lập ở tuần 3
+# Khởi động tuần tự (node sau chờ node trước healthy) để tránh bootstrap chồng nhau.
+# Chạy qua script: ../scripts/lab_up.sh scylla   (không gọi trực tiếp)
+# =====================================================================
+name: nosql-lab-scylla
+
+x-scylla-common: &scylla-common
+  image: ${SCYLLA_IMAGE}
+  restart: "no"
+  stop_grace_period: 2m
+  healthcheck:
+    # cqlsh chỉ trả lời được khi node đã join ring xong (trạng thái UN)
+    test: ["CMD-SHELL", "cqlsh -e 'SELECT release_version FROM system.local' >/dev/null 2>&1 || exit 1"]
+    interval: 10s
+    timeout: 15s
+    retries: 30
+    start_period: 60s
+
+services:
+  scylla-node1:
+    <<: *scylla-common
+    container_name: scylla-node1
+    hostname: scylla-node1
+    labels:
+      lab.group: scylla
+      lab.az: az1
+    command:
+      - --seeds=${SCYLLA1_IP}
+      - --smp=${SCYLLA_SMP}
+      - --memory=${SCYLLA_MEMORY}
+      - --overprovisioned=1
+      - --developer-mode=1
+      - --cluster-name=${SCYLLA_CLUSTER_NAME}
+      - --dc=${SCYLLA_DC}
+      - --rack=rack1
+      - --disable-version-check
+      - --reactor-backend=${SCYLLA_REACTOR_BACKEND}
+    networks:
+      lab-net:
+        ipv4_address: ${SCYLLA1_IP}
+    ports:
+      - "9042:9042"
+    volumes:
+      - scylla1-data:/var/lib/scylla
+
+  scylla-node2:
+    <<: *scylla-common
+    container_name: scylla-node2
+    hostname: scylla-node2
+    labels:
+      lab.group: scylla
+      lab.az: az2
+    depends_on:
+      scylla-node1:
+        condition: service_healthy
+    command:
+      - --seeds=${SCYLLA1_IP}
+      - --smp=${SCYLLA_SMP}
+      - --memory=${SCYLLA_MEMORY}
+      - --overprovisioned=1
+      - --developer-mode=1
+      - --cluster-name=${SCYLLA_CLUSTER_NAME}
+      - --dc=${SCYLLA_DC}
+      - --rack=rack2
+      - --disable-version-check
+      - --reactor-backend=${SCYLLA_REACTOR_BACKEND}
+    networks:
+      lab-net:
+        ipv4_address: ${SCYLLA2_IP}
+    volumes:
+      - scylla2-data:/var/lib/scylla
+
+  scylla-node3:
+    <<: *scylla-common
+    container_name: scylla-node3
+    hostname: scylla-node3
+    labels:
+      lab.group: scylla
+      lab.az: az3
+    depends_on:
+      scylla-node2:
+        condition: service_healthy
+    command:
+      - --seeds=${SCYLLA1_IP}
+      - --smp=${SCYLLA_SMP}
+      - --memory=${SCYLLA_MEMORY}
+      - --overprovisioned=1
+      - --developer-mode=1
+      - --cluster-name=${SCYLLA_CLUSTER_NAME}
+      - --dc=${SCYLLA_DC}
+      - --rack=rack3
+      - --disable-version-check
+      - --reactor-backend=${SCYLLA_REACTOR_BACKEND}
+    networks:
+      lab-net:
+        ipv4_address: ${SCYLLA3_IP}
+    volumes:
+      - scylla3-data:/var/lib/scylla
+
+networks:
+  lab-net:
+    name: ${LAB_NETWORK}
+    external: true
+
+volumes:
+  scylla1-data:
+  scylla2-data:
+  scylla3-data:

@@ -1,0 +1,15 @@
+# TEMPLATE — setup_monitoring.sh thay placeholder tên cluster rồi ghi ra build/prometheus_extra_targets.yml.
+# start-all.sh (-T) NỐI NGUYÊN VĂN đoạn này vào cuối scrape_configs của Prometheus,
+# vì vậy phải bắt đầu ở cột 0 bằng "- job_name:" (đúng thụt lề của template gốc).
+- job_name: cadvisor
+  scrape_interval: 5s
+  scrape_timeout: 5s
+  static_configs:
+    - targets: ['cadvisor:8080']
+      labels:
+        cluster: __CLUSTER__
+  metric_relabel_configs:
+    # Chỉ giữ metric của container trong lab để Prometheus nhẹ hơn
+    - source_labels: [name]
+      regex: '(scylla-node[0-9]+|mongo[0-9]+|aprom|agraf|cadvisor)'
+      action: keep
