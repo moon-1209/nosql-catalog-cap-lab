@@ -8,8 +8,8 @@
 # Bằng chứng cho cổng 08/11 "Lab chạy thử". Kết quả lưu vào evidence/tuan1/.
 # =====================================================================
 set -euo pipefail
-# shellcheck source=../../lib/common.sh
-source "$(cd "$(dirname "$0")" && pwd)/../../lib/common.sh"
+# shellcheck source=../lib/common.sh
+source "$(cd "$(dirname "$0")" && pwd)/../lib/common.sh"
 
 OUT="$EVIDENCE_DIR/tuan1/smoke_cql_$(stamp).txt"
 mkdir -p "$(dirname "$OUT")"

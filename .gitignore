@@ -1,4 +1,3 @@
-# Kết quả chạy (lớn, sinh lại được) — chỉ commit evidence đã chọn lọc
 runs/
 evidence/**/raw_*.txt
 # Repo scylla-monitoring được clone tự động + dữ liệu Prometheus
@@ -10,3 +9,7 @@ __pycache__/
 *.cast
 *.mkv
 *.mp4
+runs/
+evidence/
+monitoring/prometheus_data/
+monitoring/scylla-monitoring/

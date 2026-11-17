@@ -22,7 +22,7 @@ else
 fi
 
 # Đường dẫn tới các công cụ dùng lại giữa các tuần
-CHAOS_SH="$LAB_ROOT/tuan1_dung-lab/chaos/chaos.sh"
+CHAOS_SH="$LAB_ROOT/chaos/chaos.sh"
 SNAPSHOT_SH="$LAB_ROOT/lib/lab_snapshot.sh"
 RUNS_DIR="${RUNS_DIR:-$LAB_ROOT/runs}"
 EVIDENCE_DIR="${EVIDENCE_DIR:-$LAB_ROOT/evidence}"

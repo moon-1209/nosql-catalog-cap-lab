@@ -6,8 +6,8 @@
 # Chạy TRƯỚC lab_up.sh. Kết quả PASS/WARN/FAIL cuối cùng dùng làm bằng chứng cổng 04/11.
 # =====================================================================
 set -uo pipefail
-# shellcheck source=../../lib/common.sh
-source "$(cd "$(dirname "$0")" && pwd)/../../lib/common.sh"
+# shellcheck source=../lib/common.sh
+source "$(cd "$(dirname "$0")" && pwd)/../lib/common.sh"
 
 FIX=0
 [[ "${1:-}" == "--fix" ]] && FIX=1

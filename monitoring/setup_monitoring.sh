@@ -14,8 +14,8 @@
 #   khớp với ScyllaDB 2026.1 (bản 4.16 khai báo hỗ trợ 2026.1).
 # =====================================================================
 set -euo pipefail
-# shellcheck source=../../lib/common.sh
-source "$(cd "$(dirname "$0")" && pwd)/../../lib/common.sh"
+# shellcheck source=../lib/common.sh
+source "$(cd "$(dirname "$0")" && pwd)/../lib/common.sh"
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
 MON_DIR="$HERE/scylla-monitoring"
