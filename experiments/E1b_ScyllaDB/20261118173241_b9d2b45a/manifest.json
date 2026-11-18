@@ -1,0 +1,11 @@
+{
+    "run_id": "20261118173241_b9d2b45a",
+    "experiment_id": "E1b_Bucketing",
+    "schema_version": "v2",
+    "data_contract_version": "v2",
+    "start_time_ms": 1795023161549,
+    "config": {
+        "dataset": "products.csv",
+        "buckets": 16
+    }
+}
