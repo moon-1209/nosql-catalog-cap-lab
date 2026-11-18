@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Cấu hình môi trường (Không được push lên Git)
+.env
+docker/.env
+
+# Dữ liệu thí nghiệm sinh tự động (Chỉ giữ lại file mẫu nếu cần)
+experiments/*/

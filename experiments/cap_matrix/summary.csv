@@ -1,4 +1,0 @@
-Consistency_Level,Write_Concern,Mean_ms,P50_ms,P95_ms,P99_ms
-ONE,1,4.356,3.425,7.151,22.921
-QUORUM,majority,10.67,10.573,15.222,20.169
-ALL,3,23.452,23.522,30.035,36.426
