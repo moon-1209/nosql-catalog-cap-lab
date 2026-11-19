@@ -1,3 +1,0 @@
-ts,event,key,version,consistency_level,node,network_state,success,error,run_id
-2026-11-18T16:55:12.718774+00:00,failover_start,ALL,1,PRIMARY,mongo1,stepping_down,true,,20261118165508_a46786bb
-2026-11-18T16:55:22.767021+00:00,failover_end,ALL,1,NEW_PRIMARY,mongo2/3,recovered,true,,20261118165508_a46786bb
