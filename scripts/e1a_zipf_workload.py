@@ -5,7 +5,7 @@ from cassandra.policies import AddressTranslator
 from data_contract import get_run_id, get_output_dir, init_access_log, write_access_log, write_manifest
 
 class LocalAddressTranslator(AddressTranslator):
-    def translate(self, addr): return '127.0.0.1'
+    def translate(self, addr): return ("127.0.0.1", 9042)
 
 def load_products():
     products = []
