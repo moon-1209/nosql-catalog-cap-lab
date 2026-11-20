@@ -1,0 +1,43 @@
+# =====================================================================
+# Node 4 (scale-out) — file OVERRIDE, luôn dùng KÈM file 3 node của tuần 1:
+#   docker compose --env-file ../../lab.env \
+#     -f ../../tuan1_dung-lab/compose/scylla.yml -f compose/node4.yml up -d scylla-node4
+# (add_node4.sh đã gói sẵn lệnh này.)
+# Node 4 vào rack ${NODE4_RACK} (mặc định rack1): giữ keyspace RF=3 / 3 rack ở
+# trạng thái RF-rack-valid — điều kiện bắt buộc nếu keyspace tablets có MV/SI.
+# =====================================================================
+services:
+  scylla-node4:
+    image: ${SCYLLA_IMAGE}
+    container_name: scylla-node4
+    hostname: scylla-node4
+    restart: "no"
+    stop_grace_period: 2m
+    labels:
+      lab.group: scylla
+      lab.az: ${NODE4_RACK}
+    command:
+      - --seeds=${SCYLLA1_IP}
+      - --smp=${SCYLLA_SMP}
+      - --memory=${SCYLLA_MEMORY}
+      - --overprovisioned=1
+      - --developer-mode=1
+      - --cluster-name=${SCYLLA_CLUSTER_NAME}
+      - --dc=${SCYLLA_DC}
+      - --rack=${NODE4_RACK}
+      - --disable-version-check
+      - --reactor-backend=${SCYLLA_REACTOR_BACKEND}
+    healthcheck:
+      test: ["CMD-SHELL", "cqlsh -e 'SELECT release_version FROM system.local' >/dev/null 2>&1 || exit 1"]
+      interval: 10s
+      timeout: 15s
+      retries: 60
+      start_period: 60s
+    networks:
+      lab-net:
+        ipv4_address: ${SCYLLA4_IP}
+    volumes:
+      - scylla4-data:/var/lib/scylla
+
+volumes:
+  scylla4-data:

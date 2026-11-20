@@ -1,0 +1,980 @@
+{
+  "uid": "nosql-cap-lab",
+  "title": "NoSQL CAP Lab — Chaos & Hot Partition",
+  "description": "Dashboard của Lâm (DevOps): tiêm lỗi, hot partition, tự phục hồi. Annotation tag 'chaos' do chaos_runner.py đẩy lên.",
+  "tags": [
+    "nosql-cap-lab",
+    "chaos"
+  ],
+  "timezone": "browser",
+  "editable": true,
+  "graphTooltip": 1,
+  "refresh": "5s",
+  "schemaVersion": 39,
+  "version": 1,
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m"
+    ]
+  },
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      },
+      {
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": false,
+        "iconColor": "red",
+        "name": "Chaos events",
+        "target": {
+          "limit": 200,
+          "matchAny": true,
+          "tags": [
+            "chaos"
+          ],
+          "type": "tags"
+        }
+      }
+    ]
+  },
+  "templating": {
+    "list": []
+  },
+  "panels": [
+    {
+      "type": "row",
+      "title": "1. Sức khỏe cụm & góc nhìn gossip (split-brain hiện ở đây)",
+      "id": 1,
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 1
+      },
+      "panels": []
+    },
+    {
+      "type": "stat",
+      "title": "Node UP (theo Prometheus)",
+      "id": 2,
+      "description": "Prometheus có cào được metric của node không. Ở chế độ cô lập 'peers' node3 vẫn UP (Prometheus không nằm trong danh sách peer bị chặn); ở chế độ 'full' node3 sẽ DOWN.",
+      "gridPos": {
+        "x": 0,
+        "y": 1,
+        "w": 6,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "up{job=\"scylla\"}",
+          "legendFormat": "{{instance}}",
+          "refId": "A",
+          "instant": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "0": {
+                  "text": "DOWN",
+                  "color": "red",
+                  "index": 0
+                },
+                "1": {
+                  "text": "UP",
+                  "color": "green",
+                  "index": 1
+                }
+              }
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "textMode": "value_and_name",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Gossip: số node UNREACHABLE mà mỗi node nhìn thấy",
+      "id": 3,
+      "description": "Khi cô lập AZ3: node1, node2 thấy 1 node unreachable; node3 thấy 2. Mất ~20s (failure_detector_timeout_in_ms) mới đổi trạng thái.",
+      "gridPos": {
+        "x": 6,
+        "y": 1,
+        "w": 9,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "max by (instance) (scylla_gossip_unreachable)",
+          "legendFormat": "{{instance}} thấy",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "none"
+            }
+          },
+          "decimals": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Gossip: số node LIVE mà mỗi node nhìn thấy",
+      "id": 4,
+      "description": "",
+      "gridPos": {
+        "x": 15,
+        "y": 1,
+        "w": 9,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "max by (instance) (scylla_gossip_live)",
+          "legendFormat": "{{instance}} thấy",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "none"
+            }
+          },
+          "decimals": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "row",
+      "title": "2. Lỗi phía coordinator (đo Error Latency / Availability)",
+      "id": 5,
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 9,
+        "w": 24,
+        "h": 1
+      },
+      "panels": []
+    },
+    {
+      "type": "timeseries",
+      "title": "Unavailable/s theo node (coordinator từ chối ngay)",
+      "id": 6,
+      "description": "Unavailable = coordinator BIẾT không đủ replica sống cho CL yêu cầu → trả lỗi ngay (fail-fast).",
+      "gridPos": {
+        "x": 0,
+        "y": 10,
+        "w": 12,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "sum by (instance) (rate(scylla_storage_proxy_coordinator_write_unavailable[30s]))",
+          "legendFormat": "write {{instance}}",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "expr": "sum by (instance) (rate(scylla_storage_proxy_coordinator_read_unavailable[30s]))",
+          "legendFormat": "read {{instance}}",
+          "refId": "B",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ops",
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Timeout/s theo node (chờ hết hạn mới báo lỗi)",
+      "id": 7,
+      "description": "Timeout = coordinator TƯỞNG replica còn sống nên chờ (write 2s, read 5s) rồi mới báo lỗi. Thường xuất hiện trong ~20s đầu sau khi cắt mạng.",
+      "gridPos": {
+        "x": 12,
+        "y": 10,
+        "w": 12,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "sum by (instance) (rate(scylla_storage_proxy_coordinator_write_timeouts[30s]))",
+          "legendFormat": "write {{instance}}",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "expr": "sum by (instance) (rate(scylla_storage_proxy_coordinator_read_timeouts[30s]))",
+          "legendFormat": "read {{instance}}",
+          "refId": "B",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ops",
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "row",
+      "title": "3. Thông lượng & độ trễ (PACELC: Latency vs Consistency)",
+      "id": 8,
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 18,
+        "w": 24,
+        "h": 1
+      },
+      "panels": []
+    },
+    {
+      "type": "timeseries",
+      "title": "CQL requests/s theo node (vai trò coordinator)",
+      "id": 9,
+      "description": "",
+      "gridPos": {
+        "x": 0,
+        "y": 19,
+        "w": 12,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "sum by (instance) (rate(scylla_transport_requests_served[30s]))",
+          "legendFormat": "{{instance}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "p99 latency theo node (ms)",
+      "id": 10,
+      "description": "Summary của Scylla tính theo micro-giây, đã chia 1000 sang ms. Khi giả lập replica chậm 100ms: CL=ALL tăng rõ, CL=ONE gần như không đổi.",
+      "gridPos": {
+        "x": 12,
+        "y": 19,
+        "w": 12,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "max by (instance) (scylla_storage_proxy_coordinator_read_latency_summary{quantile=\"0.99\", scheduling_group_name=~\"statement|sl:.*\"}) / 1000",
+          "legendFormat": "read p99 {{instance}}",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "expr": "max by (instance) (scylla_storage_proxy_coordinator_write_latency_summary{quantile=\"0.99\", scheduling_group_name=~\"statement|sl:.*\"}) / 1000",
+          "legendFormat": "write p99 {{instance}}",
+          "refId": "B",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms",
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "row",
+      "title": "4. Hot partition (so sánh Schema A vs Schema B)",
+      "id": 11,
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 27,
+        "w": 24,
+        "h": 1
+      },
+      "panels": []
+    },
+    {
+      "type": "timeseries",
+      "title": "Replica ops/s theo SHARD",
+      "id": 12,
+      "description": "Một hot partition = một shard trên mỗi replica bị dồn tải (kiến trúc shard-per-core).",
+      "gridPos": {
+        "x": 0,
+        "y": 28,
+        "w": 12,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "(sum by (instance, shard) (rate(scylla_database_total_reads[30s])) + sum by (instance, shard) (rate(scylla_database_total_writes[30s])))",
+          "legendFormat": "{{instance}} / shard {{shard}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ops",
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Mất cân bằng tải max/mean (1.0 = đều tuyệt đối)",
+      "id": 13,
+      "description": "Với 3 node và RF=3, mọi node giữ mọi partition nên chỉ số 'theo node' luôn ≈ 1. Muốn thấy lệch phải nhìn 'theo shard' hoặc chạy với node 4 (N > RF).",
+      "gridPos": {
+        "x": 12,
+        "y": 28,
+        "w": 12,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "max((sum by (instance, shard) (rate(scylla_database_total_reads[30s])) + sum by (instance, shard) (rate(scylla_database_total_writes[30s])))) / avg((sum by (instance, shard) (rate(scylla_database_total_reads[30s])) + sum by (instance, shard) (rate(scylla_database_total_writes[30s]))))",
+          "legendFormat": "theo shard",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "expr": "max((sum by (instance) (rate(scylla_database_total_reads[30s])) + sum by (instance) (rate(scylla_database_total_writes[30s])))) / avg((sum by (instance) (rate(scylla_database_total_reads[30s])) + sum by (instance) (rate(scylla_database_total_writes[30s]))))",
+          "legendFormat": "theo node",
+          "refId": "B",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "none"
+            }
+          },
+          "decimals": 2
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "CPU reactor theo shard (%)",
+      "id": 14,
+      "description": "",
+      "gridPos": {
+        "x": 0,
+        "y": 36,
+        "w": 12,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "scylla_reactor_utilization",
+          "legendFormat": "{{instance}} / shard {{shard}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Số tablet theo node (scale-out tuần 2)",
+      "id": 15,
+      "description": "Sau khi node 4 join, load balancer của tablets tự chuyển bớt tablet sang node mới.",
+      "gridPos": {
+        "x": 12,
+        "y": 36,
+        "w": 12,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "sum by (instance) (scylla_column_family_tablet_count)",
+          "legendFormat": "{{instance}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "none"
+            }
+          },
+          "decimals": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "row",
+      "title": "5. Hinted handoff — bằng chứng TỰ PHỤC HỒI",
+      "id": 16,
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 44,
+        "w": 24,
+        "h": 1
+      },
+      "panels": []
+    },
+    {
+      "type": "timeseries",
+      "title": "Hints ghi (written) theo node /s",
+      "id": 17,
+      "description": "Trong lúc node3 bị cô lập, coordinator ghi hint thay cho node3.",
+      "gridPos": {
+        "x": 0,
+        "y": 45,
+        "w": 12,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "sum by (instance) (rate(scylla_hints_manager_written[30s]))",
+          "legendFormat": "{{instance}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ops",
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Hints gửi lại (sent) theo node /s",
+      "id": 18,
+      "description": "Ngay sau khi heal, các hint được phát lại cho node3 → dữ liệu node3 bắt kịp mà không cần repair thủ công.",
+      "gridPos": {
+        "x": 12,
+        "y": 45,
+        "w": 12,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "sum by (instance) (rate({__name__=~\"scylla_hints_manager_sent(_total)?\"}[30s]))",
+          "legendFormat": "{{instance}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ops",
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "row",
+      "title": "6. Mạng & CPU theo container (cAdvisor) — chứng minh lỗi mạng là thật",
+      "id": 19,
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 53,
+        "w": 24,
+        "h": 1
+      },
+      "panels": []
+    },
+    {
+      "type": "timeseries",
+      "title": "Network RX theo container",
+      "id": 20,
+      "description": "",
+      "gridPos": {
+        "x": 0,
+        "y": 54,
+        "w": 8,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "sum by (name) (rate(container_network_receive_bytes_total{name=~\"scylla-node.*|mongo.*\"}[30s]))",
+          "legendFormat": "{{name}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "Bps",
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Network TX theo container",
+      "id": 21,
+      "description": "",
+      "gridPos": {
+        "x": 8,
+        "y": 54,
+        "w": 8,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "sum by (name) (rate(container_network_transmit_bytes_total{name=~\"scylla-node.*|mongo.*\"}[30s]))",
+          "legendFormat": "{{name}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "Bps",
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "CPU theo container (core)",
+      "id": 22,
+      "description": "",
+      "gridPos": {
+        "x": 16,
+        "y": 54,
+        "w": 8,
+        "h": 8
+      },
+      "targets": [
+        {
+          "expr": "sum by (name) (rate(container_cpu_usage_seconds_total{name=~\"scylla-node.*|mongo.*\"}[30s]))",
+          "legendFormat": "{{name}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "mode": "none"
+            }
+          },
+          "decimals": 2
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    }
+  ]
+}

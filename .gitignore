@@ -9,6 +9,7 @@ venv/
 
 # OS
 .DS_Store
+.gitattributes
 
 # Cấu hình môi trường (Không được push lên Git) - use .env.example / docker/.env.example
 .env
@@ -21,3 +22,15 @@ data/generated/
 # Dữ liệu thí nghiệm sinh tự động (Chỉ giữ lại file mẫu nếu cần)
 experiments/*/
 runs/
+evidence/
+evidence/**/raw_*.txt
+
+# Monitoring clone/data (Lâm)
+monitoring/prometheus_data/
+monitoring/scylla-monitoring/
+tuan1_dung-lab/
+
+# Media artifacts
+*.cast
+*.mkv
+*.mp4
