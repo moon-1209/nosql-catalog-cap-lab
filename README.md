@@ -36,3 +36,50 @@ Tất cả kết quả log JSONL/CSV được lưu tự động vào thư mục 
 6. **E6 - MongoDB Failover (Ép Primary step-down):**
    Chạy lệnh sau để thực thi bên trong mạng Docker:
    `MSYS_NO_PATHCONV=1 docker run --rm --network lab-net -v "/$(pwd):/app" -w /app python:3.11 bash -c "pip install pymongo && python scripts/mongodb_rollback_e6.py"`
+
+## Chạy toàn bộ dự án bằng một notebook — MASTER_RUN.ipynb
+
+`notebooks/MASTER_RUN.ipynb` là entry point duy nhất: mở notebook → **Restart Kernel → Run All**. Không cần chạy file Python nào trước (ngoại trừ khởi động database bên ngoài nếu muốn chạy LIVE).
+
+Luồng: Environment Setup → Data Preparation → Database Init → Ingestion → NoSQL Ops → CAP Experiments → Results → Final Validation. Kết quả ghi vào `results/master_run/master_run_report.json`.
+
+| Chế độ | Điều kiện | Hành vi |
+|---|---|---|
+| **LIVE** | Có Docker + cụm ScyllaDB/MongoDB + driver | chạy experiment thật (e1a/e1b/lwt/counter/cap_matrix) |
+| **OFFLINE** | Không có cluster | các bước LIVE đánh dấu **SKIPPED** + hướng dẫn khởi động; vẫn phân tích **evidence thật đã commit** (`experiments/`) + contract selftest + charts |
+
+Nguyên tắc: cell FAIL không được gán nhãn PASS; run CAP_ALL 18/11 được gắn nhãn INVALID (setup defect, không phải CAP evidence); dữ liệu selftest gắn `origin=synthetic` tách biệt `origin=observed`.
+
+Chạy không qua UI (headless, cần nbclient+ipykernel trong venv):
+
+```bash
+.venv/bin/python - <<'EOF'
+import nbformat
+from nbclient import NotebookClient
+nb = nbformat.read("notebooks/MASTER_RUN.ipynb", as_version=4)
+NotebookClient(nb, timeout=240, kernel_name="python3",
+               resources={"metadata": {"path": "notebooks/"}}).execute()
+nbformat.write(nb, "notebooks/MASTER_RUN.ipynb")
+
+
+## Chạy toàn bộ dự án bằng một notebook — MASTER_RUN.ipynb
+
+`notebooks/MASTER_RUN.ipynb` là entry point duy nhất: mở notebook → **Restart Kernel → Run All**. Không cần chạy file Python nào trước (ngoại trừ khởi động database bên ngoài nếu muốn chạy LIVE).
+
+Luồng: Environment Setup → Data Preparation → Database Init → Ingestion → NoSQL Ops → CAP Experiments → Results → Final Validation. Kết quả ghi vào `results/master_run/master_run_report.json`.
+
+| Chế độ | Điều kiện | Hành vi |
+|---|---|---|
+| **LIVE** | Có Docker + cụm ScyllaDB/MongoDB + driver | chạy experiment thật (e1a/e1b/lwt/counter/cap_matrix) |
+| **OFFLINE** | Không có cluster | các bước LIVE đánh dấu **SKIPPED** + hướng dẫn khởi động; vẫn phân tích **evidence thật đã commit** (`experiments/`) + contract selftest + charts |
+
+Nguyên tắc: cell FAIL không được gán nhãn PASS; run CAP_ALL 18/11 được gắn nhãn INVALID (setup defect, không phải CAP evidence); dữ liệu selftest gắn `origin=synthetic` tách biệt `origin=observed`.
+
+Chạy không qua UI (headless, cần nbclient+ipykernel trong venv): xem `notebooks/` — hoặc `jupyter nbconvert --to notebook --execute notebooks/MASTER_RUN.ipynb`.
+
+## Giới hạn đã biết
+
+- CAP_ALL và stale-read real: chờ rerun trên máy có Docker (`PROJECT_FINAL_HANDOVER.md` §F).
+- E1a/E1b run 18/11 dùng workload khác nhau → không so sánh được; script v2 replay cùng `data/sample/access_log.csv`.
+- Không có unit test suite cho `scripts/` (có `selftest_contract.py` + CI contract checks).
+- Ba nhánh `feat/Duy`/`feat/Lam`/`feat/uyen-analysis-pipeline` chưa merge — xem `PROJECT_REMAINING_WORK.md` P0-5.
