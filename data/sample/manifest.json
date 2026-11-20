@@ -1,0 +1,82 @@
+{
+  "origin": "simulated",
+  "seed": 42,
+  "config": {
+    "seed": 42,
+    "records": 5000,
+    "categories": [
+      "electronics",
+      "fashion",
+      "home-garden",
+      "sports",
+      "toys",
+      "books",
+      "beauty",
+      "automotive",
+      "grocery",
+      "pets",
+      "music",
+      "movies",
+      "office",
+      "jewelry",
+      "health",
+      "baby",
+      "tools",
+      "gaming",
+      "outdoor",
+      "appliances"
+    ],
+    "category_zipf_alpha": 1.2,
+    "num_buckets": 16,
+    "brands": 200,
+    "price": {
+      "min": 5.0,
+      "max": 4999.0
+    },
+    "stock": {
+      "max": 2000
+    },
+    "requests": 15000,
+    "read_ratio": 0.9,
+    "access_zipf_alpha": 1.2,
+    "consistency_events": 6000,
+    "consistency": {
+      "levels": [
+        "ONE",
+        "QUORUM"
+      ],
+      "hot_keys": 5000,
+      "nodes": [
+        "node1",
+        "node2",
+        "node3",
+        "node4",
+        "node5"
+      ],
+      "partition_node": "node3",
+      "partition_start_frac": 0.4,
+      "partition_duration_frac": 0.1,
+      "stale_probability": {
+        "ONE": {
+          "normal": 0.02,
+          "partitioned": 0.3,
+          "on_partition_node": 0.6
+        },
+        "QUORUM": {
+          "normal": 0.001,
+          "partitioned": 0.05,
+          "on_partition_node": 0.1
+        }
+      }
+    }
+  },
+  "generated_at": "2026-11-05T12:43:27Z",
+  "rows": {
+    "products": 5000,
+    "access_log": 15000,
+    "consistency_log": 6000
+  },
+  "top_category_share": 0.3548,
+  "top_category": "pets",
+  "validation": "passed"
+}

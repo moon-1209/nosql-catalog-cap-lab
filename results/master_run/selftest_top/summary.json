@@ -1,0 +1,140 @@
+{
+  "origin": "synthetic",
+  "top_n": 10,
+  "status": {
+    "status_mode": "ok",
+    "unknown_status": 0
+  },
+  "run": {
+    "run_id": "20261120052847_3141d42e",
+    "consistency": "ok"
+  },
+  "schemas": {
+    "a": {
+      "summary": {
+        "partitions": 2,
+        "total_requests": 200,
+        "mean_requests": 100.0,
+        "median_requests": 100.0,
+        "max_requests": 160,
+        "min_requests": 40,
+        "std_requests": 84.8528137423857,
+        "max_mean_ratio": 1.6,
+        "top_partition_share": 0.8,
+        "failed_ops": 1
+      },
+      "top": [
+        {
+          "category_id": "gaming",
+          "reads": 80,
+          "writes": 80,
+          "total": 160,
+          "share": 0.8
+        },
+        {
+          "category_id": "pets",
+          "reads": 20,
+          "writes": 20,
+          "total": 40,
+          "share": 0.2
+        }
+      ]
+    },
+    "b": {
+      "summary": {
+        "partitions": 32,
+        "total_requests": 200,
+        "mean_requests": 6.25,
+        "median_requests": 4.5,
+        "max_requests": 12,
+        "min_requests": 2,
+        "std_requests": 4.056058789419331,
+        "max_mean_ratio": 1.92,
+        "top_partition_share": 0.06,
+        "failed_ops": 1
+      },
+      "top": [
+        {
+          "category_id": "gaming",
+          "bucket": 2,
+          "reads": 7,
+          "writes": 5,
+          "total": 12,
+          "share": 0.06
+        },
+        {
+          "category_id": "gaming",
+          "bucket": 6,
+          "reads": 6,
+          "writes": 6,
+          "total": 12,
+          "share": 0.06
+        },
+        {
+          "category_id": "gaming",
+          "bucket": 7,
+          "reads": 7,
+          "writes": 5,
+          "total": 12,
+          "share": 0.06
+        },
+        {
+          "category_id": "gaming",
+          "bucket": 1,
+          "reads": 6,
+          "writes": 6,
+          "total": 12,
+          "share": 0.06
+        },
+        {
+          "category_id": "gaming",
+          "bucket": 0,
+          "reads": 6,
+          "writes": 5,
+          "total": 11,
+          "share": 0.055
+        },
+        {
+          "category_id": "gaming",
+          "bucket": 3,
+          "reads": 7,
+          "writes": 4,
+          "total": 11,
+          "share": 0.055
+        },
+        {
+          "category_id": "gaming",
+          "bucket": 4,
+          "reads": 7,
+          "writes": 4,
+          "total": 11,
+          "share": 0.055
+        },
+        {
+          "category_id": "gaming",
+          "bucket": 5,
+          "reads": 6,
+          "writes": 5,
+          "total": 11,
+          "share": 0.055
+        },
+        {
+          "category_id": "gaming",
+          "bucket": 13,
+          "reads": 4,
+          "writes": 7,
+          "total": 11,
+          "share": 0.055
+        },
+        {
+          "category_id": "gaming",
+          "bucket": 11,
+          "reads": 4,
+          "writes": 6,
+          "total": 10,
+          "share": 0.05
+        }
+      ]
+    }
+  }
+}

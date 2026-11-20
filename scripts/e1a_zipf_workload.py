@@ -1,65 +1,103 @@
-"""E1a: Zipf Workload tren ScyllaDB (Dung products.csv)."""
-import random, math, time, os, csv
-from cassandra.cluster import Cluster
-from cassandra.policies import AddressTranslator
-from data_contract import get_run_id, get_output_dir, init_access_log, write_access_log, write_manifest
+"""E1a: workload that tren ScyllaDB - Schema A (products_by_category).
 
-class LocalAddressTranslator(AddressTranslator):
-    def translate(self, addr): return ("127.0.0.1", 9042)
+PRIMARY KEY ((category_id), added_at, product_id) - 1 partition / category.
 
-def load_products():
-    products = []
-    with open('products.csv', 'r', encoding='utf-8') as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            products.append(row)
-    return products
+Khac ban cu:
+  * Dung products.csv + access_log.csv cua Uyen lam input (cung dataset voi E1b
+    -> so sanh duoc). Khong con key % 10.
+  * Log theo Data Contract v2: op READ/WRITE (uppercase), ts epoch ms,
+    manifest.json day du provenance.
 
-def zipf_distribution(n, s, num_samples):
-    weights = [1.0 / (math.pow(i, s)) for i in range(1, n + 1)]
-    total = sum(weights)
-    probabilities = [w / total for w in weights]
-    return random.choices(range(n), weights=probabilities, k=num_samples)
+Chay: python scripts/e1a_zipf_workload.py [--limit N]
+Can cluster ScyllaDB (docker/scylla.yml hoac compose/ cua Lam).
+"""
+import os
+import sys
+import time
+import argparse
 
-def run_experiment():
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from data_contract import (
+    get_run_id, get_output_dir, init_access_log, write_access_log,
+    new_manifest, finalize_manifest,
+)
+from product_catalog import load_products, load_workload_ops
+
+from lab_connect import connect, ensure_keyspace
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--products", default="data/sample/products.csv")
+    ap.add_argument("--ops", default="data/sample/access_log.csv")
+    ap.add_argument("--limit", type=int, default=2000)
+    ap.add_argument("--keyspace", default="catalog")
+    args = ap.parse_args()
+
     run_id = get_run_id()
     out_dir = get_output_dir("E1a_ScyllaDB", run_id)
-    access_log = init_access_log(out_dir)
-    write_manifest(out_dir, run_id, "E1a_Zipf", {"dataset": "products.csv", "num_ops": 1000})
-    
-    cluster = Cluster(['127.0.0.1'], address_translator=LocalAddressTranslator())
-    session = cluster.connect()
-    session.execute("CREATE KEYSPACE IF NOT EXISTS catalog WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 3}")
-    session.execute("DROP TABLE IF EXISTS catalog.product_a")
-    session.execute("CREATE TABLE IF NOT EXISTS catalog.product_a (category_id int, product_id int, name text, price double, PRIMARY KEY (category_id, product_id))")
-    
-    products = load_products()
-    keys = zipf_distribution(len(products), 1.2, 1000)
-    
-    insert_stmt = session.prepare("INSERT INTO catalog.product_a (category_id, product_id, name, price) VALUES (?, ?, ?, ?)")
-    select_stmt = session.prepare("SELECT * FROM catalog.product_a WHERE category_id = ? AND product_id = ?")
-    
-    for i, idx in enumerate(keys):
-        p = products[idx]
-        op_type = "WRITE" if i % 2 == 0 else "READ"
-        cat_id, prod_id = int(p['category_id']), int(p['product_id'])
-        
+    access_log_file = init_access_log(out_dir)
+    manifest = new_manifest(run_id, "E1a", "hot_partition_schema_a", config={
+        "keyspace": args.keyspace, "schema": "products_by_category",
+        "products": args.products, "workload": args.ops, "limit": args.limit,
+    })
+
+    products = load_products(args.products)
+    by_pid = {p["product_id"]: p for p in products}
+    ops = load_workload_ops(args.ops, limit=args.limit)
+    print(f"Loaded {len(products)} products, replaying {len(ops)} ops")
+
+    cluster, session = connect()
+    ensure_keyspace(session, args.keyspace)
+    session.execute("""
+        CREATE TABLE IF NOT EXISTS products_by_category (
+            category_id text, added_at bigint, product_id text,
+            name text, brand text, price double, currency text,
+            stock int, rating double, attributes text,
+            PRIMARY KEY ((category_id), added_at, product_id)
+        )""")
+
+    insert_stmt = session.prepare(
+        "INSERT INTO products_by_category (category_id, added_at, product_id, "
+        "name, brand, price, currency, stock, rating, attributes) "
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
+    read_stmt = session.prepare(
+        "SELECT product_id FROM products_by_category "
+        "WHERE category_id = ? AND added_at = ? AND product_id = ?")
+
+    print("Seeding products ...")
+    for p in products:
+        session.execute(insert_stmt, tuple(p[k] for k in (
+            "category_id", "added_at", "product_id", "name", "brand",
+            "price", "currency", "stock", "rating", "attributes")))
+
+    op_count = 0
+    for op, category_id, product_id in ops:
+        p = by_pid.get(product_id)
+        if p is None or p["category_id"] != category_id:
+            continue
         t0 = time.perf_counter()
-        success = True
-        error_msg = ""
+        success, error_msg = True, ""
         try:
-            if op_type == "WRITE":
-                session.execute(insert_stmt, (cat_id, prod_id, p['name'], float(p['price'])))
+            if op == "WRITE":
+                session.execute(insert_stmt, tuple(p[k] for k in (
+                    "category_id", "added_at", "product_id", "name", "brand",
+                    "price", "currency", "stock", "rating", "attributes")))
             else:
-                session.execute(select_stmt, (cat_id, prod_id))
+                session.execute(read_stmt,
+                                (category_id, p["added_at"], product_id))
         except Exception as e:
-            success = False; error_msg = str(e)
-            
+            success, error_msg = False, str(e)[:120]
         latency = (time.perf_counter() - t0) * 1000
-        write_access_log(access_log, run_id, op_type, latency, success, category_id=str(cat_id), product_id=str(prod_id), error=error_msg)
-        
-    print(f"Done! Logs saved at {out_dir}")
+        write_access_log(access_log_file, run_id, op, latency, success,
+                         category_id=category_id, product_id=product_id,
+                         error=error_msg)
+        op_count += 1
+
+    finalize_manifest(out_dir, manifest, op_count=op_count)
+    print(f"Done! {op_count} ops -> {out_dir}")
     cluster.shutdown()
 
+
 if __name__ == "__main__":
-    run_experiment()
+    main()

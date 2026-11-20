@@ -1,57 +1,109 @@
-"""E1b: Bucketing Workload tren ScyllaDB (Giu category_id)."""
-import time, os, zlib, csv
-from cassandra.cluster import Cluster
-from cassandra.policies import AddressTranslator
-from data_contract import get_run_id, get_output_dir, init_access_log, write_access_log, write_manifest
+"""E1b: workload that tren ScyllaDB - Schema B (products_bucketed).
 
-class LocalAddressTranslator(AddressTranslator):
-    def translate(self, addr): return ("127.0.0.1", 9042)
+PRIMARY KEY ((category_id, bucket), added_at, product_id)
+  - bucket = crc32(product_id) % 16 (cot san trong products.csv cua Uyen).
+  - category_id VAN la partition-key column dau -> khong mat chieu category
+    nhu ban cu (bucket_id toan cum).
 
-def load_products():
-    with open('products.csv', 'r', encoding='utf-8') as f:
-        return list(csv.DictReader(f))
+Replay CUNG access_log.csv voi E1a -> workload so sanh duoc 1-1.
 
-def get_bucket(key, num_buckets=16):
-    return zlib.crc32(str(key).encode('utf-8')) % num_buckets
+Chay: python scripts/e1b_bucketing_workload.py [--limit N]
+"""
+import os
+import sys
+import time
+import argparse
 
-def run_experiment():
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from data_contract import (
+    get_run_id, get_output_dir, init_access_log, write_access_log,
+    new_manifest, finalize_manifest,
+)
+from product_catalog import load_products, load_workload_ops, bucket_of
+
+from lab_connect import connect, ensure_keyspace
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--products", default="data/sample/products.csv")
+    ap.add_argument("--ops", default="data/sample/access_log.csv")
+    ap.add_argument("--limit", type=int, default=2000)
+    ap.add_argument("--keyspace", default="catalog")
+    args = ap.parse_args()
+
     run_id = get_run_id()
     out_dir = get_output_dir("E1b_ScyllaDB", run_id)
-    access_log = init_access_log(out_dir)
-    write_manifest(out_dir, run_id, "E1b_Bucketing", {"dataset": "products.csv", "buckets": 16})
-    
-    cluster = Cluster(['127.0.0.1'], address_translator=LocalAddressTranslator())
-    session = cluster.connect()
-    session.execute("CREATE KEYSPACE IF NOT EXISTS catalog WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 3}")
-    session.execute("DROP TABLE IF EXISTS catalog.product_b")
-    # Schema B moi: Partition key gom (bucket_id, category_id) de giu chieu category
-    session.execute("CREATE TABLE IF NOT EXISTS catalog.product_b (bucket_id int, category_id int, product_id int, name text, price double, PRIMARY KEY ((bucket_id, category_id), product_id))")
-    
-    products = load_products()
-    insert_stmt = session.prepare("INSERT INTO catalog.product_b (bucket_id, category_id, product_id, name, price) VALUES (?, ?, ?, ?, ?)")
-    select_stmt = session.prepare("SELECT * FROM catalog.product_b WHERE bucket_id = ? AND category_id = ? AND product_id = ?")
-    
-    for i in range(1, 1001): # Gia lap 1000 ops
-        p = products[i % len(products)]
-        op_type = "WRITE" if i % 2 == 0 else "READ"
-        cat_id, prod_id = int(p['category_id']), int(p['product_id'])
-        bucket_id = get_bucket(prod_id)
-        
+    access_log_file = init_access_log(out_dir)
+    manifest = new_manifest(run_id, "E1b", "hot_partition_schema_b", config={
+        "keyspace": args.keyspace, "schema": "products_bucketed",
+        "products": args.products, "workload": args.ops, "limit": args.limit,
+    })
+
+    products = load_products(args.products)
+    # Xac minh cot bucket trong CSV = crc32(product_id) % 16
+    bad = [p["product_id"] for p in products
+           if bucket_of(p["product_id"]) != p["bucket"]]
+    if bad:
+        sys.exit(f"bucket mismatch for {len(bad)} products, e.g. {bad[:3]}")
+    by_pid = {p["product_id"]: p for p in products}
+    ops = load_workload_ops(args.ops, limit=args.limit)
+    print(f"Loaded {len(products)} products, replaying {len(ops)} ops")
+
+    cluster, session = connect()
+    ensure_keyspace(session, args.keyspace)
+    session.execute("""
+        CREATE TABLE IF NOT EXISTS products_bucketed (
+            category_id text, bucket int, added_at bigint, product_id text,
+            name text, brand text, price double, currency text,
+            stock int, rating double, attributes text,
+            PRIMARY KEY ((category_id, bucket), added_at, product_id)
+        )""")
+
+    insert_stmt = session.prepare(
+        "INSERT INTO products_bucketed (category_id, bucket, added_at, "
+        "product_id, name, brand, price, currency, stock, rating, attributes) "
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
+    read_stmt = session.prepare(
+        "SELECT product_id FROM products_bucketed "
+        "WHERE category_id = ? AND bucket = ? AND added_at = ? "
+        "AND product_id = ?")
+
+    print("Seeding products ...")
+    for p in products:
+        session.execute(insert_stmt, tuple(p[k] for k in (
+            "category_id", "bucket", "added_at", "product_id", "name",
+            "brand", "price", "currency", "stock", "rating", "attributes")))
+
+    op_count = 0
+    for op, category_id, product_id in ops:
+        p = by_pid.get(product_id)
+        if p is None or p["category_id"] != category_id:
+            continue
         t0 = time.perf_counter()
         success, error_msg = True, ""
         try:
-            if op_type == "WRITE":
-                session.execute(insert_stmt, (bucket_id, cat_id, prod_id, p['name'], float(p['price'])))
+            if op == "WRITE":
+                session.execute(insert_stmt, tuple(p[k] for k in (
+                    "category_id", "bucket", "added_at", "product_id",
+                    "name", "brand", "price", "currency", "stock",
+                    "rating", "attributes")))
             else:
-                session.execute(select_stmt, (bucket_id, cat_id, prod_id))
+                session.execute(read_stmt,
+                                (category_id, p["bucket"], p["added_at"],
+                                 product_id))
         except Exception as e:
-            success = False; error_msg = str(e)
-            
+            success, error_msg = False, str(e)[:120]
         latency = (time.perf_counter() - t0) * 1000
-        write_access_log(access_log, run_id, op_type, latency, success, category_id=str(cat_id), product_id=str(prod_id), error=error_msg)
-        
-    print(f"Done! Logs saved at {out_dir}")
+        write_access_log(access_log_file, run_id, op, latency, success,
+                         category_id=category_id, product_id=product_id,
+                         error=error_msg)
+        op_count += 1
+
+    finalize_manifest(out_dir, manifest, op_count=op_count)
+    print(f"Done! {op_count} ops -> {out_dir}")
     cluster.shutdown()
 
+
 if __name__ == "__main__":
-    run_experiment()
+    main()
