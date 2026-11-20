@@ -9,7 +9,6 @@ venv/
 
 # OS
 .DS_Store
-.gitattributes
 
 # Cấu hình môi trường (Không được push lên Git) - use .env.example / docker/.env.example
 .env
