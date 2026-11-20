@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+*.py[cod]
+.venv/
+venv/
+.idea/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+
+# Cấu hình môi trường (Không được push lên Git) - use .env.example / docker/.env.example
+.env
+docker/.env
+
+# Generated datasets (large); keep data/sample/ committed
+data/full/
+data/generated/
+
+# Dữ liệu thí nghiệm sinh tự động (Chỉ giữ lại file mẫu nếu cần)
+runs/
+evidence/
+evidence/**/raw_*.txt
+
+# Monitoring clone/data (Lâm)
+monitoring/prometheus_data/
+monitoring/scylla-monitoring/
+tuan1_dung-lab/
+
+# Media artifacts
+*.cast
+*.mkv
+*.mp4

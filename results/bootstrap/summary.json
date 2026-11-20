@@ -1,0 +1,53 @@
+{
+  "origin": "simulated",
+  "method_note": "iid bootstrap for exchangeable metrics; moving-block bootstrap (block=50) for time-ordered latency",
+  "metrics": {
+    "latency_ms_mean_block": {
+      "estimate": 9.023148800000001,
+      "ci_low": 8.946130176666665,
+      "ci_high": 9.103253211666665,
+      "n": 15000,
+      "method": "block",
+      "resamples": 2000,
+      "alpha": 0.05
+    },
+    "latency_ms_p95_iid": {
+      "estimate": 18.266049999999996,
+      "ci_low": 17.991086249999995,
+      "ci_high": 18.601006249999998,
+      "n": 15000,
+      "method": "iid",
+      "resamples": 2000,
+      "alpha": 0.05
+    },
+    "top_partition_share_schema_a": {
+      "estimate": 0.3542,
+      "ci_low": 0.3463333333333333,
+      "ci_high": 0.36186666666666667,
+      "n": 15000,
+      "method": "iid",
+      "resamples": 2000,
+      "alpha": 0.05
+    }
+  },
+  "stale_rate_by_level": {
+    "ONE": {
+      "estimate": 0.054289544235924934,
+      "ci_low": 0.04289544235924933,
+      "ci_high": 0.06570040214477203,
+      "n": 1492,
+      "method": "iid",
+      "resamples": 2000,
+      "alpha": 0.05
+    },
+    "QUORUM": {
+      "estimate": 0.003861003861003861,
+      "ci_low": 0.001287001287001287,
+      "ci_high": 0.007078507078507079,
+      "n": 1554,
+      "method": "iid",
+      "resamples": 2000,
+      "alpha": 0.05
+    }
+  }
+}

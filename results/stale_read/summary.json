@@ -1,0 +1,103 @@
+{
+  "total_reads": 3046,
+  "overall": {
+    "reads": 3046,
+    "valid_reads": 3046,
+    "unverifiable_reads": 0,
+    "stale_reads": 87,
+    "stale_read_rate_pct": 2.8562
+  },
+  "by_consistency_level": {
+    "ONE": {
+      "reads": 1492,
+      "valid_reads": 1492,
+      "unverifiable_reads": 0,
+      "stale_reads": 81,
+      "stale_read_rate_pct": 5.429
+    },
+    "QUORUM": {
+      "reads": 1554,
+      "valid_reads": 1554,
+      "unverifiable_reads": 0,
+      "stale_reads": 6,
+      "stale_read_rate_pct": 0.3861
+    }
+  },
+  "by_network_state": {
+    "NORMAL": {
+      "reads": 2723,
+      "valid_reads": 2723,
+      "unverifiable_reads": 0,
+      "stale_reads": 26,
+      "stale_read_rate_pct": 0.9548
+    },
+    "PARTITIONED": {
+      "reads": 323,
+      "valid_reads": 323,
+      "unverifiable_reads": 0,
+      "stale_reads": 61,
+      "stale_read_rate_pct": 18.8854
+    }
+  },
+  "by_phase": {
+    "PARTITIONED": {
+      "reads": 323,
+      "valid_reads": 323,
+      "unverifiable_reads": 0,
+      "stale_reads": 61,
+      "stale_read_rate_pct": 18.8854
+    },
+    "POST_PARTITION": {
+      "reads": 1619,
+      "valid_reads": 1619,
+      "unverifiable_reads": 0,
+      "stale_reads": 17,
+      "stale_read_rate_pct": 1.05
+    },
+    "PRE_PARTITION": {
+      "reads": 1104,
+      "valid_reads": 1104,
+      "unverifiable_reads": 0,
+      "stale_reads": 9,
+      "stale_read_rate_pct": 0.8152
+    }
+  },
+  "by_node": {
+    "node1": {
+      "reads": 584,
+      "valid_reads": 584,
+      "unverifiable_reads": 0,
+      "stale_reads": 12,
+      "stale_read_rate_pct": 2.0548
+    },
+    "node2": {
+      "reads": 655,
+      "valid_reads": 655,
+      "unverifiable_reads": 0,
+      "stale_reads": 13,
+      "stale_read_rate_pct": 1.9847
+    },
+    "node3": {
+      "reads": 578,
+      "valid_reads": 578,
+      "unverifiable_reads": 0,
+      "stale_reads": 27,
+      "stale_read_rate_pct": 4.6713
+    },
+    "node4": {
+      "reads": 595,
+      "valid_reads": 595,
+      "unverifiable_reads": 0,
+      "stale_reads": 14,
+      "stale_read_rate_pct": 2.3529
+    },
+    "node5": {
+      "reads": 634,
+      "valid_reads": 634,
+      "unverifiable_reads": 0,
+      "stale_reads": 21,
+      "stale_read_rate_pct": 3.3123
+    }
+  },
+  "origin": "simulated"
+}

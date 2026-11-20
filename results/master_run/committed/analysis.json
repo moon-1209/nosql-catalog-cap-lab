@@ -1,0 +1,276 @@
+{
+  "CAP_ALL/20261118164314_7e93eceb": {
+    "run_dir": "experiments/CAP_ALL/20261118164314_7e93eceb",
+    "contract": "legacy",
+    "n_ops": 4158,
+    "n_ok": 0,
+    "n_fail": 4158,
+    "duration_s": 28.27,
+    "ops_per_s": 147.1,
+    "latency_ms": {
+      "mean": null,
+      "p50": null,
+      "p95": null,
+      "max": null
+    },
+    "chaos_events": [
+      {
+        "ts": 1795020197587.2358,
+        "event": "partition_start",
+        "target": "ALL"
+      },
+      {
+        "ts": 1795020217867.705,
+        "event": "partition_end",
+        "target": "ALL"
+      }
+    ],
+    "phases": {
+      "pre": {
+        "n": 444,
+        "ok_pct": 0.0
+      },
+      "during": {
+        "n": 2984,
+        "ok_pct": 0.0,
+        "duration_s": 20.3
+      },
+      "post": {
+        "n": 730,
+        "ok_pct": 0.0
+      }
+    }
+  },
+  "CAP_ONE/20261118164217_51d70a18": {
+    "run_dir": "experiments/CAP_ONE/20261118164217_51d70a18",
+    "contract": "legacy",
+    "n_ops": 4008,
+    "n_ok": 4008,
+    "n_fail": 0,
+    "duration_s": 28.46,
+    "ops_per_s": 140.8,
+    "latency_ms": {
+      "mean": 1.61,
+      "p50": 1.426,
+      "p95": 2.712,
+      "max": 20.56
+    },
+    "chaos_events": [
+      {
+        "ts": 1795020140635.073,
+        "event": "partition_start",
+        "target": "ALL"
+      },
+      {
+        "ts": 1795020161100.687,
+        "event": "partition_end",
+        "target": "ALL"
+      }
+    ],
+    "phases": {
+      "pre": {
+        "n": 430,
+        "ok_pct": 100.0
+      },
+      "during": {
+        "n": 2858,
+        "ok_pct": 100.0,
+        "duration_s": 20.5
+      },
+      "post": {
+        "n": 720,
+        "ok_pct": 100.0
+      }
+    }
+  },
+  "CAP_QUORUM/20261118164246_1e06bf4f": {
+    "run_dir": "experiments/CAP_QUORUM/20261118164246_1e06bf4f",
+    "contract": "legacy",
+    "n_ops": 3916,
+    "n_ok": 3916,
+    "n_fail": 0,
+    "duration_s": 28.34,
+    "ops_per_s": 138.2,
+    "latency_ms": {
+      "mean": 1.75,
+      "p50": 1.535,
+      "p95": 2.905,
+      "max": 8.95
+    },
+    "chaos_events": [
+      {
+        "ts": 1795020169184.181,
+        "event": "partition_start",
+        "target": "ALL"
+      },
+      {
+        "ts": 1795020189522.5989,
+        "event": "partition_end",
+        "target": "ALL"
+      }
+    ],
+    "phases": {
+      "pre": {
+        "n": 408,
+        "ok_pct": 100.0
+      },
+      "during": {
+        "n": 2812,
+        "ok_pct": 100.0,
+        "duration_s": 20.3
+      },
+      "post": {
+        "n": 696,
+        "ok_pct": 100.0
+      }
+    }
+  },
+  "Counter/20261118164827_db8197b5": {
+    "run_dir": "experiments/Counter/20261118164827_db8197b5",
+    "contract": "legacy",
+    "n_ops": 99,
+    "n_ok": 99,
+    "n_fail": 0,
+    "duration_s": 0.04,
+    "ops_per_s": 2484.7,
+    "latency_ms": {
+      "mean": 3.77,
+      "p50": 3.756,
+      "p95": 6.368,
+      "max": 7.27
+    },
+    "chaos_events": []
+  },
+  "E1a_ScyllaDB/20261118163502_71591fb6": {
+    "run_dir": "experiments/E1a_ScyllaDB/20261118163502_71591fb6",
+    "contract": "legacy",
+    "n_ops": 1000,
+    "n_ok": 1000,
+    "n_fail": 0,
+    "duration_s": 1.26,
+    "ops_per_s": 793.8,
+    "latency_ms": {
+      "mean": 1.04,
+      "p50": 0.98,
+      "p95": 1.322,
+      "max": 12.27
+    },
+    "chaos_events": []
+  },
+  "E1b_ScyllaDB/20261118163826_70a13d55": {
+    "run_dir": "experiments/E1b_ScyllaDB/20261118163826_70a13d55",
+    "contract": "legacy",
+    "n_ops": 1000,
+    "n_ok": 1000,
+    "n_fail": 0,
+    "duration_s": 1.28,
+    "ops_per_s": 781.7,
+    "latency_ms": {
+      "mean": 1.05,
+      "p50": 0.992,
+      "p95": 1.318,
+      "max": 9.87
+    },
+    "chaos_events": []
+  },
+  "E6_Mongo_Failover/20261118165408_3b2facb5": {
+    "run_dir": "experiments/E6_Mongo_Failover/20261118165408_3b2facb5",
+    "contract": "legacy",
+    "n_ops": 228,
+    "n_ok": 228,
+    "n_fail": 0,
+    "duration_s": 12.97,
+    "ops_per_s": 17.6,
+    "latency_ms": {
+      "mean": 3.72,
+      "p50": 3.352,
+      "p95": 5.141,
+      "max": 34.49
+    },
+    "chaos_events": [
+      {
+        "ts": 1795020851111.188,
+        "event": "failover_start",
+        "target": "ALL"
+      },
+      {
+        "ts": 1795020861115.608,
+        "event": "failover_end",
+        "target": "ALL"
+      }
+    ],
+    "phases": {
+      "pre": {
+        "n": 52,
+        "ok_pct": 100.0
+      },
+      "during": {
+        "n": 176,
+        "ok_pct": 100.0,
+        "duration_s": 10.0
+      },
+      "post": {
+        "n": 0,
+        "ok_pct": null
+      }
+    }
+  },
+  "E6_Mongo_Failover/20261118165508_a46786bb": {
+    "run_dir": "experiments/E6_Mongo_Failover/20261118165508_a46786bb",
+    "contract": "legacy",
+    "n_ops": 207,
+    "n_ok": 207,
+    "n_fail": 0,
+    "duration_s": 12.92,
+    "ops_per_s": 16.0,
+    "latency_ms": {
+      "mean": 9.55,
+      "p50": 3.492,
+      "p95": 6.634,
+      "max": 1018.17
+    },
+    "chaos_events": [
+      {
+        "ts": 1795020912718.7742,
+        "event": "failover_start",
+        "target": "ALL"
+      },
+      {
+        "ts": 1795020922767.021,
+        "event": "failover_end",
+        "target": "ALL"
+      }
+    ],
+    "phases": {
+      "pre": {
+        "n": 50,
+        "ok_pct": 100.0
+      },
+      "during": {
+        "n": 157,
+        "ok_pct": 100.0,
+        "duration_s": 10.0
+      },
+      "post": {
+        "n": 0,
+        "ok_pct": null
+      }
+    }
+  },
+  "LWT/20261118164826_d623b720": {
+    "run_dir": "experiments/LWT/20261118164826_d623b720",
+    "contract": "legacy",
+    "n_ops": 50,
+    "n_ok": 1,
+    "n_fail": 49,
+    "duration_s": 0.12,
+    "ops_per_s": 416.9,
+    "latency_ms": {
+      "mean": 78.18,
+      "p50": 78.184,
+      "p95": 78.184,
+      "max": 78.18
+    },
+    "chaos_events": []
+  }
+}

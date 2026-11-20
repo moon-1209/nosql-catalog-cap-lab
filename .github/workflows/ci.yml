@@ -1,0 +1,44 @@
+name: contract-ci
+
+on:
+  push:
+    branches: [feat/Duy, develop, main]
+  pull_request:
+
+jobs:
+  contract-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Python syntax validation
+        run: python -m py_compile scripts/*.py
+
+      - name: Data contract selftest (synthetic - no cluster needed)
+        run: |
+          python scripts/selftest_contract.py --out /tmp/selftest
+          test -f /tmp/selftest/SELFTEST/*/manifest.json
+          test -f /tmp/selftest/SELFTEST/*/access_log.csv
+          test -f /tmp/selftest/SELFTEST/*/consistency_log.csv
+          test -f /tmp/selftest/SELFTEST/*/chaos_events.csv
+
+      - name: Contract shape assertions
+        run: |
+          python - <<'PY'
+          import csv, glob, json
+          d = glob.glob('/tmp/selftest/SELFTEST/*/')[0]
+          rows = list(csv.DictReader(open(d + 'access_log.csv')))
+          assert rows and all(r['op'] in ('READ','WRITE') for r in rows)
+          assert all(r['ts'].isdigit() for r in rows)          # epoch ms
+          m = json.load(open(d + 'manifest.json'))
+          for k in ('run_id','origin','contract_version','git_sha','op_count'):
+              assert k in m, k
+          cl = list(csv.DictReader(open(d + 'consistency_log.csv')))
+          assert all(r['event'] in ('READ','WRITE') for r in cl)
+          print('contract assertions OK:', len(rows), 'access ops,',
+                len(cl), 'consistency events')
+          PY

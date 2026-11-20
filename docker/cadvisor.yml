@@ -1,0 +1,39 @@
+# =====================================================================
+# cAdvisor — metric CPU/RAM/mạng theo TỪNG CONTAINER.
+# Vai trò trong đồ án: khi tiêm lỗi mạng, panel "Network RX/TX per container"
+# cho thấy lưu lượng vào/ra scylla-node3 rơi về ~0 → bằng chứng trực quan
+# rằng iptables thật sự cắt mạng (không chỉ là log của script).
+# Prometheus (aprom) cào cAdvisor qua job bổ sung ../monitoring/prometheus_extra_targets.yml
+# =====================================================================
+name: nosql-lab-observability
+
+services:
+  cadvisor:
+    image: ${CADVISOR_IMAGE}
+    container_name: cadvisor
+    restart: "no"
+    privileged: true
+    devices:
+      - /dev/kmsg:/dev/kmsg
+    command:
+      - --docker_only=true
+      - --housekeeping_interval=5s
+      - --store_container_labels=false
+      - --whitelisted_container_labels=lab.group,lab.az
+      - --enable_metrics=cpu,memory,network,diskIO
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    networks:
+      lab-net:
+        ipv4_address: ${CADVISOR_IP}
+    ports:
+      - "8080:8080"
+
+networks:
+  lab-net:
+    name: ${LAB_NETWORK}
+    external: true

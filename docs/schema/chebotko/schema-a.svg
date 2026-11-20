@@ -1,0 +1,67 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='680' height='560' viewBox='0 0 680 560'>
+<defs><marker id='arr' markerWidth='9' markerHeight='9' refX='7' refY='3' orient='auto'><path d='M0,0 L7,3 L0,6 z' fill='#7d3c98'/></marker></defs>
+<rect width='680' height='560' fill='white'/>
+<text x='20' y='28' font-size='17' font-weight='bold' font-family='Menlo, monospace'>Schema A - partition per category</text>
+<rect x='300' y='50' width='340' height='274' rx='6' fill='#fdfdfd' stroke='#333' stroke-width='1.5'/>
+<rect x='300' y='50' width='340' height='30' rx='6' fill='#dfe9f5' stroke='#333' stroke-width='1.5'/>
+<text x='470.0' y='70' text-anchor='middle' font-size='14' font-weight='bold' font-family='Menlo, monospace'>products_by_category</text>
+<text x='310' y='98' font-size='12' fill='#c0392b' font-family='Menlo, monospace'>category_id</text>
+<text x='630' y='98' font-size='11' fill='#777' text-anchor='end' font-family='Menlo, monospace'>uuid</text>
+<text x='520' y='98' font-size='12' fill='#c0392b' font-weight='bold' font-family='Menlo, monospace'>K</text>
+<text x='310' y='120' font-size='12' fill='#1a5276' font-family='Menlo, monospace'>added_at</text>
+<text x='630' y='120' font-size='11' fill='#777' text-anchor='end' font-family='Menlo, monospace'>timestamp</text>
+<text x='520' y='120' font-size='12' fill='#1a5276' font-weight='bold' font-family='Menlo, monospace'>C v</text>
+<text x='310' y='142' font-size='12' fill='#1a5276' font-family='Menlo, monospace'>product_id</text>
+<text x='630' y='142' font-size='11' fill='#777' text-anchor='end' font-family='Menlo, monospace'>uuid</text>
+<text x='520' y='142' font-size='12' fill='#1a5276' font-weight='bold' font-family='Menlo, monospace'>C ^</text>
+<line x1='300' y1='150' x2='640' y2='150' stroke='#333' stroke-width='1'/>
+<text x='310' y='164' font-size='12' fill='#333' font-family='Menlo, monospace'>name</text>
+<text x='630' y='164' font-size='11' fill='#777' text-anchor='end' font-family='Menlo, monospace'>text</text>
+<text x='310' y='186' font-size='12' fill='#333' font-family='Menlo, monospace'>brand</text>
+<text x='630' y='186' font-size='11' fill='#777' text-anchor='end' font-family='Menlo, monospace'>text</text>
+<text x='310' y='208' font-size='12' fill='#333' font-family='Menlo, monospace'>price</text>
+<text x='630' y='208' font-size='11' fill='#777' text-anchor='end' font-family='Menlo, monospace'>decimal</text>
+<text x='310' y='230' font-size='12' fill='#333' font-family='Menlo, monospace'>currency</text>
+<text x='630' y='230' font-size='11' fill='#777' text-anchor='end' font-family='Menlo, monospace'>text</text>
+<text x='310' y='252' font-size='12' fill='#333' font-family='Menlo, monospace'>stock</text>
+<text x='630' y='252' font-size='11' fill='#777' text-anchor='end' font-family='Menlo, monospace'>int</text>
+<text x='310' y='274' font-size='12' fill='#333' font-family='Menlo, monospace'>rating</text>
+<text x='630' y='274' font-size='11' fill='#777' text-anchor='end' font-family='Menlo, monospace'>float</text>
+<text x='310' y='296' font-size='12' fill='#333' font-family='Menlo, monospace'>attributes</text>
+<text x='630' y='296' font-size='11' fill='#777' text-anchor='end' font-family='Menlo, monospace'>map&amp;lt;text,text&amp;gt;</text>
+<rect x='300' y='364' width='340' height='230' rx='6' fill='#fdfdfd' stroke='#333' stroke-width='1.5'/>
+<rect x='300' y='364' width='340' height='30' rx='6' fill='#dfe9f5' stroke='#333' stroke-width='1.5'/>
+<text x='470.0' y='384' text-anchor='middle' font-size='14' font-weight='bold' font-family='Menlo, monospace'>products_by_id</text>
+<text x='310' y='412' font-size='12' fill='#c0392b' font-family='Menlo, monospace'>product_id</text>
+<text x='630' y='412' font-size='11' fill='#777' text-anchor='end' font-family='Menlo, monospace'>uuid</text>
+<text x='520' y='412' font-size='12' fill='#c0392b' font-weight='bold' font-family='Menlo, monospace'>K</text>
+<line x1='300' y1='420' x2='640' y2='420' stroke='#333' stroke-width='1'/>
+<text x='310' y='434' font-size='12' fill='#333' font-family='Menlo, monospace'>name</text>
+<text x='630' y='434' font-size='11' fill='#777' text-anchor='end' font-family='Menlo, monospace'>text</text>
+<text x='310' y='456' font-size='12' fill='#333' font-family='Menlo, monospace'>brand</text>
+<text x='630' y='456' font-size='11' fill='#777' text-anchor='end' font-family='Menlo, monospace'>text</text>
+<text x='310' y='478' font-size='12' fill='#333' font-family='Menlo, monospace'>price</text>
+<text x='630' y='478' font-size='11' fill='#777' text-anchor='end' font-family='Menlo, monospace'>decimal</text>
+<text x='310' y='500' font-size='12' fill='#333' font-family='Menlo, monospace'>currency</text>
+<text x='630' y='500' font-size='11' fill='#777' text-anchor='end' font-family='Menlo, monospace'>text</text>
+<text x='310' y='522' font-size='12' fill='#333' font-family='Menlo, monospace'>stock</text>
+<text x='630' y='522' font-size='11' fill='#777' text-anchor='end' font-family='Menlo, monospace'>int</text>
+<text x='310' y='544' font-size='12' fill='#333' font-family='Menlo, monospace'>rating</text>
+<text x='630' y='544' font-size='11' fill='#777' text-anchor='end' font-family='Menlo, monospace'>float</text>
+<text x='310' y='566' font-size='12' fill='#333' font-family='Menlo, monospace'>attributes</text>
+<text x='630' y='566' font-size='11' fill='#777' text-anchor='end' font-family='Menlo, monospace'>map&amp;lt;text,text&amp;gt;</text>
+<text x='20' y='90' font-size='12' fill='#7d3c98' font-family='Menlo, monospace'>Q2, Q3, Q4 reads</text>
+<line x1='40' y1='98' x2='296' y2='150' stroke='#7d3c98' stroke-width='1.6' marker-end='url(#arr)'/>
+<text x='20' y='116' font-size='12' fill='#7d3c98' font-family='Menlo, monospace'>W1, W2, W3 writes</text>
+<line x1='40' y1='124' x2='296' y2='210' stroke='#7d3c98' stroke-width='1.6' marker-end='url(#arr)'/>
+<text x='20' y='434' font-size='12' fill='#7d3c98' font-family='Menlo, monospace'>Q1 point lookup</text>
+<line x1='40' y1='442' x2='296' y2='444' stroke='#7d3c98' stroke-width='1.6' marker-end='url(#arr)'/>
+<text x='20' y='420' font-size='12' font-weight='bold' font-family='Menlo, monospace'>Legend</text>
+<text x='20' y='438' font-size='12' fill='#c0392b' font-weight='bold' font-family='Menlo, monospace'>K</text>
+<text x='54' y='438' font-size='12' fill='#333' font-family='Menlo, monospace'>= partition key column</text>
+<text x='20' y='456' font-size='12' fill='#1a5276' font-weight='bold' font-family='Menlo, monospace'>C v</text>
+<text x='54' y='456' font-size='12' fill='#333' font-family='Menlo, monospace'>= clustering column, descending</text>
+<text x='20' y='474' font-size='12' fill='#1a5276' font-weight='bold' font-family='Menlo, monospace'>C ^</text>
+<text x='54' y='474' font-size='12' fill='#333' font-family='Menlo, monospace'>= clustering column, ascending</text>
+<text x='20' y='530' font-size='11' fill='#555' font-family='Menlo, monospace'>1 CQL partition = 1 category - hot category concentrates load.</text>
+</svg>
