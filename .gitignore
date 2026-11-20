@@ -1,0 +1,9 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.idea/
+
+# Local environment config - use .env.example / docker/.env.example
+.env
+docker/.env

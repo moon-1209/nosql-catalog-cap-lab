@@ -1,22 +1,20 @@
 """LWT: Lightweight Transactions tren ScyllaDB."""
 import time
 import concurrent.futures
-from cassandra.cluster import Cluster
-from cassandra.policies import AddressTranslator
 from cassandra import ConsistencyLevel
-from data_contract import get_run_id, get_output_dir, init_access_log, write_access_log
-
-class LocalAddressTranslator(AddressTranslator):
-    def translate(self, addr): return '127.0.0.1'
+from lab_connect import connect, ensure_keyspace
+from data_contract import (get_run_id, get_output_dir, init_access_log,
+    write_access_log, new_manifest, finalize_manifest)
 
 def run_experiment():
     run_id = get_run_id()
     out_dir = get_output_dir("LWT", run_id)
     access_log = init_access_log(out_dir)
+    manifest = new_manifest(run_id, "LWT", "lwt_conditional_write", config={
+        "table": "catalog.lwt_test", "threads": 20, "ops": 50})
 
-    cluster = Cluster(['127.0.0.1'], address_translator=LocalAddressTranslator())
-    session = cluster.connect()
-    session.execute("CREATE KEYSPACE IF NOT EXISTS catalog WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 3}")
+    cluster, session = connect()
+    ensure_keyspace(session, "catalog")
     session.execute("DROP TABLE IF EXISTS catalog.lwt_test")
     session.execute("CREATE TABLE IF NOT EXISTS catalog.lwt_test (id int PRIMARY KEY, owner text)")
 
@@ -37,7 +35,7 @@ def run_experiment():
             err_msg = str(e)[:50]
             
         lat = (time.perf_counter() - t0) * 1000
-        write_access_log(access_log, run_id, "lwt_buy", lat, success, product_id="1", error=err_msg)
+        write_access_log(access_log, run_id, "WRITE", lat, success, product_id="1", error=err_msg, op_detail="LWT_BUY")
         return success
 
     print("Bat dau 50 luong tranh mua 1 mon hang bang LWT...")
@@ -45,6 +43,7 @@ def run_experiment():
         results = list(executor.map(try_buy, range(1, 51)))
         
     print(f"Tong so luong: 50. Mua thanh cong: {sum(results)} (Chi duoc phep la 1)")
+    finalize_manifest(out_dir, manifest, op_count=50)
     print(f"Logs saved at {out_dir}")
     cluster.shutdown()
 
