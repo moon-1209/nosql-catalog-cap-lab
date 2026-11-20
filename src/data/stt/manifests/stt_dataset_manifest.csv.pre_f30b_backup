@@ -1,0 +1,994 @@
+wav_relpath,file_id,speaker,mode,intent,in_benchmark,duration_s,sample_rate,channels,note
+Female 30/F30_C01_n.wav,,,,,0,4.01,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C01_r.wav,,,,,0,4.522,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C02_n.wav,,,,,0,2.73,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C02_r.wav,,,,,0,2.474,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C03_n.wav,,,,,0,3.924,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C03_r.wav,,,,,0,3.924,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C04_n.wav,,,,,0,4.266,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C04_r.wav,,,,,0,4.436,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C05_n.wav,,,,,0,2.815,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C05_r.wav,,,,,0,4.01,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C06_n.wav,,,,,0,2.474,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C06_r.wav,,,,,0,2.644,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C07_n.wav,,,,,0,3.412,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C07_r.wav,,,,,0,3.754,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C08_n.wav,,,,,0,2.388,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C08_r.wav,,,,,0,2.9,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C09_n.wav,,,,,0,3.071,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C09_r.wav,,,,,0,3.498,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C10_n.wav,,,,,0,2.474,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_C10_r.wav,,,,,0,1.706,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T01_n.wav,,,,,0,4.095,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T01_r.wav,,,,,0,4.948,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T02_n.wav,,,,,0,4.436,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T02_r.wav,,,,,0,4.948,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T03_n.wav,,,,,0,3.156,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T03_r.wav,,,,,0,3.327,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T04_n.wav,,,,,0,4.607,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T04_r.wav,,,,,0,4.266,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T05_n.wav,,,,,0,4.607,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T05_r.wav,,,,,0,4.01,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T06_n.wav,,,,,0,3.327,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T06_r.wav,,,,,0,4.18,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T07_n.wav,,,,,0,2.9,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T07_r.wav,,,,,0,4.692,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T08_n.wav,,,,,0,5.29,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T08_n_wrong-order.wav,,,,,0,5.204,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T08_r.wav,,,,,0,4.522,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T09_n.wav,,,,,0,4.863,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T09_r.wav,,,,,0,5.972,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T10_n.wav,,,,,0,2.303,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T10_r.wav,,,,,0,2.815,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T11_n.wav,,,,,0,3.327,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T11_r.wav,,,,,0,2.9,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T12_n.wav,,,,,0,4.01,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T12_r.wav,,,,,0,4.095,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T13_n.wav,,,,,0,3.327,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T13_r.wav,,,,,0,3.924,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T14_n.wav,,,,,0,2.474,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T14_r.wav,,,,,0,2.73,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T15_n.wav,,,,,0,3.754,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T15_r.wav,,,,,0,3.071,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T16_n.wav,,,,,0,3.412,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T16_r.wav,,,,,0,3.327,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T17_n.wav,,,,,0,3.156,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T17_r.wav,,,,,0,2.815,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T18_n.wav,,,,,0,3.839,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T18_r.wav,,,,,0,4.351,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T19_n.wav,,,,,0,4.607,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T19_r.wav,,,,,0,4.522,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T20_n.wav,,,,,0,4.01,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T20_r.wav,,,,,0,3.498,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T21_n.wav,,,,,0,3.412,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T21_r.wav,,,,,0,3.498,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T22_n.wav,,,,,0,4.18,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T22_r.wav,,,,,0,4.095,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T23_n.wav,,,,,0,4.436,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T23_r.wav,,,,,0,3.156,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T24_n.wav,,,,,0,3.924,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T24_r.wav,,,,,0,3.754,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T25_n.wav,,,,,0,2.303,16000,1,no annotation (non-benchmark audio)
+Female 30/F30_T25_r.wav,,,,,0,2.132,16000,1,no annotation (non-benchmark audio)
+Hoàng Tuấn/Nam 20 tuổi/A_01_n.wav,A_01_n,A,n,dang_ky_kham,1,8.319,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_01_r.wav,A_01_r,A,r,dang_ky_kham,1,4.628,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_01_r.wav,A_01_r,A,r,dang_ky_kham,0,5.44,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_01_r.wav,A_01_r,A,r,dang_ky_kham,0,3.968,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_02_n.wav,A_02_n,A,n,dang_ky_kham,1,7.828,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_02_r.wav,A_02_r,A,r,dang_ky_kham,1,3.519,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_02_r.wav,A_02_r,A,r,dang_ky_kham,0,5.312,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_02_r.wav,A_02_r,A,r,dang_ky_kham,0,4.992,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_03_n.wav,A_03_n,A,n,bao_hiem,1,6.548,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_03_r.wav,A_03_r,A,r,bao_hiem,1,3.668,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_03_r.wav,A_03_r,A,r,bao_hiem,0,4.928,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_03_r.wav,A_03_r,A,r,bao_hiem,0,4.992,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_04_n.wav,A_04_n,A,n,bao_hiem,1,6.719,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_04_r.wav,A_04_r,A,r,bao_hiem,1,4.308,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_04_r.wav,A_04_r,A,r,bao_hiem,0,4.352,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_04_r.wav,A_04_r,A,r,bao_hiem,0,4.096,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_05_n.wav,A_05_n,A,n,hoi_khoa,1,7.828,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_05_r.wav,A_05_r,A,r,hoi_khoa,1,3.668,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_05_r.wav,A_05_r,A,r,hoi_khoa,0,4.416,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_05_r.wav,A_05_r,A,r,hoi_khoa,0,4.672,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_06_n.wav,A_06_n,A,n,hoi_khoa,1,6.228,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_06_r.wav,A_06_r,A,r,hoi_khoa,1,3.348,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_06_r.wav,A_06_r,A,r,hoi_khoa,0,4.032,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_06_r.wav,A_06_r,A,r,hoi_khoa,0,3.776,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_07_n.wav,A_07_n,A,n,hoi_phong,1,6.399,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_07_r.wav,A_07_r,A,r,hoi_phong,1,3.839,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_07_r.wav,A_07_r,A,r,hoi_phong,0,4.224,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_07_r.wav,A_07_r,A,r,hoi_phong,0,4.992,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_08_n.wav,A_08_n,A,n,hoi_phong,1,7.508,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_08_r.wav,A_08_r,A,r,hoi_phong,1,4.159,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_08_r.wav,A_08_r,A,r,hoi_phong,0,5.504,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_08_r.wav,A_08_r,A,r,hoi_phong,0,4.48,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_09_n.wav,A_09_n,A,n,hoi_phong,1,5.759,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_09_r.wav,A_09_r,A,r,hoi_phong,1,2.559,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_09_r.wav,A_09_r,A,r,hoi_phong,0,4.48,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_09_r.wav,A_09_r,A,r,hoi_phong,0,4.544,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_10_n.wav,A_10_n,A,n,khong_ho_tro,1,6.548,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_10_r.wav,A_10_r,A,r,khong_ho_tro,1,3.028,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_10_r.wav,A_10_r,A,r,khong_ho_tro,0,4.288,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_10_r.wav,A_10_r,A,r,khong_ho_tro,0,4.544,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_11_n.wav,A_11_n,A,n,thoi_gian_cho,1,5.588,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_11_r.wav,A_11_r,A,r,thoi_gian_cho,1,2.495,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_11_r.wav,A_11_r,A,r,thoi_gian_cho,0,4.352,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_11_r.wav,A_11_r,A,r,thoi_gian_cho,0,3.968,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_12_n.wav,A_12_n,A,n,hoi_phong,1,6.399,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_12_r.wav,A_12_r,A,r,hoi_phong,1,2.559,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_12_r.wav,A_12_r,A,r,hoi_phong,0,4.992,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_12_r.wav,A_12_r,A,r,hoi_phong,0,4.8,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_13_n.wav,A_13_n,A,n,thanh_toan,1,5.908,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_13_r.wav,A_13_r,A,r,thanh_toan,1,2.068,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_13_r.wav,A_13_r,A,r,thanh_toan,0,4.032,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_13_r.wav,A_13_r,A,r,thanh_toan,0,3.84,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_14_n.wav,A_14_n,A,n,thanh_toan,1,6.228,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_14_r.wav,A_14_r,A,r,thanh_toan,1,2.708,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_14_r.wav,A_14_r,A,r,thanh_toan,0,4.608,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_14_r.wav,A_14_r,A,r,thanh_toan,0,4.48,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_15_n.wav,A_15_n,A,n,nha_thuoc,1,7.188,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_15_r.wav,A_15_r,A,r,nha_thuoc,1,3.839,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_15_r.wav,A_15_r,A,r,nha_thuoc,0,4.096,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_15_r.wav,A_15_r,A,r,nha_thuoc,0,3.776,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_16_n.wav,A_16_n,A,n,tien_ich,1,4.948,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_16_r.wav,A_16_r,A,r,tien_ich,1,3.988,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_17_n.wav,A_17_n,A,n,tien_ich,1,6.868,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_17_r.wav,A_17_r,A,r,tien_ich,1,4.948,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_18_n.wav,A_18_n,A,n,tien_ich,1,6.868,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_18_r.wav,A_18_r,A,r,tien_ich,1,3.199,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_19_n.wav,A_19_n,A,n,hoi_khoa,1,7.828,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_19_r.wav,A_19_r,A,r,hoi_khoa,1,3.839,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_20_n.wav,A_20_n,A,n,ho_tro_di_chuyen,1,10.708,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_20_r.wav,A_20_r,A,r,ho_tro_di_chuyen,1,3.988,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_21_n.wav,A_21_n,A,n,dan_duong,1,7.188,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_21_r.wav,A_21_r,A,r,dan_duong,1,3.988,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_22_n.wav,A_22_n,A,n,dieu_chinh_toc_do,1,6.399,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_22_r.wav,A_22_r,A,r,dieu_chinh_toc_do,1,4.65,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_23_n.wav,A_23_n,A,n,dung_lai,1,5.119,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_23_r.wav,A_23_r,A,r,dung_lai,1,2.708,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_24_n.wav,A_24_n,A,n,tiep_tuc,1,3.988,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_24_r.wav,A_24_r,A,r,tiep_tuc,1,2.068,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_25_n.wav,A_25_n,A,n,cap_cuu,1,6.548,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_25_r.wav,A_25_r,A,r,cap_cuu,1,4.308,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_26_n.wav,A_26_n,A,n,cap_cuu,1,3.199,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_26_r.wav,A_26_r,A,r,cap_cuu,1,2.068,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_27_n.wav,A_27_n,A,n,gap_nhan_vien,1,3.199,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_27_r.wav,A_27_r,A,r,gap_nhan_vien,1,2.559,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_28_n.wav,A_28_n,A,n,hoi_phong,1,4.628,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_28_r.wav,A_28_r,A,r,hoi_phong,1,2.879,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_29_n.wav,A_29_n,A,n,thoi_gian_cho,1,6.399,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_29_r.wav,A_29_r,A,r,thoi_gian_cho,1,4.159,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_30_n.wav,A_30_n,A,n,cam_on,1,3.988,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/A_30_r.wav,A_30_r,A,r,cam_on,1,2.708,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/Nam_C01.wav,Nam_C01,A,r,hoi_khoa,1,3.028,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/Nam_C02.wav,Nam_C02,A,r,hoi_khoa,1,2.388,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/Nam_C03.wav,Nam_C03,A,r,hoi_phong,1,3.028,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/Nam_C04.wav,Nam_C04,A,r,hoi_phong,1,3.348,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/Nam_C05.wav,Nam_C05,A,r,thanh_toan,1,1.919,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/Nam_C06.wav,Nam_C06,A,r,nha_thuoc,1,2.239,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/Nam_C07.wav,Nam_C07,A,r,dan_duong,1,2.388,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/Nam_C08.wav,Nam_C08,A,r,dieu_chinh_toc_do,1,2.388,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/Nam_C09.wav,Nam_C09,A,r,gap_nhan_vien,1,2.068,16000,1,
+Hoàng Tuấn/Nam 20 tuổi/Nam_C10.wav,Nam_C10,A,r,cam_on,1,1.748,16000,1,
+Male 30/Mơ Nướng 10.wav,,,,,0,2.922,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 11.wav,,,,,0,3.114,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 12.wav,,,,,0,3.455,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 13.wav,,,,,0,3.135,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 14.wav,,,,,0,2.218,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 15.wav,,,,,0,2.794,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 16.wav,,,,,0,2.367,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 17.wav,,,,,0,2.538,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 18.wav,,,,,0,2.41,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 19.wav,,,,,0,3.327,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 2.wav,,,,,0,4.543,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 20.wav,,,,,0,3.007,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 21.wav,,,,,0,2.623,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 22.wav,,,,,0,2.644,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 23.wav,,,,,0,2.751,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 24.wav,,,,,0,3.434,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 25.wav,,,,,0,2.026,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 3.wav,,,,,0,3.455,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 4.wav,,,,,0,3.647,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 5.wav,,,,,0,2.943,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 6.wav,,,,,0,3.114,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 7.wav,,,,,0,3.199,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 8.wav,,,,,0,4.095,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng 9.wav,,,,,0,4.607,16000,1,no annotation (non-benchmark audio)
+Male 30/Mơ Nướng.wav,,,,,0,4.628,16000,1,no annotation (non-benchmark audio)
+Hoàng Tuấn/Nữ 20 tuổi/Nu_C01.wav,Nu_C01,B,r,hoi_khoa,1,5.504,16000,1,
+Hoàng Tuấn/Nữ 20 tuổi/Nu_C02.wav,Nu_C02,B,r,hoi_khoa,1,3.712,16000,1,
+Hoàng Tuấn/Nữ 20 tuổi/Nu_C03.wav,Nu_C03,B,r,hoi_phong,1,3.84,16000,1,
+Hoàng Tuấn/Nữ 20 tuổi/Nu_C04.wav,Nu_C04,B,r,hoi_phong,1,4.992,16000,1,
+Hoàng Tuấn/Nữ 20 tuổi/Nu_C05.wav,Nu_C05,B,r,thanh_toan,1,4.48,16000,1,
+Hoàng Tuấn/Nữ 20 tuổi/Nu_C06.wav,Nu_C06,B,r,nha_thuoc,1,3.712,16000,1,
+Hoàng Tuấn/Nữ 20 tuổi/Nu_C07.wav,Nu_C07,B,r,dan_duong,1,4.16,16000,1,
+Hoàng Tuấn/Nữ 20 tuổi/Nu_C08.wav,Nu_C08,B,r,dieu_chinh_toc_do,1,4.288,16000,1,
+Hoàng Tuấn/Nữ 20 tuổi/Nu_C09.wav,Nu_C09,B,r,gap_nhan_vien,1,3.712,16000,1,
+Hoàng Tuấn/Nữ 20 tuổi/Nu_C10.wav,Nu_C10,B,r,cam_on,1,3.072,16000,1,
+Phương Uyên/Giọng clone/TG - Train 1.wav,,,,,0,10.319,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Giọng clone/TG -Train 2.wav,,,,,0,2.759,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Giọng clone/TT.wav,,,,,0,2.479,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Giọng clone/Trần Thành.m4a.wav,,,,,0,9.044,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Giọng clone/Trần Thành.wav,,,,,0,9.044,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Giọng clone/Trường Giang.m4a.wav,,,,,0,15.231,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Giọng clone/Trường Giang.wav,,,,,0,15.231,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_01_n (1).wav,,,,,0,4.479,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_01_r (1).wav,,,,,0,6.548,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_02_n (1).wav,,,,,0,5.802,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_02_r (1).wav,,,,,0,6.463,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_03_n (1).wav,,,,,0,4.159,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_03_r (1).wav,,,,,0,6.335,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_04_n (1).wav,,,,,0,5.802,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_04_r (1).wav,,,,,0,6.676,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_05_n (1).wav,,,,,0,5.332,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_05_r (1).wav,,,,,0,6.783,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_06_n (1).wav,,,,,0,4.671,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_06_r (1).wav,,,,,0,5.887,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_07_n (1).wav,,,,,0,5.524,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_07_r (1).wav,,,,,0,5.439,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_08_n (1).wav,,,,,0,5.375,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_08_r (1).wav,,,,,0,8.212,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_09_n (1).wav,,,,,0,4.18,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_09_r (1).wav,,,,,0,6.1,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_10_n (1).wav,,,,,0,4.138,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_10_r (1).wav,,,,,0,4.799,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_11_n (1).wav,,,,,0,4.308,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_11_r (1).wav,,,,,0,6.25,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_12_n (1).wav,,,,,0,4.714,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_12_r (1).wav,,,,,0,4.799,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_13_n (1).wav,,,,,0,3.967,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_13_r (1).wav,,,,,0,4.223,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_14_n (1).wav,,,,,0,4.948,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_14_r (1).wav,,,,,0,5.375,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_15_n (1).wav,,,,,0,3.86,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_15_r (1).wav,,,,,0,4.5,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_16_n (1).wav,,,,,0,3.007,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_16_r (1).wav,,,,,0,4.202,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_17_n (1).wav,,,,,0,3.028,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_17_r (1).wav,,,,,0,6.058,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_18_n (1).wav,,,,,0,3.818,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_18_r (1).wav,,,,,0,5.098,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_19_n (1).wav,,,,,0,5.482,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_19_r (1).wav,,,,,0,6.506,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_20_n (1).wav,,,,,0,7.53,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_20_r (1).wav,,,,,0,7.338,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_21_n (1).wav,,,,,0,6.719,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_21_r (1).wav,,,,,0,7.018,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_22_n (1).wav,,,,,0,5.247,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_22_r (1).wav,,,,,0,6.378,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_23_n (1).wav,,,,,0,5.546,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_23_r (1).wav,,,,,0,5.354,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_24_n (1).wav,,,,,0,4.735,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_24_r (1).wav,,,,,0,4.031,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_25_n (1).wav,,,,,0,5.952,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_25_r (1).wav,,,,,0,6.292,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_26_n (1).wav,,,,,0,4.736,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_26_r (1).wav,,,,,0,3.604,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_27_n (1).wav,,,,,0,4.032,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_27_r (1).wav,,,,,0,5.14,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_28_n (1).wav,,,,,0,3.264,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_28_r (1).wav,,,,,0,3.946,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_29_n (1).wav,,,,,0,4.032,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_29_r (1).wav,,,,,0,7.018,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_30_n (1).wav,,,,,0,3.712,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_30_r (1).wav,,,,,0,4.308,16000,1,no annotation (non-benchmark audio)
+Phương Uyên/Nữ 20 tuổi/A_C01_n.wav,A_C01_n,A,n,hoi_khoa,1,3.52,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C01_r.wav,A_C01_r,A,r,hoi_khoa,1,4.8,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_C01_r.wav,A_C01_r,A,r,hoi_khoa,0,3.52,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_C01_r.wav,A_C01_r,A,r,hoi_khoa,0,4.352,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C02_n.wav,A_C02_n,A,n,hoi_khoa,1,3.648,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C02_r.wav,A_C02_r,A,r,hoi_khoa,1,4.032,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_C02_r.wav,A_C02_r,A,r,hoi_khoa,0,3.264,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_C02_r.wav,A_C02_r,A,r,hoi_khoa,0,3.84,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C03_n.wav,A_C03_n,A,n,hoi_phong,1,4.992,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C03_r.wav,A_C03_r,A,r,hoi_phong,1,5.76,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_C03_r.wav,A_C03_r,A,r,hoi_phong,0,3.904,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_C03_r.wav,A_C03_r,A,r,hoi_phong,0,4.224,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C04_n.wav,A_C04_n,A,n,hoi_phong,1,3.584,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C04_r.wav,A_C04_r,A,r,hoi_phong,1,6.016,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_C04_r.wav,A_C04_r,A,r,hoi_phong,0,4.416,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_C04_r.wav,A_C04_r,A,r,hoi_phong,0,4.8,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C05_n.wav,A_C05_n,A,n,thanh_toan,1,4.416,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C05_r.wav,A_C05_r,A,r,thanh_toan,1,4.864,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_C05_r.wav,A_C05_r,A,r,thanh_toan,0,3.392,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_C05_r.wav,A_C05_r,A,r,thanh_toan,0,3.648,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C06_n.wav,A_C06_n,A,n,nha_thuoc,1,3.584,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C06_r.wav,A_C06_r,A,r,nha_thuoc,1,4.416,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_C06_r.wav,A_C06_r,A,r,nha_thuoc,0,3.328,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_C06_r.wav,A_C06_r,A,r,nha_thuoc,0,3.392,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C07_n.wav,A_C07_n,A,n,dan_duong,1,4.672,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C07_r.wav,A_C07_r,A,r,dan_duong,1,4.288,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_C07_r.wav,A_C07_r,A,r,dan_duong,0,3.968,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_C07_r.wav,A_C07_r,A,r,dan_duong,0,4.224,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C08_n.wav,A_C08_n,A,n,dieu_chinh_toc_do,1,3.712,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C08_r.wav,A_C08_r,A,r,dieu_chinh_toc_do,1,4.736,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_C08_r.wav,A_C08_r,A,r,dieu_chinh_toc_do,0,3.392,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_C08_r.wav,A_C08_r,A,r,dieu_chinh_toc_do,0,3.392,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C09_n.wav,A_C09_n,A,n,gap_nhan_vien,1,4.8,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C09_r.wav,A_C09_r,A,r,gap_nhan_vien,1,5.12,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_C09_r.wav,A_C09_r,A,r,gap_nhan_vien,0,4.416,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_C09_r.wav,A_C09_r,A,r,gap_nhan_vien,0,3.392,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C10_n.wav,A_C10_n,A,n,cam_on,1,2.304,16000,1,
+Phương Uyên/Nữ 20 tuổi/A_C10_r.wav,A_C10_r,A,r,cam_on,1,3.328,16000,1,
+Phương Uyên/Trẻ con/Nam 10/A_C10_r.wav,A_C10_r,A,r,cam_on,0,3.904,16000,1,
+Phương Uyên/Trẻ con/Nữ 10/A_C10_r.wav,A_C10_r,A,r,cam_on,0,3.584,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_01_n.wav,B_01_n,B,n,dang_ky_kham,1,5.504,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_01_r.wav,B_01_r,B,r,dang_ky_kham,1,4.928,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_02_n.wav,B_02_n,B,n,dang_ky_kham,1,6.464,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_02_r.wav,B_02_r,B,r,dang_ky_kham,1,6.848,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_03_n.wav,B_03_n,B,n,bao_hiem,1,5.44,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_03_r.wav,B_03_r,B,r,bao_hiem,1,6.016,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_04_n.wav,B_04_n,B,n,hoi_khoa,1,5.312,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_04_r.wav,B_04_r,B,r,hoi_khoa,1,5.504,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_05_n.wav,B_05_n,B,n,hoi_khoa,1,5.312,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_05_r.wav,B_05_r,B,r,hoi_khoa,1,4.672,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_06_n.wav,B_06_n,B,n,hoi_phong,1,5.504,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_06_r.wav,B_06_r,B,r,hoi_phong,1,7.168,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_07_n.wav,B_07_n,B,n,hoi_phong,1,5.12,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_07_r.wav,B_07_r,B,r,hoi_phong,1,5.248,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_08_n.wav,B_08_n,B,n,hoi_phong,1,5.504,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_08_r.wav,B_08_r,B,r,hoi_phong,1,4.864,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_09_n.wav,B_09_n,B,n,tien_ich,1,4.992,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_09_r.wav,B_09_r,B,r,tien_ich,1,5.44,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_10_n.wav,B_10_n,B,n,khong_ho_tro,1,3.712,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_10_r.wav,B_10_r,B,r,khong_ho_tro,1,4.544,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_11_n.wav,B_11_n,B,n,gap_nhan_vien,1,5.376,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_11_r.wav,B_11_r,B,r,gap_nhan_vien,1,7.232,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_12_n.wav,B_12_n,B,n,thanh_toan,1,5.76,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_12_r.wav,B_12_r,B,r,thanh_toan,1,6.016,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_13_n.wav,B_13_n,B,n,nha_thuoc,1,4.608,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_13_r.wav,B_13_r,B,r,nha_thuoc,1,5.248,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_14_n.wav,B_14_n,B,n,tien_ich,1,6.016,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_14_r.wav,B_14_r,B,r,tien_ich,1,5.44,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_15_n.wav,B_15_n,B,n,tien_ich,1,4.352,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_15_r.wav,B_15_r,B,r,tien_ich,1,4.096,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_16_n.wav,B_16_n,B,n,hoi_khoa,1,5.824,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_16_r.wav,B_16_r,B,r,hoi_khoa,1,6.4,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_17_n.wav,B_17_n,B,n,dang_ky_kham,1,6.336,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_17_r.wav,B_17_r,B,r,dang_ky_kham,1,7.04,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_18_n.wav,B_18_n,B,n,dieu_chinh_am_luong,1,7.04,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_18_r.wav,B_18_r,B,r,dieu_chinh_am_luong,1,7.68,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_19_n.wav,B_19_n,B,n,nhac_lai,1,5.312,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_19_r.wav,B_19_r,B,r,nhac_lai,1,6.272,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_20_n.wav,B_20_n,B,n,dan_duong,1,5.312,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_20_r.wav,B_20_r,B,r,dan_duong,1,5.12,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_21_n.wav,B_21_n,B,n,dieu_chinh_toc_do,1,3.584,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_21_r.wav,B_21_r,B,r,dieu_chinh_toc_do,1,3.328,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_22_n.wav,B_22_n,B,n,dung_lai,1,4.608,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_22_r.wav,B_22_r,B,r,dung_lai,1,4.8,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_23_n.wav,B_23_n,B,n,tiep_tuc,1,4.544,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_23_r.wav,B_23_r,B,r,tiep_tuc,1,4.928,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_24_n.wav,B_24_n,B,n,tien_ich,1,4.992,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_24_r.wav,B_24_r,B,r,tien_ich,1,5.76,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_25_n.wav,B_25_n,B,n,cap_cuu,1,5.184,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_25_r.wav,B_25_r,B,r,cap_cuu,1,6.336,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_26_n.wav,B_26_n,B,n,hoi_phong,1,3.904,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_26_r.wav,B_26_r,B,r,hoi_phong,1,5.76,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_27_n.wav,B_27_n,B,n,hoi_phong,1,6.848,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_27_r.wav,B_27_r,B,r,hoi_phong,1,6.848,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_28_n.wav,B_28_n,B,n,thoi_gian_cho,1,4.416,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_28_r.wav,B_28_r,B,r,thoi_gian_cho,1,4.416,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_29_n.wav,B_29_n,B,n,nhac_lai,1,6.144,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_29_r.wav,B_29_r,B,r,nhac_lai,1,5.44,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_30_n.wav,B_30_n,B,n,cam_on,1,4.672,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_30_r.wav,B_30_r,B,r,cam_on,1,3.968,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C01_n.wav,B_C01_n,B,n,hoi_khoa,1,4.096,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C01_r.wav,B_C01_r,B,r,hoi_khoa,1,5.504,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C02_n.wav,B_C02_n,B,n,hoi_khoa,1,3.328,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C02_r.wav,B_C02_r,B,r,hoi_khoa,1,3.712,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C03_n.wav,B_C03_n,B,n,hoi_phong,1,5.184,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C03_r.wav,B_C03_r,B,r,hoi_phong,1,3.84,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C04_n.wav,B_C04_n,B,n,hoi_phong,1,4.928,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C04_r.wav,B_C04_r,B,r,hoi_phong,1,4.992,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C05_n.wav,B_C05_n,B,n,thanh_toan,1,3.648,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C05_r.wav,B_C05_r,B,r,thanh_toan,1,4.48,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C06_n.wav,B_C06_n,B,n,nha_thuoc,1,4.48,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C06_r.wav,B_C06_r,B,r,nha_thuoc,1,3.712,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C07_n.wav,B_C07_n,B,n,dan_duong,1,4.928,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C07_r.wav,B_C07_r,B,r,dan_duong,1,4.16,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C08_n.wav,B_C08_n,B,n,dieu_chinh_toc_do,1,4.672,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C08_r.wav,B_C08_r,B,r,dieu_chinh_toc_do,1,4.288,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C09_n.wav,B_C09_n,B,n,gap_nhan_vien,1,4.736,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C09_r.wav,B_C09_r,B,r,gap_nhan_vien,1,3.712,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C10_n.wav,B_C10_n,B,n,cam_on,1,4.16,16000,1,
+Phương Uyên/Nữ 20 tuổi/B_C10_r.wav,B_C10_r,B,r,cam_on,1,3.072,16000,1,
+Lê Hà/Nam 20/A/A_A_01_n.wav,,,,,0,3.399,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_01_r.wav,,,,,0,4.806,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_02_n.wav,,,,,0,6.364,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_02_r.wav,,,,,0,3.506,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_03_n.wav,,,,,0,5.659,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_03_r.wav,,,,,0,3.569,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_04_n.wav,,,,,0,3.781,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_04_r.wav,,,,,0,3.761,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_05_n.wav,,,,,0,3.419,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_05_r.wav,,,,,0,3.506,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_06_n.wav,,,,,0,2.779,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_06_r.wav,,,,,0,2.459,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_07_n.wav,,,,,0,2.801,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_07_r.wav,,,,,0,2.994,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_08_n.wav,,,,,0,6.002,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_08_r.wav,,,,,0,4.167,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_09_n.wav,,,,,0,2.674,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_09_r.wav,,,,,0,2.866,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_10_n.wav,,,,,0,3.229,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_10_r.wav,,,,,0,2.844,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_11_n.wav,,,,,0,3.079,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_11_r.wav,,,,,0,2.759,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_12_n.wav,,,,,0,2.844,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_12_r.wav,,,,,0,2.866,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_13_n.wav,,,,,0,2.844,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_13_r.wav,,,,,0,2.886,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_14_n.wav,,,,,0,2.951,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_14_r.wav,,,,,0,2.779,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_15_n.wav,,,,,0,2.886,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_15_r.wav,,,,,0,2.247,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_16_n.wav,,,,,0,2.609,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_16_r.wav,,,,,0,2.502,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_17_n.wav,,,,,0,3.229,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_17_r.wav,,,,,0,2.886,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_18_n.wav,,,,,0,2.886,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_18_r.wav,,,,,0,2.929,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_19_n.wav,,,,,0,3.591,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_19_r.wav,,,,,0,3.611,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_20_n.wav,,,,,0,3.804,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_20_r.wav,,,,,0,4.059,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_21_n.wav,,,,,0,3.696,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_21_r.wav,,,,,0,3.549,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_22_n.wav,,,,,0,3.419,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_22_r.wav,,,,,0,3.334,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_23_n.wav,,,,,0,2.994,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_23_r.wav,,,,,0,3.187,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_24_n.wav,,,,,0,3.014,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_24_r.wav,,,,,0,2.801,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_25_n.wav,,,,,0,3.462,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_25_r.wav,,,,,0,3.739,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_26_n.wav,,,,,0,2.994,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_26_r.wav,,,,,0,2.694,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_27_n.wav,,,,,0,2.994,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_27_r.wav,,,,,0,2.694,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_28_n.wav,,,,,0,4.101,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_28_r.wav,,,,,0,2.674,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_29_n.wav,,,,,0,3.314,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_29_r.wav,,,,,0,3.526,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_30_n.wav,,,,,0,2.821,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_A_30_r.wav,,,,,0,2.801,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C01_n.wav,,,,,0,2.674,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C01_r.wav,,,,,0,2.651,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C02_n.wav,,,,,0,2.651,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C02_r.wav,,,,,0,2.909,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C03_n.wav,,,,,0,2.801,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C03_r.wav,,,,,0,3.079,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C04_n.wav,,,,,0,3.099,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C04_r.wav,,,,,0,3.122,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C05_n.wav,,,,,0,2.821,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C05_r.wav,,,,,0,2.674,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C06_n.wav,,,,,0,2.716,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C06_r.wav,,,,,0,3.142,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C07_n.wav,,,,,0,3.591,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C07_r.wav,,,,,0,3.526,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C08_n.wav,,,,,0,3.484,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C08_r.wav,,,,,0,2.951,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C09_n.wav,,,,,0,3.207,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C09_r.wav,,,,,0,3.079,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C10_n.wav,,,,,0,3.272,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 20/A/A_C10_r.wav,,,,,0,2.866,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C01_n.wav,,,,,0,3.419,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C01_r.wav,,,,,0,4.199,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C02_n.wav,,,,,0,2.639,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C02_r.wav,,,,,0,3.539,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C03_n.wav,,,,,0,3.299,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C03_r.wav,,,,,0,3.419,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C04_n.wav,,,,,0,3.359,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C04_r.wav,,,,,0,3.599,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C05_n.wav,,,,,0,3.299,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C05_r.wav,,,,,0,3.359,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C06_n.wav,,,,,0,2.939,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C06_r.wav,,,,,0,3.119,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C07_n.wav,,,,,0,3.599,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C07_r.wav,,,,,0,3.719,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C08_n.wav,,,,,0,3.119,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C08_r.wav,,,,,0,3.299,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C09_n.wav,,,,,0,3.239,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C09_r.wav,,,,,0,3.179,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C10_n.wav,,,,,0,2.699,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_C10_r.wav,,,,,0,3.119,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T01_n.wav,,,,,0,5.699,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T01_r.wav,,,,,0,5.639,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T02_n.wav,,,,,0,5.159,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T02_r.wav,,,,,0,5.459,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T03_n.wav,,,,,0,4.139,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T03_r.wav,,,,,0,3.899,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T04_n.wav,,,,,0,4.319,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T04_r.wav,,,,,0,4.439,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T05_n.wav,,,,,0,4.079,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T05_r.wav,,,,,0,3.779,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T06_n.wav,,,,,0,3.479,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T06_r.wav,,,,,0,4.259,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T07_n.wav,,,,,0,3.959,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T07_r.wav,,,,,0,3.419,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T08_n.wav,,,,,0,4.499,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T08_r.wav,,,,,0,4.859,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T09_n.wav,,,,,0,4.199,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T09_r.wav,,,,,0,4.499,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T10_n.wav,,,,,0,4.319,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T10_r.wav,,,,,0,4.799,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T11_n.wav,,,,,0,3.839,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T11_r.wav,,,,,0,3.659,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T12_n.wav,,,,,0,3.719,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T12_r.wav,,,,,0,3.959,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T13_n.wav,,,,,0,4.559,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T13_r.wav,,,,,0,5.279,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T14_n.wav,,,,,0,3.359,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T14_r.wav,,,,,0,4.019,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T15_n.wav,,,,,0,3.119,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T15_r.wav,,,,,0,3.539,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T16_n.wav,,,,,0,3.359,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T16_r.wav,,,,,0,4.139,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T17_n.wav,,,,,0,3.479,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T17_r.wav,,,,,0,3.599,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T18_n.wav,,,,,0,4.199,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T18_r.wav,,,,,0,4.679,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T19_n.wav,,,,,0,3.299,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T19_r.wav,,,,,0,4.439,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T20_n.wav,,,,,0,3.899,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T20_r.wav,,,,,0,4.739,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T21_n.wav,,,,,0,3.179,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T21_r.wav,,,,,0,3.479,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T22_n.wav,,,,,0,3.599,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T22_r.wav,,,,,0,4.199,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T23_n.wav,,,,,0,3.599,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T23_r.wav,,,,,0,4.079,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T24_n.wav,,,,,0,5.159,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T24_r.wav,,,,,0,4.319,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T25_n.wav,,,,,0,3.179,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nam 30/M30/M30_T25_r.wav,,,,,0,4.559,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_01_n.wav,,,,,0,3.599,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_01_r.wav,,,,,0,5.159,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_02_n.wav,,,,,0,3.959,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_02_r.wav,,,,,0,4.859,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_03_n.wav,,,,,0,3.659,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_03_r.wav,,,,,0,5.399,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_04_n.wav,,,,,0,4.079,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_04_r.wav,,,,,0,5.039,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_05_n.wav,,,,,0,3.659,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_05_r.wav,,,,,0,4.379,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_06_n.wav,,,,,0,4.139,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_06_r.wav,,,,,0,4.259,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_07_n.wav,,,,,0,3.239,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_07_r.wav,,,,,0,3.959,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_08_n.wav,,,,,0,4.019,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_08_r.wav,,,,,0,4.259,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_09_n.wav,,,,,0,3.359,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_09_r.wav,,,,,0,4.319,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_10_n.wav,,,,,0,3.839,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_10_r.wav,,,,,0,4.259,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_11_n.wav,,,,,0,4.499,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_11_r.wav,,,,,0,5.879,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_12_n.wav,,,,,0,4.139,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_12_r.wav,,,,,0,4.919,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_13_n.wav,,,,,0,3.299,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_13_r.wav,,,,,0,4.199,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_14_n.wav,,,,,0,3.899,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_14_r.wav,,,,,0,4.019,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_15_n.wav,,,,,0,4.199,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_15_r.wav,,,,,0,4.439,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_16_n.wav,,,,,0,5.279,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_16_r.wav,,,,,0,6.239,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_17_n.wav,,,,,0,5.099,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_17_r.wav,,,,,0,6.239,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_18_n.wav,,,,,0,4.799,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_18_r.wav,,,,,0,6.059,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_19_n.wav,,,,,0,4.019,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_19_r.wav,,,,,0,5.039,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_20_n.wav,,,,,0,4.739,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_20_r.wav,,,,,0,6.119,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_21_n.wav,,,,,0,4.139,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_21_r.wav,,,,,0,4.199,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_22_n.wav,,,,,0,4.139,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_22_r.wav,,,,,0,4.319,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_23_n.wav,,,,,0,3.899,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_23_r.wav,,,,,0,4.259,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_24_n.wav,,,,,0,5.159,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_24_r.wav,,,,,0,5.999,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_25_n.wav,,,,,0,5.459,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_25_r.wav,,,,,0,6.119,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_26_n.wav,,,,,0,4.079,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_26_r.wav,,,,,0,4.979,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_27_n.wav,,,,,0,4.619,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_27_r.wav,,,,,0,6.359,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_28_n.wav,,,,,0,4.199,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_28_r.wav,,,,,0,4.859,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_29_n.wav,,,,,0,4.739,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_29_r.wav,,,,,0,5.579,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_30_n.wav,,,,,0,4.079,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_B_30_r.wav,,,,,0,4.259,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C01_n.wav,,,,,0,4.139,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C01_r.wav,,,,,0,5.219,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C02_n.wav,,,,,0,4.259,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C02_r.wav,,,,,0,4.259,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C03_n.wav,,,,,0,5.039,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C03_r.wav,,,,,0,5.219,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C04_n.wav,,,,,0,4.499,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C04_r.wav,,,,,0,6.299,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C05_n.wav,,,,,0,4.019,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C05_r.wav,,,,,0,4.139,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C06_n.wav,,,,,0,4.139,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C06_r.wav,,,,,0,4.199,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C07_n.wav,,,,,0,4.199,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C07_r.wav,,,,,0,5.279,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C08_n.wav,,,,,0,4.199,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C08_r.wav,,,,,0,4.019,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C09_n.wav,,,,,0,4.019,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C09_r.wav,,,,,0,5.159,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C10_n.wav,,,,,0,3.059,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B/B_C10_r.wav,,,,,0,4.139,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_01_n.wav,,,,,0,5.226,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_01_r.wav,,,,,0,5.695,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_02_n.wav,,,,,0,5.588,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_02_r.wav,,,,,0,6.868,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_03_n.wav,,,,,0,5.418,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_03_r.wav,,,,,0,6.506,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_04_n.wav,,,,,0,5.076,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_04_r.wav,,,,,0,5.738,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_05_n.wav,,,,,0,5.076,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_05_r.wav,,,,,0,4.5,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_06_n.wav,,,,,0,5.908,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_06_r.wav,,,,,0,5.14,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_07_n.wav,,,,,0,4.948,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_07_r.wav,,,,,0,4.479,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_08_n.wav,,,,,0,3.86,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_08_r.wav,,,,,0,4.5,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_09_n.wav,,,,,0,4.116,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_09_r.wav,,,,,0,3.647,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_10_n.wav,,,,,0,2.687,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_10_r.wav,,,,,0,4.116,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_11_n.wav,,,,,0,4.202,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_11_r.wav,,,,,0,6.399,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_12_n.wav,,,,,0,4.543,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_12_r.wav,,,,,0,5.695,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_13_n.wav,,,,,0,3.754,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_13_r.wav,,,,,0,4.372,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_14_n.wav,,,,,0,4.116,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_14_r.wav,,,,,0,4.266,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_15_n.wav,,,,,0,3.476,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_15_r.wav,,,,,0,4.394,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_16_n.wav,,,,,0,5.268,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_16_r.wav,,,,,0,6.122,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_17_n.wav,,,,,0,5.738,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_17_r.wav,,,,,0,6.57,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_18_n.wav,,,,,0,4.628,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_18_r.wav,,,,,0,4.692,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_19_n.wav,,,,,0,5.162,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_19_r.wav,,,,,0,4.799,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_20_n.wav,,,,,0,5.887,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_20_r.wav,,,,,0,6.335,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_21_n.wav,,,,,0,3.903,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_21_r.wav,,,,,0,3.391,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_22_n.wav,,,,,0,3.391,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_22_r.wav,,,,,0,3.37,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_23_n.wav,,,,,0,3.668,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_23_r.wav,,,,,0,3.775,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_24_n.wav,,,,,0,5.268,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_24_r.wav,,,,,0,5.823,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_25_n.wav,,,,,0,5.866,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_25_r.wav,,,,,0,4.671,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_26_n.wav,,,,,0,3.54,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_26_r.wav,,,,,0,3.54,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_27_n.wav,,,,,0,6.079,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_27_r.wav,,,,,0,5.204,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_28_n.wav,,,,,0,4.5,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_28_r.wav,,,,,0,4.564,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_29_n.wav,,,,,0,3.86,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_29_r.wav,,,,,0,5.759,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_30_n.wav,,,,,0,4.799,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_B_30_r.wav,,,,,0,3.178,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C01_n.wav,,,,,0,4.18,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C01_r.wav,,,,,0,4.394,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C02_n.wav,,,,,0,2.9,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C02_r.wav,,,,,0,2.623,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C03_n.wav,,,,,0,3.327,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C03_r.wav,,,,,0,4.159,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C04_n.wav,,,,,0,4.586,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C04_r.wav,,,,,0,4.948,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C05_n.wav,,,,,0,3.327,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C05_r.wav,,,,,0,3.114,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C06_n.wav,,,,,0,2.132,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C06_r.wav,,,,,0,3.348,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C07_n.wav,,,,,0,4.159,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C07_r.wav,,,,,0,3.156,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C08_n.wav,,,,,0,2.772,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C08_r.wav,,,,,0,2.324,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C09_n.wav,,,,,0,3.54,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C09_r.wav,,,,,0,3.391,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C10_n.wav,,,,,0,2.132,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/B (2)/B_C10_r.wav,,,,,0,2.794,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_01_n.wav,,,,,0,6.719,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_01_r.wav,,,,,0,5.804,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_02_n.wav,,,,,0,5.479,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_02_r.wav,,,,,0,7.124,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_03_n.wav,,,,,0,6.698,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_03_r.wav,,,,,0,5.887,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_04_n.wav,,,,,0,6.036,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_04_r.wav,,,,,0,4.82,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_05_n.wav,,,,,0,4.244,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_05_r.wav,,,,,0,4.244,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_06_n.wav,,,,,0,4.884,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_06_r.wav,,,,,0,4.778,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_07_n.wav,,,,,0,4.607,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_07_r.wav,,,,,0,4.735,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_08_n.wav,,,,,0,4.116,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_08_r.wav,,,,,0,4.415,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_09_n.wav,,,,,0,3.242,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_09_r.wav,,,,,0,3.924,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_10_n.wav,,,,,0,4.564,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_10_r.wav,,,,,0,5.908,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_11_n.wav,,,,,0,4.927,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_11_r.wav,,,,,0,5.844,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_12_n.wav,,,,,0,4.031,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_12_r.wav,,,,,0,4.82,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_13_n.wav,,,,,0,4.159,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_13_r.wav,,,,,0,4.116,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_14_n.wav,,,,,0,4.159,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_14_r.wav,,,,,0,3.562,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_15_n.wav,,,,,0,5.076,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_15_r.wav,,,,,0,4.394,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_16_n.wav,,,,,0,4.778,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_16_r.wav,,,,,0,5.439,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_17_n.wav,,,,,0,4.522,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_17_r.wav,,,,,0,4.735,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_18_n.wav,,,,,0,3.476,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_18_r.wav,,,,,0,3.86,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_19_n.wav,,,,,0,4.991,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_19_r.wav,,,,,0,3.562,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_20_n.wav,,,,,0,3.946,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_20_r.wav,,,,,0,4.138,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_21_n.wav,,,,,0,5.14,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_21_r.wav,,,,,0,3.22,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_22_n.wav,,,,,0,3.583,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_22_r.wav,,,,,0,3.818,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_23_n.wav,,,,,0,3.818,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_23_r.wav,,,,,0,3.775,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_24_n.wav,,,,,0,4.159,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_24_r.wav,,,,,0,4.522,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_25_n.wav,,,,,0,4.82,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_25_r.wav,,,,,0,4.65,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_26_n.wav,,,,,0,4.564,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_26_r.wav,,,,,0,3.391,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_27_n.wav,,,,,0,4.522,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_27_r.wav,,,,,0,4.351,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_28_n.wav,,,,,0,3.626,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_28_r.wav,,,,,0,3.711,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_29_n.wav,,,,,0,4.458,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_29_r.wav,,,,,0,4.095,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_30_n.wav,,,,,0,3.263,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_B_30_r.wav,,,,,0,2.602,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C01_n.wav,,,,,0,2.9,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C01_r.wav,,,,,0,3.05,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C02_n.wav,,,,,0,3.242,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C02_r.wav,,,,,0,3.412,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C03_n.wav,,,,,0,3.498,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C03_r.wav,,,,,0,3.135,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C04_n.wav,,,,,0,3.455,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C04_r.wav,,,,,0,3.284,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C05_n.wav,,,,,0,3.156,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C05_r.wav,,,,,0,3.434,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C06_n.wav,,,,,0,3.327,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C06_r.wav,,,,,0,3.284,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C07_n.wav,,,,,0,4.159,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C07_r.wav,,,,,0,3.306,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C08_n.wav,,,,,0,4.458,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C08_r.wav,,,,,0,3.327,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C09_n.wav,,,,,0,3.668,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C09_r.wav,,,,,0,3.711,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C10_n.wav,,,,,0,3.092,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 20/Bản sao của B/B_C10_r.wav,,,,,0,2.623,16000,1,no annotation (Lê Hà import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C01_n.wav,,,,,0,5.219,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C01_r.wav,,,,,0,5.099,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C02_n.wav,,,,,0,4.619,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C02_r.wav,,,,,0,4.079,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C03_n.wav,,,,,0,5.039,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C03_r.wav,,,,,0,4.619,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C04_n.wav,,,,,0,5.219,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C04_r.wav,,,,,0,5.219,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C05_n.wav,,,,,0,4.739,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C05_r.wav,,,,,0,4.379,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C06_n.wav,,,,,0,4.199,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C06_r.wav,,,,,0,3.539,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C07_n.wav,,,,,0,4.379,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C07_r.wav,,,,,0,4.499,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C08_n.wav,,,,,0,4.439,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C08_r.wav,,,,,0,4.799,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C09_n.wav,,,,,0,5.399,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C09_r.wav,,,,,0,4.439,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C10_n.wav,,,,,0,4.199,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_C10_r.wav,,,,,0,3.539,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T01_n.wav,,,,,0,5.339,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T01_r.wav,,,,,0,5.039,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T02_n.wav,,,,,0,5.039,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T02_r.wav,,,,,0,5.099,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T03_n.wav,,,,,0,4.679,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T03_r.wav,,,,,0,4.559,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T04_n.wav,,,,,0,5.279,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T04_r.wav,,,,,0,5.279,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T05_n.wav,,,,,0,4.319,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T05_r.wav,,,,,0,4.559,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T06_n.wav,,,,,0,4.619,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T06_r.wav,,,,,0,5.039,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T07_n.wav,,,,,0,4.679,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T07_r.wav,,,,,0,4.319,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T08_n.wav,,,,,0,5.039,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T08_r.wav,,,,,0,5.399,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T09_n.wav,,,,,0,5.759,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T09_r.wav,,,,,0,5.339,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T10_n.wav,,,,,0,4.499,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T10_r.wav,,,,,0,5.279,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T11_n.wav,,,,,0,4.499,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T11_r.wav,,,,,0,4.619,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T12_n.wav,,,,,0,4.919,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T12_r.wav,,,,,0,5.279,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T13_n.wav,,,,,0,4.439,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T13_r.wav,,,,,0,5.699,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T14_n.wav,,,,,0,4.559,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T14_r.wav,,,,,0,4.379,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T15_n.wav,,,,,0,4.979,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T15_r.wav,,,,,0,4.379,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T16_n.wav,,,,,0,4.499,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T16_r.wav,,,,,0,4.559,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T17_n.wav,,,,,0,3.839,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T17_r.wav,,,,,0,4.319,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T18_n.wav,,,,,0,5.339,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T18_r.wav,,,,,0,5.759,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T19_n.wav,,,,,0,6.719,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T19_r.wav,,,,,0,5.279,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T20_n.wav,,,,,0,5.039,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T20_r.wav,,,,,0,4.379,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T21_n.wav,,,,,0,5.279,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T21_r.wav,,,,,0,5.339,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T22_n.wav,,,,,0,4.859,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T22_r.wav,,,,,0,5.279,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T23_n.wav,,,,,0,5.279,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T23_r.wav,,,,,0,4.979,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T24_n.wav,,,,,0,5.339,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T24_r.wav,,,,,0,5.519,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T25_n.wav,,,,,0,5.039,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_01/F30_T25_r.wav,,,,,0,4.199,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C01_n.wav,,,,,0,7.231,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C01_r.wav,,,,,0,5.824,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C02_n.wav,,,,,0,6.314,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C02_r.wav,,,,,0,4.077,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C03_n.wav,,,,,0,5.719,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C03_r.wav,,,,,0,4.354,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C04_n.wav,,,,,0,5.014,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C04_r.wav,,,,,0,6.124,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C05_n.wav,,,,,0,6.144,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C05_r.wav,,,,,0,4.782,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C06_n.wav,,,,,0,4.631,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C06_r.wav,,,,,0,5.101,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C07_n.wav,,,,,0,6.144,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C07_r.wav,,,,,0,5.271,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C08_n.wav,,,,,0,5.144,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C08_r.wav,,,,,0,5.569,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C09_n.wav,,,,,0,4.971,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C09_r.wav,,,,,0,3.459,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C10_n.wav,,,,,0,4.782,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_C10_r.wav,,,,,0,3.354,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T01_n.wav,,,,,0,10.919,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T01_r.wav,,,,,0,7.212,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T02_n.wav,,,,,0,8.681,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T02_r.wav,,,,,0,9.129,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T03_n.wav,,,,,0,7.402,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T03_r.wav,,,,,0,8.447,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T04_n.wav,,,,,0,7.487,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T04_r.wav,,,,,0,7.296,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T05_n.wav,,,,,0,7.039,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T05_r.wav,,,,,0,7.189,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T06_n.wav,,,,,0,7.189,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T06_r.wav,,,,,0,7.402,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T07_n.wav,,,,,0,5.527,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T07_r.wav,,,,,0,5.229,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T08_n.wav,,,,,0,6.209,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T08_r.wav,,,,,0,8.254,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T09_n.wav,,,,,0,9.681,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T09_r.wav,,,,,0,7.702,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T10_n.wav,,,,,0,6.506,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T10_r.wav,,,,,0,5.846,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T11_n.wav,,,,,0,6.676,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T11_r.wav,,,,,0,6.039,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T12_n.wav,,,,,0,6.529,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T12_r.wav,,,,,0,6.806,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T13_n.wav,,,,,0,6.186,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T13_r.wav,,,,,0,5.889,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T14_n.wav,,,,,0,5.997,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T14_r.wav,,,,,0,5.356,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T15_n.wav,,,,,0,5.697,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T15_r.wav,,,,,0,5.164,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T16_n.wav,,,,,0,5.271,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T16_r.wav,,,,,0,5.356,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T17_n.wav,,,,,0,5.441,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T17_r.wav,,,,,0,5.356,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T18_n.wav,,,,,0,5.399,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T18_r.wav,,,,,0,5.292,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T19_n.wav,,,,,0,5.591,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T19_r.wav,,,,,0,5.419,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T20_n.wav,,,,,0,5.612,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T20_r.wav,,,,,0,5.419,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T21_n.wav,,,,,0,6.101,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T21_r.wav,,,,,0,6.252,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T22_n.wav,,,,,0,8.211,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T22_r.wav,,,,,0,4.739,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T23_n.wav,,,,,0,7.891,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T23_r.wav,,,,,0,6.891,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T24_n.wav,,,,,0,5.997,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T24_r.wav,,,,,0,5.122,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T25_n.wav,,,,,0,5.569,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_02/F30_T25_r.wav,,,,,0,5.144,16000,1,no annotation (Lê Hà F30 re-import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C01_n.wav,,,,,0,3.239,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C01_r.wav,,,,,0,4.139,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C02_n.wav,,,,,0,3.779,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C02_r.wav,,,,,0,4.319,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C03_n.wav,,,,,0,3.239,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C03_r.wav,,,,,0,3.059,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C04_n.wav,,,,,0,3.119,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C04_r.wav,,,,,0,4.919,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C05_n.wav,,,,,0,3.779,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C05_r.wav,,,,,0,3.719,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C06_n.wav,,,,,0,3.839,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C06_r.wav,,,,,0,3.599,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C07_n.wav,,,,,0,3.419,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C07_r.wav,,,,,0,3.659,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C08_n.wav,,,,,0,3.839,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C08_r.wav,,,,,0,3.539,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C09_n.wav,,,,,0,4.499,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C09_r.wav,,,,,0,4.679,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C10_n.wav,,,,,0,3.899,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_C10_r.wav,,,,,0,4.139,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T01_n.wav,,,,,0,6.779,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T01_r.wav,,,,,0,8.339,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T02_n.wav,,,,,0,7.259,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T02_r.wav,,,,,0,6.719,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T03_n.wav,,,,,0,4.079,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T03_r.wav,,,,,0,6.299,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T04_n.wav,,,,,0,4.439,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T04_r.wav,,,,,0,5.819,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T05_n.wav,,,,,0,4.139,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T05_r.wav,,,,,0,4.799,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T06_n.wav,,,,,0,2.639,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T06_r.wav,,,,,0,5.399,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T07_n.wav,,,,,0,3.359,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T07_r.wav,,,,,0,4.019,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T08_n.wav,,,,,0,4.739,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T08_r.wav,,,,,0,4.559,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T09_n.wav,,,,,0,5.459,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T09_r.wav,,,,,0,7.079,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T10_n.wav,,,,,0,3.599,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T10_r.wav,,,,,0,4.379,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T11_n.wav,,,,,0,2.999,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T11_r.wav,,,,,0,2.939,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T12_n.wav,,,,,0,4.199,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T12_r.wav,,,,,0,3.659,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T13_n.wav,,,,,0,4.139,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T13_r.wav,,,,,0,4.799,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T14_n.wav,,,,,0,4.139,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T14_r.wav,,,,,0,2.579,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T15_n.wav,,,,,0,3.599,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T15_r.wav,,,,,0,4.499,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T16_n.wav,,,,,0,2.579,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T16_r.wav,,,,,0,2.699,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T17_n.wav,,,,,0,2.099,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T17_r.wav,,,,,0,3.359,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T18_n.wav,,,,,0,2.939,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T18_r.wav,,,,,0,5.519,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T19_n.wav,,,,,0,4.979,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T19_r.wav,,,,,0,4.679,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T20_n.wav,,,,,0,3.839,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T20_r.wav,,,,,0,3.539,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T21_n.wav,,,,,0,3.419,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T21_r.wav,,,,,0,4.979,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T22_n.wav,,,,,0,4.919,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T22_r.wav,,,,,0,4.679,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T23_n.wav,,,,,0,2.879,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T23_r.wav,,,,,0,5.039,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T24_n.wav,,,,,0,3.839,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T24_r.wav,,,,,0,4.979,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T25_n.wav,,,,,0,2.759,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)
+Lê Hà/Nữ 30/F30_03/F30_T25_r.wav,,,,,0,3.239,16000,1,no annotation (Lê Hà F30_03 local import — unverified audio)

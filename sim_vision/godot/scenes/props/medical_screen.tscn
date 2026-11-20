@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3]
+
+[sub_resource type="StandardMaterial3D" id="mat_inox"]
+albedo_color = Color(0.84, 0.87, 0.9, 1)
+metallic = 0.85
+roughness = 0.22
+
+[sub_resource type="StandardMaterial3D" id="mat_curtain"]
+albedo_color = Color(0.32, 0.68, 0.86, 1)
+roughness = 0.75
+
+[sub_resource type="BoxMesh" id="mesh_frame_outer"]
+material = SubResource("mat_inox")
+size = Vector3(0.54, 1.65, 0.03)
+
+[sub_resource type="BoxMesh" id="mesh_curtain_panel"]
+material = SubResource("mat_curtain")
+size = Vector3(0.48, 1.38, 0.015)
+
+[sub_resource type="BoxMesh" id="mesh_foot"]
+material = SubResource("mat_inox")
+size = Vector3(0.04, 0.03, 0.36)
+
+[sub_resource type="BoxShape3D" id="shape_screen"]
+size = Vector3(1.62, 1.72, 0.36)
+
+[node name="MedicalScreen" type="StaticBody3D"]
+
+[node name="PanelCenterFrame" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.88, 0)
+mesh = SubResource("mesh_frame_outer")
+
+[node name="PanelCenterCloth" type="MeshInstance3D" parent="PanelCenterFrame"]
+mesh = SubResource("mesh_curtain_panel")
+
+[node name="PanelLeftFrame" type="MeshInstance3D" parent="."]
+position = Vector3(-0.52, 0.88, 0.06)
+rotation = Vector3(0, 0.22, 0)
+mesh = SubResource("mesh_frame_outer")
+
+[node name="PanelLeftCloth" type="MeshInstance3D" parent="PanelLeftFrame"]
+mesh = SubResource("mesh_curtain_panel")
+
+[node name="PanelRightFrame" type="MeshInstance3D" parent="."]
+position = Vector3(0.52, 0.88, -0.06)
+rotation = Vector3(0, 0.22, 0)
+mesh = SubResource("mesh_frame_outer")
+
+[node name="PanelRightCloth" type="MeshInstance3D" parent="PanelRightFrame"]
+mesh = SubResource("mesh_curtain_panel")
+
+[node name="FootLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-0.74, 0.02, 0.08)
+mesh = SubResource("mesh_foot")
+
+[node name="FootMid" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.02, 0)
+mesh = SubResource("mesh_foot")
+
+[node name="FootRight" type="MeshInstance3D" parent="."]
+position = Vector3(0.74, 0.02, -0.08)
+mesh = SubResource("mesh_foot")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.86, 0)
+shape = SubResource("shape_screen")

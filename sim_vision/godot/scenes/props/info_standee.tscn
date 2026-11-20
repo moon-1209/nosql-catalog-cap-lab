@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3]
+
+[sub_resource type="StandardMaterial3D" id="mat_inox"]
+albedo_color = Color(0.82, 0.85, 0.88, 1)
+metallic = 0.85
+roughness = 0.22
+
+[sub_resource type="StandardMaterial3D" id="mat_board_bg"]
+albedo_color = Color(0.95, 0.97, 0.99, 1)
+roughness = 0.32
+
+[sub_resource type="StandardMaterial3D" id="mat_header_teal"]
+albedo_color = Color(0.09, 0.48, 0.56, 1)
+roughness = 0.35
+
+[sub_resource type="BoxMesh" id="mesh_base"]
+material = SubResource("mat_inox")
+size = Vector3(0.68, 0.04, 0.38)
+
+[sub_resource type="BoxMesh" id="mesh_board"]
+material = SubResource("mat_board_bg")
+size = Vector3(0.64, 1.32, 0.04)
+
+[sub_resource type="BoxMesh" id="mesh_header"]
+material = SubResource("mat_header_teal")
+size = Vector3(0.65, 0.24, 0.05)
+
+[sub_resource type="BoxShape3D" id="shape_standee"]
+size = Vector3(0.68, 1.62, 0.4)
+
+[node name="InfoStandee" type="StaticBody3D"]
+
+[node name="Base" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.02, 0)
+mesh = SubResource("mesh_base")
+
+[node name="PosterBoard" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.78, 0)
+mesh = SubResource("mesh_board")
+
+[node name="HeaderBox" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.38, 0)
+mesh = SubResource("mesh_header")
+
+[node name="HeaderLabel" type="Label3D" parent="."]
+position = Vector3(0, 1.38, 0.03)
+pixel_size = 0.0014
+text = "QUY TRÌNH KHÁM BỆNH
+BỆNH VIỆN ĐA KHOA"
+font_size = 32
+outline_size = 4
+
+[node name="StepsLabel" type="Label3D" parent="."]
+position = Vector3(0, 0.72, 0.026)
+pixel_size = 0.0013
+modulate = Color(0.1, 0.24, 0.38, 1)
+text = "BƯỚC 1: Lấy số thứ tự tự động
+BƯỚC 2: Đăng ký tại Quầy Tiếp Đón
+BƯỚC 3: Ngồi đợi tại Khu Ghế Chờ
+BƯỚC 4: Khám tại Phòng 112 / Cấp Cứu 101
+BƯỚC 5: Xét nghiệm tại Phòng 110
+BƯỚC 6: Lĩnh thuốc tại Nhà Thuốc"
+font_size = 25
+outline_size = 2
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.81, 0)
+shape = SubResource("shape_standee")

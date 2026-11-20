@@ -1,0 +1,101 @@
+id,intent,kind,text
+s001,dang_ky_kham,q,cho tôi hỏi muốn khám bệnh thì đăng ký ở chỗ nào
+s002,dang_ky_kham,q,tôi cần lấy số thứ tự để khám thì làm sao
+s003,dang_ky_kham,q,người đến khám lần đầu thì làm giấy tờ ở đâu
+s004,dang_ky_kham,c,tôi muốn đăng ký khám bệnh
+s005,dang_ky_kham,q,quầy tiếp đón nằm chỗ nào
+s006,bao_hiem,q,tôi muốn khám bằng bảo hiểm y tế thì làm thế nào
+s007,bao_hiem,q,thẻ bảo hiểm hết hạn rồi có dùng được không
+s008,bao_hiem,q,quầy bảo hiểm y tế ở đâu
+s009,bao_hiem,q,không mang thẻ bảo hiểm thì có được hưởng bảo hiểm không
+s010,bao_hiem,q,bảo hiểm có trả tiền khám cho tôi không
+s011,hoi_khoa,q,cho tôi hỏi khoa {department} ở đâu
+s012,hoi_khoa,q,khoa {department} nằm ở tầng nào
+s013,hoi_khoa,q,tôi muốn khám {department} thì đi đâu
+s014,hoi_khoa,q,tôi bị đau lưng thì khám ở khoa nào
+s015,hoi_khoa,q,đường đến khoa {department} đi lối nào
+s016,hoi_phong,q,phòng {room} ở tầng mấy
+s017,hoi_phong,q,cho tôi hỏi phòng {room} ở đâu
+s018,hoi_phong,q,tôi cần đến chỗ {room_name} thì đi hướng nào
+s019,hoi_phong,q,{room_name} ở chỗ nào
+s020,hoi_phong,q,phòng {room_name} nằm ở đâu
+s021,dan_duong,c,bạn đưa tôi đến khoa {department} được không
+s022,dan_duong,c,dẫn tôi tới phòng {room} với
+s023,dan_duong,c,nhờ bạn dẫn đường đến chỗ {room_name}
+s024,dan_duong,c,tôi không biết đường bạn dẫn tôi đi {room_name} nhé
+s025,dan_duong,c,bạn đưa giúp tôi tới khoa {department}
+s026,thanh_toan,q,tôi muốn đóng tiền khám thì nộp ở đâu
+s027,thanh_toan,q,ở đây có quẹt thẻ được không
+s028,thanh_toan,q,nộp viện phí chỗ nào
+s029,thanh_toan,q,tôi trả tiền bằng mã qr được không
+s030,thanh_toan,q,quầy thanh toán ở đâu
+s031,nha_thuoc,q,tôi muốn mua thuốc theo đơn thì đi đâu
+s032,nha_thuoc,q,quầy phát thuốc ở chỗ nào
+s033,nha_thuoc,q,lấy thuốc theo đơn bác sĩ ở đâu
+s034,nha_thuoc,q,gần đây có nhà thuốc không
+s035,nha_thuoc,q,tôi mua thuốc ở quầy nào
+s036,tien_ich,q,{facility} ở đâu
+s037,tien_ich,q,cho tôi hỏi {facility} đi hướng nào
+s038,tien_ich,q,gần đây có {facility} không
+s039,tien_ich,c,tôi muốn tìm {facility}
+s040,tien_ich,q,đi {facility} thì đi lối nào
+s041,thoi_gian_cho,q,tôi phải chờ bao lâu nữa
+s042,thoi_gian_cho,q,mấy giờ thì bác sĩ bắt đầu khám
+s043,thoi_gian_cho,q,khi nào thì đến lượt tôi
+s044,thoi_gian_cho,q,bệnh viện làm việc đến mấy giờ
+s045,thoi_gian_cho,q,chờ kết quả siêu âm mất bao lâu
+s046,dieu_chinh_toc_do,c,bạn đi chậm một chút
+s047,dieu_chinh_toc_do,c,đi từ từ thôi
+s048,dieu_chinh_toc_do,c,bạn đi nhanh quá tôi theo không kịp
+s049,dieu_chinh_toc_do,c,giảm tốc độ giúp tôi
+s050,dieu_chinh_toc_do,c,đi nhanh hơn được không
+s051,dieu_chinh_am_luong,c,bạn nói to lên một chút
+s052,dieu_chinh_am_luong,c,tôi nghe không rõ nói lớn hơn đi
+s053,dieu_chinh_am_luong,c,tăng âm lượng lên giúp tôi
+s054,dieu_chinh_am_luong,c,bạn nói nhỏ quá to hơn chút được không
+s055,dieu_chinh_am_luong,c,bạn nói to hơn đi
+s056,dung_lai,c,bạn đứng lại đã
+s057,dung_lai,c,chờ tôi một lát
+s058,dung_lai,c,dừng ở đây một chút
+s059,dung_lai,c,tôi mệt quá nghỉ một lát đã
+s060,dung_lai,c,đợi tôi với
+s061,tiep_tuc,c,đi thôi
+s062,tiep_tuc,c,tôi ổn rồi mình đi tiếp
+s063,tiep_tuc,c,tiếp tục đi bạn
+s064,tiep_tuc,c,đi tiếp được rồi
+s065,tiep_tuc,c,xong rồi đi tiếp nhé
+s066,nhac_lai,c,bạn nói lại được không
+s067,nhac_lai,c,tôi chưa nghe rõ bạn nhắc lại giúp
+s068,nhac_lai,q,hả bạn vừa nói gì
+s069,nhac_lai,c,lặp lại một lần nữa đi
+s070,nhac_lai,c,tôi không hiểu lắm bạn giải thích lại được không
+s071,gap_nhan_vien,c,tôi muốn nói chuyện với nhân viên
+s072,gap_nhan_vien,c,cho tôi gặp người phụ trách
+s073,gap_nhan_vien,q,ở đây có nhân viên nào không
+s074,gap_nhan_vien,c,gọi giúp tôi một nhân viên
+s075,gap_nhan_vien,c,tôi cần người thật hướng dẫn
+s076,cap_cuu,c,cứu với có người ngất
+s077,cap_cuu,c,bà tôi tự nhiên ngã xuống rồi
+s078,cap_cuu,c,con tôi co giật gọi bác sĩ nhanh lên
+s079,cap_cuu,c,tôi đau ngực dữ dội không thở được
+s080,cap_cuu,c,có người bất tỉnh ở đây
+s081,khong_ho_tro,q,tôi uống thuốc này có được không
+s082,khong_ho_tro,q,bệnh của tôi có nặng không
+s083,khong_ho_tro,q,tôi có cần nhập viện không
+s084,khong_ho_tro,q,uống thuốc trước hay sau ăn
+s085,khong_ho_tro,q,kết quả xét nghiệm của tôi có bình thường không
+s086,ho_tro_di_chuyen,q,ở đây có xe lăn cho người già không
+s087,ho_tro_di_chuyen,c,tôi cần xe đẩy cho người bệnh
+s088,ho_tro_di_chuyen,q,bố tôi đi không nổi có ai đẩy giúp không
+s089,ho_tro_di_chuyen,q,mượn xe lăn ở đâu
+s090,ho_tro_di_chuyen,q,có cáng hay xe đẩy không
+s091,cam_on,c,cảm ơn bạn
+s092,cam_on,c,cám ơn nhiều nhé
+s093,cam_on,c,tốt quá cảm ơn
+s094,cam_on,c,vậy được rồi cảm ơn bạn
+s095,cam_on,c,ok cảm ơn
+s096,unknown,c,xin chào
+s097,unknown,q,hôm nay trời có mưa không
+s098,unknown,q,tối nay đội nào đá bóng
+s099,unknown,q,bạn tên là gì
+s100,unknown,q,bạn có biết hát không

@@ -1,0 +1,79 @@
+[gd_scene load_steps=18 format=3]
+
+[ext_resource type="Script" path="res://scripts/human.gd" id="1"]
+[ext_resource type="PackedScene" path="res://assets/models/human_m06/Male_Adult_06.fbx" id="2"]
+[ext_resource type="Animation" path="res://assets/models/human_m06/anims/idle.res" id="3"]
+[ext_resource type="Animation" path="res://assets/models/human_m06/anims/walk.res" id="4"]
+[ext_resource type="Texture2D" path="res://assets/models/human_m06/textures/body_color.jpg" id="5"]
+[ext_resource type="Texture2D" path="res://assets/models/human_m06/textures/body_normal.png" id="6"]
+[ext_resource type="Texture2D" path="res://assets/models/human_m06/textures/body_roughness.jpg" id="7"]
+[ext_resource type="Texture2D" path="res://assets/models/human_m06/textures/head_color.jpg" id="8"]
+[ext_resource type="Texture2D" path="res://assets/models/human_m06/textures/head_normal.png" id="9"]
+[ext_resource type="Texture2D" path="res://assets/models/human_m06/textures/head_roughness.jpg" id="10"]
+[ext_resource type="Texture2D" path="res://assets/models/human_m06/textures/opacity_color.png" id="11"]
+[ext_resource type="Script" path="res://scripts/npc.gd" id="12"]
+
+[sub_resource type="AnimationLibrary" id="lib_human"]
+_data = {
+&"idle": ExtResource("3"),
+&"walk": ExtResource("4")
+}
+
+[sub_resource type="StandardMaterial3D" id="mat_body"]
+resource_name = "human_body"
+albedo_texture = ExtResource("5")
+roughness_texture = ExtResource("7")
+normal_enabled = true
+normal_texture = ExtResource("6")
+
+[sub_resource type="StandardMaterial3D" id="mat_head"]
+resource_name = "human_head"
+albedo_texture = ExtResource("8")
+roughness_texture = ExtResource("10")
+normal_enabled = true
+normal_texture = ExtResource("9")
+
+[sub_resource type="StandardMaterial3D" id="mat_opacity"]
+resource_name = "human_hair_lashes"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("11")
+roughness = 0.7
+
+[sub_resource type="CapsuleShape3D" id="capsule"]
+radius = 0.25
+height = 1.75
+
+[node name="Human" type="CharacterBody3D"]
+script = ExtResource("1")
+
+[node name="Model" parent="." instance=ExtResource("2")]
+
+[node name="m011_hipoly_81_bones_opacity" parent="Model/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("mat_body")
+surface_material_override/1 = SubResource("mat_head")
+surface_material_override/2 = SubResource("mat_opacity")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.875, 0)
+shape = SubResource("capsule")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Model")
+libraries = {
+&"human": SubResource("lib_human")
+}
+
+[node name="Head" type="Node3D" parent="."]
+position = Vector3(0, 1.6, 0.08)
+
+[node name="Voice" type="AudioStreamPlayer3D" parent="Head"]
+attenuation_model = 0
+unit_size = 5.0
+volume_db = 6.0
+bus = &"Master"
+
+[node name="Npc" type="Node" parent="."]
+script = ExtResource("12")
+
+[editable path="Model"]

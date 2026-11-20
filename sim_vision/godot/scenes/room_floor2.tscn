@@ -1,0 +1,451 @@
+[gd_scene load_steps=32 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/floor_tiles028/Color.jpg" id="1"]
+[ext_resource type="Texture2D" path="res://assets/textures/floor_tiles028/NormalGL.jpg" id="2"]
+[ext_resource type="Texture2D" path="res://assets/textures/floor_tiles028/Roughness.jpg" id="3"]
+[ext_resource type="Texture2D" path="res://assets/textures/floor_tiles028/AmbientOcclusion.jpg" id="4"]
+[ext_resource type="Texture2D" path="res://assets/textures/wall_paintedplaster017/Color.jpg" id="5"]
+[ext_resource type="Texture2D" path="res://assets/textures/wall_paintedplaster017/NormalGL.jpg" id="6"]
+[ext_resource type="Texture2D" path="res://assets/textures/wall_paintedplaster017/Roughness.jpg" id="7"]
+[ext_resource type="Texture2D" path="res://assets/textures/ceiling_officeceiling001/Color.jpg" id="8"]
+[ext_resource type="Texture2D" path="res://assets/textures/ceiling_officeceiling001/NormalGL.jpg" id="9"]
+[ext_resource type="Texture2D" path="res://assets/textures/ceiling_officeceiling001/Roughness.jpg" id="10"]
+[ext_resource type="Texture2D" path="res://assets/textures/ceiling_officeceiling001/AmbientOcclusion.jpg" id="11"]
+
+[ext_resource type="PackedScene" path="res://scenes/props/sliding_door.tscn" id="12"]
+[ext_resource type="PackedScene" path="res://scenes/props/elevator_station.tscn" id="13"]
+[ext_resource type="PackedScene" path="res://scenes/props/hospital_bed.tscn" id="14"]
+[ext_resource type="PackedScene" path="res://scenes/props/waiting_bench.tscn" id="15"]
+[ext_resource type="PackedScene" path="res://scenes/props/medical_waste_bin.tscn" id="16"]
+[ext_resource type="PackedScene" path="res://scenes/props/medical_trolley.tscn" id="17"]
+[ext_resource type="PackedScene" path="res://scenes/props/medical_screen.tscn" id="18"]
+[ext_resource type="PackedScene" path="res://scenes/props/wc_station.tscn" id="19"]
+[ext_resource type="PackedScene" path="res://scenes/props/water_dispenser.tscn" id="20"]
+[ext_resource type="PackedScene" path="res://scenes/props/sanitizer_stand.tscn" id="21"]
+[ext_resource type="PackedScene" path="res://scenes/props/vital_monitor.tscn" id="22"]
+[ext_resource type="PackedScene" path="res://scenes/props/info_standee.tscn" id="23"]
+[ext_resource type="PackedScene" path="res://scenes/props/queue_kiosk.tscn" id="24"]
+
+[ext_resource type="PackedScene" path="res://assets/models/metal_office_desk/metal_office_desk_1k.gltf" id="25"]
+[ext_resource type="PackedScene" path="res://assets/models/modern_arm_chair_01/modern_arm_chair_01_1k.gltf" id="26"]
+[ext_resource type="PackedScene" path="res://assets/models/plastic_monobloc_chair_01/plastic_monobloc_chair_01_1k.gltf" id="27"]
+[ext_resource type="PackedScene" path="res://assets/models/metal_stool_01/metal_stool_01_1k.gltf" id="28"]
+[ext_resource type="PackedScene" path="res://assets/models/potted_plant_02/potted_plant_02_1k.gltf" id="29"]
+[ext_resource type="PackedScene" path="res://assets/models/WetFloorSign_01/WetFloorSign_01_1k.gltf" id="30"]
+[ext_resource type="PackedScene" path="res://assets/models/drawer_cabinet/drawer_cabinet_1k.gltf" id="31"]
+[ext_resource type="PackedScene" path="res://assets/models/wall_clock/wall_clock_1k.gltf" id="32"]
+
+[sub_resource type="StandardMaterial3D" id="mat_floor_f2"]
+albedo_texture = ExtResource("1")
+roughness_texture = ExtResource("3")
+normal_enabled = true
+normal_texture = ExtResource("2")
+ao_enabled = true
+ao_texture = ExtResource("4")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="mesh_Floor_f2"]
+material = SubResource("mat_floor_f2")
+size = Vector3(24.4, 0.2, 18.4)
+
+[sub_resource type="BoxShape3D" id="shape_Floor_f2"]
+size = Vector3(24.4, 0.2, 18.4)
+
+[sub_resource type="StandardMaterial3D" id="mat_ceiling_f2"]
+albedo_texture = ExtResource("8")
+roughness_texture = ExtResource("10")
+normal_enabled = true
+normal_texture = ExtResource("9")
+ao_enabled = true
+ao_texture = ExtResource("11")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="mesh_Ceiling_f2"]
+material = SubResource("mat_ceiling_f2")
+size = Vector3(24.4, 0.2, 18.4)
+
+[sub_resource type="BoxShape3D" id="shape_Ceiling_f2"]
+size = Vector3(24.4, 0.2, 18.4)
+
+[sub_resource type="StandardMaterial3D" id="mat_wall_f2"]
+albedo_texture = ExtResource("5")
+roughness_texture = ExtResource("7")
+normal_enabled = true
+normal_texture = ExtResource("6")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="mesh_wall_long"]
+material = SubResource("mat_wall_f2")
+size = Vector3(24.1, 3.2, 0.2)
+
+[sub_resource type="BoxShape3D" id="shape_wall_long"]
+size = Vector3(24.1, 3.2, 0.2)
+
+[sub_resource type="BoxMesh" id="mesh_wall_short"]
+material = SubResource("mat_wall_f2")
+size = Vector3(0.2, 3.2, 18.1)
+
+[sub_resource type="BoxShape3D" id="shape_wall_short"]
+size = Vector3(0.2, 3.2, 18.1)
+
+[sub_resource type="BoxMesh" id="mesh_div_7m"]
+material = SubResource("mat_wall_f2")
+size = Vector3(0.18, 3.2, 7.0)
+
+[sub_resource type="BoxShape3D" id="shape_div_7m"]
+size = Vector3(0.18, 3.2, 7.0)
+
+[sub_resource type="BoxMesh" id="mesh_wall_seg_6m"]
+material = SubResource("mat_wall_f2")
+size = Vector3(6.0, 3.2, 0.18)
+
+[sub_resource type="BoxShape3D" id="shape_wall_seg_6m"]
+size = Vector3(6.0, 3.2, 0.18)
+
+[sub_resource type="BoxMesh" id="mesh_wall_seg_23m"]
+material = SubResource("mat_wall_f2")
+size = Vector3(2.3, 3.2, 0.18)
+
+[sub_resource type="BoxShape3D" id="shape_wall_seg_23m"]
+size = Vector3(2.3, 3.2, 0.18)
+
+[sub_resource type="BoxMesh" id="mesh_wall_seg_46m"]
+material = SubResource("mat_wall_f2")
+size = Vector3(4.6, 3.2, 0.18)
+
+[sub_resource type="BoxShape3D" id="shape_wall_seg_46m"]
+size = Vector3(4.6, 3.2, 0.18)
+
+[sub_resource type="BoxMesh" id="mesh_wall_seg_33m"]
+material = SubResource("mat_wall_f2")
+size = Vector3(3.3, 3.2, 0.18)
+
+[sub_resource type="BoxShape3D" id="shape_wall_seg_33m"]
+size = Vector3(3.3, 3.2, 0.18)
+
+[node name="Floor2" type="Node3D"]
+
+[node name="Shell" type="StaticBody3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = SubResource("mesh_Floor_f2")
+
+[node name="FloorCollision" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("shape_Floor_f2")
+
+[node name="Ceiling" type="MeshInstance3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0)
+mesh = SubResource("mesh_Ceiling_f2")
+
+[node name="CeilingCollision" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25, 0)
+shape = SubResource("shape_Ceiling_f2")
+
+[node name="WallNorth" type="MeshInstance3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -9)
+mesh = SubResource("mesh_wall_long")
+
+[node name="WallNorthCol" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -9)
+shape = SubResource("shape_wall_long")
+
+[node name="WallSouth" type="MeshInstance3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 9)
+mesh = SubResource("mesh_wall_long")
+
+[node name="WallSouthCol" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 9)
+shape = SubResource("shape_wall_long")
+
+[node name="WallEast" type="MeshInstance3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1.6, 0)
+mesh = SubResource("mesh_wall_short")
+
+[node name="WallEastCol" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1.6, 0)
+shape = SubResource("shape_wall_short")
+
+[node name="WallWest" type="MeshInstance3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1.6, 0)
+mesh = SubResource("mesh_wall_short")
+
+[node name="WallWestCol" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1.6, 0)
+shape = SubResource("shape_wall_short")
+
+[node name="InteriorWalls" type="StaticBody3D" parent="."]
+
+[node name="NorthWall1" type="MeshInstance3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.85, 1.6, -2)
+mesh = SubResource("mesh_wall_seg_23m")
+
+[node name="NorthCol1" type="CollisionShape3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.85, 1.6, -2)
+shape = SubResource("shape_wall_seg_23m")
+
+[node name="NorthWall2" type="MeshInstance3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.6, -2)
+mesh = SubResource("mesh_wall_seg_6m")
+
+[node name="NorthCol2" type="CollisionShape3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.6, -2)
+shape = SubResource("shape_wall_seg_6m")
+
+[node name="NorthWall3" type="MeshInstance3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.6, -2)
+mesh = SubResource("mesh_wall_seg_6m")
+
+[node name="NorthCol3" type="CollisionShape3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.6, -2)
+shape = SubResource("shape_wall_seg_6m")
+
+[node name="NorthWall4" type="MeshInstance3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.85, 1.6, -2)
+mesh = SubResource("mesh_wall_seg_23m")
+
+[node name="NorthCol4" type="CollisionShape3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.85, 1.6, -2)
+shape = SubResource("shape_wall_seg_23m")
+
+[node name="DivWall_201_205" type="MeshInstance3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.6, -5.5)
+mesh = SubResource("mesh_div_7m")
+
+[node name="DivCol_201_205" type="CollisionShape3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.6, -5.5)
+shape = SubResource("shape_div_7m")
+
+[node name="DivWall_205_210" type="MeshInstance3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.6, -5.5)
+mesh = SubResource("mesh_div_7m")
+
+[node name="DivCol_205_210" type="CollisionShape3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.6, -5.5)
+shape = SubResource("shape_div_7m")
+
+[node name="SouthWall1" type="MeshInstance3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1.6, 2)
+mesh = SubResource("mesh_wall_seg_23m")
+
+[node name="SouthCol1" type="CollisionShape3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1.6, 2)
+shape = SubResource("shape_wall_seg_23m")
+
+[node name="SouthWall2" type="MeshInstance3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.6, 2)
+mesh = SubResource("mesh_wall_seg_46m")
+
+[node name="SouthCol2" type="CollisionShape3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.6, 2)
+shape = SubResource("shape_wall_seg_46m")
+
+[node name="SouthWall3" type="MeshInstance3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.6, 2)
+mesh = SubResource("mesh_wall_seg_46m")
+
+[node name="SouthCol3" type="CollisionShape3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.6, 2)
+shape = SubResource("shape_wall_seg_46m")
+
+[node name="SouthWall4" type="MeshInstance3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.35, 1.6, 2)
+mesh = SubResource("mesh_wall_seg_33m")
+
+[node name="SouthCol4" type="CollisionShape3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.35, 1.6, 2)
+shape = SubResource("shape_wall_seg_33m")
+
+[node name="DivWall_220_Lobby" type="MeshInstance3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.6, 5.5)
+mesh = SubResource("mesh_div_7m")
+
+[node name="DivCol_220_Lobby" type="CollisionShape3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.6, 5.5)
+shape = SubResource("shape_div_7m")
+
+[node name="DivWall_Lobby_WC" type="MeshInstance3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.6, 5.5)
+mesh = SubResource("mesh_div_7m")
+
+[node name="DivCol_Lobby_WC" type="CollisionShape3D" parent="InteriorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.6, 5.5)
+shape = SubResource("shape_div_7m")
+
+[node name="Doors" type="Node3D" parent="."]
+
+[node name="Door_201" parent="Doors" instance=ExtResource("12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -2)
+door_label = "201 - X-QUANG & CĐHA"
+
+[node name="Door_205" parent="Doors" instance=ExtResource("12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+door_label = "205 - KHOA TIÊU HÓA"
+
+[node name="Door_210" parent="Doors" instance=ExtResource("12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -2)
+door_label = "210 - TAI MŨI HỌNG"
+
+[node name="Door_220" parent="Doors" instance=ExtResource("12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 2)
+door_label = "220 - KHOA DA LIỄU"
+
+[node name="Floor2Elevator" parent="." instance=ExtResource("13")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.88, 0, 4.6)
+current_floor = 2
+
+[node name="Furniture" type="Node3D" parent="."]
+
+[node name="R201_Bed" parent="Furniture" instance=ExtResource("14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, -6.5)
+
+[node name="R201_Monitor" parent="Furniture" instance=ExtResource("22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -7.2)
+
+[node name="R201_Desk" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.2, 0, -5.2)
+
+[node name="Model" parent="Furniture/R201_Desk" instance=ExtResource("25")]
+
+[node name="R201_Chair" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.4, 0, -5.2)
+
+[node name="Model" parent="Furniture/R201_Chair" instance=ExtResource("26")]
+
+[node name="R205_Desk" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -6.5)
+
+[node name="Model" parent="Furniture/R205_Desk" instance=ExtResource("25")]
+
+[node name="R205_Chair" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -7.3)
+
+[node name="Model" parent="Furniture/R205_Chair" instance=ExtResource("26")]
+
+[node name="R205_Screen" parent="Furniture" instance=ExtResource("18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, -5.5)
+
+[node name="R205_Cabinet" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.5, 0, -8.2)
+
+[node name="Model" parent="Furniture/R205_Cabinet" instance=ExtResource("31")]
+
+[node name="R205_WasteBin" parent="Furniture" instance=ExtResource("16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, -6.5)
+
+[node name="R210_Chair" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.5, 0, -6.2)
+
+[node name="Model" parent="Furniture/R210_Chair" instance=ExtResource("27")]
+
+[node name="R210_Stool" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8, 0, -6.2)
+
+[node name="Model" parent="Furniture/R210_Stool" instance=ExtResource("28")]
+
+[node name="R210_Trolley" parent="Furniture" instance=ExtResource("17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2, 0, -6.8)
+
+[node name="R220_Desk" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 6.2)
+
+[node name="Model" parent="Furniture/R220_Desk" instance=ExtResource("25")]
+
+[node name="R220_Bed" parent="Furniture" instance=ExtResource("14")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.8, 0, 6.5)
+
+[node name="LobbyBench1" parent="Furniture" instance=ExtResource("15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, 5.2)
+
+[node name="LobbyBench2" parent="Furniture" instance=ExtResource("15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 5.2)
+
+[node name="LobbyQueueKiosk" parent="Furniture" instance=ExtResource("24")]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -3.8, 0, 3.2)
+
+[node name="LobbyWaterDispenser" parent="Furniture" instance=ExtResource("20")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8, 0, 8.2)
+
+[node name="LobbyPlant" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 0, 3.2)
+
+[node name="Model" parent="Furniture/LobbyPlant" instance=ExtResource("29")]
+
+[node name="LobbyClock" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.6, 8.85)
+
+[node name="Model" parent="Furniture/LobbyClock" instance=ExtResource("32")]
+
+[node name="RestroomStation" parent="Furniture" instance=ExtResource("19")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.2, 0, 8.6)
+
+[node name="WcWetSign" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8, 0, 7.5)
+
+[node name="Model" parent="Furniture/WcWetSign" instance=ExtResource("30")]
+
+[node name="CorridorSanitizer" parent="Furniture" instance=ExtResource("21")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1.75)
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="LightCorridorWest" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.7, 0)
+light_color = Color(0.96, 0.98, 1, 1)
+light_energy = 1.3
+omni_range = 8.5
+
+[node name="LightCorridorCenter" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, 0)
+light_color = Color(0.96, 0.98, 1, 1)
+light_energy = 1.4
+omni_range = 9.0
+
+[node name="LightCorridorEast" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.7, 0)
+light_color = Color(0.96, 0.98, 1, 1)
+light_energy = 1.3
+omni_range = 8.5
+
+[node name="LightR201" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.7, -5.5)
+light_color = Color(0.92, 0.96, 1, 1)
+light_energy = 1.2
+omni_range = 7.0
+
+[node name="LightR205" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, -5.5)
+light_color = Color(0.98, 0.96, 0.92, 1)
+light_energy = 1.2
+omni_range = 7.0
+
+[node name="LightR210" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.7, -5.5)
+light_color = Color(0.95, 0.98, 1, 1)
+light_energy = 1.2
+omni_range = 7.0
+
+[node name="LightR220" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2.7, 5.5)
+light_color = Color(0.98, 0.96, 0.92, 1)
+light_energy = 1.2
+omni_range = 7.0
+
+[node name="LightLobby" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, 5.5)
+light_color = Color(1, 0.98, 0.92, 1)
+light_energy = 1.4
+omni_range = 8.0
+
+[node name="LightWC" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 2.7, 5.5)
+light_color = Color(0.95, 0.95, 0.95, 1)
+light_energy = 1.1
+omni_range = 6.5

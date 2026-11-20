@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3]
+
+[sub_resource type="StandardMaterial3D" id="mat_pccc_red"]
+albedo_color = Color(0.82, 0.12, 0.12, 1)
+metallic = 0.35
+roughness = 0.3
+
+[sub_resource type="StandardMaterial3D" id="mat_nozzle_black"]
+albedo_color = Color(0.12, 0.12, 0.14, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="mat_board_yellow"]
+albedo_color = Color(0.96, 0.85, 0.15, 1)
+roughness = 0.4
+
+[sub_resource type="BoxMesh" id="mesh_cabinet"]
+material = SubResource("mat_pccc_red")
+size = Vector3(0.45, 0.6, 0.18)
+
+[sub_resource type="CylinderMesh" id="mesh_cylinder"]
+material = SubResource("mat_pccc_red")
+top_radius = 0.08
+bottom_radius = 0.08
+height = 0.48
+
+[sub_resource type="CylinderMesh" id="mesh_valve"]
+material = SubResource("mat_nozzle_black")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.1
+
+[sub_resource type="BoxMesh" id="mesh_tieu_lenh"]
+material = SubResource("mat_board_yellow")
+size = Vector3(0.48, 0.34, 0.02)
+
+[sub_resource type="BoxShape3D" id="shape_pccc"]
+size = Vector3(0.55, 1.5, 0.28)
+
+[node name="PcccStation" type="StaticBody3D"]
+
+[node name="Cabinet" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.0, 0)
+mesh = SubResource("mesh_cabinet")
+
+[node name="CabinetLabel" type="Label3D" parent="Cabinet"]
+position = Vector3(0, 0.12, 0.095)
+pixel_size = 0.0018
+text = "PCCC
+114"
+font_size = 42
+outline_size = 4
+
+[node name="Extinguisher1" type="MeshInstance3D" parent="."]
+position = Vector3(-0.12, 0.24, 0.05)
+mesh = SubResource("mesh_cylinder")
+
+[node name="Valve1" type="MeshInstance3D" parent="Extinguisher1"]
+position = Vector3(0, 0.28, 0)
+mesh = SubResource("mesh_valve")
+
+[node name="Extinguisher2" type="MeshInstance3D" parent="."]
+position = Vector3(0.12, 0.24, 0.05)
+mesh = SubResource("mesh_cylinder")
+
+[node name="Valve2" type="MeshInstance3D" parent="Extinguisher2"]
+position = Vector3(0, 0.28, 0)
+mesh = SubResource("mesh_valve")
+
+[node name="TieuLenhBoard" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.55, 0.01)
+mesh = SubResource("mesh_tieu_lenh")
+
+[node name="TieuLenhText" type="Label3D" parent="TieuLenhBoard"]
+position = Vector3(0, 0, 0.015)
+modulate = Color(0.82, 0.08, 0.08, 1)
+outline_modulate = Color(1, 1, 1, 1)
+pixel_size = 0.0015
+text = "TIÊU LỆNH CHỮA CHÁY
+1. BÁO ĐỘNG CHÁY
+2. CÚP CẦU DAO ĐIỆN
+3. DÙNG BÌNH CHỮA CHÁY
+4. GỌI SỐ 114"
+font_size = 28
+outline_size = 4
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.75, 0)
+shape = SubResource("shape_pccc")

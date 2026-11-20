@@ -1,0 +1,82 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+.kilo
+
+
+# Data — raw/processed/external data stays local
+/data/raw/
+/data/processed/
+/src/data/stt/processed/
+/data/external/
+/data/*.tar.gz
+/data/*.zip
+/data/*.pt
+/data/*.json
+!/data/annotations.json
+!/data/annotations.csv
+# NLU / TTS (G18–G23): dữ liệu sinh lại được; test_stt chứa văn bản STT từ giọng thật. Giữ seed viết tay.
+/data/nlu/*
+!/data/nlu/seed.csv
+!/data/nlu/stats.md
+/data/tts_cache/
+
+# Large model binaries stay local (keep configs, tokenizers, and docs tracked)
+/models/**/*.safetensors
+/models/**/*.bin
+/models/**/*.pt
+/models/**/*.onnx
+/models/**/*.pth
+/models/**/*.data
+/models/**/*.gguf
+/models/**/*.npz
+/models/VnCoreNLP/
+/models_finetuned/**/*.safetensors
+/models_finetuned/**/*.bin
+
+# Experiment outputs (track plots, results & scripts; ignore heavy weights & DBs)
+/experiments/checkpoints/*.pt
+!/experiments/checkpoints/.gitkeep
+/experiments/runs/*
+!/experiments/runs/.gitkeep
+# Regenerable binary arrays (feature/probability caches) — scripts rebuild them
+/experiments/results/**/*.npz
+# Regenerable model weights (meta-model state dicts) — scripts rebuild them
+/experiments/results/**/*.pt
+/experiments/tb_logs/
+/experiments/*.db
+/experiments/*.sqlite
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+logs/
+!logs/.gitkeep
+
+# Environment
+.env
+.env.*
+*.tar.gz
+*.pt

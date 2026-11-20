@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3]
+
+[sub_resource type="StandardMaterial3D" id="mat_inox"]
+albedo_color = Color(0.84, 0.87, 0.9, 1)
+metallic = 0.85
+roughness = 0.22
+
+[sub_resource type="StandardMaterial3D" id="mat_dispenser"]
+albedo_color = Color(0.95, 0.97, 0.98, 1)
+roughness = 0.28
+
+[sub_resource type="StandardMaterial3D" id="mat_sign_green"]
+albedo_color = Color(0.12, 0.62, 0.44, 1)
+roughness = 0.35
+
+[sub_resource type="CylinderMesh" id="mesh_base"]
+material = SubResource("mat_inox")
+top_radius = 0.18
+bottom_radius = 0.19
+height = 0.03
+
+[sub_resource type="CylinderMesh" id="mesh_pole"]
+material = SubResource("mat_inox")
+top_radius = 0.018
+bottom_radius = 0.018
+height = 1.25
+
+[sub_resource type="BoxMesh" id="mesh_unit"]
+material = SubResource("mat_dispenser")
+size = Vector3(0.14, 0.28, 0.12)
+
+[sub_resource type="BoxMesh" id="mesh_drip_tray"]
+material = SubResource("mat_inox")
+size = Vector3(0.16, 0.02, 0.16)
+
+[sub_resource type="BoxMesh" id="mesh_sign"]
+material = SubResource("mat_sign_green")
+size = Vector3(0.24, 0.18, 0.02)
+
+[sub_resource type="BoxShape3D" id="shape_stand"]
+size = Vector3(0.38, 1.42, 0.38)
+
+[node name="SanitizerStand" type="StaticBody3D"]
+
+[node name="Base" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.015, 0)
+mesh = SubResource("mesh_base")
+
+[node name="Pole" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.64, 0)
+mesh = SubResource("mesh_pole")
+
+[node name="DispenserUnit" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.06, 0.06)
+mesh = SubResource("mesh_unit")
+
+[node name="DripTray" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.86, 0.07)
+mesh = SubResource("mesh_drip_tray")
+
+[node name="SignBoard" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.32, 0.01)
+mesh = SubResource("mesh_sign")
+
+[node name="SignLabel" type="Label3D" parent="SignBoard"]
+position = Vector3(0, 0, 0.015)
+pixel_size = 0.0012
+text = "SÁT KHUẨN
+TAY NHANH"
+font_size = 28
+outline_size = 4
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.71, 0)
+shape = SubResource("shape_stand")

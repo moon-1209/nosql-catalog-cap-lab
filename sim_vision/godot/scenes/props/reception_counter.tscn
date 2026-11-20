@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3]
+
+[sub_resource type="StandardMaterial3D" id="mat_body_white"]
+albedo_color = Color(0.93, 0.95, 0.96, 1)
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="mat_accent_teal"]
+albedo_color = Color(0.11, 0.52, 0.58, 1)
+roughness = 0.35
+
+[sub_resource type="StandardMaterial3D" id="mat_top_stone"]
+albedo_color = Color(0.85, 0.86, 0.84, 1)
+metallic = 0.1
+roughness = 0.25
+
+[sub_resource type="StandardMaterial3D" id="mat_glass"]
+transparency = 1
+albedo_color = Color(0.82, 0.94, 0.98, 0.35)
+metallic = 0.1
+roughness = 0.1
+
+[sub_resource type="BoxMesh" id="mesh_base"]
+material = SubResource("mat_body_white")
+size = Vector3(3.2, 1.0, 0.72)
+
+[sub_resource type="BoxMesh" id="mesh_stripe"]
+material = SubResource("mat_accent_teal")
+size = Vector3(3.22, 0.28, 0.74)
+
+[sub_resource type="BoxMesh" id="mesh_countertop"]
+material = SubResource("mat_top_stone")
+size = Vector3(3.3, 0.06, 0.82)
+
+[sub_resource type="BoxMesh" id="mesh_glass_shield"]
+material = SubResource("mat_glass")
+size = Vector3(3.1, 0.65, 0.02)
+
+[sub_resource type="BoxMesh" id="mesh_header_bar"]
+material = SubResource("mat_accent_teal")
+size = Vector3(3.2, 0.24, 0.08)
+
+[sub_resource type="BoxShape3D" id="shape_counter"]
+size = Vector3(3.3, 1.75, 0.82)
+
+[node name="ReceptionCounter" type="StaticBody3D"]
+
+[node name="Base" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.5, 0)
+mesh = SubResource("mesh_base")
+
+[node name="FrontStripe" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.82, 0)
+mesh = SubResource("mesh_stripe")
+
+[node name="CounterTop" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.03, 0)
+mesh = SubResource("mesh_countertop")
+
+[node name="GlassPartition" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.38, 0.28)
+mesh = SubResource("mesh_glass_shield")
+
+[node name="HeaderBanner" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.82, 0.28)
+mesh = SubResource("mesh_header_bar")
+
+[node name="LabelFront" type="Label3D" parent="HeaderBanner"]
+position = Vector3(0, 0, 0.05)
+pixel_size = 0.0022
+text = "QUẦY TIẾP ĐÓN - BẢO HIỂM Y TẾ - THU NGÂN"
+font_size = 46
+outline_size = 6
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.875, 0)
+shape = SubResource("shape_counter")

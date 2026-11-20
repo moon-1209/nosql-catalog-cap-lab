@@ -1,0 +1,81 @@
+file_id,category,tags,norm_wer,ground_truth,prediction
+A_03_n,natural,medical_term,0.3636,"Mình có bảo hiểm y tế, đưa thẻ ở quầy nào?",Mình có bảo hiểm y tế thì giờ mình đưa ở quầy nào?
+A_04_n,natural,medical_term,0.2308,"Mình quên mang thẻ bảo hiểm, dùng căn cước công dân được không?",Mình quên mang thẻ bảo hiểm rồi thì dùng căn cước công dân có được không?
+A_06_n,natural,medical_term;natural_paraphrase,1.1667,Khoa tiêu hóa ở tầng mấy?,n khoa tiêu hóa ở bệnh viện này ở từng máy
+A_06_r,reading,medical_term;diacritic_minor,0.1667,Khoa tiêu hóa ở tầng mấy?,Khoa Tiêu hóa ở tầng máy
+A_07_n,natural,numbers_digits;natural_paraphrase,0.7143,Phòng khám số 205 đi đường nào?,Phòng khám số hai trăm lẻ năm thì đi đường nào?
+A_07_r,reading,numbers_digits,0.5714,Phòng khám số 205 đi đường nào?,Phòng khám số hai trăm linh lăm đi đường nào?
+A_08_n,natural,medical_term,0.2857,"Bác sĩ bảo mình đi nội soi dạ dày, phòng nội soi ở đâu?",Bác sĩ bảo mình đi nội soi dạ dày thì cái phòng nội soi này nó ở đâu?
+A_08_r,reading,diacritic_minor,0.0714,"Bác sĩ bảo mình đi nội soi dạ dày, phòng nội soi ở đâu?","Bác sĩ bảo mình đi soi dạ dày, phòng nội soi ở đâu?"
+A_10_n,natural,medical_term,0.3333,Mình phải nhịn ăn trước khi xét nghiệm không?,Đó mình có phải nhịn ăn trước khi đi xét nghiệm không?
+A_11_n,natural,medical_term,0.25,Bao lâu thì có kết quả xét nghiệm?,Thì bao lâu thì có kết quả xét nghiệm á?
+A_14_n,natural,medical_term;natural_paraphrase,0.8889,Ở đây có thanh toán bằng chuyển khoản không?,Á thì ở bệnh viện này có thanh toán bằng chỉ khoản được không á?
+A_14_r,reading,medical_term,0.2222,Ở đây có thanh toán bằng chuyển khoản không?,Ở đây có thanh toán bằng chữ Khỏe không?
+A_15_n,natural,natural_paraphrase,0.8333,Nhà thuốc bệnh viện ở đâu?,Bạn cho mình hỏi nhà nhà thuốc bệnh viện ở đâu?
+A_16_n,natural,natural_paraphrase,1.1667,Thang máy gần nhất ở đâu?,"Ơ thế, máy gần nhất của bệnh viện này ở đâu nhở?"
+A_18_n,natural,natural_paraphrase,0.5556,Mình muốn gửi xe máy thì gửi ở đâu?,Bây giờ mình muốn gửi xe máy thì mình gửi ở đâu được nhà?
+A_19_n,natural,medical_term;natural_paraphrase,0.6,"Bố mình bị đau ngực, khám tim mạch ở đâu?","Bố mình bị đau ngực á, thì phòng khám tim mạch thì nó ở đâu ạ?"
+A_19_r,reading,diacritic_minor,0.1,"Bố mình bị đau ngực, khám tim mạch ở đâu?",Bố mình bị đau ngực kham tim mạch ở đâu?
+A_21_n,natural,medical_term,0.1667,Bạn dẫn bố con mình đến phòng siêu âm tim được không?,Bạn dẫn bố con mình đến phòng siêu âm tiêm được không ạ?
+A_22_n,natural,natural_paraphrase,0.5,"Đi chậm thôi nhé, bố mình đi không nhanh được.",A. Đi chậm thôi nhé thì bố mình không đi nhận được.
+A_24_n,natural,natural_paraphrase,0.6,"Được rồi, đi tiếp đi.","Ok, được rồi, Hết đi tiếp đi nhé!"
+A_26_n,natural,natural_paraphrase,0.6,Khoa cấp cứu ở đâu?,Bơm hoa cấp cứu ở đâu á?
+A_28_n,natural,medical_term;natural_paraphrase,1.1667,Phòng điện tim là phòng mấy?,Phòng điện tiên của bệnh viện là ở phòng máy Á.
+A_28_r,reading,medical_term;diacritic_minor,0.1667,Phòng điện tim là phòng mấy?,Phòng điện tim là phòng máy
+A_29_n,natural,natural_paraphrase,0.5833,Bây giờ còn bao nhiêu người nữa thì tới số của mình?,Thì còn bao nhiêu người nữa thì tới sớm r nữa rớb bạn.
+A_29_r,reading,diacritic_minor,0.0833,Bây giờ còn bao nhiêu người nữa thì tới số của mình?,Bây giờ còn bao nhiêu người nữa thì sẽ tới số của mình?
+A_C01_r,reading,diacritic_minor,0.125,Cho tôi hỏi khoa tim mạch ở đâu?,Cho tôi hỏi vai tim mạch ở đâu?
+A_C02_n,natural,natural_paraphrase,0.8,Khoa nhi ở tầng mấy?,Nhi nằm ở tầng mấy vậy à?
+A_C03_n,natural,medical_term,0.2857,Phòng xét nghiệm máu đi đường nào?,Ờ phòng xét nghiệm máu thì đi đường nào?
+A_C04_n,natural,numbers_digits;medical_term;natural_paraphrase,0.8571,Phòng siêu âm số 304 ở đâu?,Hồng siêu âm số ba lễ tư nằm ở đâu vậy?
+A_C04_r,reading,numbers_digits;medical_term,0.5714,Phòng siêu âm số 304 ở đâu?,Phòng siêu âm số ba lẻ từ hộp đâu?
+A_C05_n,natural,medical_term;natural_paraphrase,2.0,Quầy thu ngân ở đâu?,"À, cho tôi hỏi vài thủ nhân ở nền bãi thau."
+A_C06_n,natural,natural_paraphrase,1.25,Nhà thuốc ở đâu?,Cho tôi hỏi nhà thuốc nằm ở đâu vậy?
+A_C07_n,natural,natural_paraphrase,0.7143,Dẫn tôi đến khoa sản được không?,"Làm phiền bạn, dẫn tôi đến pha sản được hay không?"
+A_C08_n,natural,natural_paraphrase,0.6,Đi chậm lại giúp tôi.,"Bạn ơi, đi chậm lại giúp tôi với"
+A_C09_n,natural,natural_paraphrase,0.5,Gọi nhân viên giúp tôi với.,Rồi nhân viên giúp tôi đó nha
+A_C10_n,natural,natural_paraphrase,0.6667,Cảm ơn nhé.,Mình cảm ơn bạn nhé!
+B_01_r,reading,diacritic_minor,0.1818,Dạ cho em hỏi lấy số khám bệnh ở đâu ạ?,Dạ sao em hỏi thấy số khám bệnh ở đâu ạ?
+B_02_n,natural,natural_paraphrase,0.5,Em có đặt lịch khám online rồi thì đến quầy nào ạ?,Em có đọc được tháng online rồi thì giờ em đến quầy nào à?
+B_02_r,reading,diacritic_minor,0.1667,Em có đặt lịch khám online rồi thì đến quầy nào ạ?,Em có đặt lịch khám online rồi thì đến quầy nè quậy.
+B_04_n,natural,natural_paraphrase,0.5455,Em bị sốt với đau họng thì khám khoa nào ạ?,Em bị sốt và đau họng thì bây giờ em khám pháo khoa nào?
+B_04_r,reading,diacritic_minor,0.1818,Em bị sốt với đau họng thì khám khoa nào ạ?,Em bị sốt và đau họng thì khám khoa nào cả
+B_06_n,natural,numbers_digits;natural_paraphrase,0.7778,Phòng 112 ở tầng một hay tầng hai ạ?,Cho em hỏi phòng một trăm mười hai ở tầng một hay tầng hai ạ?
+B_06_r,reading,numbers_digits,0.4444,Phòng 112 ở tầng một hay tầng hai ạ?,Phòng một trăm mười hai ở tầng một hay tầng hai ạ?
+B_07_n,natural,natural_paraphrase,1.0,Chụp X-quang phổi ở đâu ạ?,"A. Chụp ít khoan phổi ở đâu, vợ về chỉ với"
+B_11_n,natural,natural_paraphrase,0.9167,"Em đợi lâu quá rồi mà chưa tới lượt, hỏi ai ạ?",Em thấy em đợi lâu quá rồi mà chưa thích được em thì bây giờ em nên hỏi ai?
+B_12_r,reading,diacritic_minor,0.0909,Em muốn trả tiền bằng thẻ ngân hàng được không ạ?,An muốn trả tiền bằng thẻ ngân hàng được không ạ?
+B_13_n,natural,medical_term,0.2857,Lấy thuốc bảo hiểm ở đâu ạ?,Mình lấy thuốc bảo hiểm ở đâu à?
+B_13_r,reading,medical_term,0.2857,Lấy thuốc bảo hiểm ở đâu ạ?,Lấy thuốc bảo hiểm ẩn đau ạ
+B_14_n,natural,natural_paraphrase,0.5714,Nhà vệ sinh nữ ở đâu ạ?,Nhà vệ sinh nữ ở đâu vậy chị em Bút?
+B_15_n,natural,natural_paraphrase,0.7778,Ở đây có chỗ bán đồ ăn không ạ?,Giải cho em hỏi ở đây mình có bán đồ ăn không ta?
+B_16_n,natural,medical_term,0.4615,"Bà em bị đau đầu gối, đi khám xương khớp ở đâu ạ?","À, bà của em bị đau đầu gối á? Thì mình đi khám xương khớp ở đâu rồi?"
+B_16_r,reading,diacritic_minor,0.0769,"Bà em bị đau đầu gối, đi khám xương khớp ở đâu ạ?","Bà em bị đau gối, đi khám xương khớp ở đâu ạ?"
+B_17_n,natural,natural_paraphrase,0.5714,"Bà em lớn tuổi rồi, có quầy ưu tiên cho người già không ạ?",Và em cũng lớn tuổi rồi đó thì mình có quậy ưu tiên cho người già hay không?
+B_17_r,reading,diacritic_minor,0.0714,"Bà em lớn tuổi rồi, có quầy ưu tiên cho người già không ạ?","Bà em lớn tuổi rồi, có quầy tu tiên cho người già không ạ?"
+B_20_n,natural,medical_term,0.4167,Bạn dẫn bà em tới khoa cơ xương khớp giúp em với.,À bạn dẫn ba em tới khoa sinh khớp giúp em với nha.
+B_20_r,reading,medical_term,0.25,Bạn dẫn bà em tới khoa cơ xương khớp giúp em với.,Bạn dẫn bà em tới khoa sinh xót giúp em với
+B_25_r,reading,diacritic_minor,0.0909,"Bà em bị chóng mặt, sắp ngã rồi, giúp em với!","Bà em bị chóng mặt, sắc ngã rồi giúp em với"
+B_26_n,natural,medical_term,0.375,Phòng vật lý trị liệu ở đâu ạ?,Cho em hỏi phòng vật lý trị liệu ở đâu ạ?
+B_27_n,natural,natural_paraphrase,0.6429,Khám xong thì quay lại chỗ bác sĩ để đọc kết quả hả bạn?,Nếu khám xong thì mình quay lại chỗ bác sĩ để hỏi kết quả của bạn hay là như thế nào.
+B_27_r,reading,diacritic_minor,0.0714,Khám xong thì quay lại chỗ bác sĩ để đọc kết quả hả bạn?,Khám xong thì quay lại chọn bác sĩ để đọc kết quả hả bạn?
+B_28_n,natural,natural_paraphrase,0.625,Mấy giờ thì bệnh viện nghỉ trưa ạ?,Cho em hỏi mấy giờ thì bệnh viện mình nghỉ trưa về.
+B_29_n,natural,natural_paraphrase,0.5455,"Em không hiểu, bạn chỉ lại đường giúp em được không?",Em không hiểu và em chuyển vào trường giúp em với được không?
+B_30_n,natural,natural_paraphrase,0.6,Dạ em cảm ơn ạ.,Dạ dạ ok em cảm ơn nha.
+B_C01_n,natural,medical_term;natural_paraphrase,1.25,Cho tôi hỏi khoa tim mạch ở đâu?,"Bạn ơi, cho mình hỏi qua trên mặt nào bắt đầu ấy."
+B_C01_r,reading,medical_term,0.25,Cho tôi hỏi khoa tim mạch ở đâu?,Cho tôi hỏi Khoa tin mặt ở đâu
+B_C02_n,natural,natural_paraphrase,1.8,Khoa nhi ở tầng mấy?,Lo cho mình hỏi khoai nhi nằm ở đó tận đâu?
+B_C03_n,natural,medical_term;natural_paraphrase,1.0,Phòng xét nghiệm máu đi đường nào?,"Phòng xét nghiệm máu đi điều nào ớt bạn, bạn chỉ nhìn nó."
+B_C04_n,natural,numbers_digits;medical_term;natural_paraphrase,1.5714,Phòng siêu âm số 304 ở đâu?,Cho mình hỏi phòng sự ăn số ba lấy bốn là nằm ở đâu ạ?
+B_C04_r,reading,numbers_digits;medical_term,0.4286,Phòng siêu âm số 304 ở đâu?,Phòng siêu âm số ba lẻ bốn ở đâu?
+B_C05_n,natural,medical_term;natural_paraphrase,1.4,Quầy thu ngân ở đâu?,Nó quậy thuốc ngưng làm mát đâu à?
+B_C05_r,reading,medical_term,0.2,Quầy thu ngân ở đâu?,Uầy thu ngân ở đâu?
+B_C06_n,natural,natural_paraphrase,0.5,Nhà thuốc ở đâu?,Nhà thuốc này bác đâu?
+B_C07_n,natural,natural_paraphrase,0.5714,Dẫn tôi đến khoa sản được không?,Dẫn tôi đến bar South có được không ạ?
+B_C08_n,natural,natural_paraphrase,0.6,Đi chậm lại giúp tôi.,"Bạn ơi, đi chậm lại giúp tôi với"
+B_C10_n,natural,natural_paraphrase,1.3333,Cảm ơn nhé.,"Ok, ok, mình cảm ơn!"
+Nam_C01,common,diacritic_minor,0.125,Cho tôi hỏi khoa tim mạch ở đâu?,Cho tôi hỏi hoa tim mạch ở đâu?
+Nam_C04,common,numbers_digits;medical_term,0.4286,Phòng siêu âm số 304 ở đâu?,Phòng siêu âm số ba không bốn ở đâu?
+Nu_C01,common,medical_term,0.25,Cho tôi hỏi khoa tim mạch ở đâu?,Cho tôi hỏi Khoa tin mặt ở đâu
+Nu_C04,common,numbers_digits;medical_term,0.4286,Phòng siêu âm số 304 ở đâu?,Phòng siêu âm số ba lẻ bốn ở đâu?
+Nu_C05,common,medical_term,0.2,Quầy thu ngân ở đâu?,Uầy thu ngân ở đâu?

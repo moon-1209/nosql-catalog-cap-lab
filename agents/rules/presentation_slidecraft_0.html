@@ -1,0 +1,2715 @@
+<!DOCTYPE html>
+<html lang="vi" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UTH Scientific Data Mining & Grounded RAG — SlideCraft Presentation</title>
+
+  <!-- Typography: Plus Jakarta Sans & Space Grotesk & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===========================================
+       SLIDECRAFT: LIGHT EDITORIAL TECH THEME
+       Vibe: Crisp, Architectural, High Signal, Pure White & Subtle Slate
+       =========================================== */
+    :root {
+      /* Light Theme Color System */
+      --bg-page: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-canvas-subtle: #f1f5f9;
+      --bg-canvas-muted: #e2e8f0;
+
+      /* High-Contrast Accents */
+      --accent-orange: #ff5722;
+      --accent-orange-light: #fff3ee;
+      --accent-blue: #2563eb;
+      --accent-blue-light: #eff6ff;
+      --accent-emerald: #059669;
+      --accent-emerald-light: #ecfdf5;
+      --accent-purple: #7c3aed;
+      --accent-purple-light: #f5f3ff;
+      --accent-amber: #d97706;
+      --accent-amber-light: #fffbeb;
+
+      /* Typography Tokens */
+      --text-heading: #0f172a;
+      --text-body: #334155;
+      --text-muted: #64748b;
+      --text-subtle: #94a3b8;
+
+      /* Borders & Shadows */
+      --border-subtle: #e2e8f0;
+      --border-medium: #cbd5e1;
+      --border-focus: #3b82f6;
+      --card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+      --card-shadow-hover: 0 10px 28px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+
+      /* Typography Families */
+      --font-display: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-serif: 'Newsreader', Georgia, serif;
+
+      /* Mandatory Clamp Scaling (SlideCraft Viewport Rules) */
+      --title-size: clamp(1.8rem, 4.4vw, 3.4rem);
+      --h2-size: clamp(1.3rem, 2.8vw, 2.1rem);
+      --h3-size: clamp(0.95rem, 1.8vw, 1.3rem);
+      --body-size: clamp(0.72rem, 1.1vw, 0.95rem);
+      --small-size: clamp(0.65rem, 0.85vw, 0.82rem);
+
+      /* Spacing */
+      --slide-padding: clamp(1.25rem, 3.5vw, 3.25rem);
+      --content-gap: clamp(0.6rem, 1.5vw, 1.4rem);
+      --element-gap: clamp(0.4rem, 1vw, 0.85rem);
+
+      /* Animation */
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --duration-normal: 0.45s;
+    }
+
+    /* 1. Lock html/body to viewport with mandatory scroll-snap */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+      background-color: var(--bg-page);
+      color: var(--text-body);
+      font-family: var(--font-body);
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+    }
+    html {
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+
+    /* 2. Each slide = exact 100dvh with architectural grid background */
+    .slide {
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background-color: #ffffff;
+      background-image: 
+        radial-gradient(circle at 100% 0%, rgba(255, 87, 34, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 0% 100%, rgba(37, 99, 235, 0.04) 0%, transparent 40%),
+        linear-gradient(to right, rgba(226, 232, 240, 0.35) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(226, 232, 240, 0.35) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+      padding: var(--slide-padding);
+    }
+
+    /* Top Technical Header */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--content-gap);
+      padding-bottom: 0.6rem;
+      border-bottom: 1.5px solid var(--border-subtle);
+      flex-shrink: 0;
+    }
+    .brand-cluster {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .brand-badge {
+      background: var(--accent-orange);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      box-shadow: 0 2px 6px rgba(255, 87, 34, 0.25);
+    }
+    .brand-meta {
+      display: flex;
+      flex-direction: column;
+      font-family: var(--font-mono);
+      line-height: 1.15;
+    }
+    .brand-meta span:first-child {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      letter-spacing: 0.05em;
+    }
+    .brand-meta span:last-child {
+      font-size: 0.62rem;
+      color: var(--text-muted);
+    }
+    .slide-page-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-canvas-subtle);
+      border: 1px solid var(--border-subtle);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .slide-page-badge strong {
+      color: var(--accent-blue);
+      font-weight: 800;
+    }
+
+    /* Main Slide Body */
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 0;
+      gap: var(--content-gap);
+    }
+
+    /* Bottom Technical Footer */
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: var(--content-gap);
+      padding-top: 0.6rem;
+      border-top: 1.5px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: var(--small-size);
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    /* Staggered Reveal Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity var(--duration-normal) var(--ease-out-expo),
+                  transform var(--duration-normal) var(--ease-out-expo);
+    }
+    .slide.visible .reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal:nth-child(1) { transition-delay: 0.05s; }
+    .reveal:nth-child(2) { transition-delay: 0.12s; }
+    .reveal:nth-child(3) { transition-delay: 0.19s; }
+    .reveal:nth-child(4) { transition-delay: 0.26s; }
+    .reveal:nth-child(5) { transition-delay: 0.33s; }
+
+    /* Headings & Texts */
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--title-size);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--text-heading);
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--h2-size);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--text-heading);
+    }
+    h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--h3-size);
+      color: var(--text-heading);
+      letter-spacing: -0.01em;
+    }
+    p {
+      font-size: var(--body-size);
+      color: var(--text-body);
+      line-height: 1.5;
+    }
+
+    /* Grids & Cards */
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--element-gap); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--element-gap); }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--element-gap); }
+    .grid-8 { display: grid; grid-template-columns: repeat(8, 1fr); gap: 0.5rem; }
+
+    .card {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: clamp(0.75rem, 1.6vw, 1.35rem);
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    .card:hover {
+      border-color: var(--border-medium);
+      box-shadow: var(--card-shadow-hover);
+    }
+    .card.accent-orange {
+      border-left: 4px solid var(--accent-orange);
+      background: linear-gradient(135deg, #ffffff 85%, var(--accent-orange-light) 100%);
+    }
+    .card.accent-blue {
+      border-left: 4px solid var(--accent-blue);
+      background: linear-gradient(135deg, #ffffff 85%, var(--accent-blue-light) 100%);
+    }
+    .card.accent-emerald {
+      border-left: 4px solid var(--accent-emerald);
+      background: linear-gradient(135deg, #ffffff 85%, var(--accent-emerald-light) 100%);
+    }
+    .card.accent-purple {
+      border-left: 4px solid var(--accent-purple);
+      background: linear-gradient(135deg, #ffffff 85%, var(--accent-purple-light) 100%);
+    }
+
+    .card-label {
+      font-family: var(--font-mono);
+      font-size: var(--small-size);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .metric-value {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.7rem, 3.2vw, 2.7rem);
+      line-height: 1;
+      margin: 0.2rem 0;
+      letter-spacing: -0.03em;
+    }
+
+    /* Embedded FE Diagram Containers */
+    .fe-mockup-frame {
+      background: #ffffff;
+      border: 1.5px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 0.85rem;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .fe-mockup-titlebar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0.4rem;
+      margin-bottom: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+    .fe-traffic-lights {
+      display: flex;
+      gap: 4px;
+    }
+    .traffic-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    /* Math Box */
+    .formula-card {
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 0.65rem 0.85rem;
+      font-family: var(--font-mono);
+      font-size: var(--small-size);
+      color: var(--accent-blue);
+      overflow-x: auto;
+    }
+
+    /* Fixed UI: Progress Bar & Dots */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-orange), var(--accent-blue));
+      z-index: 999;
+      transition: width 0.3s ease;
+      width: 7.14%;
+    }
+    .nav-dots {
+      position: fixed;
+      right: 1.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      z-index: 100;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #cbd5e1;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .dot.active {
+      background: var(--accent-orange);
+      transform: scale(1.4);
+      box-shadow: 0 0 6px rgba(255, 87, 34, 0.4);
+    }
+
+    @media (max-width: 900px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .grid-8 { grid-template-columns: repeat(4, 1fr); }
+      .nav-dots { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Progress Bar -->
+  <div class="progress-bar" id="progress-bar"></div>
+
+  <!-- Side Navigation Dots -->
+  <nav class="nav-dots" id="nav-dots"></nav>
+
+  <!-- ======================================================== -->
+  <!-- SLIDE 01: TITLE / COVER (CLEAN LIGHT EDITORIAL) -->
+  <!-- ======================================================== -->
+  <section class="slide" id="slide-01">
+    <div class="slide-header">
+      <div class="brand-cluster">
+        <span class="brand-badge">UTH</span>
+        <div class="brand-meta">
+          <span>TRƯỜNG ĐẠI HỌC GIAO THÔNG VẬN TẢI TP.HCM (UTH)</span>
+        </div>
+      </div>
+      <div class="slide-page-badge">
+        <span>BÁO CÁO MÔN HỌC KHAI PHÁ DỮ LIỆU</span>
+        <span>&bull;</span>
+        <strong>01/14</strong>
+      </div>
+    </div>
+
+    <div class="slide-body">
+      <div class="card-label reveal" style="color: var(--accent-orange);">
+        <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-orange);"></span>
+        DATA MINING COURSE PROJECT DEFENSE &bull; MEDALLION ARCHITECTURE
+      </div>
+
+      <h1 class="reveal">
+        Real-Time Scientific<br>
+        <span style="color: var(--accent-blue);">Data Mining &amp; Grounded RAG</span>
+      </h1>
+
+      <p class="reveal" style="max-width: 820px; font-size: clamp(0.85rem, 1.3vw, 1.1rem); color: var(--text-body);">
+        Hệ thống khai phá dữ liệu khoa học thời gian thực và RAG có kiểm chứng nguồn trích dẫn: Xử lý <strong style="color: var(--text-heading);">13,000 bài báo arXiv</strong>, bóc tách <strong style="color: var(--text-heading);">2.77 triệu công thức toán LaTeX</strong>, tích hợp 4 thuật toán Data Mining và mô hình suy luận cục bộ <strong style="color: var(--text-heading);">Qwen2.5-7B-Instruct</strong>.
+      </p>
+
+      <!-- 4 Live Ground-Truth Metric Cards from FE -->
+      <div class="grid-4 reveal" style="margin-top: 0.5rem;">
+        <div class="card accent-orange">
+          <div class="card-label" style="color: var(--accent-orange);">Corpus Papers</div>
+          <div class="metric-value" style="color: var(--accent-orange);">13,000</div>
+          <div style="font-size: var(--small-size); color: var(--text-muted); font-family: var(--font-mono);">OAI-PMH &amp; ar5iv Sync</div>
+        </div>
+
+        <div class="card accent-blue">
+          <div class="card-label" style="color: var(--accent-blue);">Math Formulas</div>
+          <div class="metric-value" style="color: var(--accent-blue);">2,765,395</div>
+          <div style="font-size: var(--small-size); color: var(--text-muted); font-family: var(--font-mono);">DuckDB Vectorized OLAP</div>
+        </div>
+
+        <div class="card accent-purple">
+          <div class="card-label" style="color: var(--accent-purple);">Gold Vectors</div>
+          <div class="metric-value" style="color: var(--accent-purple);">143,523</div>
+          <div style="font-size: var(--small-size); color: var(--text-muted); font-family: var(--font-mono);">LanceDB Columnar Lake</div>
+        </div>
+
+        <div class="card accent-emerald">
+          <div class="card-label" style="color: var(--accent-emerald);">DeepEval Grounding</div>
+          <div class="metric-value" style="color: var(--accent-emerald);">100% <span style="font-size: 0.9rem; color: var(--text-muted);">Recall</span></div>
+          <div style="font-size: var(--small-size); color: var(--text-muted); font-family: var(--font-mono);">90% Citation Grounding (21 Samples)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Giảng Viên Hướng Dẫn: <strong style="color: var(--text-heading);">TS. Trần Thế Vinh</strong> &bull; Thực Hiện: <strong style="color: var(--text-heading);">Group 1</strong></div>
+      <div>FASTAPI BACKEND &bull; REACT 19 FRONTEND &bull; LOCAL INFERENCE (GGUF)</div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SLIDE 02: PROBLEM STATEMENT (CREATIVE SPLIT VISUAL) -->
+  <!-- ======================================================== -->
+  <section class="slide" id="slide-02">
+    <div class="slide-header">
+      <div class="brand-cluster">
+        <span class="brand-badge" style="background: #ef4444;">CHALLENGE</span>
+        <div class="brand-meta"><span>BỐI CẢNH &amp; THÁCH THỨC NGHIÊN CỨU</span></div>
+      </div>
+      <div class="slide-page-badge"><strong>02/14</strong></div>
+    </div>
+
+    <div class="slide-body">
+      <div>
+        <h2 class="reveal">3 Khủng Hoảng Cốt Lõi Trong Khai Phá Dữ Liệu Khoa Học</h2>
+        <p class="reveal">Các hệ thống RAG và Search thông thường hoàn toàn bất lực trước tính phức tạp của tài liệu học thuật AI/DS.</p>
+      </div>
+
+      <div class="grid-3 reveal">
+        <!-- Crisis 1 -->
+        <div class="card" style="border-top: 3px solid #ef4444;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span class="card-label" style="color: #ef4444; margin-bottom: 0;">01 / OVERLOAD</span>
+            <span style="font-family: var(--font-mono); font-size: 0.65rem; background: #fee2e2; color: #ef4444; padding: 2px 6px; border-radius: 4px; font-weight: 700;">&gt; 5,000/tuần</span>
+          </div>
+          <h3>Bùng Nổ Tiền Ấn Phẩm arXiv</h3>
+          <p style="margin: 0.4rem 0;">Số lượng bài báo tăng trưởng phi tuyến tính khiến việc tra cứu và liên kết tri thức thủ công trở nên bất khả thi.</p>
+          <div class="formula-card" style="color: #b91c1c; background: #fef2f2; border-color: #fecaca;">
+            Tăng trưởng: &gt; 250,000 papers/năm<br>
+            Hậu quả: Nghiên cứu trùng lặp, bỏ sót State-of-the-Art.
+          </div>
+        </div>
+
+        <!-- Crisis 2 -->
+        <div class="card" style="border-top: 3px solid #f59e0b;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span class="card-label" style="color: #f59e0b; margin-bottom: 0;">02 / LATEX LOSS</span>
+            <span style="font-family: var(--font-mono); font-size: 0.65rem; background: #fef3c7; color: #d97706; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Lossy Parsing</span>
+          </div>
+          <h3>Đứt Gãy Công Thức Toán &amp; Bổ Đề</h3>
+          <p style="margin: 0.4rem 0;">PDF OCR và parser thô biến đổi sai lệch ký hiệu toán, ma trận và cắt ngang giữa định lý khi phân đoạn văn bản ngẫu nhiên.</p>
+          <div class="formula-card" style="color: #b45309; background: #fffbeb; border-color: #fde68a;">
+            Mất sạch MathML / TeX entities<br>
+            Hậu quả: RAG không hiểu được chứng minh toán học.
+          </div>
+        </div>
+
+        <!-- Crisis 3 -->
+        <div class="card" style="border-top: 3px solid #7c3aed;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span class="card-label" style="color: #7c3aed; margin-bottom: 0;">03 / HALLUCINATION</span>
+            <span style="font-family: var(--font-mono); font-size: 0.65rem; background: #ede9fe; color: #7c3aed; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Zero Provenance</span>
+          </div>
+          <h3>Ảo Giác Trích Dẫn &amp; Nguồn Giả</h3>
+          <p style="margin: 0.4rem 0;">LLM sinh phản hồi mập mờ, tự bịa đặt tác giả, năm xuất bản hoặc số liệu thực nghiệm không có thật trong bài báo gốc.</p>
+          <div class="formula-card" style="color: #6d28d9; background: #f5f3ff; border-color: #ddd6fe;">
+            Citation Hallucination Rate &gt; 35%<br>
+            Hậu quả: Nguy cơ sai lệch học thuật nghiêm trọng.
+          </div>
+        </div>
+      </div>
+
+      <!-- Solution Callout Banner -->
+      <div class="card reveal accent-blue" style="padding: 0.75rem 1.25rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: var(--body-size);">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent-blue);"></span>
+            <span><strong>Mục Tiêu Giải Quyết:</strong> Xây dựng Medallion Lakehouse lưu trữ bất biến + 4 Trụ cột Mining tự động + Grounded RAG 100% có trích dẫn xuất xứ.</span>
+          </div>
+          <span style="font-family: var(--font-mono); font-weight: 700; color: var(--accent-blue);">GIẢI PHÁP ĐỒ ÁN &rarr;</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Nghiên cứu khảo sát trên 13,000 bài báo danh mục Computer Science (cs.AI, cs.LG, cs.CV)</div>
+      <div>PROBLEM DEFINITION</div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SLIDE 03: LAKEHOUSE ARCHITECTURE (FE DIAGRAM EMBEDDED) -->
+  <!-- ======================================================== -->
+  <section class="slide" id="slide-03">
+    <div class="slide-header">
+      <div class="brand-cluster">
+        <span class="brand-badge">ARCHITECTURE</span>
+        <div class="brand-meta"><span>KIẾN TRÚC TỔNG THỂ MEDALLION DATA LAKEHOUSE</span></div>
+      </div>
+      <div class="slide-page-badge"><strong>03/14</strong></div>
+    </div>
+
+    <div class="slide-body">
+      <div>
+        <h2 class="reveal">Hệ Sinh Thái 8 Trạm Xử Lý &bull; Medallion Pipeline Flow</h2>
+        <p class="reveal">Mô hình hóa trực tiếp từ thành phần <code>GeometricPipelineDiagram.tsx</code> trên Frontend Dashboard.</p>
+      </div>
+
+      <!-- Live Frontend Component Representation: 8 Schematic Nodes -->
+      <div class="fe-mockup-frame reveal">
+        <div class="fe-mockup-titlebar">
+          <div class="brand-cluster">
+            <div class="fe-traffic-lights">
+              <span class="traffic-dot" style="background: #ef4444;"></span>
+              <span class="traffic-dot" style="background: #f59e0b;"></span>
+              <span class="traffic-dot" style="background: #10b981;"></span>
+            </div>
+            <strong style="margin-left: 6px;">GeometricPipelineDiagram.tsx // LIVE RUNTIME TOPOLOGY</strong>
+          </div>
+          <span>ZERO-COPY APACHE ARROW IN-MEMORY</span>
+        </div>
+
+        <div class="grid-8">
+          <!-- Node 1 -->
+          <div class="card" style="padding: 0.5rem; text-align: center; border-color: #ef4444; background: #fff5f5;">
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #ef4444; font-weight: 800;">01/INGEST</div>
+            <div style="margin: 0.3rem auto; width: 32px; height: 32px; border-radius: 6px; background: #fee2e2; display: flex; align-items: center; justify-content: center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#ef4444" stroke-width="2"/><path d="M7 8h10M7 12h7" stroke="#ef4444" stroke-width="2"/></svg>
+            </div>
+            <strong style="font-size: 0.72rem; color: #1e293b;">arXiv Stream</strong>
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #ef4444; font-weight: 700;">13,000 Papers</div>
+          </div>
+
+          <!-- Node 2 -->
+          <div class="card" style="padding: 0.5rem; text-align: center; border-color: #f59e0b; background: #fffbeb;">
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #d97706; font-weight: 800;">02/LAKE</div>
+            <div style="margin: 0.3rem auto; width: 32px; height: 32px; border-radius: 6px; background: #fef3c7; display: flex; align-items: center; justify-content: center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="7" rx="8" ry="4" stroke="#d97706" stroke-width="2"/><path d="M4 7v10c0 2.2 3.6 4 8 4s8-1.8 8-4V7" stroke="#d97706" stroke-width="2"/></svg>
+            </div>
+            <strong style="font-size: 0.72rem; color: #1e293b;">Cloudflare R2</strong>
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #d97706; font-weight: 700;">11.14 GB (36.7k Files)</div>
+          </div>
+
+          <!-- Node 3 -->
+          <div class="card" style="padding: 0.5rem; text-align: center; border-color: #eab308; background: #fefce8;">
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #ca8a04; font-weight: 800;">03/COMPUTE</div>
+            <div style="margin: 0.3rem auto; width: 32px; height: 32px; border-radius: 6px; background: #fef9c3; display: flex; align-items: center; justify-content: center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="4" stroke="#ca8a04" stroke-width="2"/><circle cx="10" cy="10" r="2" fill="#ca8a04"/></svg>
+            </div>
+            <strong style="font-size: 0.72rem; color: #1e293b;">DuckDB OLAP</strong>
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #ca8a04; font-weight: 700;">2.76M TeX</div>
+          </div>
+
+          <!-- Node 4 -->
+          <div class="card" style="padding: 0.5rem; text-align: center; border-color: #3b82f6; background: #eff6ff;">
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #2563eb; font-weight: 800;">04/CURATED</div>
+            <div style="margin: 0.3rem auto; width: 32px; height: 32px; border-radius: 6px; background: #dbeafe; display: flex; align-items: center; justify-content: center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" stroke="#2563eb" stroke-width="2"/><rect x="13" y="13" width="7" height="7" stroke="#2563eb" stroke-width="2"/></svg>
+            </div>
+            <strong style="font-size: 0.72rem; color: #1e293b;">Parquet Table</strong>
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #2563eb; font-weight: 700;">231.7 MB Snappy</div>
+          </div>
+
+          <!-- Node 5 -->
+          <div class="card" style="padding: 0.5rem; text-align: center; border-color: #10b981; background: #ecfdf5;">
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #059669; font-weight: 800;">05/EMBED</div>
+            <div style="margin: 0.3rem auto; width: 32px; height: 32px; border-radius: 6px; background: #d1fae5; display: flex; align-items: center; justify-content: center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="7" stroke="#059669" stroke-width="2"/><circle cx="12" cy="12" r="2" fill="#059669"/></svg>
+            </div>
+            <strong style="font-size: 0.72rem; color: #1e293b;">MiniLM-L6-v2</strong>
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #059669; font-weight: 700;">384d (Dense)</div>
+          </div>
+
+          <!-- Node 6 -->
+          <div class="card" style="padding: 0.5rem; text-align: center; border-color: #f59e0b; background: #fffbeb;">
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #d97706; font-weight: 800;">06/VECTOR</div>
+            <div style="margin: 0.3rem auto; width: 32px; height: 32px; border-radius: 6px; background: #fef3c7; display: flex; align-items: center; justify-content: center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><polygon points="12 2 22 7 22 17 12 22 2 17 2 7" stroke="#d97706" stroke-width="2"/></svg>
+            </div>
+            <strong style="font-size: 0.72rem; color: #1e293b;">LanceDB Lake</strong>
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #d97706; font-weight: 700;">143.5k Chunks</div>
+          </div>
+
+          <!-- Node 7 -->
+          <div class="card" style="padding: 0.5rem; text-align: center; border-color: #a855f7; background: #faf5ff;">
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #9333ea; font-weight: 800;">07/INFERENCE</div>
+            <div style="margin: 0.3rem auto; width: 32px; height: 32px; border-radius: 6px; background: #f3e8ff; display: flex; align-items: center; justify-content: center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="4" stroke="#9333ea" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="#9333ea" stroke-width="1.5"/></svg>
+            </div>
+            <strong style="font-size: 0.72rem; color: #1e293b;">Qwen2.5-7B</strong>
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #9333ea; font-weight: 700;">Local GGUF</div>
+          </div>
+
+          <!-- Node 8 -->
+          <div class="card" style="padding: 0.5rem; text-align: center; border-color: #06b6d4; background: #ecfeff;">
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #0891b2; font-weight: 800;">08/CLIENT</div>
+            <div style="margin: 0.3rem auto; width: 32px; height: 32px; border-radius: 6px; background: #cffafe; display: flex; align-items: center; justify-content: center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 9l3 3-3 3M13 15h4" stroke="#0891b2" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <strong style="font-size: 0.72rem; color: #1e293b;">Grounded UI</strong>
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: #0891b2; font-weight: 700;">100% Verified</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Architecture Core Advantages -->
+      <div class="grid-3 reveal">
+        <div class="card accent-orange">
+          <div class="card-label" style="color: var(--accent-orange);">01 / TÁCH BIỆT STORAGE &amp; COMPUTE</div>
+          <p>Lưu trữ thô bất biến trên Cloudflare R2 với chi phí bằng 0 (Zero Egress Fees), mở rộng dung lượng vô hạn mà không làm nghẽn máy chủ tính toán.</p>
+        </div>
+        <div class="card accent-blue">
+          <div class="card-label" style="color: var(--accent-blue);">02 / VECTORIZED SIMD EXECUTION</div>
+          <p>DuckDB xử lý dữ liệu theo cột chuẩn Apache Arrow, nén Parquet phân vùng theo năm và ngành, giảm 91% dung lượng so với lưu trữ JSON/DOM gốc.</p>
+        </div>
+        <div class="card accent-emerald">
+          <div class="card-label" style="color: var(--accent-emerald);">03 / ON-DISK COLUMNAR ANN</div>
+          <p>LanceDB quản lý vector trực tiếp trên tệp tin đĩa NVMe, cho phép truy xuất ANN Cosine dưới 20ms mà không tốn chi phí cụm RAM cloud đắt đỏ.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Được kiểm chứng qua 16 Batch Ingestion và 143,523 Vector Chunks</div>
+      <div>DATA LAKEHOUSE SPECIFICATION</div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SLIDE 04: SILVER PROCESSING (CODE FE MOCKUP) -->
+  <!-- ======================================================== -->
+  <section class="slide" id="slide-04">
+    <div class="slide-header">
+      <div class="brand-cluster">
+        <span class="brand-badge" style="background: var(--accent-blue);">SILVER ENGINE</span>
+        <div class="brand-meta"><span>BÓC TÁCH CÔNG THỨC TOÁN &amp; SECTION-AWARE CHUNKING</span></div>
+      </div>
+      <div class="slide-page-badge"><strong>04/14</strong></div>
+    </div>
+
+    <div class="slide-body">
+      <div>
+        <h2 class="reveal">Bảo Tồn Toàn Vẹn 2,765,395 Công Thức Toán Học LaTeX</h2>
+        <p class="reveal">Mô hình hóa giải thuật chuyển đổi ngược từ DOM ar5iv sang chuẩn TeX và cơ chế cắt ngữ cảnh gối đầu 10%.</p>
+      </div>
+
+      <div class="grid-2 reveal">
+        <!-- Visual Comparison: Raw vs Parsed -->
+        <div class="fe-mockup-frame">
+          <div class="fe-mockup-titlebar">
+            <strong>DUCKDB LATEX PARSER // BEFORE &amp; AFTER</strong>
+            <span style="color: var(--accent-emerald); font-weight: 700;">ACCURACY: 99.8%</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <div>
+              <span class="card-label" style="color: #ef4444; font-size: 0.65rem;">1. RAW AR5IV HTML5 DOM (INPUT)</span>
+              <div class="formula-card" style="font-size: 0.68rem; color: #475569; background: #f1f5f9;">
+                &lt;math alttext="\mathcal{L}_{\text{CLIP}}" display="block"&gt;<br>
+                &nbsp;&nbsp;&lt;semantics&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;L&lt;/mi&gt;&lt;mtext&gt;CLIP&lt;/mtext&gt;&lt;/msub&gt;&lt;/mrow&gt;&lt;/semantics&gt;<br>
+                &lt;/math&gt;
+              </div>
+            </div>
+
+            <div style="text-align: center; color: var(--accent-blue); font-weight: 800; font-size: 0.9rem;">
+              &darr; AST Tag Normalizer &amp; Entities Sanitizer &darr;
+            </div>
+
+            <div>
+              <span class="card-label" style="color: var(--accent-emerald); font-size: 0.65rem;">2. CURATED LATEX FORMULA (OUTPUT SILVER PARQUET)</span>
+              <div class="formula-card" style="font-size: 0.72rem; color: var(--accent-blue); background: var(--accent-blue-light); border-color: #bfdbfe;">
+                $$\mathcal{L}_{\text{CLIP}} = -\frac{1}{2N} \sum_{i=1}^N \left( \log \frac{e^{\text{sim}(I_i, T_i)/\tau}}{\sum_j e^{\text{sim}(I_i, T_j)/\tau}} + \log \frac{e^{\text{sim}(T_i, I_i)/\tau}}{\sum_j e^{\text{sim}(T_i, I_j)/\tau}} \right)$$
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AcademicChunker: Domain-Aware Section Strategy -->
+        <div class="fe-mockup-frame">
+          <div class="fe-mockup-titlebar">
+            <strong>ACADEMIC CHUNKER // DOMAIN-AWARE ENRICHMENT</strong>
+            <span style="color: var(--accent-blue); font-weight: 700;">src/indexing/chunker.py</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.45rem;">
+            <p style="font-size: var(--small-size);">Khác với chunking ngẫu nhiên cắt ngang định lý toán, <code>AcademicChunker</code> bảo tồn ranh giới cấu trúc học thuật:</p>
+
+            <div style="display: flex; flex-direction: column; gap: 0.32rem;">
+              <div class="formula-card" style="display: flex; justify-content: space-between; padding: 4px 6px;">
+                <span>1. Đề Mục Độc Lập:</span>
+                <strong style="color: var(--accent-blue);">Abstract luôn là 1 Chunk hoàn chỉnh</strong>
+              </div>
+              <div class="formula-card" style="display: flex; justify-content: space-between; border-color: #fed7aa; background: #fffaf5; color: #c2410c; padding: 4px 6px;">
+                <span>2. Phân Đoạn Theo Ngưỡng:</span>
+                <strong style="color: #c2410c;">max_chunk_words = 500 từ</strong>
+              </div>
+              <div class="formula-card" style="display: flex; justify-content: space-between; border-color: #fde68a; background: #fffbeb; color: #b45309; padding: 4px 6px;">
+                <span>3. Gối Đầu Đoạn Văn:</span>
+                <strong style="color: #b45309;">overlap_paragraphs = 1 đoạn hoàn chỉnh</strong>
+              </div>
+              <div class="formula-card" style="display: flex; justify-content: space-between; border-color: #bbf7d0; background: #f0fdf4; color: #15803d; padding: 4px 6px;">
+                <span>4. Gắn Tiền Tố Ngữ Cảnh:</span>
+                <strong style="color: #15803d;">Paper: "{title}" | Section: {sec_title}</strong>
+              </div>
+            </div>
+
+            <p style="font-size: 0.68rem; color: var(--text-muted); line-height: 1.35; margin-top: 1px;">
+              Tiền tố ngữ cảnh (Contextual Enrichment) loại bỏ hoàn toàn hiện tượng mất dấu văn cảnh khi chuyển thành vector nhúng.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Định dạng Apache Parquet nén Snappy theo phân vùng year=2026/category=cs.AI</div>
+      <div>11,763 FULL-SECTION PAPERS ENRICHED</div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SLIDE 05: PILLAR 1: FP-GROWTH (FE MATRIX EMBEDDED) -->
+  <!-- ======================================================== -->
+  <section class="slide" id="slide-05">
+    <div class="slide-header">
+      <div class="brand-cluster">
+        <span class="brand-badge" style="background: var(--accent-orange);">PILLAR 1</span>
+        <div class="brand-meta"><span>KHAI PHÁ LUẬT KẾT HỢP (FP-GROWTH MINING)</span></div>
+      </div>
+      <div class="slide-page-badge"><strong>05/14</strong></div>
+    </div>
+
+    <div class="slide-body">
+      <div>
+        <h2 class="reveal">Khai Phá 30 Luật Kết Hợp &bull; Lift Thực Nghiệm Lên Đến 34.87</h2>
+        <p class="reveal">Thuật toán FP-Growth quét toàn bộ 13,000 bài báo vào cây tiền tố FP-Tree với min-support 2% và min-confidence 15%.</p>
+      </div>
+
+      <div class="grid-2 reveal">
+        <!-- Left: Algorithm Architecture -->
+        <div class="card accent-orange">
+          <div class="card-label" style="color: var(--accent-orange);">FP-TREE ARCHITECTURE</div>
+          <h3>Loại Bỏ Hoàn Toàn Sinh Tập Ứng Viên</h3>
+          <p style="margin: 0.4rem 0;">Cấu trúc cây liên kết prefix-tree nén gọn toàn bộ dữ liệu giao dịch trong RAM:</p>
+          <div style="display: flex; flex-direction: column; gap: 0.35rem; margin: 0.4rem 0;">
+            <div class="formula-card">Database Scans: Đúng 2 lần duy nhất</div>
+            <div class="formula-card" style="color: var(--accent-blue);">Tốc độ xử lý: Nhanh hơn 6.2x so với Apriori</div>
+            <div class="formula-card" style="color: var(--accent-orange);">Ngưỡng lọc tối thiểu: minsup = 0.02 (2%) &bull; minconf = 0.15 (15%)</div>
+          </div>
+          <p style="font-size: var(--small-size); color: var(--text-muted);">Trích xuất chính xác 30 luật liên ngành giữa các phân nhánh arXiv (Computer Science, EESS) và chủ đề LLM.</p>
+        </div>
+
+        <!-- Right: Real Discovered Rules Matrix -->
+        <div class="fe-mockup-frame">
+          <div class="fe-mockup-titlebar">
+            <strong>TOP ASSOCIATION RULES // HIGH LIFT RANKING (REAL DATA)</strong>
+            <span style="color: var(--accent-orange); font-weight: 700;">FILTER: LIFT &gt; 2.5</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+            <!-- Rule 1 -->
+            <div class="card" style="padding: 0.5rem 0.65rem; border-color: #fed7aa; background: #fffaf5;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--text-heading);">
+                  <span style="color: var(--accent-orange);">{cat:cs.SY}</span> &rarr; <span style="color: var(--accent-blue);">{cat:eess.SY}</span>
+                </div>
+                <div style="text-align: right; font-family: var(--font-mono); font-size: 0.68rem;">
+                  <strong style="color: var(--accent-orange);">Lift: 34.87</strong> | Conf: 100%
+                </div>
+              </div>
+              <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 2px;">Tương quan tuyệt đối giữa Hệ thống điều khiển (cs.SY) và Kỹ thuật điều khiển điện tử (eess.SY).</div>
+            </div>
+
+            <!-- Rule 2 -->
+            <div class="card" style="padding: 0.5rem 0.65rem; border-color: #fed7aa; background: #fffaf5;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--text-heading);">
+                  <span style="color: var(--accent-orange);">{cat:cs.SD}</span> &rarr; <span style="color: var(--accent-blue);">{cat:eess.AS}</span>
+                </div>
+                <div style="text-align: right; font-family: var(--font-mono); font-size: 0.68rem;">
+                  <strong style="color: var(--accent-orange);">Lift: 27.07</strong> | Conf: 99.2%
+                </div>
+              </div>
+              <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 2px;">Đồng xuất hiện cực mạnh giữa Xử lý âm thanh (cs.SD) và Xử lý tín hiệu âm thanh (eess.AS).</div>
+            </div>
+
+            <!-- Rule 3 -->
+            <div class="card" style="padding: 0.5rem 0.65rem; border-color: #fed7aa; background: #fffaf5;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--text-heading);">
+                  <span style="color: var(--accent-orange);">{tag:reinforcement-learning}</span> &rarr; <span style="color: var(--accent-blue);">{tag:autonomous-agents}</span>
+                </div>
+                <div style="text-align: right; font-family: var(--font-mono); font-size: 0.68rem;">
+                  <strong style="color: var(--accent-orange);">Lift: 6.33</strong> | Conf: 32.7%
+                </div>
+              </div>
+              <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 2px;">Cặp thuật toán học tăng cường luôn định hướng phát triển tác tử thông minh độc lập.</div>
+            </div>
+
+            <!-- Rule 4 -->
+            <div class="card" style="padding: 0.5rem 0.65rem; border-color: #fed7aa; background: #fffaf5;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--text-heading);">
+                  <span style="color: var(--accent-orange);">{cs.CL, cs.AI}</span> &rarr; <span style="color: var(--accent-blue);">{tag:large-language-models}</span>
+                </div>
+                <div style="text-align: right; font-family: var(--font-mono); font-size: 0.68rem;">
+                  <strong style="color: var(--accent-orange);">Lift: 3.73</strong> | Conf: 39.0%
+                </div>
+              </div>
+              <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 2px;">Giao thoa giữa Ngôn ngữ học máy tính và AI luôn dẫn tới các công trình Mô hình ngôn ngữ lớn.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Công thức đánh giá: Support P(A&cup;B) &bull; Confidence P(B|A) &bull; Lift = Conf / P(B) &gt; 1.0</div>
+      <div>MINING PILLAR 1: FP-GROWTH</div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SLIDE 06: PILLAR 2: TOPIC CLUSTERING (FE SCATTER CANVAS) -->
+  <!-- ======================================================== -->
+  <section class="slide" id="slide-06">
+    <div class="slide-header">
+      <div class="brand-cluster">
+        <span class="brand-badge" style="background: var(--accent-purple);">PILLAR 2</span>
+        <div class="brand-meta"><span>PHÂN CỤM CHỦ ĐỀ (MINIBATCH K-MEANS)</span></div>
+      </div>
+      <div class="slide-page-badge"><strong>06/14</strong></div>
+    </div>
+
+    <div class="slide-body">
+      <div>
+        <h2 class="reveal">Khám Phá 6 Cụm Tri Thức Trọng Điểm &bull; MiniBatch K-Means &amp; DBSCAN</h2>
+        <p class="reveal">Trực quan hóa 800 mẫu vector thực nghiệm chiếu 2D (PCA) từ 3,000 bài báo được phân tích chuyên sâu.</p>
+      </div>
+
+      <div class="grid-2 reveal" style="align-items: stretch;">
+        <!-- Left: Live Topic Cluster Scatter Canvas (SVG) with 800 REAL POINTS -->
+        <div class="fe-mockup-frame" style="display: flex; flex-direction: column;">
+          <div class="fe-mockup-titlebar">
+            <strong>MiningPillarsView.tsx // 2D TOPIC EMBEDDING PROJECTION</strong>
+            <span style="color: var(--accent-purple); font-weight: 700;">k=6 CLUSTERS (800 REAL POINTS)</span>
+          </div>
+          <div style="flex: 1; min-height: 240px; background: #ffffff; border-radius: 6px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+            <svg viewBox="0 0 460 250" style="width: 100%; height: 100%; max-height: 250px;">
+              <defs>
+                <pattern id="scatter-grid" width="25" height="25" patternUnits="userSpaceOnUse">
+                  <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#f1f5f9" stroke-width="1"/>
+                </pattern>
+              </defs>
+              <rect width="460" height="250" fill="url(#scatter-grid)" />
+              <line x1="30" y1="220" x2="440" y2="220" stroke="#cbd5e1" stroke-width="1.5" />
+              <line x1="30" y1="20" x2="30" y2="220" stroke="#cbd5e1" stroke-width="1.5" />
+              <text x="430" y="235" font-size="9" font-family="monospace" fill="#94a3b8" text-anchor="end">PCA Dim 1</text>
+              <text x="35" y="25" font-size="9" font-family="monospace" fill="#94a3b8">PCA Dim 2</text>
+
+              <!-- REAL 800 SCATTER POINTS -->
+              <circle cx="143.6" cy="171.6" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="114.7" cy="153.6" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="156.7" cy="112.3" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="190.5" cy="53.4" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="315.1" cy="76.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="156.5" cy="47.5" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="283.0" cy="72.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="393.9" cy="171.8" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="285.1" cy="110.2" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="100.2" cy="47.4" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="351.6" cy="103.9" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="128.8" cy="105.6" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="369.0" cy="187.2" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="390.5" cy="120.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="268.8" cy="148.0" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="143.4" cy="125.1" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="201.7" cy="56.8" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="253.4" cy="113.3" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="327.7" cy="77.9" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="262.6" cy="66.1" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="210.2" cy="132.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="303.8" cy="99.1" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="126.1" cy="147.1" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="393.6" cy="171.4" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="307.3" cy="103.1" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="104.8" cy="84.2" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="173.3" cy="133.9" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="336.6" cy="89.8" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="247.1" cy="163.2" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="258.3" cy="170.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="121.0" cy="92.3" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="189.1" cy="59.9" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="141.4" cy="94.3" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="312.4" cy="91.2" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="137.6" cy="58.5" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="336.6" cy="49.7" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="390.6" cy="62.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="278.4" cy="60.0" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="236.0" cy="107.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="300.3" cy="89.2" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="337.7" cy="166.2" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="128.1" cy="67.1" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="332.8" cy="104.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="161.7" cy="110.5" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="386.4" cy="181.5" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="101.8" cy="143.1" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="309.9" cy="51.8" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="322.4" cy="167.4" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="141.6" cy="60.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="346.3" cy="92.6" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="288.2" cy="41.2" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="216.5" cy="117.3" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="266.0" cy="155.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="396.1" cy="166.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="157.8" cy="49.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="163.0" cy="123.8" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="238.5" cy="165.7" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="266.6" cy="60.4" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="155.8" cy="146.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="288.9" cy="64.0" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="361.9" cy="68.8" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="290.4" cy="171.7" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="250.2" cy="136.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="270.2" cy="110.0" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="291.7" cy="104.6" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="343.6" cy="152.9" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="321.5" cy="53.4" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="252.9" cy="89.6" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="144.0" cy="98.6" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="394.7" cy="114.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="213.2" cy="83.9" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="254.0" cy="122.5" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="170.8" cy="87.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="312.5" cy="85.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="86.7" cy="100.2" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="320.8" cy="97.9" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="209.3" cy="110.7" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="273.0" cy="76.0" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="432.8" cy="158.6" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="363.9" cy="154.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="321.9" cy="132.1" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="218.4" cy="92.4" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="262.6" cy="125.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="99.2" cy="97.9" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="214.8" cy="199.3" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="212.8" cy="108.5" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="211.9" cy="81.9" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="261.8" cy="101.6" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="300.8" cy="126.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="369.9" cy="162.8" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="100.8" cy="84.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="71.2" cy="101.7" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="327.5" cy="102.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="276.0" cy="130.0" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="152.7" cy="152.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="194.5" cy="65.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="252.4" cy="87.5" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="260.7" cy="80.3" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="340.8" cy="159.3" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="318.1" cy="105.4" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="134.5" cy="184.4" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="134.7" cy="134.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="210.1" cy="149.3" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="399.5" cy="144.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="310.4" cy="132.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="346.4" cy="172.0" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="345.5" cy="127.0" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="321.0" cy="77.0" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="284.6" cy="59.4" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="303.4" cy="161.7" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="331.0" cy="139.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="223.6" cy="111.4" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="75.2" cy="92.2" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="217.7" cy="156.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="329.9" cy="77.9" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="258.8" cy="74.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="265.3" cy="158.5" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="246.4" cy="91.4" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="329.8" cy="57.6" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="188.1" cy="61.9" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="338.1" cy="100.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="381.3" cy="165.2" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="234.5" cy="120.5" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="235.4" cy="76.1" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="113.1" cy="130.1" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="293.2" cy="100.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="371.0" cy="64.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="99.8" cy="116.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="353.1" cy="113.1" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="291.6" cy="68.5" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="96.1" cy="103.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="97.1" cy="61.6" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="146.2" cy="185.5" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="183.0" cy="136.4" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="136.6" cy="80.6" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="181.8" cy="175.4" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="343.7" cy="106.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="256.5" cy="98.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="290.1" cy="75.9" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="138.9" cy="178.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="240.5" cy="99.4" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="320.5" cy="190.7" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="257.7" cy="70.9" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="303.9" cy="48.6" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="354.9" cy="109.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="148.3" cy="131.8" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="151.3" cy="144.6" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="158.1" cy="140.2" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="357.0" cy="112.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="92.8" cy="66.7" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="228.7" cy="110.2" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="79.7" cy="112.9" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="231.2" cy="91.6" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="340.5" cy="110.9" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="373.5" cy="109.6" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="306.1" cy="146.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="268.3" cy="99.9" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="160.8" cy="79.9" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="301.0" cy="129.6" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="104.7" cy="140.2" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="300.7" cy="45.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="266.8" cy="115.0" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="286.0" cy="69.6" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="154.7" cy="92.9" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="349.6" cy="79.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="309.6" cy="61.0" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="257.2" cy="120.5" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="173.4" cy="71.6" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="202.7" cy="147.1" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="284.7" cy="62.0" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="299.6" cy="99.0" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="218.9" cy="128.9" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="116.7" cy="129.2" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="132.4" cy="71.1" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="346.3" cy="117.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="325.8" cy="78.6" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="262.5" cy="199.4" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="200.2" cy="92.2" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="341.7" cy="60.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="171.6" cy="187.5" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="162.9" cy="190.2" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="165.5" cy="127.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="292.5" cy="121.6" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="273.8" cy="99.9" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="343.8" cy="173.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="324.3" cy="86.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="252.5" cy="138.4" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="139.1" cy="79.3" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="392.7" cy="129.3" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="226.8" cy="134.6" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="144.3" cy="167.3" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="364.2" cy="164.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="301.6" cy="119.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="273.8" cy="123.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="347.6" cy="128.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="279.8" cy="75.4" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="272.4" cy="142.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="196.8" cy="94.3" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="348.3" cy="187.5" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="137.7" cy="158.6" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="131.1" cy="122.6" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="384.0" cy="140.6" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="258.1" cy="36.0" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="285.6" cy="99.3" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="316.4" cy="139.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="343.1" cy="181.2" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="345.7" cy="100.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="126.2" cy="82.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="191.1" cy="96.9" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="170.7" cy="155.0" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="258.4" cy="85.6" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="130.9" cy="147.2" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="378.5" cy="78.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="301.7" cy="95.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="381.9" cy="108.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="301.7" cy="93.3" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="314.1" cy="75.7" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="141.1" cy="74.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="303.6" cy="175.3" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="311.8" cy="79.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="255.3" cy="45.2" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="364.7" cy="153.8" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="158.3" cy="67.5" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="414.6" cy="173.5" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="272.3" cy="132.0" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="249.4" cy="127.5" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="194.6" cy="125.7" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="136.6" cy="101.4" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="358.7" cy="69.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="225.0" cy="95.0" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="318.9" cy="112.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="115.3" cy="129.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="134.6" cy="88.9" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="272.5" cy="83.0" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="318.2" cy="166.8" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="321.2" cy="102.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="289.8" cy="78.8" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="227.2" cy="90.2" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="175.0" cy="143.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="284.7" cy="79.0" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="311.6" cy="61.8" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="330.5" cy="129.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="312.1" cy="157.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="143.2" cy="128.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="171.2" cy="135.2" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="324.4" cy="74.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="127.7" cy="160.5" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="305.8" cy="91.0" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="162.3" cy="38.7" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="201.2" cy="175.8" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="181.9" cy="140.9" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="137.4" cy="201.1" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="396.0" cy="118.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="298.7" cy="132.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="258.4" cy="180.6" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="142.2" cy="106.3" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="273.2" cy="159.6" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="129.5" cy="136.6" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="135.3" cy="124.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="239.9" cy="49.8" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="208.6" cy="210.0" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="332.0" cy="95.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="274.0" cy="36.7" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="160.6" cy="120.6" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="242.1" cy="47.9" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="277.1" cy="90.3" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="328.4" cy="98.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="159.0" cy="117.3" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="344.0" cy="94.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="267.1" cy="90.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="287.5" cy="104.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="276.2" cy="174.3" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="232.4" cy="70.0" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="249.3" cy="87.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="149.1" cy="103.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="336.5" cy="109.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="319.0" cy="88.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="345.3" cy="125.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="254.4" cy="55.6" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="213.8" cy="109.3" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="92.9" cy="130.9" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="225.8" cy="143.6" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="324.6" cy="96.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="312.4" cy="110.0" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="332.2" cy="91.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="152.0" cy="137.2" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="332.1" cy="79.9" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="151.7" cy="84.1" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="318.5" cy="188.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="309.0" cy="86.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="247.9" cy="119.3" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="390.2" cy="135.6" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="343.9" cy="152.6" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="250.2" cy="131.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="277.2" cy="77.6" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="309.9" cy="105.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="267.6" cy="149.4" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="357.2" cy="140.4" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="201.4" cy="39.4" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="244.7" cy="98.4" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="312.0" cy="146.9" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="295.7" cy="96.4" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="320.0" cy="127.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="211.9" cy="124.3" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="241.2" cy="102.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="105.9" cy="69.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="216.2" cy="53.8" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="343.2" cy="89.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="73.9" cy="131.7" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="242.0" cy="98.5" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="164.6" cy="57.7" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="363.0" cy="82.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="284.3" cy="98.2" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="267.1" cy="128.0" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="322.3" cy="100.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="149.1" cy="110.1" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="402.9" cy="164.4" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="70.7" cy="121.4" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="360.6" cy="144.5" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="141.3" cy="75.7" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="359.3" cy="126.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="429.7" cy="109.6" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="342.0" cy="75.0" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="122.5" cy="175.3" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="57.9" cy="158.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="302.9" cy="83.2" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="267.1" cy="122.0" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="435.0" cy="146.6" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="345.3" cy="114.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="332.9" cy="123.0" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="164.7" cy="43.3" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="338.8" cy="158.8" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="282.7" cy="113.0" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="361.0" cy="120.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="193.9" cy="54.1" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="335.0" cy="57.6" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="227.1" cy="72.4" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="394.7" cy="86.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="281.5" cy="154.8" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="342.1" cy="122.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="326.8" cy="86.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="236.1" cy="66.6" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="204.4" cy="186.2" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="251.6" cy="59.7" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="162.5" cy="148.3" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="168.6" cy="124.1" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="344.6" cy="127.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="200.1" cy="95.6" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="262.2" cy="87.9" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="309.3" cy="112.2" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="355.8" cy="108.6" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="245.5" cy="49.4" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="331.6" cy="187.6" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="273.0" cy="93.2" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="264.4" cy="116.0" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="191.8" cy="106.3" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="385.3" cy="136.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="243.6" cy="112.2" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="316.2" cy="92.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="279.2" cy="184.9" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="256.5" cy="88.1" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="266.1" cy="89.9" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="263.6" cy="136.8" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="365.4" cy="86.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="376.8" cy="112.0" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="368.2" cy="88.0" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="253.7" cy="77.6" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="256.1" cy="80.0" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="186.7" cy="183.9" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="330.7" cy="77.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="326.2" cy="95.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="329.4" cy="79.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="219.4" cy="99.2" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="324.3" cy="143.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="276.5" cy="107.2" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="237.2" cy="63.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="185.1" cy="71.7" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="250.5" cy="127.6" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="262.7" cy="61.1" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="331.3" cy="126.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="285.5" cy="138.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="211.8" cy="129.1" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="419.4" cy="158.8" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="334.2" cy="134.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="195.2" cy="85.4" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="312.1" cy="138.9" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="218.3" cy="54.7" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="331.6" cy="171.2" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="329.3" cy="74.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="334.0" cy="113.6" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="198.1" cy="116.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="274.7" cy="99.9" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="305.6" cy="67.8" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="322.3" cy="158.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="229.3" cy="134.9" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="159.7" cy="53.1" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="315.1" cy="104.8" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="210.9" cy="128.7" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="380.8" cy="136.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="252.5" cy="126.9" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="297.2" cy="55.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="101.7" cy="127.0" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="175.7" cy="152.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="326.3" cy="88.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="265.8" cy="191.5" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="345.9" cy="97.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="311.6" cy="137.4" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="238.8" cy="164.5" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="246.1" cy="80.6" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="205.0" cy="124.0" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="366.9" cy="157.5" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="335.4" cy="129.4" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="260.2" cy="55.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="339.3" cy="88.4" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="229.7" cy="49.3" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="281.2" cy="76.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="229.6" cy="100.1" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="249.9" cy="86.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="258.9" cy="64.6" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="179.7" cy="177.5" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="346.7" cy="126.9" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="322.0" cy="84.5" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="384.4" cy="162.2" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="226.9" cy="118.0" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="265.9" cy="70.6" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="208.0" cy="96.3" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="325.6" cy="101.5" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="191.9" cy="106.5" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="425.2" cy="167.4" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="183.9" cy="149.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="183.5" cy="53.5" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="273.4" cy="110.1" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="359.4" cy="118.8" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="263.6" cy="66.8" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="296.5" cy="80.1" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="409.3" cy="159.7" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="182.8" cy="131.7" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="231.4" cy="139.2" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="323.7" cy="178.6" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="294.6" cy="183.6" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="331.7" cy="93.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="275.1" cy="88.2" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="351.0" cy="95.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="232.1" cy="76.4" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="347.6" cy="138.4" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="257.5" cy="48.8" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="327.4" cy="90.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="314.4" cy="107.0" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="259.2" cy="57.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="229.4" cy="65.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="304.3" cy="103.0" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="352.0" cy="80.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="380.5" cy="135.4" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="243.2" cy="68.9" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="258.1" cy="40.4" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="320.9" cy="144.3" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="257.7" cy="115.0" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="297.1" cy="78.5" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="345.3" cy="142.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="348.5" cy="63.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="255.0" cy="132.3" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="259.7" cy="91.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="206.7" cy="155.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="155.0" cy="76.6" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="96.3" cy="127.2" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="164.8" cy="119.1" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="154.6" cy="107.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="330.8" cy="141.4" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="190.4" cy="53.0" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="133.1" cy="174.7" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="346.3" cy="71.9" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="182.6" cy="81.2" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="234.1" cy="97.4" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="356.7" cy="129.0" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="339.2" cy="154.8" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="350.3" cy="157.0" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="266.7" cy="48.1" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="392.6" cy="166.0" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="299.7" cy="115.0" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="232.8" cy="101.3" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="337.5" cy="148.2" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="69.1" cy="85.1" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="149.2" cy="111.3" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="295.4" cy="46.4" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="269.9" cy="138.4" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="101.5" cy="172.2" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="224.7" cy="109.3" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="218.3" cy="191.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="216.6" cy="72.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="315.6" cy="79.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="246.7" cy="98.2" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="161.6" cy="129.5" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="137.9" cy="167.7" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="238.6" cy="71.7" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="362.9" cy="134.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="230.6" cy="71.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="236.4" cy="49.4" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="333.5" cy="113.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="235.2" cy="79.5" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="258.0" cy="104.4" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="336.1" cy="131.0" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="375.7" cy="117.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="216.8" cy="157.6" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="241.4" cy="126.8" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="196.9" cy="118.9" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="119.5" cy="133.3" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="302.3" cy="52.2" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="111.9" cy="85.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="289.8" cy="65.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="204.0" cy="91.2" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="289.1" cy="151.0" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="242.1" cy="149.0" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="296.0" cy="159.3" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="330.4" cy="126.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="342.3" cy="162.0" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="249.0" cy="68.5" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="266.7" cy="176.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="359.5" cy="125.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="206.6" cy="200.2" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="184.5" cy="114.5" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="310.1" cy="74.4" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="282.5" cy="86.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="220.1" cy="150.2" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="312.3" cy="108.9" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="321.1" cy="89.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="236.4" cy="83.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="364.8" cy="166.4" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="187.2" cy="121.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="266.0" cy="69.9" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="350.7" cy="123.0" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="230.8" cy="128.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="276.6" cy="34.3" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="315.6" cy="73.6" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="222.6" cy="69.0" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="349.2" cy="100.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="259.6" cy="67.2" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="232.5" cy="122.1" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="233.7" cy="122.9" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="328.9" cy="142.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="297.6" cy="129.2" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="278.2" cy="80.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="245.5" cy="111.4" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="337.6" cy="119.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="326.1" cy="76.6" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="209.6" cy="38.1" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="201.3" cy="98.5" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="239.7" cy="48.9" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="182.8" cy="180.2" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="122.0" cy="129.9" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="243.5" cy="158.2" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="299.6" cy="116.6" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="379.6" cy="128.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="291.3" cy="173.2" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="324.0" cy="71.5" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="320.5" cy="159.4" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="332.3" cy="165.7" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="201.2" cy="59.3" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="115.0" cy="112.7" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="282.0" cy="55.0" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="244.9" cy="106.0" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="349.1" cy="168.6" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="353.0" cy="84.6" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="327.7" cy="116.9" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="250.6" cy="72.9" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="223.1" cy="126.5" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="317.6" cy="172.9" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="139.0" cy="137.3" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="325.7" cy="95.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="321.0" cy="74.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="172.5" cy="135.7" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="253.3" cy="70.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="324.2" cy="128.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="211.9" cy="151.8" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="187.5" cy="95.0" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="302.0" cy="89.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="369.0" cy="158.9" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="327.8" cy="123.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="300.9" cy="106.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="348.8" cy="140.0" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="359.8" cy="136.0" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="335.9" cy="101.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="188.1" cy="72.0" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="159.7" cy="170.4" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="243.3" cy="150.7" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="291.1" cy="74.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="99.1" cy="109.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="212.2" cy="114.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="55.9" cy="135.4" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="199.8" cy="169.5" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="179.4" cy="169.5" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="319.4" cy="104.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="306.6" cy="103.9" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="200.3" cy="76.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="331.7" cy="50.9" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="191.4" cy="94.6" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="276.6" cy="56.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="202.0" cy="101.4" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="200.2" cy="34.5" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="314.0" cy="102.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="160.6" cy="87.2" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="260.5" cy="48.1" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="176.8" cy="141.3" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="191.2" cy="109.3" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="375.1" cy="140.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="134.7" cy="37.2" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="178.3" cy="141.9" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="131.8" cy="54.9" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="71.6" cy="139.7" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="245.3" cy="131.6" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="57.6" cy="100.9" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="275.1" cy="152.8" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="351.9" cy="182.9" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="306.5" cy="52.7" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="317.0" cy="176.0" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="326.6" cy="86.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="267.7" cy="59.1" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="258.1" cy="157.3" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="245.6" cy="78.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="327.0" cy="120.9" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="188.2" cy="150.9" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="323.9" cy="73.9" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="229.4" cy="107.2" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="168.1" cy="93.2" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="247.8" cy="167.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="240.7" cy="74.3" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="262.3" cy="79.7" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="284.0" cy="81.6" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="260.0" cy="88.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="308.6" cy="121.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="265.3" cy="64.1" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="284.9" cy="67.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="117.9" cy="136.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="365.2" cy="60.5" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="114.3" cy="49.6" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="326.6" cy="87.9" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="318.9" cy="92.1" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="277.3" cy="83.6" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="278.0" cy="71.5" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="331.6" cy="94.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="286.8" cy="64.0" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="279.5" cy="127.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="167.8" cy="105.6" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="376.4" cy="147.2" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="201.2" cy="45.5" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="380.3" cy="160.8" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="309.7" cy="106.6" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="202.0" cy="133.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="311.2" cy="104.4" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="196.4" cy="84.8" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="312.7" cy="142.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="307.9" cy="140.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="357.4" cy="99.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="150.6" cy="94.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="351.1" cy="159.7" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="315.6" cy="96.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="269.7" cy="75.9" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="367.5" cy="121.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="265.9" cy="104.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="164.1" cy="112.2" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="198.4" cy="129.9" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="101.2" cy="103.7" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="296.4" cy="117.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="317.0" cy="123.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="245.1" cy="111.6" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="139.0" cy="94.3" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="300.0" cy="129.0" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="318.6" cy="123.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="106.7" cy="118.5" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="237.7" cy="134.6" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="288.3" cy="104.9" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="321.6" cy="127.3" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="252.9" cy="36.0" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="134.7" cy="144.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="124.4" cy="155.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="368.1" cy="150.0" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="228.2" cy="117.5" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="168.4" cy="101.8" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="233.1" cy="99.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="240.2" cy="56.5" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="163.9" cy="84.9" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="280.8" cy="47.4" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="283.5" cy="67.8" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="281.5" cy="108.1" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="314.8" cy="184.0" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="400.7" cy="172.2" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="326.0" cy="106.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="224.9" cy="80.1" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="270.8" cy="42.2" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="235.9" cy="131.2" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="149.9" cy="108.6" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="327.3" cy="61.7" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="245.8" cy="126.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="370.0" cy="194.6" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="261.2" cy="108.5" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="268.6" cy="92.8" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="165.2" cy="167.2" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="307.5" cy="47.1" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="320.0" cy="144.6" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="324.1" cy="104.6" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="229.1" cy="52.2" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="404.4" cy="152.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="137.5" cy="129.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="283.7" cy="121.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="200.5" cy="126.9" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="298.5" cy="128.6" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="272.9" cy="77.6" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="266.6" cy="197.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="330.4" cy="47.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="328.5" cy="89.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="330.8" cy="102.7" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="284.3" cy="120.2" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="249.2" cy="120.1" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="316.2" cy="43.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="127.9" cy="62.6" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="262.9" cy="81.4" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="280.6" cy="46.9" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="275.4" cy="54.6" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="241.6" cy="94.0" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="275.4" cy="115.0" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="266.1" cy="80.9" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="242.4" cy="95.0" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="198.5" cy="126.5" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="164.6" cy="67.3" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="347.7" cy="143.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="293.1" cy="107.3" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="258.9" cy="60.5" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="356.2" cy="115.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="272.4" cy="87.9" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="167.6" cy="145.6" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="253.1" cy="114.6" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="305.0" cy="69.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="197.6" cy="55.8" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="165.8" cy="159.6" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="316.3" cy="114.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="305.4" cy="104.9" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="130.7" cy="134.5" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="126.0" cy="89.4" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="341.7" cy="100.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="109.0" cy="101.2" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="294.6" cy="98.0" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="349.4" cy="107.5" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="128.0" cy="84.3" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="360.0" cy="103.3" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="172.3" cy="69.6" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="185.8" cy="164.4" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="250.2" cy="72.5" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="363.8" cy="99.9" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="185.0" cy="101.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="270.3" cy="68.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="332.4" cy="107.3" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="281.8" cy="47.0" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="334.4" cy="171.8" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="151.6" cy="94.4" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="231.5" cy="44.9" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="317.0" cy="61.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="133.9" cy="84.4" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="274.6" cy="153.6" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="322.8" cy="88.6" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="223.1" cy="79.9" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="115.8" cy="102.5" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="185.2" cy="53.0" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="363.6" cy="131.7" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="135.4" cy="71.2" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="368.2" cy="129.8" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="306.4" cy="110.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="346.7" cy="120.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="106.5" cy="81.2" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="336.4" cy="137.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="189.0" cy="56.1" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="312.8" cy="92.7" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="276.9" cy="115.1" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="157.6" cy="35.4" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="219.1" cy="25.0" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="386.6" cy="152.0" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="208.8" cy="159.5" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="257.1" cy="124.1" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="198.8" cy="176.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="344.2" cy="85.1" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="361.2" cy="166.1" r="2.2" fill="#0891b2" opacity="0.68"/>
+              <circle cx="277.6" cy="87.1" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="35.0" cy="135.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="299.8" cy="112.3" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="154.3" cy="78.4" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="319.2" cy="110.2" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="187.4" cy="144.4" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="252.1" cy="66.2" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="168.3" cy="186.6" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="162.0" cy="123.4" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="332.2" cy="94.5" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="281.7" cy="44.5" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="301.8" cy="48.1" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="304.3" cy="114.9" r="2.2" fill="#ea580c" opacity="0.68"/>
+              <circle cx="173.4" cy="101.7" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="263.2" cy="75.4" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="321.9" cy="71.1" r="2.2" fill="#db2777" opacity="0.68"/>
+              <circle cx="426.9" cy="118.4" r="2.2" fill="#7c3aed" opacity="0.68"/>
+              <circle cx="72.6" cy="141.8" r="2.2" fill="#059669" opacity="0.68"/>
+              <circle cx="168.2" cy="74.1" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="279.2" cy="75.5" r="2.2" fill="#2563eb" opacity="0.68"/>
+              <circle cx="181.6" cy="170.4" r="2.2" fill="#059669" opacity="0.68"/>
+
+              <!-- 6 Centroid Markers & Labels -->
+              <circle cx="236.0" cy="89.8" r="6.5" fill="#2563eb" stroke="#ffffff" stroke-width="2"/>
+              <rect x="206" y="74" width="60" height="14" rx="3" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+              <text x="236" y="84" font-size="7.5" font-family="monospace" font-weight="bold" fill="#1d4ed8" text-anchor="middle">C0: LLM & Reasoning</text>
+
+              <circle cx="322.0" cy="103.6" r="6.5" fill="#7c3aed" stroke="#ffffff" stroke-width="2"/>
+              <rect x="292" y="88" width="60" height="14" rx="3" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1"/>
+              <text x="322" y="98" font-size="7.5" font-family="monospace" font-weight="bold" fill="#6d28d9" text-anchor="middle">C1: Diffusion & GenAI</text>
+
+              <circle cx="151.9" cy="121.3" r="6.5" fill="#059669" stroke="#ffffff" stroke-width="2"/>
+              <rect x="122" y="106" width="60" height="14" rx="3" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/>
+              <text x="152" y="116" font-size="7.5" font-family="monospace" font-weight="bold" fill="#047857" text-anchor="middle">C2: PAC-Bayes Theory</text>
+
+              <circle cx="260.4" cy="111.9" r="6.5" fill="#ea580c" stroke="#ffffff" stroke-width="2"/>
+              <rect x="230" y="120" width="60" height="14" rx="3" fill="#fff7ed" stroke="#fed7aa" stroke-width="1"/>
+              <text x="260" y="130" font-size="7.5" font-family="monospace" font-weight="bold" fill="#c2410c" text-anchor="middle">C3: RL & Robotics</text>
+
+              <circle cx="256.4" cy="65.2" r="6.5" fill="#db2777" stroke="#ffffff" stroke-width="2"/>
+              <rect x="226" y="50" width="60" height="14" rx="3" fill="#fdf2f8" stroke="#fbcfe8" stroke-width="1"/>
+              <text x="256" y="60" font-size="7.5" font-family="monospace" font-weight="bold" fill="#be185d" text-anchor="middle">C4: GNN & Graphs</text>
+
+              <circle cx="315.1" cy="160.7" r="6.5" fill="#0891b2" stroke="#ffffff" stroke-width="2"/>
+              <rect x="285" y="169" width="60" height="14" rx="3" fill="#ecfeff" stroke="#a5f3fc" stroke-width="1"/>
+              <text x="315" y="179" font-size="7.5" font-family="monospace" font-weight="bold" fill="#0e7490" text-anchor="middle">C5: Multimodal VL</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Right: 6 Decoded Semantic Topic Cards (FROM MiningPillarsView.tsx) -->
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.45rem;">
+          <div class="card accent-blue" style="padding: 0.42rem 0.6rem;">
+            <div class="card-label" style="color: var(--accent-blue); font-size: 0.6rem; margin-bottom: 2px;">C0 &bull; cs.CL, cs.AI (373 bài)</div>
+            <strong style="font-size: 0.71rem; color: var(--text-heading); display: block;">LLMs &amp; In-Context Reasoning</strong>
+            <div class="formula-card" style="font-size: 0.58rem; margin-top: 2px; padding: 2px 5px;">Mô hình ngôn ngữ lớn, chuỗi suy luận CoT &amp; Prompt</div>
+          </div>
+
+          <div class="card accent-purple" style="padding: 0.42rem 0.6rem;">
+            <div class="card-label" style="color: var(--accent-purple); font-size: 0.6rem; margin-bottom: 2px;">C1 &bull; cs.CV (781 bài)</div>
+            <strong style="font-size: 0.71rem; color: var(--text-heading); display: block;">Diffusion &amp; High-Res Synthesis</strong>
+            <div class="formula-card" style="font-size: 0.58rem; margin-top: 2px; padding: 2px 5px;">Khuếch tán xác suất, tổng hợp ảnh &amp; sinh điều kiện</div>
+          </div>
+
+          <div class="card accent-emerald" style="padding: 0.42rem 0.6rem;">
+            <div class="card-label" style="color: var(--accent-emerald); font-size: 0.6rem; margin-bottom: 2px;">C2 &bull; stat.ML, cs.LG (682 bài)</div>
+            <strong style="font-size: 0.71rem; color: var(--text-heading); display: block;">PAC-Bayes Theory &amp; Optimization</strong>
+            <div class="formula-card" style="font-size: 0.58rem; margin-top: 2px; padding: 2px 5px;">Lý thuyết học máy thống kê, biên tổng quát hóa</div>
+          </div>
+
+          <div class="card accent-orange" style="padding: 0.42rem 0.6rem;">
+            <div class="card-label" style="color: var(--accent-orange); font-size: 0.6rem; margin-bottom: 2px;">C3 &bull; cs.RO (276 bài)</div>
+            <strong style="font-size: 0.71rem; color: var(--text-heading); display: block;">RL &amp; Autonomous Robotics</strong>
+            <div class="formula-card" style="font-size: 0.58rem; margin-top: 2px; padding: 2px 5px;">Học tăng cường sâu, điều khiển robot tự hành</div>
+          </div>
+
+          <div class="card" style="padding: 0.42rem 0.6rem; border-left: 3px solid #db2777; background: #fff5f8;">
+            <div class="card-label" style="color: #db2777; font-size: 0.6rem; margin-bottom: 2px;">C4 &bull; cs.AI, cs.LG (456 bài)</div>
+            <strong style="font-size: 0.71rem; color: var(--text-heading); display: block;">GNNs &amp; Knowledge Graphs</strong>
+            <div class="formula-card" style="font-size: 0.58rem; margin-top: 2px; padding: 2px 5px;">Mạng nơ-ron đồ thị, biểu diễn tri thức quan hệ</div>
+          </div>
+
+          <div class="card" style="padding: 0.42rem 0.6rem; border-left: 3px solid #0891b2; background: #f0fdfa;">
+            <div class="card-label" style="color: #0891b2; font-size: 0.6rem; margin-bottom: 2px;">C5 &bull; cs.CV, cs.CL (432 bài)</div>
+            <strong style="font-size: 0.71rem; color: var(--text-heading); display: block;">Zero-Shot Multimodal VL Transformers</strong>
+            <div class="formula-card" style="font-size: 0.58rem; margin-top: 2px; padding: 2px 5px;">Căn chỉnh thị giác - ngôn ngữ, Contrastive Learning</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Evaluation Metrics Banner (REAL DATA) -->
+      <div class="card reveal" style="padding: 0.45rem 1rem;">
+        <div class="grid-3" style="font-family: var(--font-mono); font-size: var(--small-size); text-align: center;">
+          <div>Tối ưu cụm: <strong style="color: var(--accent-blue);">MiniBatch K-Means (k=6)</strong></div>
+          <div>Chỉ số phân tách: <strong style="color: var(--accent-emerald);">Silhouette: 0.073 &bull; DB: 3.98</strong></div>
+          <div>DBSCAN Mật độ: <strong style="color: var(--text-heading);">4 Cụm đặc &bull; Noise: 53.6%</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>sentence-transformers/all-MiniLM-L6-v2 (384 Dimensions) kết hợp PCA 2D Projection</div>
+      <div>MINING PILLAR 2: TOPIC CLUSTERING</div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SLIDE 07: PILLAR 3: CITATION NETWORK (FE GRAPH MOCKUP) -->
+  <!-- ======================================================== -->
+  <section class="slide" id="slide-07">
+    <div class="slide-header">
+      <div class="brand-cluster">
+        <span class="brand-badge" style="background: var(--accent-blue);">PILLAR 3</span>
+        <div class="brand-meta"><span>ĐỒ THỊ TRÍCH DẪN &amp; PHÂN TÍCH MẠNG HỌC THUẬT</span></div>
+      </div>
+      <div class="slide-page-badge"><strong>07/14</strong></div>
+    </div>
+
+    <div class="slide-body">
+      <div>
+        <h2 class="reveal">PageRank Centrality &bull; Louvain Community Detection</h2>
+        <p class="reveal">Xác định các bài báo hạt nhân (Seminal Papers) và trường phái nghiên cứu liên kết qua NetworkX.</p>
+      </div>
+
+      <div class="grid-2 reveal" style="align-items: stretch;">
+        <!-- Left: Citation Network SVG Topology -->
+        <div class="fe-mockup-frame" style="display: flex; flex-direction: column;">
+          <div class="fe-mockup-titlebar">
+            <strong>MiningPillarsView.tsx // NETWORKX FORCE-DIRECTED GRAPH</strong>
+            <span style="color: var(--accent-blue); font-weight: 700;">8,892 NODES &bull; 86,295 CITATION EDGES</span>
+          </div>
+          <div style="flex: 1; min-height: 235px; background: #ffffff; border-radius: 6px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+            <svg viewBox="0 0 460 235" style="width: 100%; height: 100%; max-height: 245px;">
+              <!-- Community grouping hulls -->
+              <ellipse cx="140" cy="115" rx="105" ry="80" fill="#eff6ff" stroke="#bfdbfe" stroke-dasharray="4 3" opacity="0.6"/>
+              <ellipse cx="330" cy="115" rx="95" ry="75" fill="#fdf2f8" stroke="#fbcfe8" stroke-dasharray="4 3" opacity="0.6"/>
+
+              <!-- Community labels -->
+              <text x="60" y="48" font-size="8.5" font-family="monospace" font-weight="bold" fill="#3b82f6">LOUVAIN COMM 0 (NLP &amp; Attention)</text>
+              <text x="260" y="48" font-size="8.5" font-family="monospace" font-weight="bold" fill="#db2777">LOUVAIN COMM 1 (Vision Backbones)</text>
+
+              <!-- Edges -->
+              <g stroke="#cbd5e1" stroke-width="1.2" opacity="0.85">
+                <line x1="140" y1="115" x2="80" y2="85" stroke-width="1.8" stroke="#93c5fd"/>
+                <line x1="140" y1="115" x2="70" y2="145" stroke-width="1.8" stroke="#93c5fd"/>
+                <line x1="140" y1="115" x2="130" y2="175" stroke-width="1.5" stroke="#93c5fd"/>
+                <line x1="140" y1="115" x2="200" y2="85" stroke-width="2" stroke="#93c5fd"/>
+                <line x1="140" y1="115" x2="210" y2="150" stroke-width="1.5" stroke="#93c5fd"/>
+                
+                <!-- Cross-discipline bridge between Vaswani & He -->
+                <line x1="140" y1="115" x2="330" y2="115" stroke-width="2.5" stroke="#818cf8" stroke-dasharray="5 3"/>
+
+                <line x1="330" y1="115" x2="275" y2="75" stroke-width="1.5" stroke="#f472b6"/>
+                <line x1="330" y1="115" x2="390" y2="75" stroke-width="1.5" stroke="#f472b6"/>
+                <line x1="330" y1="115" x2="400" y2="145" stroke-width="1.8" stroke="#f472b6"/>
+                <line x1="330" y1="115" x2="320" y2="180" stroke-width="1.5" stroke="#f472b6"/>
+              </g>
+
+              <!-- Satellites -->
+              <circle cx="80" cy="85" r="7" fill="#60a5fa" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="80" y="73" font-size="8" font-family="monospace" fill="#1e40af" text-anchor="middle">BERT (Devlin)</text>
+
+              <circle cx="70" cy="145" r="7" fill="#60a5fa" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="70" y="160" font-size="8" font-family="monospace" fill="#1e40af" text-anchor="middle">GPT (Radford)</text>
+
+              <circle cx="200" cy="85" r="8" fill="#60a5fa" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="200" y="73" font-size="8" font-family="monospace" fill="#1e40af" text-anchor="middle">ViT (Dosovitskiy)</text>
+
+              <circle cx="210" cy="150" r="7" fill="#60a5fa" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="210" y="165" font-size="8" font-family="monospace" fill="#1e40af" text-anchor="middle">LLaMA (Touvron)</text>
+
+              <circle cx="275" cy="75" r="6" fill="#f472b6" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="275" y="65" font-size="8" font-family="monospace" fill="#9d174d" text-anchor="middle">VGG (Simonyan)</text>
+
+              <circle cx="390" cy="75" r="6" fill="#f472b6" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="390" y="65" font-size="8" font-family="monospace" fill="#9d174d" text-anchor="middle">YOLO (Redmon)</text>
+
+              <circle cx="400" cy="145" r="7" fill="#f472b6" stroke="#ffffff" stroke-width="1.5"/>
+              <text x="400" y="160" font-size="8" font-family="monospace" fill="#9d174d" text-anchor="middle">ConvNeXt (Liu)</text>
+
+              <!-- Central Hub #1: Vaswani et al. -->
+              <circle cx="140" cy="115" r="16" fill="#f59e0b" stroke="#ffffff" stroke-width="3"/>
+              <text x="140" y="119" font-size="9" font-family="monospace" font-weight="bold" fill="#ffffff" text-anchor="middle">#1</text>
+              <rect x="90" y="136" width="100" height="16" rx="3" fill="#fffbeb" stroke="#fde68a" stroke-width="1"/>
+              <text x="140" y="147" font-size="8" font-family="monospace" font-weight="bold" fill="#b45309" text-anchor="middle">Vaswani et al. 2017</text>
+
+              <!-- Central Hub #2: He et al. -->
+              <circle cx="330" cy="115" r="14" fill="#2563eb" stroke="#ffffff" stroke-width="3"/>
+              <text x="330" y="119" font-size="9" font-family="monospace" font-weight="bold" fill="#ffffff" text-anchor="middle">#2</text>
+              <rect x="285" y="136" width="90" height="16" rx="3" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+              <text x="330" y="147" font-size="8" font-family="monospace" font-weight="bold" fill="#1d4ed8" text-anchor="middle">He et al. 2016</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Right: PageRank Landmark & Louvain Specs -->
+        <div style="display: flex; flex-direction: column; gap: 0.5rem; justify-content: space-between;">
+          <!-- PageRank Landmark Cards (REAL DATA) -->
+          <div class="fe-mockup-frame" style="padding: 0.6rem;">
+            <div class="fe-mockup-titlebar" style="margin-bottom: 0.4rem; padding-bottom: 0.3rem;">
+              <strong>PAGERANK CENTRALITY (&alpha; = 0.85)</strong>
+              <span style="color: var(--accent-blue); font-weight: 700;">TOP INFLUENCERS</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+              <div class="card" style="padding: 0.4rem 0.65rem; border-color: #fde68a; background: #fffbeb;">
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: #b45309;">
+                  #1 Landmark: Attention Is All You Need (Ashish Vaswani et al.)
+                </div>
+                <div style="font-size: 0.64rem; color: var(--text-muted); margin-top: 1px;">PageRank: 0.01263 &bull; In-Degree: 1,213 &bull; Trích dẫn toàn mạng: 26,678 lượt.</div>
+              </div>
+              <div class="card" style="padding: 0.4rem 0.65rem; border-color: #bfdbfe; background: #eff6ff;">
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: #1d4ed8;">
+                  #2 Landmark: Deep Contextualized Word Representations (Peters et al., ELMo)
+                </div>
+                <div style="font-size: 0.64rem; color: var(--text-muted); margin-top: 1px;">PageRank: 0.00860 &bull; In-Degree: 900 &bull; Đặt nền móng biểu diễn ngữ cảnh sâu.</div>
+              </div>
+              <div class="card" style="padding: 0.4rem 0.65rem; border-color: #fbcfe8; background: #fdf2f8;">
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: #9d174d;">
+                  #3 Landmark: Exploiting Generative AI to Scale up Reasoning (Jakubův et al.)
+                </div>
+                <div style="font-size: 0.64rem; color: var(--text-muted); margin-top: 1px;">PageRank: 0.00778 &bull; Degree: 1,145 &bull; Cầu nối suy luận tự động và LLM.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Louvain Modularity Specs (REAL DATA) -->
+          <div class="fe-mockup-frame" style="padding: 0.6rem;">
+            <div class="fe-mockup-titlebar" style="margin-bottom: 0.4rem; padding-bottom: 0.3rem;">
+              <strong>LOUVAIN COMMUNITY DETECTION</strong>
+              <span style="color: var(--accent-purple); font-weight: 700;">92 COMMUNITIES</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.35rem; font-family: var(--font-mono); font-size: 0.65rem;">
+              <div class="formula-card" style="padding: 4px 6px;">
+                Phân nhánh: <strong>92 Cụm Cộng Đồng</strong>
+              </div>
+              <div class="formula-card" style="padding: 4px 6px; border-color: #e9d5ff; background: #faf5ff; color: #7c3aed;">
+                Modularity: <strong>Q = 0.728 (Density 0.001)</strong>
+              </div>
+              <div class="formula-card" style="padding: 4px 6px; border-color: #bbf7d0; background: #f0fdf4; color: #15803d; grid-column: span 2;">
+                RAG Boost: <strong>PageRank Score &times; Dense Cosine Similarity</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Triển khai thư viện NetworkX C-optimized core &bull; Visual D3 force-directed</div>
+      <div>MINING PILLAR 3: GRAPH ANALYSIS</div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SLIDE 08: PILLAR 4: ANOMALY & TRENDS (FE SPARKLINE) -->
+  <!-- ======================================================== -->
+  <section class="slide" id="slide-08">
+    <div class="slide-header">
+      <div class="brand-cluster">
+        <span class="brand-badge" style="background: var(--accent-emerald);">PILLAR 4</span>
+        <div class="brand-meta"><span>KHAI PHÁ ĐỘT BIẾN &amp; VẬN TỐC XU HƯỚNG (VELOCITY TRENDS)</span></div>
+      </div>
+      <div class="slide-page-badge"><strong>08/14</strong></div>
+    </div>
+
+    <div class="slide-body">
+      <div>
+        <h2 class="reveal">[MINING-04] Tốc Độ Tăng Trưởng Theo Quý &bull; Isolation Forest Outliers</h2>
+        <p class="reveal">Trực quan hóa trực tiếp từ thành phần <code>MiningPillarsView.tsx</code> trên Web: So sánh quý trước vs. quý gần nhất kèm huy hiệu vận tốc gia tăng.</p>
+      </div>
+
+      <div class="grid-2 reveal" style="align-items: stretch;">
+        <!-- Left: Clustered Column Chart matching Web UI -->
+        <div class="fe-mockup-frame" style="display: flex; flex-direction: column;">
+          <div class="fe-mockup-titlebar">
+            <strong>MiningPillarsView.tsx // TỐC ĐỘ TĂNG TRƯỞNG THEO QUÝ</strong>
+            <span style="color: var(--accent-emerald); font-weight: 700;">VELOCITY SURGE: cs.AI (+199%)</span>
+          </div>
+
+          <div style="flex: 1; min-height: 235px; background: #ffffff; border-radius: 6px; position: relative; overflow: hidden; display: flex; flex-direction: column; padding: 6px 10px;">
+            <div style="font-size: 0.62rem; color: var(--text-muted); font-family: var(--font-mono); margin-bottom: 4px;">
+              Cột Xám: Quý trước &bull; Cột Xanh: Quý gần nhất &bull; <strong>Nhãn: Vận tốc chuẩn hóa thị phần (Share-Normalized Momentum)</strong>
+            </div>
+
+            <!-- SVG Clustered Column Chart -->
+            <svg viewBox="0 0 440 190" style="width: 100%; height: 100%; max-height: 200px;">
+              <!-- Horizontal grid lines -->
+              <line x1="40" y1="150" x2="430" y2="150" stroke="#cbd5e1" stroke-width="1"/>
+              <line x1="40" y1="115" x2="430" y2="115" stroke="#f1f5f9" stroke-width="1"/>
+              <line x1="40" y1="80" x2="430" y2="80" stroke="#f1f5f9" stroke-width="1"/>
+              <line x1="40" y1="45" x2="430" y2="45" stroke="#f1f5f9" stroke-width="1"/>
+
+              <!-- Y-axis values -->
+              <text x="35" y="153" font-size="8" font-family="monospace" fill="#94a3b8" text-anchor="end">0</text>
+              <text x="35" y="118" font-size="8" font-family="monospace" fill="#94a3b8" text-anchor="end">250</text>
+              <text x="35" y="83" font-size="8" font-family="monospace" fill="#94a3b8" text-anchor="end">500</text>
+              <text x="35" y="48" font-size="8" font-family="monospace" fill="#94a3b8" text-anchor="end">750</text>
+
+              <!-- Group 1: cs.AI (Prev: 1, Recent: 161) -->
+              <g>
+                <rect x="55" y="148" width="12" height="2" rx="1" fill="#94a3b8"/>
+                <rect x="70" y="122" width="16" height="28" rx="2" fill="#2563eb"/>
+                <rect x="52" y="99" width="44" height="15" rx="3" fill="#ecfdf5" stroke="#10b981" stroke-width="1"/>
+                <text x="74" y="110" font-size="8" font-family="monospace" font-weight="bold" fill="#047857" text-anchor="middle">+199%</text>
+                <text x="71" y="165" font-size="9" font-family="monospace" font-weight="bold" fill="#0f172a" text-anchor="middle">cs.AI</text>
+              </g>
+
+              <!-- Group 2: cs.CV (Prev: 6, Recent: 722) -->
+              <g>
+                <rect x="135" y="147" width="12" height="3" rx="1" fill="#94a3b8"/>
+                <rect x="150" y="28" width="16" height="122" rx="2" fill="#2563eb"/>
+                <rect x="132" y="8" width="44" height="15" rx="3" fill="#ecfdf5" stroke="#10b981" stroke-width="1"/>
+                <text x="154" y="19" font-size="8" font-family="monospace" font-weight="bold" fill="#047857" text-anchor="middle">+123%</text>
+                <text x="151" y="165" font-size="9" font-family="monospace" font-weight="bold" fill="#0f172a" text-anchor="middle">cs.CV</text>
+              </g>
+
+              <!-- Group 3: cs.CL (Prev: 4, Recent: 366) -->
+              <g>
+                <rect x="215" y="147" width="12" height="3" rx="1" fill="#94a3b8"/>
+                <rect x="230" y="88" width="16" height="62" rx="2" fill="#2563eb"/>
+                <rect x="212" y="68" width="44" height="15" rx="3" fill="#ecfdf5" stroke="#10b981" stroke-width="1"/>
+                <text x="234" y="79" font-size="8" font-family="monospace" font-weight="bold" fill="#047857" text-anchor="middle">+70%</text>
+                <text x="231" y="165" font-size="9" font-family="monospace" font-weight="bold" fill="#0f172a" text-anchor="middle">cs.CL</text>
+              </g>
+
+              <!-- Group 4: cs.LG (Prev: 9, Recent: 672) -->
+              <g>
+                <rect x="295" y="146" width="12" height="4" rx="1" fill="#94a3b8"/>
+                <rect x="310" y="36" width="16" height="114" rx="2" fill="#2563eb"/>
+                <rect x="292" y="16" width="44" height="15" rx="3" fill="#ecfdf5" stroke="#10b981" stroke-width="1"/>
+                <text x="314" y="27" font-size="8" font-family="monospace" font-weight="bold" fill="#047857" text-anchor="middle">+39%</text>
+                <text x="311" y="165" font-size="9" font-family="monospace" font-weight="bold" fill="#0f172a" text-anchor="middle">cs.LG</text>
+              </g>
+
+              <!-- Group 5: cs.RO (Prev: 16, Recent: 160) -->
+              <g>
+                <rect x="375" y="144" width="12" height="6" rx="1" fill="#94a3b8"/>
+                <rect x="390" y="123" width="16" height="27" rx="2" fill="#ef4444"/>
+                <rect x="372" y="100" width="44" height="15" rx="3" fill="#fef2f2" stroke="#f87171" stroke-width="1"/>
+                <text x="394" y="111" font-size="8" font-family="monospace" font-weight="bold" fill="#b91c1c" text-anchor="middle">-81%</text>
+                <text x="391" y="165" font-size="9" font-family="monospace" font-weight="bold" fill="#0f172a" text-anchor="middle">cs.RO</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Right: Isolation Forest Outlier Diagnostics -->
+        <div style="display: flex; flex-direction: column; gap: 0.45rem; justify-content: space-between;">
+          <!-- Algorithm Header Card -->
+          <div class="fe-mockup-frame" style="padding: 0.5rem;">
+            <div class="fe-mockup-titlebar" style="margin-bottom: 0.25rem; padding-bottom: 0.2rem;">
+              <strong>ISOLATION FOREST // NOVELTY ANOMALY DETECTOR</strong>
+              <span style="color: var(--accent-orange); font-weight: 700;">CONTAMINATION = 0.01</span>
+            </div>
+            <div style="font-size: 0.65rem; color: var(--text-body); line-height: 1.4;">
+              Thuật toán cô lập đa chiều dựa trên số công thức toán LaTeX, độ dài bài báo và tính liên ngành:
+              <div class="formula-card" style="padding: 3px 6px; font-size: 0.68rem; margin-top: 3px; color: #c2410c; background: #fffaf5; border-color: #fed7aa; text-align: center;">
+                $$s(x, n) = 2^{-\frac{\mathbb{E}(h(x))}{c(n)}} \quad \text{với Score} \le -0.65 \text{ là ngoại lai đặc thù}$$
+              </div>
+            </div>
+          </div>
+
+          <!-- Statistical Callout on cs.RO Share-Normalized Momentum -->
+          <div class="card" style="padding: 0.35rem 0.6rem; border-color: #fed7aa; background: #fffaf5; font-size: 0.61rem; color: #9a3412; line-height: 1.35;">
+            <strong>Lưu ý phương pháp luận về cs.RO (-81%):</strong> Dù số bài tăng từ 16 lên 160 bài, tỷ trọng nghiên cứu trong kho giảm từ 32.7% xuống 6.1% (-81.4%) do các chuyên ngành AI &amp; Thị giác máy tính bùng nổ chiếm lĩnh diễn đàn học thuật.
+          </div>
+
+          <!-- Real Outlier Anomalies Discovered -->
+          <div class="fe-mockup-frame" style="padding: 0.5rem;">
+            <div class="fe-mockup-titlebar" style="margin-bottom: 0.25rem; padding-bottom: 0.2rem;">
+              <strong>BÀI BÁO NGOẠI LAI TIÊU BIỂU TRÍCH XUẤT TỰ ĐỘNG</strong>
+              <span style="color: var(--accent-emerald); font-weight: 700;">30 ANOMALIES</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.3rem; font-family: var(--font-mono); font-size: 0.61rem;">
+              <div class="card" style="padding: 0.3rem 0.5rem; border-color: #fed7aa; background: #fffaf5;">
+                <div style="font-weight: 700; color: #c2410c;">1. Tensor-on-Tensor Regression [math.ST]</div>
+                <div style="font-size: 0.58rem; color: var(--text-muted); margin-top: 1px;">Score: -0.704 &bull; 1,600 Công thức toán LaTeX &bull; 15,279 từ &bull; 6 Chuyên ngành.</div>
+              </div>
+              <div class="card" style="padding: 0.3rem 0.5rem; border-color: #fed7aa; background: #fffaf5;">
+                <div style="font-weight: 700; color: #c2410c;">2. Generative Flow Networks: Theory &amp; Apps [cs.LG]</div>
+                <div style="font-size: 0.58rem; color: var(--text-muted); margin-top: 1px;">Score: -0.691 &bull; 5,470 Công thức toán LaTeX &bull; 74,303 từ (Chuyên khảo lý thuyết).</div>
+              </div>
+              <div class="card" style="padding: 0.3rem 0.5rem; border-color: #fed7aa; background: #fffaf5;">
+                <div style="font-weight: 700; color: #c2410c;">3. On Principled Local Optimization for FL [cs.LG]</div>
+                <div style="font-size: 0.58rem; color: var(--text-muted); margin-top: 1px;">Score: -0.686 &bull; 3,732 Công thức toán LaTeX &bull; 26,576 từ &bull; Tối ưu cục bộ.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Zero False-Positive Outlier Rejection Pipeline</div>
+      <div>MINING PILLAR 4: ANOMALY &amp; TRENDS</div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SLIDE 09: VECTOR LAKEHOUSE & LANCEDB -->
+  <!-- ======================================================== -->
+  <section class="slide" id="slide-09">
+    <div class="slide-header">
+      <div class="brand-cluster">
+        <span class="brand-badge">VECTOR LAKE</span>
+        <div class="brand-meta"><span>LANCEDB VECTOR LAKEHOUSE &bull; ANN SEARCH</span></div>
+      </div>
+      <div class="slide-page-badge"><strong>09/14</strong></div>
+    </div>
+
+    <div class="slide-body">
+      <div>
+        <h2 class="reveal">Hồ Vector LanceDB &bull; Hiệu Năng ANN Dưới 15ms</h2>
+        <p class="reveal">Định dạng cột Lance Columnar tối ưu trên đĩa NVMe kết hợp all-MiniLM-L6-v2 384 chiều.</p>
+      </div>
+
+      <div class="grid-3 reveal">
+        <!-- Lance Format -->
+        <div class="card accent-blue">
+          <div class="card-label" style="color: var(--accent-blue);">LANCE COLUMNAR FORMAT</div>
+          <h3>Zero-Copy Apache Arrow</h3>
+          <p style="font-size: var(--small-size);">Lưu trữ vector trực tiếp dưới dạng tệp tin cột trên ổ đĩa cứng NVMe thay vì phụ thuộc cụm máy chủ đắt đỏ:</p>
+          <div class="formula-card" style="margin: 0.5rem 0;">
+            143,523 Vectors | 384 Dimensions<br>
+            Định dạng cột LanceDB trên ổ đĩa SSD NVMe
+          </div>
+          <p style="font-size: var(--small-size); color: var(--text-muted);">Tải thẳng vector vào bộ nhớ RAM không cần qua bước tuần tự hóa tốn kém.</p>
+        </div>
+
+        <!-- Latency Bar Comparison Mockup -->
+        <div class="fe-mockup-frame">
+          <div class="fe-mockup-titlebar">
+            <strong>LATENCY BENCHMARK // 143k VECTORS</strong>
+            <span style="color: var(--accent-emerald); font-weight: 700;">45x FASTER</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.6rem; margin: 0.2rem 0;">
+            <div>
+              <div style="font-size: var(--small-size); display: flex; justify-content: space-between; margin-bottom: 2px;">
+                <span>Flat Exact Scan:</span><strong style="color: #ef4444;">840 ms</strong>
+              </div>
+              <div style="background: #f1f5f9; height: 10px; border-radius: 5px; overflow: hidden;">
+                <div style="background: #ef4444; width: 100%; height: 100%;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div style="font-size: var(--small-size); display: flex; justify-content: space-between; margin-bottom: 2px;">
+                <span>Qdrant HNSW Fallback:</span><strong style="color: #f59e0b;">42 ms</strong>
+              </div>
+              <div style="background: #f1f5f9; height: 10px; border-radius: 5px; overflow: hidden;">
+                <div style="background: #f59e0b; width: 18%; height: 100%;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div style="font-size: var(--small-size); display: flex; justify-content: space-between; margin-bottom: 2px;">
+                <span>LanceDB Columnar ANN:</span><strong style="color: var(--accent-emerald);">14.2 ms</strong>
+              </div>
+              <div style="background: #f1f5f9; height: 10px; border-radius: 5px; overflow: hidden;">
+                <div style="background: var(--accent-emerald); width: 5%; height: 100%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size: 0.68rem; color: var(--text-muted); margin-top: 0.4rem;">
+            Truy vấn đồng thời cả Metadata lọc phân đoạn và Khoảng cách Cosine không cần scan lại bảng.
+          </div>
+        </div>
+
+        <!-- Embedding Specs -->
+        <div class="card accent-emerald">
+          <div class="card-label" style="color: var(--accent-emerald);">EMBEDDING CORE</div>
+          <h3>all-MiniLM-L6-v2</h3>
+          <p style="font-size: var(--small-size);">Mô hình Sentence-Transformers chuẩn mực cho tác vụ truy xuất ngữ nghĩa dense:</p>
+          <div class="formula-card" style="margin: 0.5rem 0; color: var(--accent-emerald);">
+            384-D Dense Embedding Space<br>
+            Tối ưu Cosine Similarity chuẩn hóa L2
+          </div>
+          <p style="font-size: var(--small-size); color: var(--text-muted);">Tốc độ sinh vector cực nhanh (~3ms/chunk), đồng bộ định dạng bảng LanceDB 384 chiều.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Tương thích hoàn toàn kiến trúc Hybrid Search: Vector LanceDB + BM25 Lexical</div>
+      <div>VECTOR LAKEHOUSE ENGINE</div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SLIDE 10: GROUNDED RAG & LOCAL LLM (FE CHAT SIMULATION) -->
+  <!-- ======================================================== -->
+  <section class="slide" id="slide-10">
+    <div class="slide-header">
+      <div class="brand-cluster">
+        <span class="brand-badge" style="background: var(--accent-blue);">GROUNDED RAG</span>
+        <div class="brand-meta"><span>QUY TRÌNH GROUNDED RAG &amp; QWEN2.5-7B-INSTRUCT</span></div>
+      </div>
+      <div class="slide-page-badge"><strong>10/14</strong></div>
+    </div>
+
+    <div class="slide-body">
+      <div>
+        <h2 class="reveal">Cơ Chế Khử Ảo Giác &bull; Zero Hallucination Refusal Gate</h2>
+        <p class="reveal">Cơ chế hai trạng thái trong <code>GroundedRagChat.tsx</code>: Trả lời có chứng thực DOI 100% khi có dữ liệu và Chủ động từ chối khi tài liệu không đủ bằng chứng.</p>
+      </div>
+
+      <div class="grid-2 reveal">
+        <!-- Left: Pipeline Steps -->
+        <div class="card accent-blue">
+          <div class="card-label" style="color: var(--accent-blue);">QUY TRÌNH KIỂM SOÁT HỌC THUẬT</div>
+          <div style="display: flex; flex-direction: column; gap: 0.38rem; margin-top: 0.2rem;">
+            <div class="formula-card">
+              <strong>1. Candidate Pool (k=15) &amp; BM25:</strong><br>
+              LanceDB Cosine kết hợp BM25 chính xác từ khóa thuật ngữ và định danh DOI.
+            </div>
+            <div class="formula-card" style="border-color: #bbf7d0; background: #f0fdf4; color: #15803d;">
+              <strong>2. Cross-Encoder Reranker:</strong><br>
+              <code>ms-marco-MiniLM-L-6-v2</code> chấm điểm chéo toàn diện, tăng Contextual Precision +35%.
+            </div>
+            <div class="formula-card" style="border-color: #fed7aa; background: #fffaf5; color: #c2410c;">
+              <strong>3. Strict Refusal Gate (Rule 2):</strong><br>
+              Nếu context trích xuất thiếu dữ kiện, mô hình bắt buộc từ chối thay vì suy đoán sai lệch.
+            </div>
+            <div class="formula-card" style="border-color: #bfdbfe; background: #eff6ff; color: #1d4ed8;">
+              <strong>4. Local Qwen2.5-7B-Instruct:</strong><br>
+              Inference GGUF cục bộ với prompt ràng buộc negative constraints (temp=0.1).
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Dual Operational Preview Box -->
+        <div class="fe-mockup-frame">
+          <div class="fe-mockup-titlebar">
+            <strong>GroundedRagChat.tsx // DUAL OPERATIONAL DEMONSTRATION</strong>
+            <span style="color: var(--accent-emerald); font-weight: 700;">100% PROVENANCE</span>
+          </div>
+
+          <!-- Case 1: Grounded Response -->
+          <div style="background: #ffffff; border: 1.5px solid #bbf7d0; border-radius: 6px; padding: 0.5rem 0.65rem; font-size: var(--small-size); line-height: 1.4; margin-bottom: 0.45rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+              <span style="font-weight: 700; color: #15803d; font-size: 0.65rem;">TRƯỜNG HỢP 1: CÓ ĐỦ TÀI LIỆU (GROUNDED)</span>
+              <span class="brand-badge" style="font-size: 0.58rem; padding: 1px 4px; background: #10b981;">100% CITATION</span>
+            </div>
+            <div style="color: var(--text-body); font-size: 0.68rem;">
+              <strong>Q: Low-Rank Adaptation (LoRA) là gì?</strong><br>
+              LoRA đóng băng trọng số $W_0$ và tiêm ma trận phân rã hạng thấp $\Delta W = B \cdot A$ vào các tầng Transformer, giảm tới 10,000 lần số tham số cần huấn luyện.
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 0.6rem; color: #15803d; margin-top: 2px;">
+              [Nguồn: openalex:W3168867926 &bull; Hu et al. &bull; Section: Methodology]
+            </div>
+          </div>
+
+          <!-- Case 2: Zero Hallucination Refusal Gate -->
+          <div style="background: #ffffff; border: 1.5px solid #fed7aa; border-radius: 6px; padding: 0.5rem 0.65rem; font-size: var(--small-size); line-height: 1.4;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+              <span style="font-weight: 700; color: #c2410c; font-size: 0.65rem;">TRƯỜNG HỢP 2: THIẾU TÀI LIỆU (REFUSAL GATE)</span>
+              <span class="brand-badge" style="font-size: 0.58rem; padding: 1px 4px; background: #ea580c;">ANTI-HALLUCINATION</span>
+            </div>
+            <div style="color: var(--text-body); font-size: 0.68rem;">
+              <strong>Q: Cơ chế hoạt động của thuật toán tối ưu hóa DPO là gì?</strong><br>
+              <em>"The provided literature does not contain sufficient details regarding the mechanism of operation of the DPO algorithm..."</em>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 0.6rem; color: #c2410c; margin-top: 2px;">
+              [Cổng từ chối kích hoạt: Ngăn chặn hoàn toàn bịa đặt công thức khi từ khóa viết tắt mơ hồ]
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Inference cục bộ 100% GGUF &bull; Bảo mật dữ liệu học thuật</div>
+      <div>GROUNDED SCIENTIFIC RAG</div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SLIDE 11: FRONTEND DASHBOARD (FE UI WIREFRAME) -->
+  <!-- ======================================================== -->
+  <section class="slide" id="slide-011">
+    <div class="slide-header">
+      <div class="brand-cluster">
+        <span class="brand-badge">UI/UX</span>
+        <div class="brand-meta"><span>FRONTEND MISSION CONTROL DASHBOARD</span></div>
+      </div>
+      <div class="slide-page-badge"><strong>11/14</strong></div>
+    </div>
+
+    <div class="slide-body">
+      <div>
+        <h2 class="reveal">Trải Nghiệm Mission Control &bull; SSE Streaming Thời Gian Thực</h2>
+        <p class="reveal">Kiến trúc giao diện điều hành thời gian thực xây dựng trên nền tảng React 19, Vite 8 và Tailwind v4.</p>
+      </div>
+
+      <!-- Live Frontend Wireframe Mockup -->
+      <div class="fe-mockup-frame reveal" style="padding: 0; overflow: hidden; border: 1.5px solid #cbd5e1; box-shadow: var(--card-shadow-hover);">
+        <!-- Dashboard Header Bar -->
+        <div style="background: #0f172a; color: #f8fafc; padding: 0.4rem 0.85rem; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.68rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="background: #ff5722; color: #fff; font-weight: 800; padding: 2px 6px; border-radius: 4px; font-size: 0.62rem;">UTH</span>
+            <strong style="color: #ffffff; font-size: 0.72rem;">Scientific Data Mining &amp; Grounded RAG Mission Control</strong>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.45rem;">
+            <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); padding: 1px 6px; border-radius: 999px; font-size: 0.6rem; display: flex; align-items: center; gap: 4px;">
+              <span style="width: 5px; height: 5px; border-radius: 50%; background: #34d399;"></span> FASTAPI ONLINE
+            </span>
+            <span style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); padding: 1px 6px; border-radius: 999px; font-size: 0.6rem;">
+              SSE STREAMING ACTIVE
+            </span>
+          </div>
+        </div>
+
+        <!-- 6 Tabs Navigation Strip -->
+        <div style="background: #1e293b; padding: 0.3rem 0.85rem; display: flex; gap: 0.35rem; overflow-x: auto; border-bottom: 1px solid #334155; font-family: var(--font-mono); font-size: 0.65rem;">
+          <span style="background: #2563eb; color: #ffffff; padding: 2px 7px; border-radius: 4px; font-weight: 700;">[1] Pipeline Flow</span>
+          <span style="color: #94a3b8; padding: 2px 7px; border-radius: 4px;">[2] EDA Analytics</span>
+          <span style="color: #94a3b8; padding: 2px 7px; border-radius: 4px;">[3] 4 Mining Pillars</span>
+          <span style="color: #94a3b8; padding: 2px 7px; border-radius: 4px;">[4] Storage Lake</span>
+          <span style="color: #94a3b8; padding: 2px 7px; border-radius: 4px;">[5] Grounded RAG</span>
+          <span style="color: #94a3b8; padding: 2px 7px; border-radius: 4px;">[6] Slides</span>
+        </div>
+
+        <!-- 3-Column Split Content -->
+        <div style="display: grid; grid-template-columns: 190px 1fr 200px; background: #f8fafc; min-height: 155px; border-bottom: 1px solid #e2e8f0;">
+          <!-- Left: Telemetry Gauges -->
+          <div style="padding: 0.5rem; border-right: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 0.3rem;">
+            <div style="font-family: var(--font-mono); font-size: 0.6rem; color: #64748b; font-weight: 700;">GAUGES</div>
+            <div class="card" style="padding: 0.3rem 0.45rem; background: #ffffff;">
+              <div style="font-size: 0.58rem; color: #64748b;">INGEST THROUGHPUT</div>
+              <div style="font-size: 0.8rem; font-weight: 800; color: #2563eb; font-family: var(--font-mono);">128.4 <span style="font-size: 0.6rem;">docs/s</span></div>
+            </div>
+            <div class="card" style="padding: 0.3rem 0.45rem; background: #ffffff;">
+              <div style="font-size: 0.58rem; color: #64748b;">VECTOR SEARCH ANN</div>
+              <div style="font-size: 0.8rem; font-weight: 800; color: #059669; font-family: var(--font-mono);">18.4 <span style="font-size: 0.6rem;">ms</span></div>
+            </div>
+            <div class="card" style="padding: 0.3rem 0.45rem; background: #ffffff;">
+              <div style="font-size: 0.58rem; color: #64748b;">LAKE CAPACITY</div>
+              <div style="font-size: 0.8rem; font-weight: 800; color: #ff5722; font-family: var(--font-mono);">2.84 <span style="font-size: 0.6rem;">GB Parquet</span></div>
+            </div>
+          </div>
+
+          <!-- Center: Interactive Schematic Flow Preview -->
+          <div style="padding: 0.6rem; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #ffffff;">
+            <div style="display: flex; align-items: center; gap: 0.45rem; width: 100%; justify-content: center;">
+              <div style="padding: 0.35rem 0.55rem; border: 1.5px solid #2563eb; border-radius: 6px; background: #eff6ff; text-align: center;">
+                <div style="font-size: 0.58rem; font-family: var(--font-mono); color: #2563eb; font-weight: 700;">BRONZE</div>
+                <div style="font-size: 0.65rem; font-weight: 700; color: #1e293b;">13k Raw Docs</div>
+              </div>
+              <span style="color: #94a3b8; font-weight: 800; font-size: 0.75rem;">&rarr;</span>
+              <div style="padding: 0.35rem 0.55rem; border: 1.5px solid #059669; border-radius: 6px; background: #ecfdf5; text-align: center;">
+                <div style="font-size: 0.58rem; font-family: var(--font-mono); color: #059669; font-weight: 700;">SILVER</div>
+                <div style="font-size: 0.65rem; font-weight: 700; color: #1e293b;">2.77M LaTeX</div>
+              </div>
+              <span style="color: #94a3b8; font-weight: 800; font-size: 0.75rem;">&rarr;</span>
+              <div style="padding: 0.35rem 0.55rem; border: 1.5px solid #7c3aed; border-radius: 6px; background: #faf5ff; text-align: center;">
+                <div style="font-size: 0.58rem; font-family: var(--font-mono); color: #7c3aed; font-weight: 700;">GOLD</div>
+                <div style="font-size: 0.65rem; font-weight: 700; color: #1e293b;">143k LanceDB</div>
+              </div>
+            </div>
+            <div style="margin-top: 0.5rem; font-size: 0.65rem; color: #64748b; font-family: var(--font-mono); text-align: center;">
+              Zero-Copy Apache Arrow &bull; Dual-channel SSE Real-time Updates &bull; SVG Viewport Scale
+            </div>
+          </div>
+
+          <!-- Right: Live Telemetry Feed -->
+          <div style="padding: 0.5rem; border-left: 1px solid #e2e8f0; background: #f1f5f9; display: flex; flex-direction: column; gap: 0.25rem; font-family: var(--font-mono); font-size: 0.58rem;">
+            <div style="color: #64748b; font-weight: 700;">STREAMING PULSES</div>
+            <div style="background: #ffffff; padding: 2px 4px; border-radius: 4px; border-left: 2px solid #10b981;">
+              <span style="color: #10b981;">19:24:08</span> Ingested batch_16
+            </div>
+            <div style="background: #ffffff; padding: 2px 4px; border-radius: 4px; border-left: 2px solid #3b82f6;">
+              <span style="color: #3b82f6;">19:24:09</span> Parquet silver sync
+            </div>
+            <div style="background: #ffffff; padding: 2px 4px; border-radius: 4px; border-left: 2px solid #a855f7;">
+              <span style="color: #a855f7;">19:24:10</span> ANN vector indexed
+            </div>
+            <div style="background: #ffffff; padding: 2px 4px; border-radius: 4px; border-left: 2px solid #f59e0b;">
+              <span style="color: #f59e0b;">19:24:11</span> PageRank recomputed
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Footer Bar -->
+        <div style="background: #f8fafc; padding: 0.3rem 0.85rem; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.6rem; color: #64748b;">
+          <div>Qwen2.5-7B-Instruct GGUF &bull; Memory: 4.4 GB &bull; Context: 8,192 Tokens</div>
+          <div>Shortcuts: Alt+1..6 &bull; Shift+T (Theme) &bull; F (Fullscreen)</div>
+        </div>
+      </div>
+
+      <!-- 4 Stack Features Strip -->
+      <div class="grid-4 reveal" style="margin-top: 0.35rem;">
+        <div class="card accent-orange" style="padding: 0.45rem 0.65rem;">
+          <div class="card-label" style="color: var(--accent-orange); font-size: 0.6rem; margin-bottom: 2px;">TECH STACK</div>
+          <strong style="font-size: 0.72rem; color: var(--text-heading); display: block;">React 19 &amp; Vite 8</strong>
+          <div style="font-size: 0.62rem; color: var(--text-muted); margin-top: 1px;">Fast HMR &bull; TypeScript 5.8 Core</div>
+        </div>
+
+        <div class="card accent-blue" style="padding: 0.45rem 0.65rem;">
+          <div class="card-label" style="color: var(--accent-blue); font-size: 0.6rem; margin-bottom: 2px;">TELEMETRY</div>
+          <strong style="font-size: 0.72rem; color: var(--text-heading); display: block;">Server-Sent Events</strong>
+          <div style="font-size: 0.62rem; color: var(--text-muted); margin-top: 1px;">Dual-channel SSE telemetry streaming</div>
+        </div>
+
+        <div class="card accent-purple" style="padding: 0.45rem 0.65rem;">
+          <div class="card-label" style="color: var(--accent-purple); font-size: 0.6rem; margin-bottom: 2px;">INTERACTIVITY</div>
+          <strong style="font-size: 0.72rem; color: var(--text-heading); display: block;">Interactive SVG Canvas</strong>
+          <div style="font-size: 0.62rem; color: var(--text-muted); margin-top: 1px;">Pan-zoom &bull; Detail inspection drawer</div>
+        </div>
+
+        <div class="card accent-emerald" style="padding: 0.45rem 0.65rem;">
+          <div class="card-label" style="color: var(--accent-emerald); font-size: 0.6rem; margin-bottom: 2px;">MATH RENDERING</div>
+          <strong style="font-size: 0.72rem; color: var(--text-heading); display: block;">KaTeX 0.19 Mathematical UI</strong>
+          <div style="font-size: 0.62rem; color: var(--text-muted); margin-top: 1px;">Publication-grade LaTeX typesetting</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Đạt chuẩn Google Material Theming &amp; Tailwind v4 Utilities</div>
+      <div>MISSION CONTROL INTERACTION</div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SLIDE 12: EXPERIMENTAL BENCHMARKS (FE GAUGES) -->
+  <!-- ======================================================== -->
+  <section class="slide" id="slide-012">
+    <div class="slide-header">
+      <div class="brand-cluster">
+        <span class="brand-badge" style="background: var(--accent-emerald);">BENCHMARKS</span>
+        <div class="brand-meta"><span>KẾT QUẢ THỰC NGHIỆM ĐỊNH LƯỢNG</span></div>
+      </div>
+      <div class="slide-page-badge"><strong>12/14</strong></div>
+    </div>
+
+    <div class="slide-body">
+      <div>
+        <h2 class="reveal">Đo Lường Thực Nghiệm Với DeepEval Trên 21 Golden Queries</h2>
+        <p class="reveal">Báo cáo đánh giá khoa học dựa trên bộ công cụ DeepEval 2.x và bộ câu hỏi mẫu chuẩn vàng qua 6 tiêu chí học thuật.</p>
+      </div>
+
+      <div class="grid-4 reveal">
+        <div class="card accent-emerald">
+          <div class="card-label" style="color: var(--accent-emerald);">Contextual Recall</div>
+          <div class="metric-value" style="color: var(--accent-emerald);">100.0 <span style="font-size: 1rem; color: var(--text-muted);">%</span></div>
+          <p style="font-size: var(--small-size);">19/19 trường hợp kiểm thử thu hồi trọn vẹn ngữ cảnh chuẩn vàng.</p>
+        </div>
+
+        <div class="card accent-blue">
+          <div class="card-label" style="color: var(--accent-blue);">Citation Grounding</div>
+          <div class="metric-value" style="color: var(--accent-blue);">90.0 <span style="font-size: 1rem; color: var(--text-muted);">%</span></div>
+          <p style="font-size: var(--small-size);">18/20 câu hỏi đạt điểm chuẩn GEval (Điểm trung bình 0.720).</p>
+        </div>
+
+        <div class="card accent-purple">
+          <div class="card-label" style="color: var(--accent-purple);">Contextual Precision</div>
+          <div class="metric-value" style="color: var(--accent-purple);">0.860</div>
+          <p style="font-size: var(--small-size);">Tăng +35.0% độ chính xác trích xuất nhờ Cross-Encoder Reranker.</p>
+        </div>
+
+        <div class="card accent-orange">
+          <div class="card-label" style="color: var(--accent-orange);">Answer Relevancy</div>
+          <div class="metric-value" style="color: var(--accent-orange);">0.752</div>
+          <p style="font-size: var(--small-size);">Tăng +9.4% độ tập trung nội dung dưới ràng buộc temp=0.1.</p>
+        </div>
+      </div>
+
+      <!-- Comparative Matrix Table (DEEPEVAL BENCHMARK TABLE) -->
+      <div class="fe-mockup-frame reveal">
+        <div class="fe-mockup-titlebar">
+          <strong>BẢNG ĐỐI SÁNH HIỆU NĂNG THỰC NGHIỆM TRÊN 21 CÂU HỎI CHUẨN VÀNG (DEEPEVAL 2.X)</strong>
+          <span style="color: var(--accent-emerald); font-weight: 700;">EMPIRICAL BENCHMARK</span>
+        </div>
+
+        <div style="font-family: var(--font-mono); font-size: var(--small-size); display: flex; flex-direction: column; gap: 0.35rem;">
+          <div style="display: grid; grid-template-columns: 2.2fr 2.2fr 2.2fr 2.2fr 2.5fr; font-weight: 700; color: var(--text-muted); border-bottom: 1px solid var(--border-subtle); padding-bottom: 4px;">
+            <span>CHỈ SỐ ĐÁNH GIÁ</span>
+            <span>BASELINE RAG</span>
+            <span style="color: var(--accent-blue);">UPGRADED RAG</span>
+            <span style="color: var(--accent-emerald);">MỨC CẢI THIỆN</span>
+            <span>Ý NGHĨA KỸ THUẬT</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 2.2fr 2.2fr 2.2fr 2.2fr 2.5fr; padding: 2px 0;">
+            <strong style="color: var(--text-heading);">Contextual Precision:</strong>
+            <span>0.637 (60.0%)</span>
+            <span style="color: var(--accent-blue); font-weight: 700;">0.860 (80.0%)</span>
+            <span style="color: var(--accent-emerald); font-weight: 700;">+35.0% (&uarr;)</span>
+            <span style="color: var(--text-muted);">Đẩy đúng bài báo cốt lõi lên Top 1</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 2.2fr 2.2fr 2.2fr 2.5fr; padding: 2px 0;">
+            <strong style="color: var(--text-heading);">Contextual Recall:</strong>
+            <span>0.950 (95.0%)</span>
+            <span style="color: var(--accent-blue); font-weight: 700;">1.000 (100.0%)</span>
+            <span style="color: var(--accent-emerald); font-weight: 700;">+5.3% (&uarr;)</span>
+            <span style="color: var(--text-muted);">Không bỏ sót căn cứ trong tài liệu</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 2.2fr 2.2fr 2.2fr 2.5fr; padding: 2px 0;">
+            <strong style="color: var(--text-heading);">Answer Relevancy:</strong>
+            <span>0.687 (47.4%)</span>
+            <span style="color: var(--accent-blue); font-weight: 700;">0.752 (55.0%)</span>
+            <span style="color: var(--accent-emerald); font-weight: 700;">+9.4% (&uarr;)</span>
+            <span style="color: var(--text-muted);">Loại bỏ câu rào đón lan man</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 2.2fr 2.2fr 2.2fr 2.5fr; padding: 2px 0;">
+            <strong style="color: var(--text-heading);">Lưu Trữ &amp; Chi Phí:</strong>
+            <span style="color: #d97706;">Cloud API đắt đỏ</span>
+            <span style="color: var(--accent-blue); font-weight: 700;">R2 11.14 GB + Local</span>
+            <span style="color: var(--accent-emerald); font-weight: 700;">Zero Egress</span>
+            <span style="color: var(--text-muted);">Không tốn chi phí gọi API token LLM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Đo lường kiểm chứng định lượng thực nghiệm qua bộ công cụ DeepEval 2.x</div>
+      <div>QUANTITATIVE BENCHMARK</div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SLIDE 13: CONCLUSIONS & ROADMAP -->
+  <!-- ======================================================== -->
+  <section class="slide" id="slide-013">
+    <div class="slide-header">
+      <div class="brand-cluster">
+        <span class="brand-badge" style="background: var(--accent-orange);">CONCLUSION</span>
+        <div class="brand-meta"><span>KẾT LUẬN &amp; HƯỚNG MỞ RỘNG NGHIÊN CỨU</span></div>
+      </div>
+      <div class="slide-page-badge"><strong>13/14</strong></div>
+    </div>
+
+    <div class="slide-body">
+      <div>
+        <h2 class="reveal">Đóng Góp Thực Tiễn &amp; Tầm Nhìn Phát Triển</h2>
+        <p class="reveal">Tổng kết các thành tựu kỹ thuật đã đạt được và định hướng mở rộng hệ thống sang đa phương thức.</p>
+      </div>
+
+      <div class="grid-2 reveal">
+        <div class="card accent-emerald">
+          <div class="card-label" style="color: var(--accent-emerald);">KẾT QUẢ ĐÃ HOÀN THÀNH</div>
+          <ul style="font-size: var(--body-size); color: var(--text-body); padding-left: 1.2rem; line-height: 1.6;">
+            <li><strong>Medallion Lakehouse:</strong> Thu nạp 13,000 bài báo, bóc tách 2.76M công thức LaTeX qua DuckDB.</li>
+            <li><strong>4 Trụ Cột Data Mining:</strong> Tích hợp FP-Growth, MiniBatch K-Means, PageRank và Z-Score Spike.</li>
+            <li><strong>Grounded RAG Cục Bộ:</strong> Qwen2.5-7B-Instruct với kiểm chứng DeepEval 2.x (Recall 100%, Grounding 90%).</li>
+            <li><strong>Frontend Mission Control:</strong> Bảng điều khiển thời gian thực bằng React 19 và Tailwind v4.</li>
+          </ul>
+        </div>
+
+        <div class="card accent-blue">
+          <div class="card-label" style="color: var(--accent-blue);">HƯỚNG PHÁT TRIỂN TIẾP THEO</div>
+          <ul style="font-size: var(--body-size); color: var(--text-body); padding-left: 1.2rem; line-height: 1.6;">
+            <li><strong>Multimodal Scientific RAG:</strong> Ứng dụng Vision LLMs (Qwen2-VL) suy luận trên sơ đồ và bảng biểu.</li>
+            <li><strong>Distributed Lakehouse:</strong> Mở rộng sang Apache Spark / Ray khi mở rộng kho dữ liệu &gt; 1M bài báo.</li>
+            <li><strong>Autonomous Research Agents:</strong> Tác tử AI tự động tổng hợp chuyên khảo (Literature Review).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card reveal accent-orange" style="padding: 0.75rem 1.25rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: var(--body-size);">
+          <span>Xin trân trọng cảm ơn <strong>TS. Trần Thế Vinh</strong> đã tận tình hướng dẫn và định hướng nghiên cứu cho nhóm chúng em!</span>
+          <span style="font-family: var(--font-mono); font-weight: 700; color: var(--accent-orange);">UTH DATA MINING 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <div>Báo cáo môn học Khai phá Dữ liệu (Data Mining) &bull; UTH 2026</div>
+      <div>UTH 2026 COURSE PROJECT</div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- SLIDE 14: Q&A & LIVE DEMO (INTERACTIVE CALLOUT) -->
+  <!-- ======================================================== -->
+  <section class="slide" id="slide-014" style="text-align: center; align-items: center;">
+    <div class="slide-header" style="width: 100%;">
+      <div class="brand-cluster">
+        <span class="brand-badge">Q&amp;A</span>
+        <div class="brand-meta"><span>HỎI &amp; ĐÁP VÀ TRÌNH DIỄN HỆ THỐNG TRỰC TIẾP</span></div>
+      </div>
+      <div class="slide-page-badge"><strong>14/14</strong></div>
+    </div>
+
+    <div class="slide-body" style="align-items: center; justify-content: center; max-width: 900px;">
+      <div class="card-label reveal" style="color: var(--accent-emerald);">
+        <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-emerald);"></span>
+        LIVE SYSTEM READY &bull; FASTAPI &amp; REACT 19 ACTIVE
+      </div>
+
+      <h1 class="reveal" style="font-size: clamp(2.2rem, 5vw, 4rem);">
+        Cảm Ơn Thầy &amp; Hội Đồng<br>
+        <span style="color: var(--accent-orange);">Đã Lắng Nghe!</span>
+      </h1>
+
+      <p class="reveal" style="max-width: 680px; margin: 0.5rem auto; color: var(--text-body);">
+        Kính mời Thầy TS. Trần Thế Vinh và các Thầy Cô trong Hội đồng đặt câu hỏi phản biện và cùng trải nghiệm Live Demo hệ thống thực tế trên Dashboard.
+      </p>
+
+      <div class="grid-3 reveal" style="width: 100%; margin-top: 1rem; text-align: left;">
+        <div class="card accent-orange">
+          <div class="card-label" style="color: var(--accent-orange);">DEMO 01</div>
+          <h3>Interactive Lakehouse</h3>
+          <p style="font-size: var(--small-size);">Kiểm tra trực quan 8 node xử lý và cấu trúc dữ liệu Parquet / Cloudflare R2.</p>
+        </div>
+
+        <div class="card accent-blue">
+          <div class="card-label" style="color: var(--accent-blue);">DEMO 02</div>
+          <h3>4 Mining Pillars</h3>
+          <p style="font-size: var(--small-size);">Trực quan hóa đồ thị trích dẫn, ma trận luật FP-Growth và 6 cụm đề tài.</p>
+        </div>
+
+        <div class="card accent-emerald">
+          <div class="card-label" style="color: var(--accent-emerald);">DEMO 03</div>
+          <h3>Grounded RAG Live</h3>
+          <p style="font-size: var(--small-size);">Đặt câu hỏi chuyên môn học thuật và kiểm tra nguồn trích dẫn thời gian thực.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer" style="width: 100%;">
+      <div>GVHD: <strong style="color: var(--text-heading);">TS. Trần Thế Vinh</strong> &bull; Thực Hiện: <strong style="color: var(--text-heading);">Group 1</strong></div>
+      <div>TRƯỜNG ĐẠI HỌC GIAO THÔNG VẬN TẢI TP.HCM (UTH)</div>
+    </div>
+  </section>
+
+  <!-- SlideCraft Runtime Controller -->
+  <script>
+    class SlideCraftController {
+      constructor() {
+        this.slides = document.querySelectorAll('.slide');
+        this.totalSlides = this.slides.length;
+        this.currentSlide = 0;
+        this.progressBar = document.getElementById('progress-bar');
+        this.navDotsContainer = document.getElementById('nav-dots');
+
+        this.initDots();
+        this.initIntersectionObserver();
+        this.initKeyboardNav();
+        this.updateProgress();
+      }
+
+      initDots() {
+        this.navDotsContainer.innerHTML = '';
+        this.slides.forEach((slide, idx) => {
+          const dot = document.createElement('div');
+          dot.className = `dot ${idx === 0 ? 'active' : ''}`;
+          dot.title = `Slide ${idx + 1}`;
+          dot.onclick = () => this.goToSlide(idx);
+          this.navDotsContainer.appendChild(dot);
+        });
+      }
+
+      initIntersectionObserver() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              const idx = Array.from(this.slides).indexOf(entry.target);
+              if (idx !== -1) {
+                this.currentSlide = idx;
+                this.updateDots();
+                this.updateProgress();
+              }
+            }
+          });
+        }, { threshold: 0.5 });
+
+        this.slides.forEach(slide => observer.observe(slide));
+      }
+
+      initKeyboardNav() {
+        window.addEventListener('keydown', (e) => {
+          if (['ArrowDown', 'ArrowRight', ' ', 'PageDown'].includes(e.key)) {
+            e.preventDefault();
+            this.goToSlide(this.currentSlide + 1);
+          } else if (['ArrowUp', 'ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) {
+            e.preventDefault();
+            this.goToSlide(this.currentSlide - 1);
+          } else if (e.key === 'Home') {
+            e.preventDefault();
+            this.goToSlide(0);
+          } else if (e.key === 'End') {
+            e.preventDefault();
+            this.goToSlide(this.totalSlides - 1);
+          } else if (e.key === 'f' || e.key === 'F') {
+            e.preventDefault();
+            if (!document.fullscreenElement) {
+              document.documentElement.requestFullscreen().catch(() => {});
+            } else {
+              document.exitFullscreen().catch(() => {});
+            }
+          }
+        });
+      }
+
+      goToSlide(index) {
+        if (index >= 0 && index < this.totalSlides) {
+          this.slides[index].scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+
+      updateDots() {
+        const dots = this.navDotsContainer.querySelectorAll('.dot');
+        dots.forEach((dot, idx) => {
+          if (idx === this.currentSlide) dot.classList.add('active');
+          else dot.classList.remove('active');
+        });
+      }
+
+      updateProgress() {
+        const percent = ((this.currentSlide + 1) / this.totalSlides) * 100;
+        this.progressBar.style.width = `${percent}%`;
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      new SlideCraftController();
+    });
+  </script>
+</body>
+</html>

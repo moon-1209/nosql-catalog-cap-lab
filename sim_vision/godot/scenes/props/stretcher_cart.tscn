@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3]
+
+[sub_resource type="StandardMaterial3D" id="mat_inox"]
+albedo_color = Color(0.84, 0.87, 0.9, 1)
+metallic = 0.88
+roughness = 0.2
+
+[sub_resource type="StandardMaterial3D" id="mat_mattress_orange"]
+albedo_color = Color(0.92, 0.42, 0.14, 1)
+roughness = 0.45
+
+[sub_resource type="StandardMaterial3D" id="mat_pillow"]
+albedo_color = Color(0.95, 0.96, 0.98, 1)
+roughness = 0.55
+
+[sub_resource type="BoxMesh" id="mesh_frame"]
+material = SubResource("mat_inox")
+size = Vector3(0.68, 0.06, 1.88)
+
+[sub_resource type="BoxMesh" id="mesh_lower_shelf"]
+material = SubResource("mat_inox")
+size = Vector3(0.58, 0.03, 1.45)
+
+[sub_resource type="BoxMesh" id="mesh_mattress"]
+material = SubResource("mat_mattress_orange")
+size = Vector3(0.64, 0.1, 1.82)
+
+[sub_resource type="BoxMesh" id="mesh_pillow"]
+material = SubResource("mat_pillow")
+size = Vector3(0.5, 0.08, 0.3)
+
+[sub_resource type="CylinderMesh" id="mesh_leg"]
+material = SubResource("mat_inox")
+top_radius = 0.022
+bottom_radius = 0.022
+height = 0.68
+
+[sub_resource type="BoxMesh" id="mesh_rail"]
+material = SubResource("mat_inox")
+size = Vector3(0.025, 0.22, 1.2)
+
+[sub_resource type="BoxShape3D" id="shape_stretcher"]
+size = Vector3(0.74, 0.95, 1.92)
+
+[node name="StretcherCart" type="StaticBody3D"]
+
+[node name="TopFrame" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.68, 0)
+mesh = SubResource("mesh_frame")
+
+[node name="LowerShelf" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.22, 0)
+mesh = SubResource("mesh_lower_shelf")
+
+[node name="Mattress" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.76, 0)
+mesh = SubResource("mesh_mattress")
+
+[node name="Pillow" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.84, -0.68)
+rotation = Vector3(0.14, 0, 0)
+mesh = SubResource("mesh_pillow")
+
+[node name="SideRailLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-0.34, 0.84, 0)
+mesh = SubResource("mesh_rail")
+
+[node name="SideRailRight" type="MeshInstance3D" parent="."]
+position = Vector3(0.34, 0.84, 0)
+mesh = SubResource("mesh_rail")
+
+[node name="LegFL" type="MeshInstance3D" parent="."]
+position = Vector3(-0.29, 0.34, -0.82)
+mesh = SubResource("mesh_leg")
+
+[node name="LegFR" type="MeshInstance3D" parent="."]
+position = Vector3(0.29, 0.34, -0.82)
+mesh = SubResource("mesh_leg")
+
+[node name="LegBL" type="MeshInstance3D" parent="."]
+position = Vector3(-0.29, 0.34, 0.82)
+mesh = SubResource("mesh_leg")
+
+[node name="LegBR" type="MeshInstance3D" parent="."]
+position = Vector3(0.29, 0.34, 0.82)
+mesh = SubResource("mesh_leg")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.475, 0)
+shape = SubResource("shape_stretcher")

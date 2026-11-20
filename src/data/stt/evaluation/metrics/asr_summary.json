@@ -1,0 +1,51 @@
+{
+  "model": "Qualcomm-AI-Research/PhoASR-whisper-small",
+  "dataset": "real_hospital_inquiry_voice_vietnamese",
+  "total_samples": 180,
+  "total_audio_duration_s": 854.63,
+  "total_inference_time_s": 122.27,
+  "overall_rtf": 0.143,
+  "overall": {
+    "count": 180,
+    "raw_wer": 0.3842,
+    "norm_wer": 0.2873,
+    "norm_cer": 0.2304,
+    "exact_sentence_accuracy": 0.1722,
+    "normalized_sentence_accuracy": 0.3556,
+    "mean_inference_s": 0.679,
+    "mean_rtf": 0.155
+  },
+  "failed_samples": [],
+  "by_category": {
+    "reading_r": {
+      "count": 80,
+      "raw_wer": 0.1486,
+      "norm_wer": 0.0875,
+      "norm_cer": 0.0595,
+      "exact_sentence_accuracy": 0.3125,
+      "normalized_sentence_accuracy": 0.6125,
+      "mean_inference_s": 0.632,
+      "mean_rtf": 0.152
+    },
+    "natural_n": {
+      "count": 80,
+      "raw_wer": 0.6478,
+      "norm_wer": 0.5178,
+      "norm_cer": 0.429,
+      "exact_sentence_accuracy": 0.0125,
+      "normalized_sentence_accuracy": 0.0125,
+      "mean_inference_s": 0.724,
+      "mean_rtf": 0.139
+    },
+    "common_c": {
+      "count": 20,
+      "raw_wer": 0.2193,
+      "norm_wer": 0.1053,
+      "norm_cer": 0.0674,
+      "exact_sentence_accuracy": 0.25,
+      "normalized_sentence_accuracy": 0.7,
+      "mean_inference_s": 0.691,
+      "mean_rtf": 0.23
+    }
+  }
+}

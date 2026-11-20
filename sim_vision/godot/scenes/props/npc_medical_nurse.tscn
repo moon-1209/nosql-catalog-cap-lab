@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/hospital_npc.gd" id="1"]
+[ext_resource type="PackedScene" path="res://assets/models/medical_f01/Medical_Female_01.fbx" id="2"]
+
+[sub_resource type="BoxShape3D" id="shape_npc"]
+size = Vector3(0.5, 1.7, 0.5)
+
+[node name="MedicalStaffNurse" type="CharacterBody3D"]
+script = ExtResource("1")
+tex_dir = "res://assets/models/medical_f01/textures"
+anim_path = "res://assets/models/human_m06/anims/f_documents_check.res"
+staff_role = "nurse"
+badge_text = "ĐD. NGUYỄN THỊ MAI
+ĐIỀU DƯỠNG TIẾP ĐÓN"
+
+[node name="Model" parent="." instance=ExtResource("2")]
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.85, 0)
+shape = SubResource("shape_npc")

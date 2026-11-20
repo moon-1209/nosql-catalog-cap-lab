@@ -1,0 +1,10 @@
+logs/
+.godot/
+__pycache__/
+*.pt
+.venv/
+godot/assets/voices/
+reports/stt_cache/
+reports/*.csv
+.venv-tts/
+reports/voices/*.wav

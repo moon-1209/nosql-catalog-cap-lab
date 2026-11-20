@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3]
+
+[sub_resource type="StandardMaterial3D" id="mat_frame"]
+albedo_color = Color(0.14, 0.16, 0.18, 1)
+metallic = 0.5
+roughness = 0.35
+
+[sub_resource type="StandardMaterial3D" id="mat_led_bg"]
+albedo_color = Color(0.05, 0.07, 0.09, 1)
+emission_enabled = true
+emission = Color(0.02, 0.06, 0.1, 1)
+emission_energy_multiplier = 0.5
+roughness = 0.2
+
+[sub_resource type="BoxMesh" id="mesh_frame"]
+material = SubResource("mat_frame")
+size = Vector3(1.5, 0.46, 0.08)
+
+[sub_resource type="BoxMesh" id="mesh_screen"]
+material = SubResource("mat_led_bg")
+size = Vector3(1.42, 0.38, 0.02)
+
+[sub_resource type="BoxShape3D" id="shape_display"]
+size = Vector3(1.5, 0.46, 0.08)
+
+[node name="QueueDisplay" type="StaticBody3D"]
+
+[node name="Frame" type="MeshInstance3D" parent="."]
+mesh = SubResource("mesh_frame")
+
+[node name="Screen" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, 0.035)
+mesh = SubResource("mesh_screen")
+
+[node name="TitleLabel" type="Label3D" parent="."]
+position = Vector3(0, 0.11, 0.05)
+pixel_size = 0.0016
+modulate = Color(0.35, 0.92, 1, 1)
+text = "BẢNG GỌI SỐ THỨ TỰ KHÁM BỆNH"
+font_size = 32
+outline_size = 4
+
+[node name="NumberLabel" type="Label3D" parent="."]
+position = Vector3(0, -0.05, 0.05)
+pixel_size = 0.0018
+modulate = Color(1, 0.28, 0.22, 1)
+text = "QUẦY 1: 1024   |   QUẦY 2: 1025"
+font_size = 38
+outline_size = 5
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("shape_display")

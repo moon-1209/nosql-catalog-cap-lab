@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/subtitle.gd" id="1"]
+
+[sub_resource type="SystemFont" id="font_vi"]
+font_names = PackedStringArray("Helvetica Neue", "Arial", "Segoe UI", "Noto Sans", "DejaVu Sans", "Sans-Serif")
+
+[sub_resource type="StyleBoxFlat" id="panel_bg"]
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 12.0
+bg_color = Color(0, 0, 0, 0.62)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="heard_settings"]
+font = SubResource("font_vi")
+font_size = 18
+font_color = Color(0.78, 0.8, 0.82, 1)
+
+[node name="Subtitle" type="Control"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = -150.0
+offset_right = -120.0
+offset_bottom = -24.0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("panel_bg")
+
+[node name="Box" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="Heard" type="Label" parent="Panel/Box"]
+layout_mode = 2
+label_settings = SubResource("heard_settings")
+autowrap_mode = 3
+
+[node name="Reply" type="Label" parent="Panel/Box"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("font_vi")
+theme_override_font_sizes/font_size = 24
+autowrap_mode = 3

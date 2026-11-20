@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3]
+
+[sub_resource type="StandardMaterial3D" id="mat_board_green"]
+albedo_color = Color(0.06, 0.46, 0.34, 1)
+roughness = 0.35
+
+[sub_resource type="StandardMaterial3D" id="mat_border"]
+albedo_color = Color(0.95, 0.97, 0.98, 1)
+roughness = 0.3
+
+[sub_resource type="BoxMesh" id="mesh_border"]
+material = SubResource("mat_border")
+size = Vector3(1.84, 0.44, 0.05)
+
+[sub_resource type="BoxMesh" id="mesh_face"]
+material = SubResource("mat_board_green")
+size = Vector3(1.78, 0.38, 0.06)
+
+[node name="HospitalSign" type="Node3D"]
+
+[node name="Border" type="MeshInstance3D" parent="."]
+mesh = SubResource("mesh_border")
+
+[node name="Face" type="MeshInstance3D" parent="."]
+mesh = SubResource("mesh_face")
+
+[node name="LabelFront" type="Label3D" parent="."]
+position = Vector3(0, 0, 0.035)
+pixel_size = 0.0022
+text = "⬅ KHOA CẤP CỨU (101)  |  XÉT NGHIỆM (110)  |  KHÁM NỘI (112) ➡"
+font_size = 44
+outline_size = 6
+
+[node name="LabelBack" type="Label3D" parent="."]
+position = Vector3(0, 0, -0.035)
+rotation = Vector3(0, 3.14159, 0)
+pixel_size = 0.0022
+text = "⬅ KHOA CẤP CỨU (101)  |  XÉT NGHIỆM (110)  |  KHÁM NỘI (112) ➡"
+font_size = 44
+outline_size = 6

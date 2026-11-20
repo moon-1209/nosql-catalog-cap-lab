@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3]
+
+[sub_resource type="StandardMaterial3D" id="mat_body"]
+albedo_color = Color(0.93, 0.95, 0.97, 1)
+roughness = 0.3
+
+[sub_resource type="StandardMaterial3D" id="mat_recess"]
+albedo_color = Color(0.22, 0.25, 0.28, 1)
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="mat_water_jug"]
+transparency = 1
+albedo_color = Color(0.15, 0.58, 0.92, 0.62)
+metallic = 0.1
+roughness = 0.12
+
+[sub_resource type="StandardMaterial3D" id="mat_cap_blue"]
+albedo_color = Color(0.08, 0.38, 0.78, 1)
+roughness = 0.35
+
+[sub_resource type="BoxMesh" id="mesh_cabinet"]
+material = SubResource("mat_body")
+size = Vector3(0.36, 0.98, 0.36)
+
+[sub_resource type="BoxMesh" id="mesh_niche"]
+material = SubResource("mat_recess")
+size = Vector3(0.26, 0.22, 0.04)
+
+[sub_resource type="CylinderMesh" id="mesh_jug"]
+material = SubResource("mat_water_jug")
+top_radius = 0.135
+bottom_radius = 0.135
+height = 0.38
+
+[sub_resource type="CylinderMesh" id="mesh_jug_neck"]
+material = SubResource("mat_cap_blue")
+top_radius = 0.05
+bottom_radius = 0.08
+height = 0.08
+
+[sub_resource type="CylinderMesh" id="mesh_cup_holder"]
+material = SubResource("mat_body")
+top_radius = 0.045
+bottom_radius = 0.045
+height = 0.36
+
+[sub_resource type="BoxShape3D" id="shape_dispenser"]
+size = Vector3(0.44, 1.42, 0.4)
+
+[node name="WaterDispenser" type="StaticBody3D"]
+
+[node name="Cabinet" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.49, 0)
+mesh = SubResource("mesh_cabinet")
+
+[node name="TapNiche" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.72, 0.165)
+mesh = SubResource("mesh_niche")
+
+[node name="JugNeck" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.02, 0)
+mesh = SubResource("mesh_jug_neck")
+
+[node name="WaterJug" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.24, 0)
+mesh = SubResource("mesh_jug")
+
+[node name="CupHolder" type="MeshInstance3D" parent="."]
+position = Vector3(0.21, 0.68, 0)
+mesh = SubResource("mesh_cup_holder")
+
+[node name="LabelFront" type="Label3D" parent="."]
+position = Vector3(0, 0.42, 0.185)
+pixel_size = 0.0014
+modulate = Color(0.08, 0.44, 0.82, 1)
+text = "NƯỚC UỐNG
+MIỄN PHÍ"
+font_size = 28
+outline_size = 3
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.71, 0)
+shape = SubResource("shape_dispenser")

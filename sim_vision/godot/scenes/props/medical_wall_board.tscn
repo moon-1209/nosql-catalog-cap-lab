@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3]
+
+[sub_resource type="StandardMaterial3D" id="mat_frame_aluminum"]
+albedo_color = Color(0.78, 0.81, 0.84, 1)
+metallic = 0.8
+roughness = 0.25
+
+[sub_resource type="StandardMaterial3D" id="mat_xray_glow"]
+albedo_color = Color(0.78, 0.92, 0.98, 1)
+roughness = 0.15
+emission_enabled = true
+emission = Color(0.65, 0.86, 0.96, 1)
+emission_energy_multiplier = 0.85
+
+[sub_resource type="StandardMaterial3D" id="mat_board_blue"]
+albedo_color = Color(0.09, 0.38, 0.68, 1)
+roughness = 0.35
+
+[sub_resource type="BoxMesh" id="mesh_xray_case"]
+material = SubResource("mat_frame_aluminum")
+size = Vector3(0.95, 0.62, 0.06)
+
+[sub_resource type="BoxMesh" id="mesh_xray_screen"]
+material = SubResource("mat_xray_glow")
+size = Vector3(0.88, 0.54, 0.01)
+
+[sub_resource type="BoxMesh" id="mesh_info_board"]
+material = SubResource("mat_board_blue")
+size = Vector3(1.15, 0.68, 0.04)
+
+[sub_resource type="BoxShape3D" id="shape_wall_board"]
+size = Vector3(2.25, 0.72, 0.08)
+
+[node name="MedicalWallBoard" type="StaticBody3D"]
+
+[node name="XRayViewer" type="MeshInstance3D" parent="."]
+position = Vector3(-0.6, 0, 0)
+mesh = SubResource("mesh_xray_case")
+
+[node name="LightScreen" type="MeshInstance3D" parent="XRayViewer"]
+position = Vector3(0, 0, 0.028)
+mesh = SubResource("mesh_xray_screen")
+
+[node name="XRayLabel" type="Label3D" parent="XRayViewer/LightScreen"]
+position = Vector3(0, 0, 0.008)
+pixel_size = 0.0014
+modulate = Color(0.1, 0.22, 0.34, 1)
+text = "[ PHIM X-QUANG TIM PHỔI THẲNG ]
+BỆNH VIỆN ĐA KHOA - KHOA CHẨN ĐOÁN"
+font_size = 24
+outline_size = 0
+
+[node name="InfoBoard" type="MeshInstance3D" parent="."]
+position = Vector3(0.55, 0, 0)
+mesh = SubResource("mesh_info_board")
+
+[node name="InfoText" type="Label3D" parent="InfoBoard"]
+position = Vector3(0, 0, 0.025)
+pixel_size = 0.0015
+text = "QUY TRÌNH KHÁM BỆNH BHYT
+1. Lấy số & Đăng ký tại Quầy Tiếp Đón
+2. Đo sinh hiệu & Khám chuyên khoa
+3. Cận lâm sàng (Xét nghiệm P.110)
+4. Nhận kết quả & Lĩnh thuốc (Nhà Thuốc)"
+font_size = 26
+outline_size = 4
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("shape_wall_board")
+disabled = true

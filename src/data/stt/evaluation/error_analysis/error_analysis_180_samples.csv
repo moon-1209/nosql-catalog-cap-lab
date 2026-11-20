@@ -1,0 +1,52 @@
+file_id,wav_path,category,ground_truth,prediction,norm_wer,norm_cer,rtf
+A_C05_n,Phương Uyên/Nữ 20 tuổi/A_C05_n.wav,natural,Quầy thu ngân ở đâu?,"À, cho tôi hỏi vài thủ nhân ở nền bãi thau.",2.0,1.5789,0.149
+B_C02_n,Phương Uyên/Nữ 20 tuổi/B_C02_n.wav,natural,Khoa nhi ở tầng mấy?,Lo cho mình hỏi khoai nhi nằm ở đó tận đâu?,1.8,1.5263,0.212
+B_C04_n,Phương Uyên/Nữ 20 tuổi/B_C04_n.wav,natural,Phòng siêu âm số 304 ở đâu?,Cho mình hỏi phòng sự ăn số ba lấy bốn là nằm ở đâu ạ?,1.5714,1.3846,0.161
+B_C05_n,Phương Uyên/Nữ 20 tuổi/B_C05_n.wav,natural,Quầy thu ngân ở đâu?,Nó quậy thuốc ngưng làm mát đâu à?,1.4,0.8947,0.183
+B_C10_n,Phương Uyên/Nữ 20 tuổi/B_C10_n.wav,natural,Cảm ơn nhé.,"Ok, ok, mình cảm ơn!",1.3333,1.4,0.155
+A_C06_n,Phương Uyên/Nữ 20 tuổi/A_C06_n.wav,natural,Nhà thuốc ở đâu?,Cho tôi hỏi nhà thuốc nằm ở đâu vậy?,1.25,1.3333,0.165
+B_C01_n,Phương Uyên/Nữ 20 tuổi/B_C01_n.wav,natural,Cho tôi hỏi khoa tim mạch ở đâu?,"Bạn ơi, cho mình hỏi qua trên mặt nào bắt đầu ấy.",1.25,0.9677,0.178
+A_06_n,Hoàng Tuấn/Nam 20 tuổi/A_06_n.wav,natural,Khoa tiêu hóa ở tầng mấy?,n khoa tiêu hóa ở bệnh viện này ở từng máy,1.1667,0.8333,0.104
+A_16_n,Hoàng Tuấn/Nam 20 tuổi/A_16_n.wav,natural,Thang máy gần nhất ở đâu?,"Ơ thế, máy gần nhất của bệnh viện này ở đâu nhở?",1.1667,1.125,0.13
+A_28_n,Hoàng Tuấn/Nam 20 tuổi/A_28_n.wav,natural,Phòng điện tim là phòng mấy?,Phòng điện tiên của bệnh viện là ở phòng máy Á.,1.1667,0.7778,0.135
+B_07_n,Phương Uyên/Nữ 20 tuổi/B_07_n.wav,natural,Chụp X-quang phổi ở đâu ạ?,"A. Chụp ít khoan phổi ở đâu, vợ về chỉ với",1.0,0.84,0.129
+B_C03_n,Phương Uyên/Nữ 20 tuổi/B_C03_n.wav,natural,Phòng xét nghiệm máu đi đường nào?,"Phòng xét nghiệm máu đi điều nào ớt bạn, bạn chỉ nhìn nó.",1.0,0.8182,0.151
+B_11_n,Phương Uyên/Nữ 20 tuổi/B_11_n.wav,natural,"Em đợi lâu quá rồi mà chưa tới lượt, hỏi ai ạ?",Em thấy em đợi lâu quá rồi mà chưa thích được em thì bây giờ em nên hỏi ai?,0.9167,0.8409,0.133
+A_14_n,Hoàng Tuấn/Nam 20 tuổi/A_14_n.wav,natural,Ở đây có thanh toán bằng chuyển khoản không?,Á thì ở bệnh viện này có thanh toán bằng chỉ khoản được không á?,0.8889,0.6744,0.111
+A_C04_n,Phương Uyên/Nữ 20 tuổi/A_C04_n.wav,natural,Phòng siêu âm số 304 ở đâu?,Hồng siêu âm số ba lễ tư nằm ở đâu vậy?,0.8571,0.6923,0.177
+A_15_n,Hoàng Tuấn/Nam 20 tuổi/A_15_n.wav,natural,Nhà thuốc bệnh viện ở đâu?,Bạn cho mình hỏi nhà nhà thuốc bệnh viện ở đâu?,0.8333,0.84,0.087
+A_C02_n,Phương Uyên/Nữ 20 tuổi/A_C02_n.wav,natural,Khoa nhi ở tầng mấy?,Nhi nằm ở tầng mấy vậy à?,0.8,0.5789,0.166
+B_06_n,Phương Uyên/Nữ 20 tuổi/B_06_n.wav,natural,Phòng 112 ở tầng một hay tầng hai ạ?,Cho em hỏi phòng một trăm mười hai ở tầng một hay tầng hai ạ?,0.7778,0.8,0.161
+B_15_n,Phương Uyên/Nữ 20 tuổi/B_15_n.wav,natural,Ở đây có chỗ bán đồ ăn không ạ?,Giải cho em hỏi ở đây mình có bán đồ ăn không ta?,0.7778,0.8,0.159
+A_07_n,Hoàng Tuấn/Nam 20 tuổi/A_07_n.wav,natural,Phòng khám số 205 đi đường nào?,Phòng khám số hai trăm lẻ năm thì đi đường nào?,0.7143,0.6333,0.095
+A_C07_n,Phương Uyên/Nữ 20 tuổi/A_C07_n.wav,natural,Dẫn tôi đến khoa sản được không?,"Làm phiền bạn, dẫn tôi đến pha sản được hay không?",0.7143,0.6452,0.146
+A_C10_n,Phương Uyên/Nữ 20 tuổi/A_C10_n.wav,natural,Cảm ơn nhé.,Mình cảm ơn bạn nhé!,0.6667,0.9,0.273
+B_C10_r,Phương Uyên/Nữ 20 tuổi/B_C10_r.wav,reading,Cảm ơn nhé.,Cảm tâm nhép,0.6667,0.4,0.202
+Nu_C10,Nu_C10.wav,common,Cảm ơn nhé.,Cảm tâm nhép,0.6667,0.4,0.214
+B_27_n,Phương Uyên/Nữ 20 tuổi/B_27_n.wav,natural,Khám xong thì quay lại chỗ bác sĩ để đọc kết quả hả bạn?,Nếu khám xong thì mình quay lại chỗ bác sĩ để hỏi kết quả của bạn hay là như thế nào.,0.6429,0.6182,0.127
+B_28_n,Phương Uyên/Nữ 20 tuổi/B_28_n.wav,natural,Mấy giờ thì bệnh viện nghỉ trưa ạ?,Cho em hỏi mấy giờ thì bệnh viện mình nghỉ trưa về.,0.625,0.5455,0.16
+A_19_n,Hoàng Tuấn/Nam 20 tuổi/A_19_n.wav,natural,"Bố mình bị đau ngực, khám tim mạch ở đâu?","Bố mình bị đau ngực á, thì phòng khám tim mạch thì nó ở đâu ạ?",0.6,0.5385,0.09
+A_24_n,Hoàng Tuấn/Nam 20 tuổi/A_24_n.wav,natural,"Được rồi, đi tiếp đi.","Ok, được rồi, Hết đi tiếp đi nhé!",0.6,0.5789,0.142
+A_26_n,Hoàng Tuấn/Nam 20 tuổi/A_26_n.wav,natural,Khoa cấp cứu ở đâu?,Bơm hoa cấp cứu ở đâu á?,0.6,0.3333,0.181
+A_C08_n,Phương Uyên/Nữ 20 tuổi/A_C08_n.wav,natural,Đi chậm lại giúp tôi.,"Bạn ơi, đi chậm lại giúp tôi với",0.6,0.55,0.164
+B_30_n,Phương Uyên/Nữ 20 tuổi/B_30_n.wav,natural,Dạ em cảm ơn ạ.,Dạ dạ ok em cảm ơn nha.,0.6,0.6429,0.139
+B_C08_n,Phương Uyên/Nữ 20 tuổi/B_C08_n.wav,natural,Đi chậm lại giúp tôi.,"Bạn ơi, đi chậm lại giúp tôi với",0.6,0.55,0.156
+A_29_n,Hoàng Tuấn/Nam 20 tuổi/A_29_n.wav,natural,Bây giờ còn bao nhiêu người nữa thì tới số của mình?,Thì còn bao nhiêu người nữa thì tới sớm r nữa rớb bạn.,0.5833,0.3922,0.104
+A_07_r,Hoàng Tuấn/Nam 20 tuổi/A_07_r.wav,reading,Phòng khám số 205 đi đường nào?,Phòng khám số hai trăm linh lăm đi đường nào?,0.5714,0.5667,0.159
+A_C04_r,Phương Uyên/Nữ 20 tuổi/A_C04_r.wav,reading,Phòng siêu âm số 304 ở đâu?,Phòng siêu âm số ba lẻ từ hộp đâu?,0.5714,0.4231,0.1
+B_14_n,Phương Uyên/Nữ 20 tuổi/B_14_n.wav,natural,Nhà vệ sinh nữ ở đâu ạ?,Nhà vệ sinh nữ ở đâu vậy chị em Bút?,0.5714,0.6364,0.109
+B_17_n,Phương Uyên/Nữ 20 tuổi/B_17_n.wav,natural,"Bà em lớn tuổi rồi, có quầy ưu tiên cho người già không ạ?",Và em cũng lớn tuổi rồi đó thì mình có quậy ưu tiên cho người già hay không?,0.5714,0.4464,0.121
+B_C07_n,Phương Uyên/Nữ 20 tuổi/B_C07_n.wav,natural,Dẫn tôi đến khoa sản được không?,Dẫn tôi đến bar South có được không ạ?,0.5714,0.4194,0.134
+A_18_n,Hoàng Tuấn/Nam 20 tuổi/A_18_n.wav,natural,Mình muốn gửi xe máy thì gửi ở đâu?,Bây giờ mình muốn gửi xe máy thì mình gửi ở đâu được nhà?,0.5556,0.6471,0.096
+B_04_n,Phương Uyên/Nữ 20 tuổi/B_04_n.wav,natural,Em bị sốt với đau họng thì khám khoa nào ạ?,Em bị sốt và đau họng thì bây giờ em khám pháo khoa nào?,0.5455,0.4762,0.135
+B_29_n,Phương Uyên/Nữ 20 tuổi/B_29_n.wav,natural,"Em không hiểu, bạn chỉ lại đường giúp em được không?",Em không hiểu và em chuyển vào trường giúp em với được không?,0.5455,0.36,0.115
+A_22_n,Hoàng Tuấn/Nam 20 tuổi/A_22_n.wav,natural,"Đi chậm thôi nhé, bố mình đi không nhanh được.",A. Đi chậm thôi nhé thì bố mình không đi nhận được.,0.5,0.3182,0.103
+A_C09_n,Phương Uyên/Nữ 20 tuổi/A_C09_n.wav,natural,Gọi nhân viên giúp tôi với.,Rồi nhân viên giúp tôi đó nha,0.5,0.3077,0.145
+B_02_n,Phương Uyên/Nữ 20 tuổi/B_02_n.wav,natural,Em có đặt lịch khám online rồi thì đến quầy nào ạ?,Em có đọc được tháng online rồi thì giờ em đến quầy nào à?,0.5,0.3469,0.107
+B_C06_n,Phương Uyên/Nữ 20 tuổi/B_C06_n.wav,natural,Nhà thuốc ở đâu?,Nhà thuốc này bác đâu?,0.5,0.4667,0.14
+B_16_n,Phương Uyên/Nữ 20 tuổi/B_16_n.wav,natural,"Bà em bị đau đầu gối, đi khám xương khớp ở đâu ạ?","À, bà của em bị đau đầu gối á? Thì mình đi khám xương khớp ở đâu rồi?",0.4615,0.4255,0.151
+A_17_n,Hoàng Tuấn/Nam 20 tuổi/A_17_n.wav,natural,Cho mình hỏi nhà vệ sinh nam ở đâu?,Cho mình hỏi nhà vệ sinh nam ở bệnh viện ở đâu nhé.,0.4444,0.4706,0.093
+B_05_n,Phương Uyên/Nữ 20 tuổi/B_05_n.wav,natural,Khoa tai mũi họng đi lối nào vậy ạ?,Qua tay Lục Họng bập đi lối nào vậy ạ?,0.4444,0.3235,0.136
+B_06_r,Phương Uyên/Nữ 20 tuổi/B_06_r.wav,reading,Phòng 112 ở tầng một hay tầng hai ạ?,Phòng một trăm mười hai ở tầng một hay tầng hai ạ?,0.4444,0.4857,0.098
+A_13_n,Hoàng Tuấn/Nam 20 tuổi/A_13_n.wav,natural,Đóng tiền viện phí ở quầy nào?,"Đó, mình đóng tiền viện phí ở quầy nào á?",0.4286,0.3448,0.108
+,,,,,,,

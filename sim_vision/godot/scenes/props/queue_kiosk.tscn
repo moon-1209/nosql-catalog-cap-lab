@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=3]
+
+[sub_resource type="StandardMaterial3D" id="mat_body_white"]
+albedo_color = Color(0.92, 0.94, 0.96, 1)
+metallic = 0.25
+roughness = 0.3
+
+[sub_resource type="StandardMaterial3D" id="mat_accent_blue"]
+albedo_color = Color(0.08, 0.46, 0.78, 1)
+metallic = 0.2
+roughness = 0.35
+
+[sub_resource type="StandardMaterial3D" id="mat_screen_glow"]
+albedo_color = Color(0.1, 0.32, 0.58, 1)
+emission_enabled = true
+emission = Color(0.14, 0.48, 0.85, 1)
+emission_energy_multiplier = 0.85
+roughness = 0.15
+
+[sub_resource type="StandardMaterial3D" id="mat_slot_dark"]
+albedo_color = Color(0.15, 0.17, 0.2, 1)
+roughness = 0.4
+
+[sub_resource type="BoxMesh" id="mesh_base"]
+material = SubResource("mat_accent_blue")
+size = Vector3(0.52, 0.06, 0.46)
+
+[sub_resource type="BoxMesh" id="mesh_pedestal"]
+material = SubResource("mat_body_white")
+size = Vector3(0.38, 1.05, 0.28)
+
+[sub_resource type="BoxMesh" id="mesh_AccentStripe"]
+material = SubResource("mat_accent_blue")
+size = Vector3(0.39, 0.42, 0.29)
+
+[sub_resource type="BoxMesh" id="mesh_head"]
+material = SubResource("mat_body_white")
+size = Vector3(0.48, 0.42, 0.1)
+
+[sub_resource type="BoxMesh" id="mesh_screen"]
+material = SubResource("mat_screen_glow")
+size = Vector3(0.42, 0.34, 0.02)
+
+[sub_resource type="BoxMesh" id="mesh_printer_slot"]
+material = SubResource("mat_slot_dark")
+size = Vector3(0.16, 0.05, 0.04)
+
+[sub_resource type="BoxShape3D" id="shape_kiosk"]
+size = Vector3(0.54, 1.48, 0.48)
+
+[node name="QueueKiosk" type="StaticBody3D"]
+
+[node name="Base" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.03, 0)
+mesh = SubResource("mesh_base")
+
+[node name="Pedestal" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.58, 0)
+mesh = SubResource("mesh_pedestal")
+
+[node name="Stripe" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.45, 0)
+mesh = SubResource("mesh_AccentStripe")
+
+[node name="PrinterSlot" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.88, 0.13)
+mesh = SubResource("mesh_printer_slot")
+
+[node name="ScreenHousing" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.24, 0.02)
+rotation = Vector3(-0.32, 0, 0)
+mesh = SubResource("mesh_head")
+
+[node name="TouchScreen" type="MeshInstance3D" parent="ScreenHousing"]
+position = Vector3(0, 0, 0.05)
+mesh = SubResource("mesh_screen")
+
+[node name="ScreenLabel" type="Label3D" parent="ScreenHousing"]
+position = Vector3(0, 0.02, 0.065)
+pixel_size = 0.0014
+text = "LẤY SỐ THỨ TỰ
+1. KHÁM BẢO HIỂM Y TẾ
+2. KHÁM DỊCH VỤ
+3. ƯU TIÊN / CẤP CỨU"
+font_size = 30
+outline_size = 4
+
+[node name="BodyLabel" type="Label3D" parent="."]
+position = Vector3(0, 0.45, 0.15)
+pixel_size = 0.0015
+text = "BẤM LẤY SỐ
+TỰ ĐỘNG"
+font_size = 34
+outline_size = 5
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.74, 0)
+shape = SubResource("shape_kiosk")

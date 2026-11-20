@@ -1,0 +1,54 @@
+{
+  "note": "numbernorm = baseline normalization + vi_number_norm (words->digits). Baseline columns are byte-identical to the canonical run.",
+  "source_predictions": "asr_predictions_180_samples.csv",
+  "categories": {
+    "overall": {
+      "baseline": {
+        "count": 180,
+        "wer": 0.2873,
+        "cer": 0.2304
+      },
+      "numbernorm": {
+        "count": 180,
+        "wer": 0.2702,
+        "cer": 0.2128
+      }
+    },
+    "reading": {
+      "baseline": {
+        "count": 80,
+        "wer": 0.0875,
+        "cer": 0.0595
+      },
+      "numbernorm": {
+        "count": 80,
+        "wer": 0.0712,
+        "cer": 0.0433
+      }
+    },
+    "natural": {
+      "baseline": {
+        "count": 80,
+        "wer": 0.5178,
+        "cer": 0.429
+      },
+      "numbernorm": {
+        "count": 80,
+        "wer": 0.5059,
+        "cer": 0.4148
+      }
+    },
+    "common": {
+      "baseline": {
+        "count": 20,
+        "wer": 0.1053,
+        "cer": 0.0674
+      },
+      "numbernorm": {
+        "count": 20,
+        "wer": 0.0526,
+        "cer": 0.0217
+      }
+    }
+  }
+}

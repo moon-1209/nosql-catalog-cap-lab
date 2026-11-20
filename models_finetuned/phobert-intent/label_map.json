@@ -1,0 +1,22 @@
+{
+ "bao_hiem": 0,
+ "cam_on": 1,
+ "cap_cuu": 2,
+ "dan_duong": 3,
+ "dang_ky_kham": 4,
+ "dieu_chinh_am_luong": 5,
+ "dieu_chinh_toc_do": 6,
+ "dung_lai": 7,
+ "gap_nhan_vien": 8,
+ "ho_tro_di_chuyen": 9,
+ "hoi_khoa": 10,
+ "hoi_phong": 11,
+ "khong_ho_tro": 12,
+ "nha_thuoc": 13,
+ "nhac_lai": 14,
+ "thanh_toan": 15,
+ "thoi_gian_cho": 16,
+ "tien_ich": 17,
+ "tiep_tuc": 18,
+ "unknown": 19
+}

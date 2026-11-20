@@ -1,0 +1,181 @@
+file_id,speaker,mode,intent,text,expected_raw_file,expected_wav_file
+A_01_r,A,r,dang_ky_kham,"Chào bạn, cho mình hỏi chỗ đăng ký khám ở đâu vậy?",data/raw/real_voice/A_01_r.m4a,data/processed/real_voice/A_01_r.wav
+A_01_n,A,n,dang_ky_kham,"Chào bạn, cho mình hỏi chỗ đăng ký khám ở đâu vậy?",data/raw/real_voice/A_01_n.m4a,data/processed/real_voice/A_01_n.wav
+A_02_r,A,r,dang_ky_kham,Mình khám lần đầu thì phải làm thủ tục gì trước?,data/raw/real_voice/A_02_r.m4a,data/processed/real_voice/A_02_r.wav
+A_02_n,A,n,dang_ky_kham,Mình khám lần đầu thì phải làm thủ tục gì trước?,data/raw/real_voice/A_02_n.m4a,data/processed/real_voice/A_02_n.wav
+A_03_r,A,r,bao_hiem,"Mình có bảo hiểm y tế, đưa thẻ ở quầy nào?",data/raw/real_voice/A_03_r.m4a,data/processed/real_voice/A_03_r.wav
+A_03_n,A,n,bao_hiem,"Mình có bảo hiểm y tế, đưa thẻ ở quầy nào?",data/raw/real_voice/A_03_n.m4a,data/processed/real_voice/A_03_n.wav
+A_04_r,A,r,bao_hiem,"Mình quên mang thẻ bảo hiểm, dùng căn cước công dân được không?",data/raw/real_voice/A_04_r.m4a,data/processed/real_voice/A_04_r.wav
+A_04_n,A,n,bao_hiem,"Mình quên mang thẻ bảo hiểm, dùng căn cước công dân được không?",data/raw/real_voice/A_04_n.m4a,data/processed/real_voice/A_04_n.wav
+A_05_r,A,r,hoi_khoa,Mình bị đau bụng mấy hôm nay thì nên khám khoa nào?,data/raw/real_voice/A_05_r.m4a,data/processed/real_voice/A_05_r.wav
+A_05_n,A,n,hoi_khoa,Mình bị đau bụng mấy hôm nay thì nên khám khoa nào?,data/raw/real_voice/A_05_n.m4a,data/processed/real_voice/A_05_n.wav
+A_06_r,A,r,hoi_khoa,Khoa tiêu hóa ở tầng mấy?,data/raw/real_voice/A_06_r.m4a,data/processed/real_voice/A_06_r.wav
+A_06_n,A,n,hoi_khoa,Khoa tiêu hóa ở tầng mấy?,data/raw/real_voice/A_06_n.m4a,data/processed/real_voice/A_06_n.wav
+A_07_r,A,r,hoi_phong,Phòng khám số 205 đi đường nào?,data/raw/real_voice/A_07_r.m4a,data/processed/real_voice/A_07_r.wav
+A_07_n,A,n,hoi_phong,Phòng khám số 205 đi đường nào?,data/raw/real_voice/A_07_n.m4a,data/processed/real_voice/A_07_n.wav
+A_08_r,A,r,hoi_phong,"Bác sĩ bảo mình đi nội soi dạ dày, phòng nội soi ở đâu?",data/raw/real_voice/A_08_r.m4a,data/processed/real_voice/A_08_r.wav
+A_08_n,A,n,hoi_phong,"Bác sĩ bảo mình đi nội soi dạ dày, phòng nội soi ở đâu?",data/raw/real_voice/A_08_n.m4a,data/processed/real_voice/A_08_n.wav
+A_09_r,A,r,hoi_phong,Xét nghiệm máu thì lấy máu ở đâu?,data/raw/real_voice/A_09_r.m4a,data/processed/real_voice/A_09_r.wav
+A_09_n,A,n,hoi_phong,Xét nghiệm máu thì lấy máu ở đâu?,data/raw/real_voice/A_09_n.m4a,data/processed/real_voice/A_09_n.wav
+A_10_r,A,r,khong_ho_tro,Mình phải nhịn ăn trước khi xét nghiệm không?,data/raw/real_voice/A_10_r.m4a,data/processed/real_voice/A_10_r.wav
+A_10_n,A,n,khong_ho_tro,Mình phải nhịn ăn trước khi xét nghiệm không?,data/raw/real_voice/A_10_n.m4a,data/processed/real_voice/A_10_n.wav
+A_11_r,A,r,thoi_gian_cho,Bao lâu thì có kết quả xét nghiệm?,data/raw/real_voice/A_11_r.m4a,data/processed/real_voice/A_11_r.wav
+A_11_n,A,n,thoi_gian_cho,Bao lâu thì có kết quả xét nghiệm?,data/raw/real_voice/A_11_n.m4a,data/processed/real_voice/A_11_n.wav
+A_12_r,A,r,hoi_phong,Lấy kết quả ở đâu vậy bạn?,data/raw/real_voice/A_12_r.m4a,data/processed/real_voice/A_12_r.wav
+A_12_n,A,n,hoi_phong,Lấy kết quả ở đâu vậy bạn?,data/raw/real_voice/A_12_n.m4a,data/processed/real_voice/A_12_n.wav
+A_13_r,A,r,thanh_toan,Đóng tiền viện phí ở quầy nào?,data/raw/real_voice/A_13_r.m4a,data/processed/real_voice/A_13_r.wav
+A_13_n,A,n,thanh_toan,Đóng tiền viện phí ở quầy nào?,data/raw/real_voice/A_13_n.m4a,data/processed/real_voice/A_13_n.wav
+A_14_r,A,r,thanh_toan,Ở đây có thanh toán bằng chuyển khoản không?,data/raw/real_voice/A_14_r.m4a,data/processed/real_voice/A_14_r.wav
+A_14_n,A,n,thanh_toan,Ở đây có thanh toán bằng chuyển khoản không?,data/raw/real_voice/A_14_n.m4a,data/processed/real_voice/A_14_n.wav
+A_15_r,A,r,nha_thuoc,Nhà thuốc bệnh viện ở đâu?,data/raw/real_voice/A_15_r.m4a,data/processed/real_voice/A_15_r.wav
+A_15_n,A,n,nha_thuoc,Nhà thuốc bệnh viện ở đâu?,data/raw/real_voice/A_15_n.m4a,data/processed/real_voice/A_15_n.wav
+A_16_r,A,r,tien_ich,Thang máy gần nhất ở đâu?,data/raw/real_voice/A_16_r.m4a,data/processed/real_voice/A_16_r.wav
+A_16_n,A,n,tien_ich,Thang máy gần nhất ở đâu?,data/raw/real_voice/A_16_n.m4a,data/processed/real_voice/A_16_n.wav
+A_17_r,A,r,tien_ich,Cho mình hỏi nhà vệ sinh nam ở đâu?,data/raw/real_voice/A_17_r.m4a,data/processed/real_voice/A_17_r.wav
+A_17_n,A,n,tien_ich,Cho mình hỏi nhà vệ sinh nam ở đâu?,data/raw/real_voice/A_17_n.m4a,data/processed/real_voice/A_17_n.wav
+A_18_r,A,r,tien_ich,Mình muốn gửi xe máy thì gửi ở đâu?,data/raw/real_voice/A_18_r.m4a,data/processed/real_voice/A_18_r.wav
+A_18_n,A,n,tien_ich,Mình muốn gửi xe máy thì gửi ở đâu?,data/raw/real_voice/A_18_n.m4a,data/processed/real_voice/A_18_n.wav
+A_19_r,A,r,hoi_khoa,"Bố mình bị đau ngực, khám tim mạch ở đâu?",data/raw/real_voice/A_19_r.m4a,data/processed/real_voice/A_19_r.wav
+A_19_n,A,n,hoi_khoa,"Bố mình bị đau ngực, khám tim mạch ở đâu?",data/raw/real_voice/A_19_n.m4a,data/processed/real_voice/A_19_n.wav
+A_20_r,A,r,ho_tro_di_chuyen,"Bố mình đi lại hơi khó, bệnh viện có cho mượn xe lăn không?",data/raw/real_voice/A_20_r.m4a,data/processed/real_voice/A_20_r.wav
+A_20_n,A,n,ho_tro_di_chuyen,"Bố mình đi lại hơi khó, bệnh viện có cho mượn xe lăn không?",data/raw/real_voice/A_20_n.m4a,data/processed/real_voice/A_20_n.wav
+A_21_r,A,r,dan_duong,Bạn dẫn bố con mình đến phòng siêu âm tim được không?,data/raw/real_voice/A_21_r.m4a,data/processed/real_voice/A_21_r.wav
+A_21_n,A,n,dan_duong,Bạn dẫn bố con mình đến phòng siêu âm tim được không?,data/raw/real_voice/A_21_n.m4a,data/processed/real_voice/A_21_n.wav
+A_22_r,A,r,dieu_chinh_toc_do,"Đi chậm thôi nhé, bố mình đi không nhanh được.",data/raw/real_voice/A_22_r.m4a,data/processed/real_voice/A_22_r.wav
+A_22_n,A,n,dieu_chinh_toc_do,"Đi chậm thôi nhé, bố mình đi không nhanh được.",data/raw/real_voice/A_22_n.m4a,data/processed/real_voice/A_22_n.wav
+A_23_r,A,r,dung_lai,"Khoan, dừng lại chút, bố mình mệt.",data/raw/real_voice/A_23_r.m4a,data/processed/real_voice/A_23_r.wav
+A_23_n,A,n,dung_lai,"Khoan, dừng lại chút, bố mình mệt.",data/raw/real_voice/A_23_n.m4a,data/processed/real_voice/A_23_n.wav
+A_24_r,A,r,tiep_tuc,"Được rồi, đi tiếp đi.",data/raw/real_voice/A_24_r.m4a,data/processed/real_voice/A_24_r.wav
+A_24_n,A,n,tiep_tuc,"Được rồi, đi tiếp đi.",data/raw/real_voice/A_24_n.m4a,data/processed/real_voice/A_24_n.wav
+A_25_r,A,r,cap_cuu,"Bố mình đang khó thở quá, gọi bác sĩ giúp mình với!",data/raw/real_voice/A_25_r.m4a,data/processed/real_voice/A_25_r.wav
+A_25_n,A,n,cap_cuu,"Bố mình đang khó thở quá, gọi bác sĩ giúp mình với!",data/raw/real_voice/A_25_n.m4a,data/processed/real_voice/A_25_n.wav
+A_26_r,A,r,cap_cuu,Khoa cấp cứu ở đâu?,data/raw/real_voice/A_26_r.m4a,data/processed/real_voice/A_26_r.wav
+A_26_n,A,n,cap_cuu,Khoa cấp cứu ở đâu?,data/raw/real_voice/A_26_n.m4a,data/processed/real_voice/A_26_n.wav
+A_27_r,A,r,gap_nhan_vien,Mình muốn gặp nhân viên hướng dẫn.,data/raw/real_voice/A_27_r.m4a,data/processed/real_voice/A_27_r.wav
+A_27_n,A,n,gap_nhan_vien,Mình muốn gặp nhân viên hướng dẫn.,data/raw/real_voice/A_27_n.m4a,data/processed/real_voice/A_27_n.wav
+A_28_r,A,r,hoi_phong,Phòng điện tim là phòng mấy?,data/raw/real_voice/A_28_r.m4a,data/processed/real_voice/A_28_r.wav
+A_28_n,A,n,hoi_phong,Phòng điện tim là phòng mấy?,data/raw/real_voice/A_28_n.m4a,data/processed/real_voice/A_28_n.wav
+A_29_r,A,r,thoi_gian_cho,Bây giờ còn bao nhiêu người nữa thì tới số của mình?,data/raw/real_voice/A_29_r.m4a,data/processed/real_voice/A_29_r.wav
+A_29_n,A,n,thoi_gian_cho,Bây giờ còn bao nhiêu người nữa thì tới số của mình?,data/raw/real_voice/A_29_n.m4a,data/processed/real_voice/A_29_n.wav
+A_30_r,A,r,cam_on,"Ok, cảm ơn bạn nhiều nha.",data/raw/real_voice/A_30_r.m4a,data/processed/real_voice/A_30_r.wav
+A_30_n,A,n,cam_on,"Ok, cảm ơn bạn nhiều nha.",data/raw/real_voice/A_30_n.m4a,data/processed/real_voice/A_30_n.wav
+B_01_r,B,r,dang_ky_kham,Dạ cho em hỏi lấy số khám bệnh ở đâu ạ?,data/raw/real_voice/B_01_r.m4a,data/processed/real_voice/B_01_r.wav
+B_01_n,B,n,dang_ky_kham,Dạ cho em hỏi lấy số khám bệnh ở đâu ạ?,data/raw/real_voice/B_01_n.m4a,data/processed/real_voice/B_01_n.wav
+B_02_r,B,r,dang_ky_kham,Em có đặt lịch khám online rồi thì đến quầy nào ạ?,data/raw/real_voice/B_02_r.m4a,data/processed/real_voice/B_02_r.wav
+B_02_n,B,n,dang_ky_kham,Em có đặt lịch khám online rồi thì đến quầy nào ạ?,data/raw/real_voice/B_02_n.m4a,data/processed/real_voice/B_02_n.wav
+B_03_r,B,r,bao_hiem,Thẻ bảo hiểm của em ở tỉnh khác thì có dùng được không ạ?,data/raw/real_voice/B_03_r.m4a,data/processed/real_voice/B_03_r.wav
+B_03_n,B,n,bao_hiem,Thẻ bảo hiểm của em ở tỉnh khác thì có dùng được không ạ?,data/raw/real_voice/B_03_n.m4a,data/processed/real_voice/B_03_n.wav
+B_04_r,B,r,hoi_khoa,Em bị sốt với đau họng thì khám khoa nào ạ?,data/raw/real_voice/B_04_r.m4a,data/processed/real_voice/B_04_r.wav
+B_04_n,B,n,hoi_khoa,Em bị sốt với đau họng thì khám khoa nào ạ?,data/raw/real_voice/B_04_n.m4a,data/processed/real_voice/B_04_n.wav
+B_05_r,B,r,hoi_khoa,Khoa tai mũi họng đi lối nào vậy ạ?,data/raw/real_voice/B_05_r.m4a,data/processed/real_voice/B_05_r.wav
+B_05_n,B,n,hoi_khoa,Khoa tai mũi họng đi lối nào vậy ạ?,data/raw/real_voice/B_05_n.m4a,data/processed/real_voice/B_05_n.wav
+B_06_r,B,r,hoi_phong,Phòng 112 ở tầng một hay tầng hai ạ?,data/raw/real_voice/B_06_r.m4a,data/processed/real_voice/B_06_r.wav
+B_06_n,B,n,hoi_phong,Phòng 112 ở tầng một hay tầng hai ạ?,data/raw/real_voice/B_06_n.m4a,data/processed/real_voice/B_06_n.wav
+B_07_r,B,r,hoi_phong,Chụp X-quang phổi ở đâu ạ?,data/raw/real_voice/B_07_r.m4a,data/processed/real_voice/B_07_r.wav
+B_07_n,B,n,hoi_phong,Chụp X-quang phổi ở đâu ạ?,data/raw/real_voice/B_07_n.m4a,data/processed/real_voice/B_07_n.wav
+B_08_r,B,r,hoi_phong,Em cần nộp phiếu chỉ định ở đâu ạ?,data/raw/real_voice/B_08_r.m4a,data/processed/real_voice/B_08_r.wav
+B_08_n,B,n,hoi_phong,Em cần nộp phiếu chỉ định ở đâu ạ?,data/raw/real_voice/B_08_n.m4a,data/processed/real_voice/B_08_n.wav
+B_09_r,B,r,tien_ich,Chỗ ngồi chờ khám ở đâu ạ?,data/raw/real_voice/B_09_r.m4a,data/processed/real_voice/B_09_r.wav
+B_09_n,B,n,tien_ich,Chỗ ngồi chờ khám ở đâu ạ?,data/raw/real_voice/B_09_n.m4a,data/processed/real_voice/B_09_n.wav
+B_10_r,B,r,khong_ho_tro,Em có cần đeo khẩu trang không ạ?,data/raw/real_voice/B_10_r.m4a,data/processed/real_voice/B_10_r.wav
+B_10_n,B,n,khong_ho_tro,Em có cần đeo khẩu trang không ạ?,data/raw/real_voice/B_10_n.m4a,data/processed/real_voice/B_10_n.wav
+B_11_r,B,r,gap_nhan_vien,"Em đợi lâu quá rồi mà chưa tới lượt, hỏi ai ạ?",data/raw/real_voice/B_11_r.m4a,data/processed/real_voice/B_11_r.wav
+B_11_n,B,n,gap_nhan_vien,"Em đợi lâu quá rồi mà chưa tới lượt, hỏi ai ạ?",data/raw/real_voice/B_11_n.m4a,data/processed/real_voice/B_11_n.wav
+B_12_r,B,r,thanh_toan,Em muốn trả tiền bằng thẻ ngân hàng được không ạ?,data/raw/real_voice/B_12_r.m4a,data/processed/real_voice/B_12_r.wav
+B_12_n,B,n,thanh_toan,Em muốn trả tiền bằng thẻ ngân hàng được không ạ?,data/raw/real_voice/B_12_n.m4a,data/processed/real_voice/B_12_n.wav
+B_13_r,B,r,nha_thuoc,Lấy thuốc bảo hiểm ở đâu ạ?,data/raw/real_voice/B_13_r.m4a,data/processed/real_voice/B_13_r.wav
+B_13_n,B,n,nha_thuoc,Lấy thuốc bảo hiểm ở đâu ạ?,data/raw/real_voice/B_13_n.m4a,data/processed/real_voice/B_13_n.wav
+B_14_r,B,r,tien_ich,Nhà vệ sinh nữ ở đâu ạ?,data/raw/real_voice/B_14_r.m4a,data/processed/real_voice/B_14_r.wav
+B_14_n,B,n,tien_ich,Nhà vệ sinh nữ ở đâu ạ?,data/raw/real_voice/B_14_n.m4a,data/processed/real_voice/B_14_n.wav
+B_15_r,B,r,tien_ich,Ở đây có chỗ bán đồ ăn không ạ?,data/raw/real_voice/B_15_r.m4a,data/processed/real_voice/B_15_r.wav
+B_15_n,B,n,tien_ich,Ở đây có chỗ bán đồ ăn không ạ?,data/raw/real_voice/B_15_n.m4a,data/processed/real_voice/B_15_n.wav
+B_16_r,B,r,hoi_khoa,"Bà em bị đau đầu gối, đi khám xương khớp ở đâu ạ?",data/raw/real_voice/B_16_r.m4a,data/processed/real_voice/B_16_r.wav
+B_16_n,B,n,hoi_khoa,"Bà em bị đau đầu gối, đi khám xương khớp ở đâu ạ?",data/raw/real_voice/B_16_n.m4a,data/processed/real_voice/B_16_n.wav
+B_17_r,B,r,dang_ky_kham,"Bà em lớn tuổi rồi, có quầy ưu tiên cho người già không ạ?",data/raw/real_voice/B_17_r.m4a,data/processed/real_voice/B_17_r.wav
+B_17_n,B,n,dang_ky_kham,"Bà em lớn tuổi rồi, có quầy ưu tiên cho người già không ạ?",data/raw/real_voice/B_17_n.m4a,data/processed/real_voice/B_17_n.wav
+B_18_r,B,r,dieu_chinh_am_luong,"Bà em nghe không rõ, bạn nói to hơn được không?",data/raw/real_voice/B_18_r.m4a,data/processed/real_voice/B_18_r.wav
+B_18_n,B,n,dieu_chinh_am_luong,"Bà em nghe không rõ, bạn nói to hơn được không?",data/raw/real_voice/B_18_n.m4a,data/processed/real_voice/B_18_n.wav
+B_19_r,B,r,nhac_lai,"Bạn nói lại lần nữa được không, em chưa nghe kịp.",data/raw/real_voice/B_19_r.m4a,data/processed/real_voice/B_19_r.wav
+B_19_n,B,n,nhac_lai,"Bạn nói lại lần nữa được không, em chưa nghe kịp.",data/raw/real_voice/B_19_n.m4a,data/processed/real_voice/B_19_n.wav
+B_20_r,B,r,dan_duong,Bạn dẫn bà em tới khoa cơ xương khớp giúp em với.,data/raw/real_voice/B_20_r.m4a,data/processed/real_voice/B_20_r.wav
+B_20_n,B,n,dan_duong,Bạn dẫn bà em tới khoa cơ xương khớp giúp em với.,data/raw/real_voice/B_20_n.m4a,data/processed/real_voice/B_20_n.wav
+B_21_r,B,r,dieu_chinh_toc_do,Đi chậm chậm thôi bạn ơi.,data/raw/real_voice/B_21_r.m4a,data/processed/real_voice/B_21_r.wav
+B_21_n,B,n,dieu_chinh_toc_do,Đi chậm chậm thôi bạn ơi.,data/raw/real_voice/B_21_n.m4a,data/processed/real_voice/B_21_n.wav
+B_22_r,B,r,dung_lai,Bà em muốn ngồi nghỉ một chút.,data/raw/real_voice/B_22_r.m4a,data/processed/real_voice/B_22_r.wav
+B_22_n,B,n,dung_lai,Bà em muốn ngồi nghỉ một chút.,data/raw/real_voice/B_22_n.m4a,data/processed/real_voice/B_22_n.wav
+B_23_r,B,r,tiep_tuc,"Rồi, mình đi tiếp nha.",data/raw/real_voice/B_23_r.m4a,data/processed/real_voice/B_23_r.wav
+B_23_n,B,n,tiep_tuc,"Rồi, mình đi tiếp nha.",data/raw/real_voice/B_23_n.m4a,data/processed/real_voice/B_23_n.wav
+B_24_r,B,r,tien_ich,"Có thang máy không, bà em không leo cầu thang được.",data/raw/real_voice/B_24_r.m4a,data/processed/real_voice/B_24_r.wav
+B_24_n,B,n,tien_ich,"Có thang máy không, bà em không leo cầu thang được.",data/raw/real_voice/B_24_n.m4a,data/processed/real_voice/B_24_n.wav
+B_25_r,B,r,cap_cuu,"Bà em bị chóng mặt, sắp ngã rồi, giúp em với!",data/raw/real_voice/B_25_r.m4a,data/processed/real_voice/B_25_r.wav
+B_25_n,B,n,cap_cuu,"Bà em bị chóng mặt, sắp ngã rồi, giúp em với!",data/raw/real_voice/B_25_n.m4a,data/processed/real_voice/B_25_n.wav
+B_26_r,B,r,hoi_phong,Phòng vật lý trị liệu ở đâu ạ?,data/raw/real_voice/B_26_r.m4a,data/processed/real_voice/B_26_r.wav
+B_26_n,B,n,hoi_phong,Phòng vật lý trị liệu ở đâu ạ?,data/raw/real_voice/B_26_n.m4a,data/processed/real_voice/B_26_n.wav
+B_27_r,B,r,hoi_phong,Khám xong thì quay lại chỗ bác sĩ để đọc kết quả hả bạn?,data/raw/real_voice/B_27_r.m4a,data/processed/real_voice/B_27_r.wav
+B_27_n,B,n,hoi_phong,Khám xong thì quay lại chỗ bác sĩ để đọc kết quả hả bạn?,data/raw/real_voice/B_27_n.m4a,data/processed/real_voice/B_27_n.wav
+B_28_r,B,r,thoi_gian_cho,Mấy giờ thì bệnh viện nghỉ trưa ạ?,data/raw/real_voice/B_28_r.m4a,data/processed/real_voice/B_28_r.wav
+B_28_n,B,n,thoi_gian_cho,Mấy giờ thì bệnh viện nghỉ trưa ạ?,data/raw/real_voice/B_28_n.m4a,data/processed/real_voice/B_28_n.wav
+B_29_r,B,r,nhac_lai,"Em không hiểu, bạn chỉ lại đường giúp em được không?",data/raw/real_voice/B_29_r.m4a,data/processed/real_voice/B_29_r.wav
+B_29_n,B,n,nhac_lai,"Em không hiểu, bạn chỉ lại đường giúp em được không?",data/raw/real_voice/B_29_n.m4a,data/processed/real_voice/B_29_n.wav
+B_30_r,B,r,cam_on,Dạ em cảm ơn ạ.,data/raw/real_voice/B_30_r.m4a,data/processed/real_voice/B_30_r.wav
+B_30_n,B,n,cam_on,Dạ em cảm ơn ạ.,data/raw/real_voice/B_30_n.m4a,data/processed/real_voice/B_30_n.wav
+Nam_C01,A,r,hoi_khoa,Cho tôi hỏi khoa tim mạch ở đâu?,data/raw/real_voice/Nam_C01.m4a,data/processed/real_voice/Nam_C01.wav
+A_C01_r,A,r,hoi_khoa,Cho tôi hỏi khoa tim mạch ở đâu?,data/raw/real_voice/A_C01_r.m4a,data/processed/real_voice/A_C01_r.wav
+A_C01_n,A,n,hoi_khoa,Cho tôi hỏi khoa tim mạch ở đâu?,data/raw/real_voice/A_C01_n.m4a,data/processed/real_voice/A_C01_n.wav
+Nu_C01,B,r,hoi_khoa,Cho tôi hỏi khoa tim mạch ở đâu?,data/raw/real_voice/Nu_C01.m4a,data/processed/real_voice/Nu_C01.wav
+B_C01_r,B,r,hoi_khoa,Cho tôi hỏi khoa tim mạch ở đâu?,data/raw/real_voice/B_C01_r.m4a,data/processed/real_voice/B_C01_r.wav
+B_C01_n,B,n,hoi_khoa,Cho tôi hỏi khoa tim mạch ở đâu?,data/raw/real_voice/B_C01_n.m4a,data/processed/real_voice/B_C01_n.wav
+Nam_C02,A,r,hoi_khoa,Khoa nhi ở tầng mấy?,data/raw/real_voice/Nam_C02.m4a,data/processed/real_voice/Nam_C02.wav
+A_C02_r,A,r,hoi_khoa,Khoa nhi ở tầng mấy?,data/raw/real_voice/A_C02_r.m4a,data/processed/real_voice/A_C02_r.wav
+A_C02_n,A,n,hoi_khoa,Khoa nhi ở tầng mấy?,data/raw/real_voice/A_C02_n.m4a,data/processed/real_voice/A_C02_n.wav
+Nu_C02,B,r,hoi_khoa,Khoa nhi ở tầng mấy?,data/raw/real_voice/Nu_C02.m4a,data/processed/real_voice/Nu_C02.wav
+B_C02_r,B,r,hoi_khoa,Khoa nhi ở tầng mấy?,data/raw/real_voice/B_C02_r.m4a,data/processed/real_voice/B_C02_r.wav
+B_C02_n,B,n,hoi_khoa,Khoa nhi ở tầng mấy?,data/raw/real_voice/B_C02_n.m4a,data/processed/real_voice/B_C02_n.wav
+Nam_C03,A,r,hoi_phong,Phòng xét nghiệm máu đi đường nào?,data/raw/real_voice/Nam_C03.m4a,data/processed/real_voice/Nam_C03.wav
+A_C03_r,A,r,hoi_phong,Phòng xét nghiệm máu đi đường nào?,data/raw/real_voice/A_C03_r.m4a,data/processed/real_voice/A_C03_r.wav
+A_C03_n,A,n,hoi_phong,Phòng xét nghiệm máu đi đường nào?,data/raw/real_voice/A_C03_n.m4a,data/processed/real_voice/A_C03_n.wav
+Nu_C03,B,r,hoi_phong,Phòng xét nghiệm máu đi đường nào?,data/raw/real_voice/Nu_C03.m4a,data/processed/real_voice/Nu_C03.wav
+B_C03_r,B,r,hoi_phong,Phòng xét nghiệm máu đi đường nào?,data/raw/real_voice/B_C03_r.m4a,data/processed/real_voice/B_C03_r.wav
+B_C03_n,B,n,hoi_phong,Phòng xét nghiệm máu đi đường nào?,data/raw/real_voice/B_C03_n.m4a,data/processed/real_voice/B_C03_n.wav
+Nam_C04,A,r,hoi_phong,Phòng siêu âm số 304 ở đâu?,data/raw/real_voice/Nam_C04.m4a,data/processed/real_voice/Nam_C04.wav
+A_C04_r,A,r,hoi_phong,Phòng siêu âm số 304 ở đâu?,data/raw/real_voice/A_C04_r.m4a,data/processed/real_voice/A_C04_r.wav
+A_C04_n,A,n,hoi_phong,Phòng siêu âm số 304 ở đâu?,data/raw/real_voice/A_C04_n.m4a,data/processed/real_voice/A_C04_n.wav
+Nu_C04,B,r,hoi_phong,Phòng siêu âm số 304 ở đâu?,data/raw/real_voice/Nu_C04.m4a,data/processed/real_voice/Nu_C04.wav
+B_C04_r,B,r,hoi_phong,Phòng siêu âm số 304 ở đâu?,data/raw/real_voice/B_C04_r.m4a,data/processed/real_voice/B_C04_r.wav
+B_C04_n,B,n,hoi_phong,Phòng siêu âm số 304 ở đâu?,data/raw/real_voice/B_C04_n.m4a,data/processed/real_voice/B_C04_n.wav
+Nam_C05,A,r,thanh_toan,Quầy thu ngân ở đâu?,data/raw/real_voice/Nam_C05.m4a,data/processed/real_voice/Nam_C05.wav
+A_C05_r,A,r,thanh_toan,Quầy thu ngân ở đâu?,data/raw/real_voice/A_C05_r.m4a,data/processed/real_voice/A_C05_r.wav
+A_C05_n,A,n,thanh_toan,Quầy thu ngân ở đâu?,data/raw/real_voice/A_C05_n.m4a,data/processed/real_voice/A_C05_n.wav
+Nu_C05,B,r,thanh_toan,Quầy thu ngân ở đâu?,data/raw/real_voice/Nu_C05.m4a,data/processed/real_voice/Nu_C05.wav
+B_C05_r,B,r,thanh_toan,Quầy thu ngân ở đâu?,data/raw/real_voice/B_C05_r.m4a,data/processed/real_voice/B_C05_r.wav
+B_C05_n,B,n,thanh_toan,Quầy thu ngân ở đâu?,data/raw/real_voice/B_C05_n.m4a,data/processed/real_voice/B_C05_n.wav
+Nam_C06,A,r,nha_thuoc,Nhà thuốc ở đâu?,data/raw/real_voice/Nam_C06.m4a,data/processed/real_voice/Nam_C06.wav
+A_C06_r,A,r,nha_thuoc,Nhà thuốc ở đâu?,data/raw/real_voice/A_C06_r.m4a,data/processed/real_voice/A_C06_r.wav
+A_C06_n,A,n,nha_thuoc,Nhà thuốc ở đâu?,data/raw/real_voice/A_C06_n.m4a,data/processed/real_voice/A_C06_n.wav
+Nu_C06,B,r,nha_thuoc,Nhà thuốc ở đâu?,data/raw/real_voice/Nu_C06.m4a,data/processed/real_voice/Nu_C06.wav
+B_C06_r,B,r,nha_thuoc,Nhà thuốc ở đâu?,data/raw/real_voice/B_C06_r.m4a,data/processed/real_voice/B_C06_r.wav
+B_C06_n,B,n,nha_thuoc,Nhà thuốc ở đâu?,data/raw/real_voice/B_C06_n.m4a,data/processed/real_voice/B_C06_n.wav
+Nam_C07,A,r,dan_duong,Dẫn tôi đến khoa sản được không?,data/raw/real_voice/Nam_C07.m4a,data/processed/real_voice/Nam_C07.wav
+A_C07_r,A,r,dan_duong,Dẫn tôi đến khoa sản được không?,data/raw/real_voice/A_C07_r.m4a,data/processed/real_voice/A_C07_r.wav
+A_C07_n,A,n,dan_duong,Dẫn tôi đến khoa sản được không?,data/raw/real_voice/A_C07_n.m4a,data/processed/real_voice/A_C07_n.wav
+Nu_C07,B,r,dan_duong,Dẫn tôi đến khoa sản được không?,data/raw/real_voice/Nu_C07.m4a,data/processed/real_voice/Nu_C07.wav
+B_C07_r,B,r,dan_duong,Dẫn tôi đến khoa sản được không?,data/raw/real_voice/B_C07_r.m4a,data/processed/real_voice/B_C07_r.wav
+B_C07_n,B,n,dan_duong,Dẫn tôi đến khoa sản được không?,data/raw/real_voice/B_C07_n.m4a,data/processed/real_voice/B_C07_n.wav
+Nam_C08,A,r,dieu_chinh_toc_do,Đi chậm lại giúp tôi.,data/raw/real_voice/Nam_C08.m4a,data/processed/real_voice/Nam_C08.wav
+A_C08_r,A,r,dieu_chinh_toc_do,Đi chậm lại giúp tôi.,data/raw/real_voice/A_C08_r.m4a,data/processed/real_voice/A_C08_r.wav
+A_C08_n,A,n,dieu_chinh_toc_do,Đi chậm lại giúp tôi.,data/raw/real_voice/A_C08_n.m4a,data/processed/real_voice/A_C08_n.wav
+Nu_C08,B,r,dieu_chinh_toc_do,Đi chậm lại giúp tôi.,data/raw/real_voice/Nu_C08.m4a,data/processed/real_voice/Nu_C08.wav
+B_C08_r,B,r,dieu_chinh_toc_do,Đi chậm lại giúp tôi.,data/raw/real_voice/B_C08_r.m4a,data/processed/real_voice/B_C08_r.wav
+B_C08_n,B,n,dieu_chinh_toc_do,Đi chậm lại giúp tôi.,data/raw/real_voice/B_C08_n.m4a,data/processed/real_voice/B_C08_n.wav
+Nam_C09,A,r,gap_nhan_vien,Gọi nhân viên giúp tôi với.,data/raw/real_voice/Nam_C09.m4a,data/processed/real_voice/Nam_C09.wav
+A_C09_r,A,r,gap_nhan_vien,Gọi nhân viên giúp tôi với.,data/raw/real_voice/A_C09_r.m4a,data/processed/real_voice/A_C09_r.wav
+A_C09_n,A,n,gap_nhan_vien,Gọi nhân viên giúp tôi với.,data/raw/real_voice/A_C09_n.m4a,data/processed/real_voice/A_C09_n.wav
+Nu_C09,B,r,gap_nhan_vien,Gọi nhân viên giúp tôi với.,data/raw/real_voice/Nu_C09.m4a,data/processed/real_voice/Nu_C09.wav
+B_C09_r,B,r,gap_nhan_vien,Gọi nhân viên giúp tôi với.,data/raw/real_voice/B_C09_r.m4a,data/processed/real_voice/B_C09_r.wav
+B_C09_n,B,n,gap_nhan_vien,Gọi nhân viên giúp tôi với.,data/raw/real_voice/B_C09_n.m4a,data/processed/real_voice/B_C09_n.wav
+Nam_C10,A,r,cam_on,Cảm ơn nhé.,data/raw/real_voice/Nam_C10.m4a,data/processed/real_voice/Nam_C10.wav
+A_C10_r,A,r,cam_on,Cảm ơn nhé.,data/raw/real_voice/A_C10_r.m4a,data/processed/real_voice/A_C10_r.wav
+A_C10_n,A,n,cam_on,Cảm ơn nhé.,data/raw/real_voice/A_C10_n.m4a,data/processed/real_voice/A_C10_n.wav
+Nu_C10,B,r,cam_on,Cảm ơn nhé.,data/raw/real_voice/Nu_C10.m4a,data/processed/real_voice/Nu_C10.wav
+B_C10_r,B,r,cam_on,Cảm ơn nhé.,data/raw/real_voice/B_C10_r.m4a,data/processed/real_voice/B_C10_r.wav
+B_C10_n,B,n,cam_on,Cảm ơn nhé.,data/raw/real_voice/B_C10_n.m4a,data/processed/real_voice/B_C10_n.wav

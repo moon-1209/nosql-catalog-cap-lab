@@ -1,0 +1,35 @@
+{
+  "run_name": "PPOHospital-curriculum",
+  "epochs": 20,
+  "steps_per_epoch": 900,
+  "batch_size": 150,
+  "ppo_epochs": 4,
+  "lr": 0.0003,
+  "gamma": 0.99,
+  "gae_lambda": 0.95,
+  "clip_coef": 0.2,
+  "ent_coef": 0.01,
+  "vf_coef": 0.5,
+  "bc_coef_init": 0.6,
+  "patience": 12,
+  "seed": 42,
+  "smoke": false,
+  "shift_duration_s": 180.0,
+  "5W1H": {
+    "what": "PPO Actor-Critic (31-D -> 2-D) hospital helper robot controller",
+    "why": "Maximize shared team reward R_team across 180s multi-patient hospital shifts",
+    "who": "src.training.rl_hospital_train",
+    "where": "/Users/pickapu/Documents/PyCharmMiscProject/Data-Science-Major-Project/src/training/experiments/runs/20261023_171443_PPOHospital-curriculum",
+    "when": "2026-10-23T10:14:44Z",
+    "how": "2-Stage Curriculum PPO + LiDAR/tether-aware teacher warm-up"
+  },
+  "outputs": [
+    "/Users/pickapu/Documents/PyCharmMiscProject/Data-Science-Major-Project/src/training/experiments/runs/20261023_171443_PPOHospital-curriculum/checkpoints/PPOHospital-curriculum_best.pt",
+    "/Users/pickapu/Documents/PyCharmMiscProject/Data-Science-Major-Project/src/training/experiments/runs/20261023_171443_PPOHospital-curriculum/checkpoints/PPOHospital-curriculum_last.pt",
+    "/Users/pickapu/Documents/PyCharmMiscProject/Data-Science-Major-Project/src/training/experiments/runs/20261023_171443_PPOHospital-curriculum/logs/PPOHospital-curriculum.log",
+    "/Users/pickapu/Documents/PyCharmMiscProject/Data-Science-Major-Project/src/training/experiments/runs/20261023_171443_PPOHospital-curriculum/metrics/PPOHospital-curriculum_config.json",
+    "/Users/pickapu/Documents/PyCharmMiscProject/Data-Science-Major-Project/src/training/experiments/runs/20261023_171443_PPOHospital-curriculum/metrics/PPOHospital-curriculum_history.jsonl",
+    "/Users/pickapu/Documents/PyCharmMiscProject/Data-Science-Major-Project/src/training/experiments/results/rl_hospital/training_history.json",
+    "/Users/pickapu/Documents/PyCharmMiscProject/Data-Science-Major-Project/src/training/experiments/results/rl_hospital/rollout_summary.npz"
+  ]
+}

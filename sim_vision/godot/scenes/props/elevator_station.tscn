@@ -1,0 +1,152 @@
+[gd_scene load_steps=19 format=3]
+
+[ext_resource type="Script" path="res://scripts/elevator_station.gd" id="1"]
+[ext_resource type="AudioStream" path="res://assets/sounds/elevator_chime.wav" id="2"]
+[ext_resource type="AudioStream" path="res://assets/sounds/elevator_hum.wav" id="3"]
+
+[sub_resource type="StandardMaterial3D" id="mat_frame_dark"]
+albedo_color = Color(0.22, 0.26, 0.3, 1)
+metallic = 0.65
+roughness = 0.3
+
+[sub_resource type="StandardMaterial3D" id="mat_door_steel"]
+albedo_color = Color(0.78, 0.81, 0.84, 1)
+metallic = 0.88
+roughness = 0.22
+
+[sub_resource type="StandardMaterial3D" id="mat_led_panel"]
+albedo_color = Color(0.06, 0.06, 0.08, 1)
+roughness = 0.2
+
+[sub_resource type="StandardMaterial3D" id="mat_sign_blue"]
+albedo_color = Color(0.08, 0.36, 0.68, 1)
+roughness = 0.35
+
+[sub_resource type="StandardMaterial3D" id="mat_cabin_wall"]
+albedo_color = Color(0.85, 0.88, 0.9, 1)
+metallic = 0.5
+roughness = 0.35
+
+[sub_resource type="StandardMaterial3D" id="mat_cabin_floor"]
+albedo_color = Color(0.2, 0.22, 0.25, 1)
+roughness = 0.6
+
+[sub_resource type="BoxMesh" id="mesh_outer_frame"]
+material = SubResource("mat_frame_dark")
+size = Vector3(1.96, 2.35, 0.14)
+
+[sub_resource type="BoxMesh" id="mesh_door_leaf"]
+material = SubResource("mat_door_steel")
+size = Vector3(0.84, 2.18, 0.06)
+
+[sub_resource type="BoxMesh" id="mesh_led_box"]
+material = SubResource("mat_led_panel")
+size = Vector3(0.46, 0.16, 0.04)
+
+[sub_resource type="BoxMesh" id="mesh_call_panel"]
+material = SubResource("mat_door_steel")
+size = Vector3(0.1, 0.24, 0.03)
+
+[sub_resource type="BoxMesh" id="mesh_header_sign"]
+material = SubResource("mat_sign_blue")
+size = Vector3(1.96, 0.24, 0.05)
+
+[sub_resource type="BoxShape3D" id="shape_elevator_door"]
+size = Vector3(2.05, 2.5, 0.18)
+
+[sub_resource type="BoxMesh" id="mesh_cabin_side"]
+material = SubResource("mat_cabin_wall")
+size = Vector3(0.1, 2.5, 2.2)
+
+[sub_resource type="BoxMesh" id="mesh_cabin_back"]
+material = SubResource("mat_cabin_wall")
+size = Vector3(2.1, 2.5, 0.1)
+
+[sub_resource type="BoxMesh" id="mesh_cabin_floor"]
+material = SubResource("mat_cabin_floor")
+size = Vector3(2.1, 0.1, 2.2)
+
+[node name="ElevatorStation" type="StaticBody3D"]
+script = ExtResource("1")
+
+[node name="OuterFrame" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.175, 0)
+mesh = SubResource("mesh_outer_frame")
+
+[node name="DoorLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-0.43, 1.1, 0.05)
+mesh = SubResource("mesh_door_leaf")
+
+[node name="DoorRight" type="MeshInstance3D" parent="."]
+position = Vector3(0.43, 1.1, 0.05)
+mesh = SubResource("mesh_door_leaf")
+
+[node name="FloorIndicator" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.27, 0.07)
+mesh = SubResource("mesh_led_box")
+
+[node name="FloorLedText" type="Label3D" parent="FloorIndicator"]
+position = Vector3(0, 0, 0.025)
+pixel_size = 0.0018
+modulate = Color(0.98, 0.18, 0.12, 1)
+text = "TẦNG 1  ▲"
+font_size = 42
+outline_size = 2
+
+[node name="HeaderSign" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.52, 0.05)
+mesh = SubResource("mesh_header_sign")
+
+[node name="HeaderText" type="Label3D" parent="HeaderSign"]
+position = Vector3(0, 0, 0.03)
+pixel_size = 0.0018
+text = "THANG MÁY BỆNH VIỆN - TẢI TRỌNG 1000 KG"
+font_size = 36
+outline_size = 4
+
+[node name="CallPanel" type="MeshInstance3D" parent="."]
+position = Vector3(1.12, 1.15, 0.04)
+mesh = SubResource("mesh_call_panel")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+position = Vector3(0, 1.25, 0)
+shape = SubResource("shape_elevator_door")
+
+[node name="Cabin" type="Node3D" parent="."]
+position = Vector3(0, 0, -1.1)
+
+[node name="WallBack" type="MeshInstance3D" parent="Cabin"]
+position = Vector3(0, 1.25, -1.05)
+mesh = SubResource("mesh_cabin_back")
+
+[node name="WallLeft" type="MeshInstance3D" parent="Cabin"]
+position = Vector3(-1.0, 1.25, 0)
+mesh = SubResource("mesh_cabin_side")
+
+[node name="WallRight" type="MeshInstance3D" parent="Cabin"]
+position = Vector3(1.0, 1.25, 0)
+mesh = SubResource("mesh_cabin_side")
+
+[node name="Floor" type="MeshInstance3D" parent="Cabin"]
+position = Vector3(0, -0.05, 0)
+mesh = SubResource("mesh_cabin_floor")
+
+[node name="Ceiling" type="MeshInstance3D" parent="Cabin"]
+position = Vector3(0, 2.55, 0)
+mesh = SubResource("mesh_cabin_floor")
+
+[node name="CabinLight" type="OmniLight3D" parent="Cabin"]
+position = Vector3(0, 2.2, 0)
+light_color = Color(0.95, 0.95, 0.88, 1)
+light_energy = 1.8
+omni_range = 3.5
+
+[node name="AudioChime" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2")
+unit_size = 4.0
+max_distance = 25.0
+
+[node name="AudioHum" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3")
+unit_size = 2.5
+max_distance = 15.0

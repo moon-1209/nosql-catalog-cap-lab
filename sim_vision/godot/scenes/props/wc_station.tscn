@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3]
+
+[sub_resource type="StandardMaterial3D" id="mat_ceramic_white"]
+albedo_color = Color(0.95, 0.96, 0.97, 1)
+roughness = 0.18
+
+[sub_resource type="StandardMaterial3D" id="mat_counter_stone"]
+albedo_color = Color(0.82, 0.85, 0.86, 1)
+roughness = 0.25
+
+[sub_resource type="StandardMaterial3D" id="mat_mirror"]
+albedo_color = Color(0.86, 0.92, 0.96, 1)
+metallic = 0.92
+roughness = 0.05
+
+[sub_resource type="StandardMaterial3D" id="mat_sign_blue"]
+albedo_color = Color(0.08, 0.42, 0.72, 1)
+roughness = 0.35
+
+[sub_resource type="StandardMaterial3D" id="mat_stall_panel"]
+albedo_color = Color(0.86, 0.9, 0.92, 1)
+roughness = 0.4
+
+[sub_resource type="BoxMesh" id="mesh_vanity_base"]
+material = SubResource("mat_counter_stone")
+size = Vector3(1.5, 0.82, 0.52)
+
+[sub_resource type="BoxMesh" id="mesh_basin"]
+material = SubResource("mat_ceramic_white")
+size = Vector3(0.52, 0.12, 0.38)
+
+[sub_resource type="BoxMesh" id="mesh_mirror"]
+material = SubResource("mat_mirror")
+size = Vector3(1.4, 0.85, 0.03)
+
+[sub_resource type="BoxMesh" id="mesh_handwash_board"]
+material = SubResource("mat_sign_blue")
+size = Vector3(0.68, 0.48, 0.03)
+
+[sub_resource type="BoxMesh" id="mesh_stall_door"]
+material = SubResource("mat_stall_panel")
+size = Vector3(0.82, 1.95, 0.06)
+
+[sub_resource type="BoxShape3D" id="shape_wc"]
+size = Vector3(2.4, 2.0, 0.58)
+
+[node name="WcStation" type="StaticBody3D"]
+
+[node name="VanityCounter" type="MeshInstance3D" parent="."]
+position = Vector3(-0.4, 0.41, 0)
+mesh = SubResource("mesh_vanity_base")
+
+[node name="BasinLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-0.75, 0.86, 0)
+mesh = SubResource("mesh_basin")
+
+[node name="BasinRight" type="MeshInstance3D" parent="."]
+position = Vector3(-0.05, 0.86, 0)
+mesh = SubResource("mesh_basin")
+
+[node name="Mirror" type="MeshInstance3D" parent="."]
+position = Vector3(-0.4, 1.42, -0.24)
+mesh = SubResource("mesh_mirror")
+
+[node name="HandwashSign" type="MeshInstance3D" parent="."]
+position = Vector3(0.75, 1.48, -0.24)
+mesh = SubResource("mesh_handwash_board")
+
+[node name="HandwashText" type="Label3D" parent="HandwashSign"]
+position = Vector3(0, 0, 0.02)
+pixel_size = 0.0014
+text = "QUY TRÌNH RỬA TAY 6 BƯỚC
+(BỘ Y TẾ VIỆT NAM)
+1. Chà lòng bàn tay   4. Mặt ngoài ngón
+2. Mu bàn tay         5. Ngón cái
+3. Kẽ ngón tay        6. Đầu ngón tay"
+font_size = 24
+outline_size = 3
+
+[node name="StallPartition" type="MeshInstance3D" parent="."]
+position = Vector3(0.75, 0.975, 0)
+mesh = SubResource("mesh_stall_door")
+
+[node name="WcBadge" type="Label3D" parent="StallPartition"]
+position = Vector3(0, 0.65, 0.04)
+pixel_size = 0.0018
+modulate = Color(0.08, 0.36, 0.68, 1)
+text = "NHÀ VỆ SINH (WC)
+NAM / NỮ"
+font_size = 32
+outline_size = 4
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+position = Vector3(0, 1.0, 0)
+shape = SubResource("shape_wc")

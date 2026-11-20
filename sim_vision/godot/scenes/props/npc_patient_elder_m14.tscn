@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/hospital_npc.gd" id="1"]
+[ext_resource type="PackedScene" path="res://assets/models/patient_elder_m14/Male_Adult_14.fbx" id="2"]
+
+[sub_resource type="BoxShape3D" id="shape_npc"]
+size = Vector3(0.48, 1.35, 0.55)
+
+[node name="WaitingPatientElderM14" type="CharacterBody3D"]
+script = ExtResource("1")
+tex_dir = "res://assets/models/patient_elder_m14/textures"
+anim_path = "res://assets/models/human_m06/anims/m_sit_waiting.res"
+anim_offset = 3.1
+is_seated = true
+staff_role = "patient"
+badge_text = "BỆNH NHÂN CAO TUỔI (SỐ 1028)"
+has_cane = true
+
+[node name="Model" parent="." instance=ExtResource("2")]
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.675, 0.1)
+shape = SubResource("shape_npc")

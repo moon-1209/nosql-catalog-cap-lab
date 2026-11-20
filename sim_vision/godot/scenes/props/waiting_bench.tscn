@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=3]
+
+[sub_resource type="StandardMaterial3D" id="mat_inox"]
+albedo_color = Color(0.84, 0.87, 0.9, 1)
+metallic = 0.88
+roughness = 0.2
+
+[sub_resource type="StandardMaterial3D" id="mat_blue_seat"]
+albedo_color = Color(0.12, 0.44, 0.76, 1)
+metallic = 0.45
+roughness = 0.35
+
+[sub_resource type="BoxMesh" id="mesh_beam"]
+material = SubResource("mat_inox")
+size = Vector3(2.1, 0.06, 0.08)
+
+[sub_resource type="BoxMesh" id="mesh_leg_base"]
+material = SubResource("mat_inox")
+size = Vector3(0.06, 0.04, 0.54)
+
+[sub_resource type="CylinderMesh" id="mesh_leg_post"]
+material = SubResource("mat_inox")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.4
+
+[sub_resource type="BoxMesh" id="mesh_seat_pad"]
+material = SubResource("mat_blue_seat")
+size = Vector3(0.44, 0.04, 0.44)
+
+[sub_resource type="BoxMesh" id="mesh_back_pad"]
+material = SubResource("mat_blue_seat")
+size = Vector3(0.44, 0.42, 0.04)
+
+[sub_resource type="BoxShape3D" id="shape_bench"]
+size = Vector3(2.15, 0.85, 0.62)
+
+[node name="WaitingBench" type="StaticBody3D"]
+
+[node name="MainBeam" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.4, 0)
+mesh = SubResource("mesh_beam")
+
+[node name="LeftBase" type="MeshInstance3D" parent="."]
+position = Vector3(-0.85, 0.02, 0)
+mesh = SubResource("mesh_leg_base")
+
+[node name="RightBase" type="MeshInstance3D" parent="."]
+position = Vector3(0.85, 0.02, 0)
+mesh = SubResource("mesh_leg_base")
+
+[node name="LeftPost" type="MeshInstance3D" parent="."]
+position = Vector3(-0.85, 0.22, 0)
+mesh = SubResource("mesh_leg_post")
+
+[node name="RightPost" type="MeshInstance3D" parent="."]
+position = Vector3(0.85, 0.22, 0)
+mesh = SubResource("mesh_leg_post")
+
+[node name="Seat1" type="MeshInstance3D" parent="."]
+position = Vector3(-0.75, 0.44, 0.04)
+mesh = SubResource("mesh_seat_pad")
+
+[node name="Back1" type="MeshInstance3D" parent="."]
+position = Vector3(-0.75, 0.65, -0.18)
+rotation = Vector3(-0.14, 0, 0)
+mesh = SubResource("mesh_back_pad")
+
+[node name="Seat2" type="MeshInstance3D" parent="."]
+position = Vector3(-0.25, 0.44, 0.04)
+mesh = SubResource("mesh_seat_pad")
+
+[node name="Back2" type="MeshInstance3D" parent="."]
+position = Vector3(-0.25, 0.65, -0.18)
+rotation = Vector3(-0.14, 0, 0)
+mesh = SubResource("mesh_back_pad")
+
+[node name="Seat3" type="MeshInstance3D" parent="."]
+position = Vector3(0.25, 0.44, 0.04)
+mesh = SubResource("mesh_seat_pad")
+
+[node name="Back3" type="MeshInstance3D" parent="."]
+position = Vector3(0.25, 0.65, -0.18)
+rotation = Vector3(-0.14, 0, 0)
+mesh = SubResource("mesh_back_pad")
+
+[node name="Seat4" type="MeshInstance3D" parent="."]
+position = Vector3(0.75, 0.44, 0.04)
+mesh = SubResource("mesh_seat_pad")
+
+[node name="Back4" type="MeshInstance3D" parent="."]
+position = Vector3(0.75, 0.65, -0.18)
+rotation = Vector3(-0.14, 0, 0)
+mesh = SubResource("mesh_back_pad")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.425, 0)
+shape = SubResource("shape_bench")

@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3]
+
+[sub_resource type="StandardMaterial3D" id="mat_inox"]
+albedo_color = Color(0.84, 0.87, 0.9, 1)
+metallic = 0.88
+roughness = 0.2
+
+[sub_resource type="StandardMaterial3D" id="mat_bag_saline"]
+transparency = 1
+albedo_color = Color(0.78, 0.92, 1, 0.68)
+roughness = 0.15
+
+[sub_resource type="StandardMaterial3D" id="mat_cap_blue"]
+albedo_color = Color(0.12, 0.48, 0.85, 1)
+roughness = 0.35
+
+[sub_resource type="CylinderMesh" id="mesh_base"]
+material = SubResource("mat_inox")
+top_radius = 0.2
+bottom_radius = 0.22
+height = 0.04
+
+[sub_resource type="CylinderMesh" id="mesh_pole"]
+material = SubResource("mat_inox")
+top_radius = 0.014
+bottom_radius = 0.018
+height = 1.68
+
+[sub_resource type="BoxMesh" id="mesh_crossbar"]
+material = SubResource("mat_inox")
+size = Vector3(0.32, 0.018, 0.018)
+
+[sub_resource type="BoxMesh" id="mesh_iv_bag"]
+material = SubResource("mat_bag_saline")
+size = Vector3(0.09, 0.19, 0.045)
+
+[sub_resource type="BoxShape3D" id="shape_iv"]
+size = Vector3(0.44, 1.75, 0.44)
+
+[node name="IVStand" type="StaticBody3D"]
+
+[node name="Base" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.02, 0)
+mesh = SubResource("mesh_base")
+
+[node name="Pole" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.86, 0)
+mesh = SubResource("mesh_pole")
+
+[node name="HookBar" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.68, 0)
+mesh = SubResource("mesh_crossbar")
+
+[node name="BagLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-0.12, 1.54, 0)
+mesh = SubResource("mesh_iv_bag")
+
+[node name="BagRight" type="MeshInstance3D" parent="."]
+position = Vector3(0.12, 1.54, 0)
+mesh = SubResource("mesh_iv_bag")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.875, 0)
+shape = SubResource("shape_iv")

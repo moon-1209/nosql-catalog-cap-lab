@@ -1,0 +1,380 @@
+{
+ "is_mock": true,
+ "note": "Dữ liệu GIẢ LẬP cho mô phỏng (G14). Sẽ thay bằng dữ liệu thật sau khi khảo sát bệnh viện. Tầng, phòng, vị trí đều là bịa.",
+ "departments": [
+  {
+   "name": "Tim mạch",
+   "aliases": [
+    "tim mạch",
+    "khoa tim"
+   ],
+   "floor": 3,
+   "room": "301"
+  },
+  {
+   "name": "Tiêu hóa",
+   "aliases": [
+    "tiêu hóa",
+    "tiêu hoá"
+   ],
+   "floor": 2,
+   "room": "205"
+  },
+  {
+   "name": "Tai mũi họng",
+   "aliases": [
+    "tai mũi họng"
+   ],
+   "floor": 2,
+   "room": "210"
+  },
+  {
+   "name": "Cơ xương khớp",
+   "aliases": [
+    "cơ xương khớp",
+    "xương khớp"
+   ],
+   "floor": 3,
+   "room": "315"
+  },
+  {
+   "name": "Nhi",
+   "aliases": [
+    "nhi",
+    "khoa nhi"
+   ],
+   "floor": 4,
+   "room": "401"
+  },
+  {
+   "name": "Sản",
+   "aliases": [
+    "sản",
+    "khoa sản",
+    "sản phụ khoa"
+   ],
+   "floor": 4,
+   "room": "410"
+  },
+  {
+   "name": "Cấp cứu",
+   "aliases": [
+    "cấp cứu"
+   ],
+   "floor": 1,
+   "room": "101"
+  },
+  {
+   "name": "Nội tổng quát",
+   "aliases": [
+    "nội tổng quát",
+    "khoa nội"
+   ],
+   "floor": 1,
+   "room": "120"
+  },
+  {
+   "name": "Hô hấp",
+   "aliases": [
+    "hô hấp",
+    "khoa phổi"
+   ],
+   "floor": 3,
+   "room": "320"
+  },
+  {
+   "name": "Thần kinh",
+   "aliases": [
+    "thần kinh"
+   ],
+   "floor": 3,
+   "room": "330"
+  },
+  {
+   "name": "Da liễu",
+   "aliases": [
+    "da liễu"
+   ],
+   "floor": 2,
+   "room": "220"
+  },
+  {
+   "name": "Mắt",
+   "aliases": [
+    "mắt",
+    "nhãn khoa"
+   ],
+   "floor": 2,
+   "room": "230"
+  },
+  {
+   "name": "Răng hàm mặt",
+   "aliases": [
+    "răng hàm mặt",
+    "nha khoa"
+   ],
+   "floor": 2,
+   "room": "240"
+  }
+ ],
+ "rooms": [
+  {
+   "number": "101",
+   "name": "Cấp cứu",
+   "aliases": [
+    "phòng cấp cứu",
+    "cấp cứu",
+    "phòng 101"
+   ],
+   "floor": 1
+  },
+  {
+   "number": "112",
+   "name": "Phòng khám nội",
+   "aliases": [],
+   "floor": 1
+  },
+  {
+   "number": "205",
+   "name": "Phòng khám tiêu hóa",
+   "aliases": [],
+   "floor": 2
+  },
+  {
+   "number": "208",
+   "name": "Phòng nội soi",
+   "aliases": [
+    "nội soi"
+   ],
+   "floor": 2
+  },
+  {
+   "number": "110",
+   "name": "Phòng xét nghiệm máu",
+   "aliases": [
+    "xét nghiệm máu",
+    "lấy máu",
+    "xét nghiệm"
+   ],
+   "floor": 1
+  },
+  {
+   "number": "115",
+   "name": "Quầy trả kết quả",
+   "aliases": [
+    "lấy kết quả",
+    "trả kết quả",
+    "kết quả"
+   ],
+   "floor": 1
+  },
+  {
+   "number": "302",
+   "name": "Phòng siêu âm tim",
+   "aliases": [
+    "siêu âm tim"
+   ],
+   "floor": 3
+  },
+  {
+   "number": "304",
+   "name": "Phòng siêu âm",
+   "aliases": [
+    "siêu âm"
+   ],
+   "floor": 3
+  },
+  {
+   "number": "303",
+   "name": "Phòng điện tim",
+   "aliases": [
+    "điện tim"
+   ],
+   "floor": 3
+  },
+  {
+   "number": "130",
+   "name": "Phòng chụp X-quang",
+   "aliases": [
+    "x quang",
+    "chụp phim"
+   ],
+   "floor": 1
+  },
+  {
+   "number": "105",
+   "name": "Quầy nhận phiếu chỉ định",
+   "aliases": [
+    "phiếu chỉ định"
+   ],
+   "floor": 1
+  },
+  {
+   "number": "140",
+   "name": "Phòng vật lý trị liệu",
+   "aliases": [
+    "vật lý trị liệu"
+   ],
+   "floor": 1
+  },
+  {
+   "number": "211",
+   "name": "Phòng đọc kết quả",
+   "aliases": [
+    "đọc kết quả"
+   ],
+   "floor": 2
+  },
+  {
+   "number": "125",
+   "name": "Phòng tiêm",
+   "aliases": [
+    "phòng tiêm"
+   ],
+   "floor": 1
+  },
+  {
+   "number": "135",
+   "name": "Phòng chụp CT",
+   "aliases": [
+    "chụp ct",
+    "cắt lớp"
+   ],
+   "floor": 1
+  },
+  {
+   "number": "310",
+   "name": "Phòng đo mật độ xương",
+   "aliases": [
+    "mật độ xương"
+   ],
+   "floor": 3
+  }
+ ],
+ "facilities": [
+  {
+   "key": "tiep_don",
+   "name": "Quầy tiếp đón",
+   "aliases": [
+    "tiếp đón",
+    "đăng ký",
+    "lấy số"
+   ],
+   "floor": 1,
+   "where": "ngay sảnh chính, tầng 1"
+  },
+  {
+   "key": "uu_tien",
+   "name": "Quầy ưu tiên",
+   "aliases": [
+    "ưu tiên"
+   ],
+   "floor": 1,
+   "where": "bên trái sảnh chính, tầng 1"
+  },
+  {
+   "key": "bhyt",
+   "name": "Quầy bảo hiểm y tế",
+   "aliases": [
+    "bảo hiểm"
+   ],
+   "floor": 1,
+   "where": "cạnh quầy tiếp đón, tầng 1"
+  },
+  {
+   "key": "thu_ngan",
+   "name": "Quầy thu ngân",
+   "aliases": [
+    "thu ngân",
+    "đóng tiền",
+    "viện phí",
+    "thanh toán"
+   ],
+   "floor": 1,
+   "where": "bên phải sảnh chính, tầng 1"
+  },
+  {
+   "key": "nha_thuoc",
+   "name": "Nhà thuốc",
+   "aliases": [
+    "nhà thuốc",
+    "lấy thuốc",
+    "quầy thuốc"
+   ],
+   "floor": 1,
+   "where": "cuối sảnh chính, tầng 1"
+  },
+  {
+   "key": "cap_cuu",
+   "name": "Khoa cấp cứu",
+   "aliases": [
+    "cấp cứu"
+   ],
+   "floor": 1,
+   "where": "cổng phía đông, tầng 1"
+  },
+  {
+   "key": "thang_may",
+   "name": "Thang máy",
+   "aliases": [
+    "thang máy"
+   ],
+   "floor": 1,
+   "where": "giữa hành lang chính, tầng 1"
+  },
+  {
+   "key": "nha_ve_sinh",
+   "name": "Nhà vệ sinh",
+   "aliases": [
+    "nhà vệ sinh",
+    "toilet",
+    "wc"
+   ],
+   "floor": 1,
+   "where": "cạnh thang máy, tầng nào cũng có"
+  },
+  {
+   "key": "gui_xe",
+   "name": "Bãi gửi xe",
+   "aliases": [
+    "gửi xe",
+    "để xe"
+   ],
+   "floor": 0,
+   "where": "tầng hầm, lối xuống ở cổng chính"
+  },
+  {
+   "key": "ghe_cho",
+   "name": "Khu ghế chờ",
+   "aliases": [
+    "ngồi chờ",
+    "ghế chờ",
+    "chỗ chờ"
+   ],
+   "floor": 1,
+   "where": "giữa sảnh chính, tầng 1"
+  },
+  {
+   "key": "can_tin",
+   "name": "Căng tin",
+   "aliases": [
+    "đồ ăn",
+    "căng tin",
+    "ăn uống",
+    "nhà ăn"
+   ],
+   "floor": 1,
+   "where": "dãy nhà phía sau, tầng 1"
+  },
+  {
+   "key": "xe_lan",
+   "name": "Nơi mượn xe lăn",
+   "aliases": [
+    "xe lăn",
+    "xe đẩy"
+   ],
+   "floor": 1,
+   "where": "quầy tiếp đón, tầng 1"
+  }
+ ]
+}

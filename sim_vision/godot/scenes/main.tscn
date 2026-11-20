@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://b45ckod33x2f0"]
+
+[ext_resource type="Script" uid="uid://8cs44cq3cjlk" path="res://scripts/main.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://b80y666ehhlor" path="res://scenes/room.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/human.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/robot.tscn" id="4"]
+[ext_resource type="Script" uid="uid://gqxgnjrk26db" path="res://scripts/controller.gd" id="5"]
+[ext_resource type="Script" uid="uid://c5x1gwfa2ip7l" path="res://scripts/vision_client.gd" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/view_overlay.tscn" id="7"]
+[ext_resource type="Script" uid="uid://d0c1wt0mrtnis" path="res://scripts/run_logger.gd" id="8"]
+[ext_resource type="Script" uid="uid://b1wan7pxnyxx1" path="res://scripts/stt_client.gd" id="9"]
+[ext_resource type="Script" uid="uid://oy6wlbeu17vl" path="res://scripts/dialogue_manager.gd" id="10"]
+[ext_resource type="Script" uid="uid://cwoqb1c2uq8kl" path="res://scripts/dialogue_logger.gd" id="11"]
+[ext_resource type="PackedScene" path="res://scenes/subtitle.tscn" id="12"]
+[ext_resource type="Script" uid="uid://byt1fvmwvetqi" path="res://scripts/tts_client.gd" id="13"]
+[ext_resource type="PackedScene" path="res://scenes/inspection_panel.tscn" id="14"]
+
+[node name="Main" type="Node3D" unique_id=829362058]
+script = ExtResource("1")
+
+[node name="Room" parent="." unique_id=78836830 instance=ExtResource("2")]
+
+[node name="Human" parent="." unique_id=1553802242 instance=ExtResource("3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -1.35)
+walks = true
+pardon_enabled = true
+waypoints = Array[Vector3]([Vector3(4.5, 0, -1.35), Vector3(7.5, 0, -1.35), Vector3(4.5, 0, -1.35), Vector3(2.5, 0, -1.35)])
+use_t_pose = true
+
+[node name="Robot" parent="." unique_id=474572765 instance=ExtResource("4")]
+
+[node name="Controller" type="Node" parent="." unique_id=2103763401]
+script = ExtResource("5")
+
+[node name="VisionClient" type="Node" parent="." unique_id=2015804746]
+script = ExtResource("6")
+
+[node name="RunLogger" type="Node" parent="." unique_id=562717469]
+script = ExtResource("8")
+
+[node name="SttClient" type="Node" parent="." unique_id=489184101]
+script = ExtResource("9")
+
+[node name="TtsClient" type="Node" parent="." unique_id=1988241618]
+script = ExtResource("13")
+
+[node name="DialogueLogger" type="Node" parent="." unique_id=676392076]
+script = ExtResource("11")
+
+[node name="ViewerCamera" type="Camera3D" parent="." unique_id=1615387806]
+transform = Transform3D(0.61095756, 0.3486231, -0.7107692, 0, 0.8978175, 0.44036785, 0.79166335, -0.26904607, 0.5485284, -3.8, 2.85, 2.75)
+current = true
+fov = 80.0
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=784342903]
+
+[node name="ViewOverlay" parent="UI" unique_id=121501864 instance=ExtResource("7")]
+
+[node name="InspectionPanel" parent="UI" instance=ExtResource("14")]
+
+[node name="Help" type="Label" parent="UI" unique_id=1235255847]
+offset_left = 16.0
+offset_top = 52.0
+offset_right = 560.0
+offset_bottom = 76.0
+text = "R: đặt lại   C: đổi góc nhìn   A/D: xoay camera   I/Tab: thông số   Esc: thoát"
+
+[node name="Subtitle" parent="UI" unique_id=2117764636 instance=ExtResource("12")]
+grow_horizontal = 2
+
+[node name="DialogueManager" type="Node" parent="." unique_id=328984946]
+script = ExtResource("10")
