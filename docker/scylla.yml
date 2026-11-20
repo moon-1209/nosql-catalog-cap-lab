@@ -1,0 +1,91 @@
+name: nosql-lab-scylla
+
+x-scylla-common: &scylla-common
+  image: ${SCYLLA_IMAGE}
+  restart: "no"
+  stop_grace_period: 2m
+
+services:
+  scylla-node1:
+    <<: *scylla-common
+    container_name: scylla-node1
+    hostname: scylla-node1
+    labels:
+      lab.group: scylla
+      lab.az: az1
+    command:
+      - --seeds=${SCYLLA1_IP}
+      - --smp=${SCYLLA_SMP}
+      - --memory=${SCYLLA_MEMORY}
+      - --overprovisioned=1
+      - --developer-mode=1
+      - --cluster-name=${SCYLLA_CLUSTER_NAME}
+      - --disable-version-check
+      - --reactor-backend=${SCYLLA_REACTOR_BACKEND}
+    networks:
+      lab-net:
+        ipv4_address: ${SCYLLA1_IP}
+    ports:
+      - "9042:9042"
+    volumes:
+      - scylla1-data:/var/lib/scylla
+
+  scylla-node2:
+    <<: *scylla-common
+    container_name: scylla-node2
+    hostname: scylla-node2
+    labels:
+      lab.group: scylla
+      lab.az: az2
+    depends_on:
+      scylla-node1:
+        condition: service_started
+    command:
+      - --seeds=${SCYLLA1_IP}
+      - --smp=${SCYLLA_SMP}
+      - --memory=${SCYLLA_MEMORY}
+      - --overprovisioned=1
+      - --developer-mode=1
+      - --cluster-name=${SCYLLA_CLUSTER_NAME}
+      - --disable-version-check
+      - --reactor-backend=${SCYLLA_REACTOR_BACKEND}
+    networks:
+      lab-net:
+        ipv4_address: ${SCYLLA2_IP}
+    volumes:
+      - scylla2-data:/var/lib/scylla
+
+  scylla-node3:
+    <<: *scylla-common
+    container_name: scylla-node3
+    hostname: scylla-node3
+    labels:
+      lab.group: scylla
+      lab.az: az3
+    depends_on:
+      scylla-node2:
+        condition: service_started
+    command:
+      - --seeds=${SCYLLA1_IP}
+      - --smp=${SCYLLA_SMP}
+      - --memory=${SCYLLA_MEMORY}
+      - --overprovisioned=1
+      - --developer-mode=1
+      - --cluster-name=${SCYLLA_CLUSTER_NAME}
+      - --disable-version-check
+      - --reactor-backend=${SCYLLA_REACTOR_BACKEND}
+    networks:
+      lab-net:
+        ipv4_address: ${SCYLLA3_IP}
+    volumes:
+      - scylla3-data:/var/lib/scylla
+
+networks:
+  lab-net:
+    name: ${LAB_NETWORK}
+    external: true
+
+volumes:
+  scylla1-data:
+  scylla2-data:
+  scylla3-data:

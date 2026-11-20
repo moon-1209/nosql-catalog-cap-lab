@@ -1,14 +1,23 @@
 # Python
 __pycache__/
+*.pyc
 *.py[cod]
 .venv/
 venv/
+.idea/
 .ipynb_checkpoints/
+
+# OS
+.DS_Store
+
+# Cấu hình môi trường (Không được push lên Git) - use .env.example / docker/.env.example
+.env
+docker/.env
 
 # Generated datasets (large); keep data/sample/ committed
 data/full/
 data/generated/
 
-# OS
-.DS_Store
-.idea/
+# Dữ liệu thí nghiệm sinh tự động (Chỉ giữ lại file mẫu nếu cần)
+experiments/*/
+runs/
