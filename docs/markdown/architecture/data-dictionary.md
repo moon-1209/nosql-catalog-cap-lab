@@ -2,7 +2,7 @@
 
 Field-level documentation for every dataset produced by
 `src/catalog_analysis/seeder.py`. Types are given as (CSV storage /
-CQL type). See `docs/schema/schema-design.md` for key layouts.
+CQL type). See `docs/markdown/architecture/schema-design.md` for key layouts.
 
 ## 1. `products.csv` - catalog rows
 

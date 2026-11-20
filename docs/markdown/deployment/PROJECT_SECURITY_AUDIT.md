@@ -33,7 +33,7 @@ Phạm vi: trạng thái thực tế trên `feat/Duy` (+ đối chiếu `feat/La
 
 - Không TLS client→DB, không RBAC, không audit log — **ngoài phạm vi lab local**, phải bổ sung nếu triển khai thật.
 - Container chạy với quyền mặc định image (không `--user`), volumes bind-mount `./mongo` read-only (đã có `:ro`).
-- Backup artifact (nếu tạo) chứa data — chưa có chính sách mã hóa/retention (xem `docs/PROJECT_BACKUP_RECOVERY.md`).
+- Backup artifact (nếu tạo) chứa data — chưa có chính sách mã hóa/retention (xem `docs/markdown/deployment/PROJECT_BACKUP_RECOVERY.md`).
 
 ## 5. Security acceptance status
 

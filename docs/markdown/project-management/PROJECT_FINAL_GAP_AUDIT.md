@@ -22,8 +22,8 @@ Trước đó: `TEAM_PIPELINE_COMPLETENESS_AUDIT.md`, `DUY_PIPELINE_REMEDIATION_
 | Network partition / chaos testing | IMPLEMENTED | `chaos.sh`, `chaos_runner`, `docker network disconnect` |
 | Failover/recovery experiment | VERIFIED | E6 2 runs, 0 write loss |
 | Monitoring | IMPLEMENTED | Prometheus/Grafana (feat/Lam) |
-| Security practices | IMPLEMENTED | `docs/PROJECT_SECURITY_AUDIT.md` — lab-scope pass |
-| Backup/recovery | IMPLEMENTED (doc) — runtime BLOCKED | `docs/PROJECT_BACKUP_RECOVERY.md` |
+| Security practices | IMPLEMENTED | `docs/markdown/deployment/PROJECT_SECURITY_AUDIT.md` — lab-scope pass |
+| Backup/recovery | IMPLEMENTED (doc) — runtime BLOCKED | `docs/markdown/deployment/PROJECT_BACKUP_RECOVERY.md` |
 | Public cloud (AWS/GCP) | NOT_REQUIRED (provisional) | không rubric xác nhận |
 | CI/CD | IMPLEMENTED (lightweight) | `.github/workflows/ci.yml` — justified by scale |
 
@@ -47,10 +47,10 @@ Trước đó: `TEAM_PIPELINE_COMPLETENESS_AUDIT.md`, `DUY_PIPELINE_REMEDIATION_
 | LWT/Counter | VERIFIED | real runs |
 | Analysis consume v2 | VERIFIED | 3 modules pass |
 | Chaos `--external-chaos` | IMPLEMENTED | chưa runtime verify |
-| Architecture doc | VERIFIED | `docs/PROJECT_ARCHITECTURE.md` |
-| Security audit | VERIFIED | `docs/PROJECT_SECURITY_AUDIT.md` |
+| Architecture doc | VERIFIED | `docs/markdown/architecture/PROJECT_ARCHITECTURE.md` |
+| Security audit | VERIFIED | `docs/markdown/deployment/PROJECT_SECURITY_AUDIT.md` |
 | Backup/recovery | IMPLEMENTED→runtime BLOCKED | procedure documented |
-| Monitoring doc | VERIFIED | `docs/PROJECT_MONITORING.md` |
+| Monitoring doc | VERIFIED | `docs/markdown/deployment/PROJECT_MONITORING.md` |
 | Deployment guide | VERIFIED | `PROJECT_DEPLOYMENT_GUIDE.md` + §7.5 |
 | CI | IMPLEMENTED | contract-ci workflow |
 | Merge → develop | MISSING | cần approval |

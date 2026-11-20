@@ -10,7 +10,7 @@ consistency levels and hot partitions for a product-catalog workload.
 
 | Path | Owner | Contents |
 |---|---|---|
-| `docs/` | Uyên + Devin | Access patterns, Chebotko schema diagrams, data dictionary, final report, architecture/security/backup/monitoring docs |
+| `docs/markdown/` | All | **Centralized docs**: `architecture/` (schema, access patterns, data dict), `implementation/` (Uyên+Duy impl reports), `experiments/` (run analysis outputs), `reports/` (final/slides/qa/MR), `testing/` (acceptance checklist), `deployment/` (deploy/backup/monitoring/security/demo), `project-management/` (audits, handover, compliance, remaining work). Non-md assets (`access-patterns/*.cql`, `schema/chebotko/*.svg`) stay in place |
 | `src/catalog_analysis/` | Uyên | Seeder and analysis modules (hot partition, stale read, bootstrap CI) |
 | `scripts/` | Duy + Lâm | Experiment scripts (e1a/e1b, cap_matrix, lwt, counter, e6), contract v2, helpers, lab utilities |
 | `notebooks/MASTER_RUN.ipynb` | Devin | Single Run All entry point for the whole project |
@@ -83,9 +83,9 @@ python -m unittest discover -s tests -v
 
 ## Giới hạn đã biết
 
-- CAP_ALL và stale-read real: chờ rerun trên máy có Docker (`PROJECT_FINAL_HANDOVER.md`).
+- CAP_ALL và stale-read real: chờ rerun trên máy có Docker (`docs/markdown/project-management/PROJECT_FINAL_HANDOVER.md`).
 - E1a/E1b run 18/11 (nếu còn) dùng workload khác nhau → không so sánh được;
   script v2 replay cùng `data/sample/access_log.csv`.
 - Không có unit test suite cho `scripts/` (có `selftest_contract.py` + CI).
 - `docker/` và `compose/` là 2 bộ compose song song của Duy và Lâm — xem
-  `PROJECT_REMAINING_WORK.md` P0-5 cho câu hỏi canonical.
+  `docs/markdown/project-management/PROJECT_REMAINING_WORK.md` P0-5 cho câu hỏi canonical.

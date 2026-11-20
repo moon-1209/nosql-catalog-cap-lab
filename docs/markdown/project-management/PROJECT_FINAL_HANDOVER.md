@@ -20,10 +20,10 @@ Còn lại: **3 experiment cần rerun trên máy lab** (CAP_ALL, stale-read rea
 | Lab | LWT/Counter | `lwt`/`counter` scripts | real runs (1/50 CAS) | VERIFIED | Duy | — |
 | analysis | Uyên pipeline consume | modules @38801e3 | 3/3 PASS trên v2 output | VERIFIED | Uyên | chạy trên real run mới |
 | infra | Chaos harness | `chaos_runner` + `--external-chaos` | code integrated | IMPLEMENTED | Lâm | runtime verify |
-| Ch4(provisional) | Security | audit doc | `docs/PROJECT_SECURITY_AUDIT.md` | VERIFIED (lab scope) | Team | auth/TLS nếu public |
+| Ch4(provisional) | Security | audit doc | `docs/markdown/deployment/PROJECT_SECURITY_AUDIT.md` | VERIFIED (lab scope) | Team | auth/TLS nếu public |
 | Ch5(provisional) | Deploy/ops | guide + CI | `PROJECT_DEPLOYMENT_GUIDE.md`, `ci.yml` | VERIFIED | Team | — |
-| ops | Backup/recovery | procedure doc | `docs/PROJECT_BACKUP_RECOVERY.md` | IMPLEMENTED→BLOCKED | Lâm | verify trên lab |
-| ops | Monitoring | Prom/Grafana + audit | `docs/PROJECT_MONITORING.md` | IMPLEMENTED | Lâm | merge + verify |
+| ops | Backup/recovery | procedure doc | `docs/markdown/deployment/PROJECT_BACKUP_RECOVERY.md` | IMPLEMENTED→BLOCKED | Lâm | verify trên lab |
+| ops | Monitoring | Prom/Grafana + audit | `docs/markdown/deployment/PROJECT_MONITORING.md` | IMPLEMENTED | Lâm | merge + verify |
 
 ## C. Experiment Evidence (REAL, traceable)
 
@@ -70,7 +70,7 @@ Charts: `results/committed_runs/charts/*.png`; analysis: `results/committed_runs
 | CAP_ALL rerun | no Docker/driver | máy lab | Duy | `lab_up` → `nodetool status` 3UN → `python scripts/cap_matrix_e2_e5.py` | healthy ops >90% ok; partition fail có điều kiện |
 | Stale-read real | cần run v2 | máy lab | Duy | cùng trên → `stale_read --data <cap_run>` | rate tính được từ version |
 | E1 comparable | cần replay | máy lab | Duy | `e1a --limit N` + `e1b --limit N` cùng ops | A/B so sánh hợp lệ |
-| Backup verify | no Docker | máy lab | Lâm | `docs/PROJECT_BACKUP_RECOVERY.md` §2 | COUNT khớp |
+| Backup verify | no Docker | máy lab | Lâm | `docs/markdown/deployment/PROJECT_BACKUP_RECOVERY.md` §2 | COUNT khớp |
 | Chaos runtime | no Docker | máy lab | Lâm | `chaos_runner ... --harness-cmd "cap_matrix --external-chaos ..."` | phase marks + network_state đúng |
 | Merge develop | approval | — | Lead | merge 3 nhánh, chọn canonical compose | 1 infra |
 

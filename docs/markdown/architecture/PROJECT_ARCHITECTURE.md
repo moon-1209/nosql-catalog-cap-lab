@@ -81,5 +81,5 @@ flowchart TB
 
 - Single-host Docker: "AZ" là rack labels, không phải vùng khả dụng thật — partition bằng `network disconnect` mô phỏng link failure, không phải AZ outage thật.
 - `--developer-mode`, `--overprovisioned`: Scylla chạy non-production config (SMP=1, memory giới hạn).
-- Không TLS, không auth — chỉ phù hợp lab nội bộ (xem `docs/PROJECT_SECURITY_AUDIT.md`).
+- Không TLS, không auth — chỉ phù hợp lab nội bộ (xem `docs/markdown/deployment/PROJECT_SECURITY_AUDIT.md`).
 - Không phải public cloud: không có yêu cầu AWS/GCP nào được xác nhận trong repo (rubric không có sẵn → NOT_REQUIRED tạm thời, xác nhận lại với GVHD).

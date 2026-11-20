@@ -21,7 +21,7 @@ Tham chiếu: `PROJECT_REQUIREMENT_COMPLIANCE_REPORT.md` (bảng 18 tiêu chí).
 | P1-3 | Bảng `view_events` hoặc giải thích rõ access_log = view events | Tiêu chí dataset 3 nhóm chỉ PARTIAL | `docs/access-patterns`, schema | DDL + doc | tiêu chí 4 → VERIFIED | Uyên |
 | P1-4 | Đối chiếu bài giảng Ch1–Ch5 khi có PDF | Lý thuyết đang "CHƯA ĐỐI CHIẾU" | section 10 compliance report | mapping theo tên chương | nguồn lý thuyết đầy đủ | Team lead |
 | P1-5 | Xác nhận canonical compose (`compose/` vs `docker/`) | 2 bộ infra song song gây nhầm | `docker/`, `compose/` | quyết định ghi vào README | 1 bộ canonical + lý do | Lâm + Lead |
-| P1-6 | Backup/restore runtime verify | Hiện DOCUMENTARY | `docs/PROJECT_BACKUP_RECOVERY.md` §2 | COUNT(*) trước/sau khớp | VERIFIED | Lâm |
+| P1-6 | Backup/restore runtime verify | Hiện DOCUMENTARY | `docs/markdown/deployment/PROJECT_BACKUP_RECOVERY.md` §2 | COUNT(*) trước/sau khớp | VERIFIED | Lâm |
 | P1-7 | Read-your-writes demo (CL phù hợp) | Nội dung lý thuyết chưa thể hiện | `cap_matrix` hoặc script nhỏ | log RYW pass/fail | thêm vào phần consistency | Duy |
 
 ## P2 — Nâng cao (nếu phù hợp phạm vi)

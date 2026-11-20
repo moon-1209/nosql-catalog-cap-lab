@@ -98,10 +98,10 @@ docker network rm lab-net        # neu can reset hoan toan
 
 ## 7.5 Tài liệu vận hành liên quan
 
-- Kiến trúc hệ thống: `docs/PROJECT_ARCHITECTURE.md`
-- Monitoring/troubleshooting sâu: `docs/PROJECT_MONITORING.md`
-- Backup & restore procedure: `docs/PROJECT_BACKUP_RECOVERY.md`
-- Security audit: `docs/PROJECT_SECURITY_AUDIT.md`
+- Kiến trúc hệ thống: `docs/markdown/architecture/PROJECT_ARCHITECTURE.md`
+- Monitoring/troubleshooting sâu: `docs/markdown/deployment/PROJECT_MONITORING.md`
+- Backup & restore procedure: `docs/markdown/deployment/PROJECT_BACKUP_RECOVERY.md`
+- Security audit: `docs/markdown/deployment/PROJECT_SECURITY_AUDIT.md`
 - CI checks: `.github/workflows/ci.yml` (syntax + contract selftest)
 
 ## 8. Troubleshooting

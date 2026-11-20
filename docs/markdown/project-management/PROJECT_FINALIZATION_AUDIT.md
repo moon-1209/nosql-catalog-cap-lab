@@ -13,7 +13,7 @@ Tham chiếu: `TEAM_PIPELINE_COMPLETENESS_AUDIT.md`, `DUY_PIPELINE_REMEDIATION_R
 | `feat/Lam` | `8a87c69` | Infra/chaos/monitoring | Hoàn chỉnh, chưa merge |
 | `feat/uyen-analysis-pipeline` | `38801e3` | Analysis + contract v2 | Hoàn chỉnh, chưa merge |
 
-**Không tìm thấy rubric/đề bài môn học trong repo** (đã quét tất cả branch). Yêu cầu suy ra từ docs nội bộ: `docs/access-patterns`, `docs/data-dictionary`, `docs/report/final-report.md` (nhánh Uyên), README các nhánh. "Five course chapters" không có trong repo — không thể đối chiếu.
+**Không tìm thấy rubric/đề bài môn học trong repo** (đã quét tất cả branch). Yêu cầu suy ra từ docs nội bộ: `docs/access-patterns`, `docs/data-dictionary`, `docs/markdown/reports/final-report.md` (nhánh Uyên), README các nhánh. "Five course chapters" không có trong repo — không thể đối chiếu.
 
 ## Entry points thực tế
 

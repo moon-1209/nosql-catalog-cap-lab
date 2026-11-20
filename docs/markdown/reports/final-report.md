@@ -22,7 +22,7 @@ consistency/availability trade-off predicted by CAP.
 ## 3. Schema design
 
 Chebotko diagrams: `docs/schema/chebotko/schema-a.svg`, `schema-b.svg`;
-comparison: `docs/schema/schema-design.md`.
+comparison: `docs/markdown/architecture/schema-design.md`.
 
 - **Schema A** `products_by_category`: PK `((category_id), added_at,
   product_id)` - one partition per category.
@@ -32,7 +32,7 @@ comparison: `docs/schema/schema-design.md`.
 
 ## 4. Access patterns
 
-`docs/access-patterns/access-patterns.md`. ~90% reads; category browse
+`docs/markdown/architecture/access-patterns.md`. ~90% reads; category browse
 (Q2) ~40% of traffic is the hot-path driving the key design.
 
 ## 5. Data generation

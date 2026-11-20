@@ -27,13 +27,13 @@ Project gồm 3 workstream chưa merge: **Duy** (experiments + contract v2, `fea
 
 | Yêu cầu | Trạng thái | Minh chứng |
 |---|---|---|
-| Access patterns xác định | **VERIFIED** | `docs/access-patterns/access-patterns.md` (feat/uyen): Q1–Q4 reads + W1–W3 writes, tỷ trọng traffic, partitions-touched per query, hot-risk per query |
+| Access patterns xác định | **VERIFIED** | `docs/markdown/architecture/access-patterns.md` (feat/uyen): Q1–Q4 reads + W1–W3 writes, tỷ trọng traffic, partitions-touched per query, hot-risk per query |
 | Phân tích truy vấn trước schema | VERIFIED | Cùng tài liệu: query-driven, clustering order phục vụ Q2/Q3 |
 | Product dataset | VERIFIED | `data/sample/products.csv` 5.000 rows/20 categories/uuid |
 | Inventory/stock | VERIFIED (design) | cột `stock` + W2 update + Counter experiment |
 | View events | **PARTIAL** | `access_log.csv` mô hình hóa sự kiện truy cập sản phẩm (READ ops) — không có bảng `view_events` riêng |
 | Query-driven modeling + denormalization | VERIFIED | `products_by_id` + `products_by_category`/`products_bucketed` (2 bảng denormalized) |
-| Giải thích chọn wide-column | PARTIAL | `docs/schema/schema-design.md` có; chưa thấy so sánh tường minh wide-column vs document |
+| Giải thích chọn wide-column | PARTIAL | `docs/markdown/architecture/schema-design.md` có; chưa thấy so sánh tường minh wide-column vs document |
 | Hai phương án partition key | VERIFIED (design) | A `((category_id),added_at,pid)` vs B `((category_id,bucket),added_at,pid)`, `bucket=crc32(pid)%16` |
 | Ưu/nhược từng phương án | VERIFIED (doc) | access-patterns.md §2 + `final-report.md` (fan-out cost của B) |
 | Kiểm tra đúng đắn sau phân tán | PARTIAL | `validate()` kiểm dup PK + bucket consistency trên dataset; chưa có integrity check sau khi nạp cluster |
@@ -89,7 +89,7 @@ Project gồm 3 workstream chưa merge: **Duy** (experiments + contract v2, `fea
 - **Local containerized lab**: VERIFIED (compose files, lab-net, lab_up/down/status).
 - Monitoring/health: IMPLEMENTED (Prometheus/Grafana/nodetool + `wait_cluster_ready`).
 - Secrets: `.env` untrack + `.env.example` (verified không credential).
-- Backup/recovery: procedure DOCUMENTARY — `docs/PROJECT_BACKUP_RECOVERY.md`, runtime BLOCKED.
+- Backup/recovery: procedure DOCUMENTARY — `docs/markdown/deployment/PROJECT_BACKUP_RECOVERY.md`, runtime BLOCKED.
 - Public cloud: **NOT_REQUIRED** (không yêu cầu nào trong repo/rubric) — chỉ Docker local; không claim là cloud deployment.
 
 ## 10. Đối chiếu nội dung lý thuyết
