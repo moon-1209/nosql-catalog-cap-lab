@@ -1,7 +1,7 @@
 # Stale Read Report
 
 Data origin: **synthetic**
-run_id: `20261120052847_3141d42e` (log/manifest consistency: ok)
+run_id: `20261120054801_0bdd8fba` (log/manifest consistency: ok)
 status mode: ok
 
 Definition: a READ is stale iff `version < latest committed version` for the same key at read time. `stale_read_rate = stale_reads / valid_reads * 100%`. Failed reads/writes are excluded from both numerator and denominator and reported separately.

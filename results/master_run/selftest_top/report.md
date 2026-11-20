@@ -1,7 +1,7 @@
 # Top Partitions Report
 
 Data origin: **synthetic** 
-run_id: `20261120052847_3141d42e` (log/manifest consistency: ok)
+run_id: `20261120054801_0bdd8fba` (log/manifest consistency: ok)
 status mode: ok
 
 ## Schema A

@@ -1,3 +1,3 @@
 ts,event,key,version,consistency_level,node,network_state,success,error,run_id,latest_committed,valid,is_stale,phase
-1700000000350,READ,k1,1,ONE,node1,NORMAL,True,,20261120052847_3141d42e,3,True,True,PRE_PARTITION
-1700000000400,READ,k1,3,ONE,node1,NORMAL,True,,20261120052847_3141d42e,3,True,False,PRE_PARTITION
+1700000000350,READ,k1,1,ONE,node1,NORMAL,True,,20261120054801_0bdd8fba,3,True,True,PRE_PARTITION
+1700000000400,READ,k1,3,ONE,node1,NORMAL,True,,20261120054801_0bdd8fba,3,True,False,PRE_PARTITION
