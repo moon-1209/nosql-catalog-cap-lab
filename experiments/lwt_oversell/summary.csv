@@ -1,0 +1,6 @@
+Metric,Value
+Initial_Stock,100
+Successful_Buys,100
+Failed_Buys,100
+Final_Stock,0
+Oversell_Occurred,NO

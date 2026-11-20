@@ -1,0 +1,7 @@
+Phase,Status,Latency_ms
+1_Initial_Write,OK,10.456
+2_Network_Partition,Disconnected,0
+3_During_Partition_Write,Failed_Timeout,1500.216
+4_Network_Restored,Reconnected,500.173
+5_Post_Recovery_Write,OK,10.527
+6_Verification,Success,200.519

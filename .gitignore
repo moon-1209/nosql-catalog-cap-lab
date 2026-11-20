@@ -19,7 +19,6 @@ data/full/
 data/generated/
 
 # Dữ liệu thí nghiệm sinh tự động (Chỉ giữ lại file mẫu nếu cần)
-experiments/*/
 runs/
 evidence/
 evidence/**/raw_*.txt
