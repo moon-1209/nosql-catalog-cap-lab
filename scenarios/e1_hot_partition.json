@@ -1,0 +1,13 @@
+{
+  "name": "e1_hot_partition",
+  "description": "E1-A / E1-B: KHÔNG tiêm lỗi, chỉ chạy tải Zipf của Duy. 60s warm-up, cửa sổ đo 240s; ở giây 120 chụp nodetool toppartitions 30s trên mọi node. Cần --param ks=... --param cf=...",
+  "duration_s": 300,
+  "events": [
+    {"at_s": 0,   "action": "marker",   "label": "E1 bắt đầu (warm-up)"},
+    {"at_s": 60,  "action": "marker",   "label": "Bắt đầu cửa sổ đo"},
+    {"at_s": 120, "action": "exec",     "background": true, "timeout_s": 180, "label": "toppartitions 30s",
+     "cmd": "python3 {lab_root}/toppartitions_capture.py --ks {ks} --cf {cf} --duration-ms 30000 --out-dir {run_dir}/toppartitions"},
+    {"at_s": 125, "action": "snapshot", "label": "giua_E1"},
+    {"at_s": 300, "action": "marker",   "label": "Kết thúc cửa sổ đo"}
+  ]
+}

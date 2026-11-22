@@ -1,0 +1,80 @@
+# =====================================================================
+# MongoDB Replica Set rs0 — 3 member, dùng cho:
+#   • Uyên: chứng minh explain() COLLSCAN → IXSCAN (Attribute Pattern)
+#   • Duy (tuần 4): thí nghiệm E6 rollback khi cô lập Primary
+# Member được khai báo bằng IP tĩnh (không dùng hostname) để client chạy trong
+# WSL cũng kết nối được: mongodb://10.88.88.31,10.88.88.32,10.88.88.33/?replicaSet=rs0
+# Khởi tạo replica set do ../scripts/lab_up.sh mongo thực hiện (rs-init.js, idempotent).
+# =====================================================================
+name: nosql-lab-mongo
+
+x-mongo-common: &mongo-common
+  image: ${MONGO_IMAGE}
+  restart: "no"
+  command:
+    - mongod
+    - --replSet
+    - ${MONGO_RS}
+    - --bind_ip_all
+    - --port
+    - "27017"
+    - --wiredTigerCacheSizeGB
+    - "${MONGO_WT_CACHE_GB}"
+  healthcheck:
+    test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+    interval: 10s
+    timeout: 10s
+    retries: 20
+    start_period: 20s
+
+services:
+  mongo1:
+    <<: *mongo-common
+    container_name: mongo1
+    hostname: mongo1
+    labels:
+      lab.group: mongo
+    networks:
+      lab-net:
+        ipv4_address: ${MONGO1_IP}
+    ports:
+      - "27017:27017"
+    volumes:
+      - ../mongo:/lab-scripts:ro
+      - mongo1-data:/data/db
+
+  mongo2:
+    <<: *mongo-common
+    container_name: mongo2
+    hostname: mongo2
+    labels:
+      lab.group: mongo
+    networks:
+      lab-net:
+        ipv4_address: ${MONGO2_IP}
+    volumes:
+      - ../mongo:/lab-scripts:ro
+      - mongo2-data:/data/db
+
+  mongo3:
+    <<: *mongo-common
+    container_name: mongo3
+    hostname: mongo3
+    labels:
+      lab.group: mongo
+    networks:
+      lab-net:
+        ipv4_address: ${MONGO3_IP}
+    volumes:
+      - ../mongo:/lab-scripts:ro
+      - mongo3-data:/data/db
+
+networks:
+  lab-net:
+    name: ${LAB_NETWORK}
+    external: true
+
+volumes:
+  mongo1-data:
+  mongo2-data:
+  mongo3-data:

@@ -1,0 +1,44 @@
+{
+  "environment": "PASS",
+  "data_preparation": "PASS",
+  "database_initialization": "SKIPPED",
+  "data_ingestion": "SKIPPED",
+  "nosql_operations": {
+    "e1a": "SKIPPED (no live cluster)",
+    "e1b": "SKIPPED (no live cluster)",
+    "lwt": "SKIPPED (no live cluster)",
+    "counter": "SKIPPED (no live cluster)"
+  },
+  "cap_experiments": {
+    "CAP_ONE": {
+      "status": "REAL evidence",
+      "run_id": "20261118164217_51d70a18",
+      "n_ops": 4008,
+      "pre_ok%": 100.0,
+      "partition_ok%": 100.0,
+      "post_ok%": 100.0
+    },
+    "CAP_QUORUM": {
+      "status": "REAL evidence",
+      "run_id": "20261118164246_1e06bf4f",
+      "n_ops": 3916,
+      "pre_ok%": 100.0,
+      "partition_ok%": 100.0,
+      "post_ok%": 100.0
+    },
+    "CAP_ALL": {
+      "status": "INVALID RUN (setup defect - không phải CAP evidence)",
+      "run_id": "20261118164314_7e93eceb",
+      "n_ops": 4158,
+      "pre_ok%": 0.0,
+      "partition_ok%": 0.0,
+      "post_ok%": 0.0
+    }
+  },
+  "analysis_pipeline": "PASS",
+  "evidence_charts": "PASS",
+  "_meta": {
+    "root": "/Users/pickapu/Documents/PyCharmMiscProject/nosql-catalog-cap-lab",
+    "note": "SKIPPED = thiếu cluster (Docker + driver). PASS analysis = selftest synthetic + committed real evidence, không phải live rerun."
+  }
+}

@@ -1,0 +1,10 @@
+# Chép file này thành C:\Users\<tên_bạn>\.wslconfig (bỏ đuôi .example),
+# sau đó chạy trong PowerShell:  wsl --shutdown   rồi mở lại Ubuntu.
+#
+# Mức gợi ý cho máy 16 GB RAM / 8 luồng CPU:
+#   4 node Scylla (smp=2, 1G) ≈ 5 GB + Prometheus/Grafana ≈ 1 GB + Mongo RS ≈ 1.5 GB
+# Máy 32 GB có thể nâng memory lên 16GB.
+[wsl2]
+memory=10GB
+processors=8
+swap=8GB

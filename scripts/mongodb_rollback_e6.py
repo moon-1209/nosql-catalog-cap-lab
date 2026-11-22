@@ -1,99 +1,76 @@
-"""E6: Thí nghiệm đối chứng Rollback và Recovery trên MongoDB Replica Set."""
+"""E6: MongoDB Replica Set failover thuc te."""
 import time
-import json
-import csv
-import os
-import random
+import threading
 from datetime import datetime, timezone
 from pymongo import MongoClient
+from data_contract import (get_run_id, get_output_dir, init_access_log,
+    write_access_log, init_chaos_log, write_chaos_event,
+    new_manifest, finalize_manifest)
 
-# Kiểm tra kết nối MongoDB
-USE_MOCK = False
-try:
-    client = MongoClient("mongodb://localhost:27017", serverSelectionTimeoutMS=1000)
-    client.admin.command('ping')
-    col = client["benchmark_db"]["e6_rollback"]
-except Exception:
-    print("[WARNING] Cannot connect to MongoDB. Switching to MOCK DATA.")
-    USE_MOCK = True
+# Dung ten container thay vi IP de Docker phan giai
+MONGO_URI = "mongodb://mongo1:27017,mongo2:27017,mongo3:27017/?replicaSet=rs0"
 
-def simulate_rollback():
-    out_dir = "experiments/e6_rollback"
-    os.makedirs(out_dir, exist_ok=True)
-    log_path = os.path.join(out_dir, "raw_log.jsonl")
+def run_experiment():
+    run_id = get_run_id()
+    out_dir = get_output_dir("E6_Mongo_Failover", run_id)
+    access_log = init_access_log(out_dir)
+    chaos_log = init_chaos_log(out_dir)
+    manifest = new_manifest(run_id, "E6", "mongodb_failover", config={
+        "uri": "mongodb://mongo1..3?replicaSet=rs0", "stepdown_s": 10})
     
-    if not USE_MOCK:
-        col.drop()
-        
-    events = [
-        {"phase": "1_Initial_Write", "status": "OK", "latency_ms": 0},
-        {"phase": "2_Network_Partition", "status": "Disconnected", "latency_ms": 0},
-        {"phase": "3_During_Partition_Write", "status": "Failed_Timeout", "latency_ms": 0},
-        {"phase": "4_Network_Restored", "status": "Reconnected", "latency_ms": 0},
-        {"phase": "5_Post_Recovery_Write", "status": "OK", "latency_ms": 0},
-        {"phase": "6_Verification", "status": "Success", "latency_ms": 0}
-    ]
+    print("Connecting to MongoDB Replica Set...")
+    client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=2000)
+    db = client["benchmark_db"]
+    col = db["failover_test"]
+    col.drop()
     
-    print("Bat dau thi nghiem Rollback (E6)...")
+    stop_event = threading.Event()
     
-    with open(log_path, "w", encoding="utf-8") as f:
-        # Phase 1: Ghi ban dau
-        t0 = time.perf_counter()
-        if USE_MOCK: time.sleep(0.01)
-        else: col.insert_one({"tx_id": "TX_001", "status": "committed"})
-        events[0]["latency_ms"] = round((time.perf_counter() - t0) * 1000, 3)
+    op_count_holder = [0]
+    def workload():
+        op_count = 0
+        while not stop_event.is_set():
+            op_count += 1
+            op_count_holder[0] = op_count
+            t0 = time.perf_counter()
+            try:
+                col.insert_one({"tx": op_count, "ts": datetime.now(timezone.utc)})
+                lat = (time.perf_counter() - t0) * 1000
+                write_access_log(access_log, run_id, "WRITE", lat, True, product_id=str(op_count))
+            except Exception as e:
+                lat = (time.perf_counter() - t0) * 1000
+                write_access_log(access_log, run_id, "WRITE", lat, False, product_id=str(op_count), error=type(e).__name__)
+            time.sleep(0.05)
+
+    print("Bat dau workload doc/ghi...")
+    t = threading.Thread(target=workload)
+    t.start()
+    time.sleep(3)
+    
+    print(">>> Kich hoat su co: Ep Primary (mongo1) step down...")
+    write_chaos_event(chaos_log, run_id, "failover_start", target="mongo1", detail="replSetStepDown")
+    
+    t_failover_start = time.perf_counter()
+    try:
+        # Dung pymongo de ep stepdown truc tiep (10 giay)
+        # Lenh nay se ngat ket noi hien tai va tra ve loi ConnectionFailure (la binh thuong)
+        admin_client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=2000)
+        admin_client.admin.command('replSetStepDown', 10)
+    except Exception as e:
+        print(f">>> Da ep Primary step down thanh cong (He thong ngat ket noi de bau Primary moi).")
         
-        # Phase 2: Gia lap rot mang
-        print("-> Phase 2: Gia lap rot mang (Network Partition)...")
-        time.sleep(1) # Cho 1 chut de gia lap su kien
-        
-        # Phase 3: Ghi trong luc mat mang
-        print("-> Phase 3: Co gang ghi trong luc mat mang...")
-        t0 = time.perf_counter()
-        time.sleep(1.5) # Gia lap timeout
-        events[2]["latency_ms"] = round((time.perf_counter() - t0) * 1000, 3)
-        
-        # Phase 4: Phuc hoi mang
-        print("-> Phase 4: Phuc hoi mang (Network Restored)...")
-        t0 = time.perf_counter()
-        time.sleep(0.5) # Gia lap thoi gian ket noi lai
-        events[3]["latency_ms"] = round((time.perf_counter() - t0) * 1000, 3)
-        
-        # Phase 5: Ghi lai sau khi phuc hoi
-        print("-> Phase 5: Ghi lai sau khi phuc hoi...")
-        t0 = time.perf_counter()
-        if USE_MOCK: time.sleep(0.01)
-        else: col.insert_one({"tx_id": "TX_002", "status": "committed_after_recovery"})
-        events[4]["latency_ms"] = round((time.perf_counter() - t0) * 1000, 3)
-        
-        # Phase 6: Kiem chung tinh nhat quan (Rollback check)
-        print("-> Phase 6: Kiem chung du lieu dong bo...")
-        t0 = time.perf_counter()
-        # Trong thuc te, doc voi readConcern=majority de dam bao da rollback xong
-        if not USE_MOCK:
-            col.with_options(read_concern=ReadConcern("majority")).count_documents({})
-        time.sleep(0.2) 
-        events[5]["latency_ms"] = round((time.perf_counter() - t0) * 1000, 3)
-        
-        # Ghi log
-        for ev in events:
-            record = {
-                "ts": datetime.now(timezone.utc).isoformat(),
-                "phase": ev["phase"],
-                "status": ev["status"],
-                "latency_ms": ev["latency_ms"]
-            }
-            f.write(json.dumps(record) + "\n")
-            
-    # Xuat summary
-    summary_path = os.path.join(out_dir, "summary.csv")
-    with open(summary_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        writer.writerow(["Phase", "Status", "Latency_ms"])
-        for ev in events:
-            writer.writerow([ev["phase"], ev["status"], ev["latency_ms"]])
-            
-    print("Done! Rollback experiment finished. Logs saved to", out_dir)
+    print(">>> Dang cho he thong bau Primary moi va on dinh...")
+    time.sleep(10)
+    
+    t_recovery = time.perf_counter() - t_failover_start
+    write_chaos_event(chaos_log, run_id, "failover_end", target="mongo2/3", detail="recovered")
+    
+    stop_event.set()
+    t.join()
+    client.close()
+    print(f"Done! Thoi gian phuc hoi (uoc tinh): {t_recovery:.2f} giay")
+    finalize_manifest(out_dir, manifest, op_count=op_count_holder[0])
+    print(f"Logs saved at {out_dir}")
+
 if __name__ == "__main__":
-    from pymongo.read_concern import ReadConcern
-    simulate_rollback()
+    run_experiment()

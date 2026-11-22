@@ -1,97 +1,103 @@
-"""E1a: Zipf Distribution Workload cho Schema A."""
-import random
-import math
-import time
-import json
-import csv
+"""E1a: workload that tren ScyllaDB - Schema A (products_by_category).
+
+PRIMARY KEY ((category_id), added_at, product_id) - 1 partition / category.
+
+Khac ban cu:
+  * Dung products.csv + access_log.csv cua Uyen lam input (cung dataset voi E1b
+    -> so sanh duoc). Khong con key % 10.
+  * Log theo Data Contract v2: op READ/WRITE (uppercase), ts epoch ms,
+    manifest.json day du provenance.
+
+Chay: python scripts/e1a_zipf_workload.py [--limit N]
+Can cluster ScyllaDB (docker/scylla.yml hoac compose/ cua Lam).
+"""
 import os
-from datetime import datetime, timezone
-from pymongo import MongoClient
+import sys
+import time
+import argparse
 
-# Kiểm tra kết nối MongoDB, nếu không có thì dùng Mock Data
-USE_MOCK = False
-try:
-    # Rút ngắn timeout xuống 1s để nếu không có DB thì báo lỗi nhanh
-    client = MongoClient("mongodb://localhost:27017", serverSelectionTimeoutMS=1000)
-    client.admin.command('ping')
-    col = client["benchmark_db"]["e1a_zipf"]
-except Exception:
-    print("[WARNING] Cannot connect to MongoDB. Switching to MOCK DATA to generate logs.")
-    USE_MOCK = True
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from data_contract import (
+    get_run_id, get_output_dir, init_access_log, write_access_log,
+    new_manifest, finalize_manifest,
+)
+from product_catalog import load_products, load_workload_ops
 
-def zipf_distribution(n, s, num_samples):
-    """Sinh mảng khóa theo phân phối Zipf."""
-    weights = [1.0 / (math.pow(i, s)) for i in range(1, n + 1)]
-    total = sum(weights)
-    probabilities = [w / total for w in weights]
-    return random.choices(range(1, n + 1), weights=probabilities, k=num_samples)
+from lab_connect import connect, ensure_keyspace
 
-def run_experiment():
-    out_dir = "experiments/e1a_zipf"
-    os.makedirs(out_dir, exist_ok=True)
-    
-    num_keys = 10000
-    skew = 1.2 # Do lech Zipf
-    num_ops = 1000
-    
-    print(f"Generating {num_ops} operations with Zipf distribution...")
-    keys = zipf_distribution(num_keys, skew, num_ops)
-    
-    latencies = []
-    log_path = os.path.join(out_dir, "raw_log.jsonl")
-    
-    with open(log_path, "w", encoding="utf-8") as f:
-        for i, key in enumerate(keys):
-            op_type = "write" if i % 2 == 0 else "read"
-            
-            t0 = time.perf_counter()
-            if USE_MOCK:
-                # Gia lap do tre ngau nhien tu 2ms den 20ms
-                time.sleep(random.uniform(0.002, 0.020))
-                success = True
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--products", default="data/sample/products.csv")
+    ap.add_argument("--ops", default="data/sample/access_log.csv")
+    ap.add_argument("--limit", type=int, default=2000)
+    ap.add_argument("--keyspace", default="catalog")
+    args = ap.parse_args()
+
+    run_id = get_run_id()
+    out_dir = get_output_dir("E1a_ScyllaDB", run_id)
+    access_log_file = init_access_log(out_dir)
+    manifest = new_manifest(run_id, "E1a", "hot_partition_schema_a", config={
+        "keyspace": args.keyspace, "schema": "products_by_category",
+        "products": args.products, "workload": args.ops, "limit": args.limit,
+    })
+
+    products = load_products(args.products)
+    by_pid = {p["product_id"]: p for p in products}
+    ops = load_workload_ops(args.ops, limit=args.limit)
+    print(f"Loaded {len(products)} products, replaying {len(ops)} ops")
+
+    cluster, session = connect()
+    ensure_keyspace(session, args.keyspace)
+    session.execute("""
+        CREATE TABLE IF NOT EXISTS products_by_category (
+            category_id text, added_at bigint, product_id text,
+            name text, brand text, price double, currency text,
+            stock int, rating double, attributes text,
+            PRIMARY KEY ((category_id), added_at, product_id)
+        )""")
+
+    insert_stmt = session.prepare(
+        "INSERT INTO products_by_category (category_id, added_at, product_id, "
+        "name, brand, price, currency, stock, rating, attributes) "
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
+    read_stmt = session.prepare(
+        "SELECT product_id FROM products_by_category "
+        "WHERE category_id = ? AND added_at = ? AND product_id = ?")
+
+    print("Seeding products ...")
+    for p in products:
+        session.execute(insert_stmt, tuple(p[k] for k in (
+            "category_id", "added_at", "product_id", "name", "brand",
+            "price", "currency", "stock", "rating", "attributes")))
+
+    op_count = 0
+    for op, category_id, product_id in ops:
+        p = by_pid.get(product_id)
+        if p is None or p["category_id"] != category_id:
+            continue
+        t0 = time.perf_counter()
+        success, error_msg = True, ""
+        try:
+            if op == "WRITE":
+                session.execute(insert_stmt, tuple(p[k] for k in (
+                    "category_id", "added_at", "product_id", "name", "brand",
+                    "price", "currency", "stock", "rating", "attributes")))
             else:
-                try:
-                    if op_type == "write":
-                        col.update_one({"key": key}, {"$set": {"value": random.random()}}, upsert=True)
-                    else:
-                        col.find_one({"key": key})
-                    success = True
-                except Exception:
-                    success = False
-                    
-            latency = (time.perf_counter() - t0) * 1000
-            latencies.append(latency)
-            
-            # Ghi log JSONL
-            record = {
-                "ts": datetime.now(timezone.utc).isoformat(),
-                "op": op_type,
-                "key": key,
-                "latency_ms": round(latency, 3),
-                "success": success
-            }
-            f.write(json.dumps(record) + "\n")
-            
-    # Tinh toan summary
-    latencies.sort()
-    n = len(latencies)
-    p50 = latencies[int(n * 0.50)]
-    p95 = latencies[int(n * 0.95)]
-    p99 = latencies[int(n * 0.99)]
-    mean = sum(latencies) / n
-    
-    # Ghi summary CSV
-    summary_path = os.path.join(out_dir, "summary.csv")
-    with open(summary_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        writer.writerow(["Metric", "Value_ms"])
-        writer.writerow(["Mean", round(mean, 3)])
-        writer.writerow(["P50", round(p50, 3)])
-        writer.writerow(["P95", round(p95, 3)])
-        writer.writerow(["P99", round(p99, 3)])
-        writer.writerow(["Max", round(latencies[-1], 3)])
-        
-    print(f"Done! Logs saved at {out_dir}/raw_log.jsonl and {out_dir}/summary.csv")
+                session.execute(read_stmt,
+                                (category_id, p["added_at"], product_id))
+        except Exception as e:
+            success, error_msg = False, str(e)[:120]
+        latency = (time.perf_counter() - t0) * 1000
+        write_access_log(access_log_file, run_id, op, latency, success,
+                         category_id=category_id, product_id=product_id,
+                         error=error_msg)
+        op_count += 1
+
+    finalize_manifest(out_dir, manifest, op_count=op_count)
+    print(f"Done! {op_count} ops -> {out_dir}")
+    cluster.shutdown()
+
 
 if __name__ == "__main__":
-    run_experiment()
+    main()

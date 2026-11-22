@@ -1,0 +1,52 @@
+{
+  "origin": "synthetic",
+  "status": {
+    "status_mode": "ok",
+    "unknown_status": 0
+  },
+  "run": {
+    "run_id": "20261120054801_0bdd8fba",
+    "consistency": "ok"
+  },
+  "failed_ops_excluded_from_latency": 1,
+  "method_note": "iid bootstrap for exchangeable metrics; moving-block bootstrap (block=50) for time-ordered latency; latency metrics computed over successful operations only",
+  "metrics": {
+    "latency_ms_mean_block": {
+      "estimate": 2.3954773869346737,
+      "ci_low": 2.392462311557789,
+      "ci_high": 2.422613065326633,
+      "n": 199,
+      "method": "block",
+      "resamples": 2000,
+      "alpha": 0.05
+    },
+    "latency_ms_p95_iid": {
+      "estimate": 3.3,
+      "ci_low": 3.3,
+      "ci_high": 3.3,
+      "n": 199,
+      "method": "iid",
+      "resamples": 2000,
+      "alpha": 0.05
+    },
+    "top_partition_share_schema_a": {
+      "estimate": 0.8,
+      "ci_low": 0.745,
+      "ci_high": 0.85,
+      "n": 200,
+      "method": "iid",
+      "resamples": 2000,
+      "alpha": 0.05
+    }
+  },
+  "stale_rate_by_level": {
+    "ONE": {
+      "estimate": 0.5,
+      "ci_low": null,
+      "ci_high": null,
+      "n": 2,
+      "method": "iid",
+      "note": "insufficient data"
+    }
+  }
+}
